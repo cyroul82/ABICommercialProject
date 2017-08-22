@@ -34,5 +34,14 @@ namespace ABICommercialProject.Controller
             }
             else return null;
         }
+
+        public void saveCollaborateur(Collaborateur c)
+        {
+            DataRow dr = dt.NewRow();
+            dr["Nom"] = c.NomCollabo;
+            dr["Prénom"] = c.PrenomCollabo;
+            dr["Fonction"] = c.FonctionCollabo;
+            dt.Rows.Add(dr);
+        }
     }
 }

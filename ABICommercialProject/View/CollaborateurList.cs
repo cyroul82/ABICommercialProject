@@ -11,13 +11,16 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public partial class CollaborateurView : Form
+
+    public delegate void SavingCollaborateurEventHandler(Collaborateur collaborateur);
+
+    public partial class CollaborateurList : Form
     {
 
         CollaborateurController cc;
         private BindingSource bindingSourceCollabo;
 
-        public CollaborateurView()
+        public CollaborateurList()
         {
             InitializeComponent();
             cc = new CollaborateurController();
@@ -29,6 +32,18 @@ namespace ABICommercialProject.View
         public void addCollaborateur()
         {
             
+        }
+
+        private void btnNewCollabo_Click(object sender, EventArgs e)
+        {
+            CollaborateurForm cv = new CollaborateurForm();
+            cv.SavingCollaborateur += new SavingCollaborateurEventHandler(this.savingCollaborateur);
+            cv.ShowDialog();
+        }
+
+        private void savingCollaborateur(Collaborateur collaborateur)
+        {
+            cc.saveCollaborateur(collaborateur);
         }
     }
 

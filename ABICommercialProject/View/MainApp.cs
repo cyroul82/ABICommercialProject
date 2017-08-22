@@ -13,6 +13,7 @@ namespace ABICommercialProject
 {
     public partial class MainApp : Form
     {
+        CollaborateurList cv;
         public MainApp()
         {
             InitializeComponent();
@@ -29,9 +30,32 @@ namespace ABICommercialProject
 
         private void collaborateurStripMenuItem_Click(object sender, EventArgs e)
         {
-            CollaborateurView cv = new CollaborateurView();
-            cv.MdiParent = this;
-            cv.Show();
+            if(cv == null)
+            {
+                cv = new CollaborateurList();
+                cv.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
+                cv.MdiParent = this;
+                cv.Show();
+            }
+            if(cv.WindowState == FormWindowState.Minimized)
+            {
+                cv.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                cv.Activate();
+            }
+
+        }
+
+        private void savingCollaborateur(Collaborateur collaborateur)
+        {
+            Console.WriteLine("dans saving collaborateur de mainapp : " + collaborateur );
+        }
+
+        private void collobarateurViewClosing(object sender, FormClosingEventArgs e)
+        {
+            cv = null;
         }
     }
 }

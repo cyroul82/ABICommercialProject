@@ -1,6 +1,6 @@
 ﻿namespace ABICommercialProject.View
 {
-    partial class CollaborateurView
+    partial class CollaborateurList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.collaborateurDataGrid = new System.Windows.Forms.DataGridView();
+            this.btnNewCollabo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.collaborateurDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,11 +52,22 @@
             this.collaborateurDataGrid.Size = new System.Drawing.Size(271, 362);
             this.collaborateurDataGrid.TabIndex = 0;
             // 
+            // btnNewCollabo
+            // 
+            this.btnNewCollabo.Location = new System.Drawing.Point(304, 13);
+            this.btnNewCollabo.Name = "btnNewCollabo";
+            this.btnNewCollabo.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCollabo.TabIndex = 1;
+            this.btnNewCollabo.Text = "Nouveau";
+            this.btnNewCollabo.UseVisualStyleBackColor = true;
+            this.btnNewCollabo.Click += new System.EventHandler(this.btnNewCollabo_Click);
+            // 
             // CollaborateurView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 386);
+            this.Controls.Add(this.btnNewCollabo);
             this.Controls.Add(this.collaborateurDataGrid);
             this.Name = "CollaborateurView";
             this.Text = "CollobarateurView";
@@ -67,5 +79,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView collaborateurDataGrid;
+        private System.Windows.Forms.Button btnNewCollabo;
     }
 }
