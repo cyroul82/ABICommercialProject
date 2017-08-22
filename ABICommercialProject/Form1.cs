@@ -15,6 +15,8 @@ namespace ABICommercialProject
         public Form1()
         {
             InitializeComponent();
+            Collaborateur c = new Collaborateur("Rat", "Cyril", "Dev");
+            Console.WriteLine(c);
         }
     }
 }
