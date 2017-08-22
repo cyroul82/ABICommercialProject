@@ -10,7 +10,7 @@ namespace ABICommercialProject
 {
     public class Collaborateur
     {
-        public static System.Collections.ArrayList collaborateur = new System.Collections.ArrayList();
+        public static System.Collections.ArrayList collaborateurList = new System.Collections.ArrayList();
 
         private int matricule;
         private String nomCollabo;
