@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject
 {
+    public delegate void SavingCollaborateur(Collaborateur collaborateur, Contrat contrat); 
     public partial class MainApp : Form
     {
-
         public static MainApp instance;
 
         CollaborateurList cv;
@@ -59,15 +59,10 @@ namespace ABICommercialProject
 
         }
 
-        //private void savingCollaborateur(Collaborateur collaborateur)
-        //{
-        //    Console.WriteLine("dans saving collaborateur de mainapp : " + collaborateur );
-        //}
 
         private void collobarateurViewClosing(object sender, FormClosingEventArgs e)
         {
             cv = null;
         }
-
     }
 }

@@ -57,6 +57,8 @@
     <Compile Include="Model\Collaborateur.cs" />
     <Compile Include="Model\Contrat.cs" />
     <Compile Include="Model\ContratProvisoire.cs" />
+    <Compile Include="Model\Tools.cs" />
+    <Compile Include="Model\TypeContrat.cs" />
     <Compile Include="View\CollaborateurForm.cs">
       <SubType>Form</SubType>
     </Compile>

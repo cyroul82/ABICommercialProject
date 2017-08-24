@@ -10,7 +10,10 @@ namespace ABICommercialProject
 {
     public enum Statut
     {
+        NonCadre,
         Cadre,
-        NonCadre
+        Commercial,
+        Technicien,
+        TechnicoCommercial
     }
 }

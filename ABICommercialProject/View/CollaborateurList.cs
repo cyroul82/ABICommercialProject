@@ -26,21 +26,20 @@ namespace ABICommercialProject.View
             collaborateurDataGrid.DataSource = bindingSourceCollabo;
         }
 
-        public void addCollaborateur()
-        {
-            
-        }
-
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
             CollaborateurForm cv = new CollaborateurForm();
+            cv.savingCollaborateur += new SavingCollaborateur(this.savingCollaborateur);
             if(cv.ShowDialog() == DialogResult.OK)
             {
                 
             }
         }
 
-        
+        private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
+        {
+            cc.saveCollaborateur(collaborateur);
+        }
     }
 
 }

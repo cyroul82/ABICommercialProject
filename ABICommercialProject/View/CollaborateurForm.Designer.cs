@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
             this.txtFonction = new System.Windows.Forms.TextBox();
             this.lblFonction = new System.Windows.Forms.Label();
@@ -41,7 +42,15 @@
             this.gpxTypeContrat = new System.Windows.Forms.GroupBox();
             this.lblTypeContrat = new System.Windows.Forms.Label();
             this.gpxDetailContrat = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMission = new System.Windows.Forms.TextBox();
+            this.lblMisson = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblEcole = new System.Windows.Forms.Label();
+            this.dtpFinContrat = new System.Windows.Forms.DateTimePicker();
+            this.lblDateFinContrat = new System.Windows.Forms.Label();
+            this.txtMotif = new System.Windows.Forms.TextBox();
+            this.lblMotif = new System.Windows.Forms.Label();
+            this.txtSalaire = new System.Windows.Forms.TextBox();
             this.cbxStatut = new System.Windows.Forms.ComboBox();
             this.lblQualification = new System.Windows.Forms.Label();
             this.dtpDebutContrat = new System.Windows.Forms.DateTimePicker();
@@ -49,17 +58,27 @@
             this.lblDateDebutContrat = new System.Windows.Forms.Label();
             this.lblSalaireBrut = new System.Windows.Forms.Label();
             this.lblStatut = new System.Windows.Forms.Label();
-            this.txtMotif = new System.Windows.Forms.TextBox();
-            this.lblMotif = new System.Windows.Forms.Label();
-            this.lblDateFinContrat = new System.Windows.Forms.Label();
-            this.dtpFinContrat = new System.Windows.Forms.DateTimePicker();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblEcole = new System.Windows.Forms.Label();
-            this.txtMission = new System.Windows.Forms.TextBox();
-            this.lblMisson = new System.Windows.Forms.Label();
+            this.errorProviderNom = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPrenom = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderFonction = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderQualification = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderSalaire = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderExole = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbCollaborateur.SuspendLayout();
             this.gpxTypeContrat.SuspendLayout();
             this.gpxDetailContrat.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFonction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderExole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).BeginInit();
             this.SuspendLayout();
             // 
             // gbCollaborateur
@@ -86,6 +105,8 @@
             this.txtFonction.Name = "txtFonction";
             this.txtFonction.Size = new System.Drawing.Size(140, 20);
             this.txtFonction.TabIndex = 5;
+            this.txtFonction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFonction_KeyPress);
+            this.txtFonction.Validated += new System.EventHandler(this.txtFonction_Validated);
             // 
             // lblFonction
             // 
@@ -102,6 +123,8 @@
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(140, 20);
             this.txtPrenom.TabIndex = 3;
+            this.txtPrenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrenom_KeyPress);
+            this.txtPrenom.Validated += new System.EventHandler(this.txtPrenom_Validated);
             // 
             // lblPrenom
             // 
@@ -118,6 +141,8 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(140, 20);
             this.txtNom.TabIndex = 1;
+            this.txtNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNom_KeyPress);
+            this.txtNom.Validated += new System.EventHandler(this.txtNom_Validated);
             // 
             // lblNom
             // 
@@ -146,6 +171,7 @@
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Enregistrer";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cbxTypeContrat
             // 
@@ -193,7 +219,7 @@
             this.gpxDetailContrat.Controls.Add(this.lblDateFinContrat);
             this.gpxDetailContrat.Controls.Add(this.txtMotif);
             this.gpxDetailContrat.Controls.Add(this.lblMotif);
-            this.gpxDetailContrat.Controls.Add(this.textBox4);
+            this.gpxDetailContrat.Controls.Add(this.txtSalaire);
             this.gpxDetailContrat.Controls.Add(this.cbxStatut);
             this.gpxDetailContrat.Controls.Add(this.lblQualification);
             this.gpxDetailContrat.Controls.Add(this.dtpDebutContrat);
@@ -208,15 +234,84 @@
             this.gpxDetailContrat.TabStop = false;
             this.gpxDetailContrat.Text = "Détails Contrat";
             // 
-            // textBox4
+            // txtMission
             // 
-            this.textBox4.Location = new System.Drawing.Point(102, 78);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(214, 20);
-            this.textBox4.TabIndex = 15;
+            this.txtMission.Location = new System.Drawing.Point(102, 210);
+            this.txtMission.Name = "txtMission";
+            this.txtMission.Size = new System.Drawing.Size(214, 20);
+            this.txtMission.TabIndex = 25;
+            // 
+            // lblMisson
+            // 
+            this.lblMisson.AutoSize = true;
+            this.lblMisson.Location = new System.Drawing.Point(16, 214);
+            this.lblMisson.Name = "lblMisson";
+            this.lblMisson.Size = new System.Drawing.Size(48, 13);
+            this.lblMisson.TabIndex = 24;
+            this.lblMisson.Text = "Mission :";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(102, 184);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(214, 20);
+            this.txtName.TabIndex = 23;
+            // 
+            // lblEcole
+            // 
+            this.lblEcole.AutoSize = true;
+            this.lblEcole.Location = new System.Drawing.Point(16, 188);
+            this.lblEcole.Name = "lblEcole";
+            this.lblEcole.Size = new System.Drawing.Size(40, 13);
+            this.lblEcole.TabIndex = 22;
+            this.lblEcole.Text = "Ecole :";
+            // 
+            // dtpFinContrat
+            // 
+            this.dtpFinContrat.Location = new System.Drawing.Point(102, 130);
+            this.dtpFinContrat.Name = "dtpFinContrat";
+            this.dtpFinContrat.Size = new System.Drawing.Size(214, 20);
+            this.dtpFinContrat.TabIndex = 21;
+            // 
+            // lblDateFinContrat
+            // 
+            this.lblDateFinContrat.AutoSize = true;
+            this.lblDateFinContrat.Location = new System.Drawing.Point(16, 134);
+            this.lblDateFinContrat.Name = "lblDateFinContrat";
+            this.lblDateFinContrat.Size = new System.Drawing.Size(64, 13);
+            this.lblDateFinContrat.TabIndex = 20;
+            this.lblDateFinContrat.Text = "Fin Contrat :";
+            this.lblDateFinContrat.Visible = false;
+            // 
+            // txtMotif
+            // 
+            this.txtMotif.Location = new System.Drawing.Point(102, 156);
+            this.txtMotif.Name = "txtMotif";
+            this.txtMotif.Size = new System.Drawing.Size(214, 20);
+            this.txtMotif.TabIndex = 19;
+            this.txtMotif.Validated += new System.EventHandler(this.txtMotif_Validated);
+            // 
+            // lblMotif
+            // 
+            this.lblMotif.AutoSize = true;
+            this.lblMotif.Location = new System.Drawing.Point(16, 160);
+            this.lblMotif.Name = "lblMotif";
+            this.lblMotif.Size = new System.Drawing.Size(36, 13);
+            this.lblMotif.TabIndex = 18;
+            this.lblMotif.Text = "Motif :";
+            // 
+            // txtSalaire
+            // 
+            this.txtSalaire.Location = new System.Drawing.Point(102, 78);
+            this.txtSalaire.Name = "txtSalaire";
+            this.txtSalaire.Size = new System.Drawing.Size(214, 20);
+            this.txtSalaire.TabIndex = 15;
+            this.txtSalaire.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalaire_KeyPress);
+            this.txtSalaire.Validated += new System.EventHandler(this.txtSalaire_Validated);
             // 
             // cbxStatut
             // 
+            this.cbxStatut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStatut.FormattingEnabled = true;
             this.cbxStatut.Location = new System.Drawing.Point(102, 51);
             this.cbxStatut.Name = "cbxStatut";
@@ -245,6 +340,8 @@
             this.txtQualification.Name = "txtQualification";
             this.txtQualification.Size = new System.Drawing.Size(214, 20);
             this.txtQualification.TabIndex = 11;
+            this.txtQualification.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQualification_KeyPress);
+            this.txtQualification.Validated += new System.EventHandler(this.txtQualification_Validated);
             // 
             // lblDateDebutContrat
             // 
@@ -273,70 +370,50 @@
             this.lblStatut.TabIndex = 13;
             this.lblStatut.Text = "Statut :";
             // 
-            // txtMotif
+            // errorProviderNom
             // 
-            this.txtMotif.Location = new System.Drawing.Point(102, 156);
-            this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(214, 20);
-            this.txtMotif.TabIndex = 19;
+            this.errorProviderNom.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderNom.ContainerControl = this;
             // 
-            // lblMotif
+            // errorProviderPrenom
             // 
-            this.lblMotif.AutoSize = true;
-            this.lblMotif.Location = new System.Drawing.Point(16, 160);
-            this.lblMotif.Name = "lblMotif";
-            this.lblMotif.Size = new System.Drawing.Size(36, 13);
-            this.lblMotif.TabIndex = 18;
-            this.lblMotif.Text = "Motif :";
+            this.errorProviderPrenom.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderPrenom.ContainerControl = this;
             // 
-            // lblDateFinContrat
+            // errorProvider2
             // 
-            this.lblDateFinContrat.AutoSize = true;
-            this.lblDateFinContrat.Location = new System.Drawing.Point(16, 134);
-            this.lblDateFinContrat.Name = "lblDateFinContrat";
-            this.lblDateFinContrat.Size = new System.Drawing.Size(64, 13);
-            this.lblDateFinContrat.TabIndex = 20;
-            this.lblDateFinContrat.Text = "Fin Contrat :";
-            this.lblDateFinContrat.Visible = false;
+            this.errorProvider2.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider2.ContainerControl = this;
             // 
-            // dtpFinContrat
+            // errorProviderFonction
             // 
-            this.dtpFinContrat.Location = new System.Drawing.Point(102, 130);
-            this.dtpFinContrat.Name = "dtpFinContrat";
-            this.dtpFinContrat.Size = new System.Drawing.Size(214, 20);
-            this.dtpFinContrat.TabIndex = 21;
+            this.errorProviderFonction.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderFonction.ContainerControl = this;
             // 
-            // txtName
+            // errorProviderQualification
             // 
-            this.txtName.Location = new System.Drawing.Point(102, 184);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(214, 20);
-            this.txtName.TabIndex = 23;
+            this.errorProviderQualification.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderQualification.ContainerControl = this;
             // 
-            // lblEcole
+            // errorProviderSalaire
             // 
-            this.lblEcole.AutoSize = true;
-            this.lblEcole.Location = new System.Drawing.Point(16, 188);
-            this.lblEcole.Name = "lblEcole";
-            this.lblEcole.Size = new System.Drawing.Size(40, 13);
-            this.lblEcole.TabIndex = 22;
-            this.lblEcole.Text = "Ecole :";
+            this.errorProviderSalaire.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderSalaire.ContainerControl = this;
             // 
-            // txtMission
+            // errorProviderMotif
             // 
-            this.txtMission.Location = new System.Drawing.Point(102, 210);
-            this.txtMission.Name = "txtMission";
-            this.txtMission.Size = new System.Drawing.Size(214, 20);
-            this.txtMission.TabIndex = 25;
+            this.errorProviderMotif.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderMotif.ContainerControl = this;
             // 
-            // lblMisson
+            // errorProviderExole
             // 
-            this.lblMisson.AutoSize = true;
-            this.lblMisson.Location = new System.Drawing.Point(16, 214);
-            this.lblMisson.Name = "lblMisson";
-            this.lblMisson.Size = new System.Drawing.Size(48, 13);
-            this.lblMisson.TabIndex = 24;
-            this.lblMisson.Text = "Mission :";
+            this.errorProviderExole.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderExole.ContainerControl = this;
+            // 
+            // errorProviderMission
+            // 
+            this.errorProviderMission.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderMission.ContainerControl = this;
             // 
             // CollaborateurForm
             // 
@@ -357,6 +434,15 @@
             this.gpxTypeContrat.PerformLayout();
             this.gpxDetailContrat.ResumeLayout(false);
             this.gpxDetailContrat.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFonction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderExole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,7 +462,7 @@
         private System.Windows.Forms.GroupBox gpxTypeContrat;
         private System.Windows.Forms.Label lblTypeContrat;
         private System.Windows.Forms.GroupBox gpxDetailContrat;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtSalaire;
         private System.Windows.Forms.ComboBox cbxStatut;
         private System.Windows.Forms.Label lblQualification;
         private System.Windows.Forms.DateTimePicker dtpDebutContrat;
@@ -392,5 +478,14 @@
         private System.Windows.Forms.Label lblEcole;
         private System.Windows.Forms.TextBox txtMission;
         private System.Windows.Forms.Label lblMisson;
+        private System.Windows.Forms.ErrorProvider errorProviderNom;
+        private System.Windows.Forms.ErrorProvider errorProviderPrenom;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.ErrorProvider errorProviderFonction;
+        private System.Windows.Forms.ErrorProvider errorProviderQualification;
+        private System.Windows.Forms.ErrorProvider errorProviderSalaire;
+        private System.Windows.Forms.ErrorProvider errorProviderMotif;
+        private System.Windows.Forms.ErrorProvider errorProviderExole;
+        private System.Windows.Forms.ErrorProvider errorProviderMission;
     }
 }
