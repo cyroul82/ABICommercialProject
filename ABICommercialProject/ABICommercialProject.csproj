@@ -69,18 +69,6 @@
     <Compile Include="View\CollaborateurList.Designer.cs">
       <DependentUpon>CollaborateurList.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ContratForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ContratForm.Designer.cs">
-      <DependentUpon>ContratForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\ContratSelectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ContratSelectForm.Designer.cs">
-      <DependentUpon>ContratSelectForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\MainApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,12 +85,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CollaborateurList.resx">
       <DependentUpon>CollaborateurList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\ContratForm.resx">
-      <DependentUpon>ContratForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\ContratSelectForm.resx">
-      <DependentUpon>ContratSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainApp.resx">
       <DependentUpon>MainApp.cs</DependentUpon>

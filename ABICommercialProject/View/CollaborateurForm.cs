@@ -17,6 +17,7 @@ namespace ABICommercialProject.View
         public CollaborateurForm()
         {
             InitializeComponent();
+            hideFields();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -83,8 +84,9 @@ namespace ABICommercialProject.View
                 lblMotif.Visible = true;
                 lblDateFinContrat.Visible = true;
                 dtpFinContrat.Visible = true;
+                lblEcole.Text = "Ecole";
                 lblEcole.Visible = true;
-                txtEcole.Visible = true;
+                txtName.Visible = true;
                 lblMisson.Visible = true;
                 txtMission.Visible = true;
 
@@ -96,10 +98,10 @@ namespace ABICommercialProject.View
                 lblMotif.Visible = true;
                 lblDateFinContrat.Visible = true;
                 dtpFinContrat.Visible = true;
+                lblEcole.Text = "Agence";
                 lblEcole.Visible = true;
-                txtEcole.Visible = true;
-                lblMisson.Visible = true;
-                txtMission.Visible = true;
+                txtName.Visible = true;
+
             }
 
         }
@@ -108,7 +110,7 @@ namespace ABICommercialProject.View
         {
             txtMotif.Visible = false;
             lblMotif.Visible = false;
-            txtEcole.Visible = false;
+            txtName.Visible = false;
             lblEcole.Visible = false;
             txtMission.Visible = false;
             lblMisson.Visible = false;
