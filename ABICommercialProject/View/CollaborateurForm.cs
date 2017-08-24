@@ -12,8 +12,6 @@ namespace ABICommercialProject.View
 {
     public partial class CollaborateurForm : Form
     {
-        //public SavingCollaborateurEventHandler SavingCollaborateur;
-        public selectCollaborateur collaboSelected;
         public CollaborateurForm()
         {
             InitializeComponent();
@@ -24,9 +22,7 @@ namespace ABICommercialProject.View
         {
             Collaborateur collaborateur = getCollaborateur();
             if (collaborateur != null) {
-                //SavingCollaborateur?.Invoke(c);
                 DialogResult = DialogResult.OK;
-                collaboSelected?.Invoke(collaborateur);
             }
             else
             {
