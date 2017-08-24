@@ -105,8 +105,7 @@
             this.txtFonction.Name = "txtFonction";
             this.txtFonction.Size = new System.Drawing.Size(140, 20);
             this.txtFonction.TabIndex = 5;
-            this.txtFonction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFonction_KeyPress);
-            this.txtFonction.Validated += new System.EventHandler(this.txtFonction_Validated);
+            this.txtFonction.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFonction_KeyUp);
             // 
             // lblFonction
             // 
@@ -123,8 +122,7 @@
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(140, 20);
             this.txtPrenom.TabIndex = 3;
-            this.txtPrenom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrenom_KeyPress);
-            this.txtPrenom.Validated += new System.EventHandler(this.txtPrenom_Validated);
+            this.txtPrenom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPrenom_KeyUp);
             // 
             // lblPrenom
             // 
@@ -141,8 +139,7 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(140, 20);
             this.txtNom.TabIndex = 1;
-            this.txtNom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNom_KeyPress);
-            this.txtNom.Validated += new System.EventHandler(this.txtNom_Validated);
+            this.txtNom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNom_KeyUp);
             // 
             // lblNom
             // 
@@ -306,8 +303,7 @@
             this.txtSalaire.Name = "txtSalaire";
             this.txtSalaire.Size = new System.Drawing.Size(214, 20);
             this.txtSalaire.TabIndex = 15;
-            this.txtSalaire.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalaire_KeyPress);
-            this.txtSalaire.Validated += new System.EventHandler(this.txtSalaire_Validated);
+            this.txtSalaire.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSalaire_KeyUp);
             // 
             // cbxStatut
             // 
@@ -340,8 +336,7 @@
             this.txtQualification.Name = "txtQualification";
             this.txtQualification.Size = new System.Drawing.Size(214, 20);
             this.txtQualification.TabIndex = 11;
-            this.txtQualification.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQualification_KeyPress);
-            this.txtQualification.Validated += new System.EventHandler(this.txtQualification_Validated);
+            this.txtQualification.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQualification_KeyUp);
             // 
             // lblDateDebutContrat
             // 

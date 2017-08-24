@@ -123,30 +123,6 @@ namespace ABICommercialProject.View
             DialogResult = DialogResult.OK;
         }
 
-        private void txtNom_Validated(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void txtPrenom_Validated(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtQualification_Validated(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtSalaire_Validated(object sender, EventArgs e)
-        {   
-        }
-
-        private void txtFonction_Validated(object sender, EventArgs e)
-        {
-            
-        }
-
         private void txtMotif_Validated(object sender, EventArgs e)
         {
             if (Tools.IsNameValid(txtMotif.Text))
@@ -173,43 +149,22 @@ namespace ABICommercialProject.View
             btnSave.Enabled = ready;
         }
 
-        private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Tools.IsNameValid(txtNom.Text))
-            {
-                errorProviderNom.SetError(txtNom, String.Empty);
-                this.nom = txtNom.Text;
-            }
-            else
-            {
-                errorProviderNom.SetError(txtNom, "Requis");
-                this.nom = null;
-            }
-            isFormReady();
-        }
 
-        private void txtPrenom_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Tools.IsNameValid(txtPrenom.Text))
-            {
-                errorProviderPrenom.SetError(txtPrenom, String.Empty);
-                this.prenom = txtPrenom.Text;
-            }
-            else
-            {
-                errorProviderPrenom.SetError(txtPrenom, "Requis");
-                this.prenom = null;
-            }
-            isFormReady();
-        }
-
-        private void txtSalaire_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtSalaire_KeyUp(object sender, KeyEventArgs e)
         {
             Decimal salaire;
             if (Decimal.TryParse(txtSalaire.Text, out salaire))
             {
-                errorProviderSalaire.SetError(txtSalaire, String.Empty);
-                this.salaire = salaire;
+                if (salaire <= 0)
+                {
+                    errorProviderSalaire.SetError(txtSalaire, "Requis");
+                    this.salaire = 0;
+                }
+                else
+                {
+                    errorProviderSalaire.SetError(txtSalaire, String.Empty);
+                    this.salaire = salaire;
+                }
             }
             else
             {
@@ -219,7 +174,22 @@ namespace ABICommercialProject.View
             isFormReady();
         }
 
-        private void txtFonction_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtQualification_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Tools.IsNameValid(txtQualification.Text))
+            {
+                errorProviderQualification.SetError(txtQualification, String.Empty);
+                this.qualification = txtQualification.Text;
+            }
+            else
+            {
+                errorProviderQualification.SetError(txtQualification, "Requis");
+                this.qualification = null;
+            }
+            isFormReady();
+        }
+
+        private void txtFonction_KeyUp(object sender, KeyEventArgs e)
         {
             if (Tools.IsNameValid(txtFonction.Text))
             {
@@ -234,17 +204,32 @@ namespace ABICommercialProject.View
             isFormReady();
         }
 
-        private void txtQualification_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtPrenom_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Tools.IsNameValid(txtQualification.Text))
+            if (Tools.IsNameValid(txtPrenom.Text))
             {
-                errorProviderQualification.SetError(txtQualification, String.Empty);
-                this.qualification = txtQualification.Text;
+                errorProviderPrenom.SetError(txtPrenom, String.Empty);
+                this.prenom = txtPrenom.Text;
             }
             else
             {
-                errorProviderQualification.SetError(txtQualification, "Requis");
-                this.qualification = null;
+                errorProviderPrenom.SetError(txtPrenom, "Requis");
+                this.prenom = null;
+            }
+            isFormReady();
+        }
+
+        private void txtNom_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Tools.IsNameValid(txtNom.Text))
+            {
+                errorProviderNom.SetError(txtNom, String.Empty);
+                this.nom = txtNom.Text;
+            }
+            else
+            {
+                errorProviderNom.SetError(txtNom, "Requis");
+                this.nom = null;
             }
             isFormReady();
         }
