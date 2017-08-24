@@ -42,6 +42,8 @@ namespace ABICommercialProject.Controller
             dr["Prénom"] = c.PrenomCollabo;
             dr["Fonction"] = c.FonctionCollabo;
             dt.Rows.Add(dr);
+
+
         }
     }
 }

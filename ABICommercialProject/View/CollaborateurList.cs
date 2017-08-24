@@ -13,7 +13,7 @@ namespace ABICommercialProject.View
 {
 
     public delegate void SavingCollaborateurEventHandler(Collaborateur collaborateur);
-
+    public delegate void selectContrat(String typeContrat);
     public partial class CollaborateurList : Form
     {
 
@@ -38,7 +38,11 @@ namespace ABICommercialProject.View
         {
             CollaborateurForm cv = new CollaborateurForm();
             cv.SavingCollaborateur += new SavingCollaborateurEventHandler(this.savingCollaborateur);
-            cv.ShowDialog();
+            if(cv.ShowDialog() == DialogResult.OK)
+            {
+                ContratSelectForm contrat = new ContratSelectForm();
+                contrat.ShowDialog();
+            }
         }
 
         private void savingCollaborateur(Collaborateur collaborateur)

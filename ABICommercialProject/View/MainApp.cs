@@ -25,7 +25,6 @@ namespace ABICommercialProject
             Collaborateur.collaborateurList.Add(c);
             c = new Collaborateur("Rat Ito", "Luca", "Développeur");
             Collaborateur.collaborateurList.Add(c);
-            Console.WriteLine(c);
         }
 
         private void collaborateurStripMenuItem_Click(object sender, EventArgs e)
@@ -57,5 +56,6 @@ namespace ABICommercialProject
         {
             cv = null;
         }
+
     }
 }
