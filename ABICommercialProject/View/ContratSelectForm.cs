@@ -13,16 +13,20 @@ namespace ABICommercialProject.View
     
     public partial class ContratSelectForm : Form
     {
-        public selectContrat contratSelection;
-        public ContratSelectForm()
+        public selectContrat contratSelected;
+        private Collaborateur collaborateur;
+
+        public ContratSelectForm(Collaborateur c)
         {
             InitializeComponent();
+            this.collaborateur = c;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
             String choice = cbxTypeContrat.SelectedItem.ToString();
-            contratSelection?.Invoke(choice);
+            DialogResult = DialogResult.OK;
+            contratSelected?.Invoke(choice);
         }
     }
 }

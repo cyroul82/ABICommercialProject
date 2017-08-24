@@ -12,7 +12,8 @@ namespace ABICommercialProject.View
 {
     public partial class CollaborateurForm : Form
     {
-        public SavingCollaborateurEventHandler SavingCollaborateur;
+        //public SavingCollaborateurEventHandler SavingCollaborateur;
+        public selectCollaborateur collaboSelected;
         public CollaborateurForm()
         {
             InitializeComponent();
@@ -20,10 +21,11 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Collaborateur c = getCollaborateur();
-            if (c != null) { 
-            SavingCollaborateur?.Invoke(c);
-            this.DialogResult = DialogResult.OK;
+            Collaborateur collaborateur = getCollaborateur();
+            if (collaborateur != null) {
+                //SavingCollaborateur?.Invoke(c);
+                DialogResult = DialogResult.OK;
+                collaboSelected?.Invoke(collaborateur);
             }
             else
             {
@@ -60,6 +62,58 @@ namespace ABICommercialProject.View
             return new string(a);
         }
 
+        private void cbxTypeContrat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbxTypeContrat.SelectedItem.ToString() == "CDD")
+            {
+                hideFields();
+                txtMotif.Visible = true;
+                lblMotif.Visible = true;
+                lblDateFinContrat.Visible = true;
+                dtpFinContrat.Visible = true;
+            }
+           else if (cbxTypeContrat.SelectedItem.ToString() == "CDI")
+            {
+                hideFields();
+            }
+            else if (cbxTypeContrat.SelectedItem.ToString() == "Stage")
+            {
+                hideFields();
+                txtMotif.Visible = true;
+                lblMotif.Visible = true;
+                lblDateFinContrat.Visible = true;
+                dtpFinContrat.Visible = true;
+                lblEcole.Visible = true;
+                txtEcole.Visible = true;
+                lblMisson.Visible = true;
+                txtMission.Visible = true;
 
+            }
+            else if (cbxTypeContrat.SelectedItem.ToString() == "Mission Intérim")
+            {
+                hideFields();
+                txtMotif.Visible = true;
+                lblMotif.Visible = true;
+                lblDateFinContrat.Visible = true;
+                dtpFinContrat.Visible = true;
+                lblEcole.Visible = true;
+                txtEcole.Visible = true;
+                lblMisson.Visible = true;
+                txtMission.Visible = true;
+            }
+
+        }
+
+        private void hideFields()
+        {
+            txtMotif.Visible = false;
+            lblMotif.Visible = false;
+            txtEcole.Visible = false;
+            lblEcole.Visible = false;
+            txtMission.Visible = false;
+            lblMisson.Visible = false;
+            dtpFinContrat.Visible = false;
+            lblDateFinContrat.Visible = false;
+        }
     }
 }

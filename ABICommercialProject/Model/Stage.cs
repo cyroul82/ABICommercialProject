@@ -13,7 +13,7 @@ namespace ABICommercialProject
         public Stage(String ecole, String mission, String motif, DateTime dateFinContrat, String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut) : base(motif, dateFinContrat, qualification, dateDebutContrat, statut, salaireBrut)
         {
             this.ecole = ecole;
-            this.mission = ecole;
+            this.mission = mission;
         }
 
         public override String ToString()

@@ -13,8 +13,11 @@ namespace ABICommercialProject
 {
     public partial class MainApp : Form
     {
+
+        public static MainApp instance;
+
         CollaborateurList cv;
-        public MainApp()
+        private MainApp()
         {
             InitializeComponent();
             Collaborateur c = new Collaborateur("Rat", "Cyril", "Concepteur");
@@ -25,6 +28,15 @@ namespace ABICommercialProject
             Collaborateur.collaborateurList.Add(c);
             c = new Collaborateur("Rat Ito", "Luca", "Développeur");
             Collaborateur.collaborateurList.Add(c);
+        }
+
+        public static MainApp Instance()
+        {
+            if(instance == null)
+            {
+                instance = new MainApp();
+            }
+            return instance;
         }
 
         private void collaborateurStripMenuItem_Click(object sender, EventArgs e)
@@ -47,10 +59,10 @@ namespace ABICommercialProject
 
         }
 
-        private void savingCollaborateur(Collaborateur collaborateur)
-        {
-            Console.WriteLine("dans saving collaborateur de mainapp : " + collaborateur );
-        }
+        //private void savingCollaborateur(Collaborateur collaborateur)
+        //{
+        //    Console.WriteLine("dans saving collaborateur de mainapp : " + collaborateur );
+        //}
 
         private void collobarateurViewClosing(object sender, FormClosingEventArgs e)
         {

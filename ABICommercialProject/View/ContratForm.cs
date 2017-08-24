@@ -12,10 +12,17 @@ namespace ABICommercialProject.View
 {
     public partial class ContratForm : Form
     {
-        public ContratForm()
+        private String typeContrat;
+        public ContratForm(String typeContrat)
         {
             InitializeComponent();
+            this.typeContrat = typeContrat;
             cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
