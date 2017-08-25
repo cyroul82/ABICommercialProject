@@ -30,12 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
-            this.txtFonction = new System.Windows.Forms.TextBox();
-            this.lblFonction = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblVille = new System.Windows.Forms.Label();
+            this.txtAdresse = new System.Windows.Forms.TextBox();
+            this.lblAdresse = new System.Windows.Forms.Label();
+            this.picBoxCollabo = new System.Windows.Forms.PictureBox();
             this.txtPrenom = new System.Windows.Forms.TextBox();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
+            this.txtFonction = new System.Windows.Forms.TextBox();
+            this.lblFonction = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cbxTypeContrat = new System.Windows.Forms.ComboBox();
@@ -67,12 +72,12 @@
             this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
-            this.picBoxCollabo = new System.Windows.Forms.PictureBox();
-            this.txtAdresse = new System.Windows.Forms.TextBox();
-            this.lblAdresse = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblVille = new System.Windows.Forms.Label();
+            this.txtCodePostal = new System.Windows.Forms.TextBox();
+            this.lblCodePostal = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbCollaborateur.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
             this.gpxTypeContrat.SuspendLayout();
             this.gpxDetailContrat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
@@ -84,7 +89,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
             this.SuspendLayout();
             // 
             // gbCollaborateur
@@ -92,6 +96,10 @@
             this.gbCollaborateur.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCollaborateur.Controls.Add(this.textBox3);
+            this.gbCollaborateur.Controls.Add(this.label1);
+            this.gbCollaborateur.Controls.Add(this.txtCodePostal);
+            this.gbCollaborateur.Controls.Add(this.lblCodePostal);
             this.gbCollaborateur.Controls.Add(this.textBox2);
             this.gbCollaborateur.Controls.Add(this.lblVille);
             this.gbCollaborateur.Controls.Add(this.txtAdresse);
@@ -107,6 +115,82 @@
             this.gbCollaborateur.TabIndex = 0;
             this.gbCollaborateur.TabStop = false;
             this.gbCollaborateur.Text = "Collaborateur";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(112, 266);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(147, 20);
+            this.textBox2.TabIndex = 10;
+            // 
+            // lblVille
+            // 
+            this.lblVille.AutoSize = true;
+            this.lblVille.Location = new System.Drawing.Point(33, 269);
+            this.lblVille.Name = "lblVille";
+            this.lblVille.Size = new System.Drawing.Size(35, 13);
+            this.lblVille.TabIndex = 9;
+            this.lblVille.Text = "Ville : ";
+            // 
+            // txtAdresse
+            // 
+            this.txtAdresse.Location = new System.Drawing.Point(112, 193);
+            this.txtAdresse.Multiline = true;
+            this.txtAdresse.Name = "txtAdresse";
+            this.txtAdresse.Size = new System.Drawing.Size(147, 67);
+            this.txtAdresse.TabIndex = 8;
+            // 
+            // lblAdresse
+            // 
+            this.lblAdresse.AutoSize = true;
+            this.lblAdresse.Location = new System.Drawing.Point(33, 196);
+            this.lblAdresse.Name = "lblAdresse";
+            this.lblAdresse.Size = new System.Drawing.Size(54, 13);
+            this.lblAdresse.TabIndex = 7;
+            this.lblAdresse.Text = "Adresse : ";
+            // 
+            // picBoxCollabo
+            // 
+            this.picBoxCollabo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBoxCollabo.Location = new System.Drawing.Point(95, 19);
+            this.picBoxCollabo.Name = "picBoxCollabo";
+            this.picBoxCollabo.Size = new System.Drawing.Size(83, 102);
+            this.picBoxCollabo.TabIndex = 6;
+            this.picBoxCollabo.TabStop = false;
+            // 
+            // txtPrenom
+            // 
+            this.txtPrenom.Location = new System.Drawing.Point(112, 166);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(147, 20);
+            this.txtPrenom.TabIndex = 3;
+            this.txtPrenom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPrenom_KeyUp);
+            // 
+            // lblPrenom
+            // 
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(33, 169);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(52, 13);
+            this.lblPrenom.TabIndex = 2;
+            this.lblPrenom.Text = "Prénom : ";
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(112, 136);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(147, 20);
+            this.txtNom.TabIndex = 1;
+            this.txtNom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNom_KeyUp);
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(33, 139);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(38, 13);
+            this.lblNom.TabIndex = 0;
+            this.lblNom.Text = "Nom : ";
             // 
             // txtFonction
             // 
@@ -124,40 +208,6 @@
             this.lblFonction.Size = new System.Drawing.Size(57, 13);
             this.lblFonction.TabIndex = 4;
             this.lblFonction.Text = "Fonction : ";
-            // 
-            // txtPrenom
-            // 
-            this.txtPrenom.Location = new System.Drawing.Point(102, 167);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(140, 20);
-            this.txtPrenom.TabIndex = 3;
-            this.txtPrenom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPrenom_KeyUp);
-            // 
-            // lblPrenom
-            // 
-            this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(16, 170);
-            this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(52, 13);
-            this.lblPrenom.TabIndex = 2;
-            this.lblPrenom.Text = "Prénom : ";
-            // 
-            // txtNom
-            // 
-            this.txtNom.Location = new System.Drawing.Point(102, 141);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(140, 20);
-            this.txtNom.TabIndex = 1;
-            this.txtNom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNom_KeyUp);
-            // 
-            // lblNom
-            // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(16, 144);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(38, 13);
-            this.lblNom.TabIndex = 0;
-            this.lblNom.Text = "Nom : ";
             // 
             // btnCancel
             // 
@@ -427,46 +477,37 @@
             this.errorProviderMission.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderMission.ContainerControl = this;
             // 
-            // picBoxCollabo
+            // txtCodePostal
             // 
-            this.picBoxCollabo.Location = new System.Drawing.Point(19, 28);
-            this.picBoxCollabo.Name = "picBoxCollabo";
-            this.picBoxCollabo.Size = new System.Drawing.Size(83, 102);
-            this.picBoxCollabo.TabIndex = 6;
-            this.picBoxCollabo.TabStop = false;
+            this.txtCodePostal.Location = new System.Drawing.Point(112, 292);
+            this.txtCodePostal.Name = "txtCodePostal";
+            this.txtCodePostal.Size = new System.Drawing.Size(66, 20);
+            this.txtCodePostal.TabIndex = 12;
             // 
-            // txtAdresse
+            // lblCodePostal
             // 
-            this.txtAdresse.Location = new System.Drawing.Point(102, 193);
-            this.txtAdresse.Multiline = true;
-            this.txtAdresse.Name = "txtAdresse";
-            this.txtAdresse.Size = new System.Drawing.Size(140, 67);
-            this.txtAdresse.TabIndex = 8;
+            this.lblCodePostal.AutoSize = true;
+            this.lblCodePostal.Location = new System.Drawing.Point(33, 295);
+            this.lblCodePostal.Name = "lblCodePostal";
+            this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
+            this.lblCodePostal.TabIndex = 11;
+            this.lblCodePostal.Text = "Code Postal : ";
             // 
-            // lblAdresse
+            // textBox3
             // 
-            this.lblAdresse.AutoSize = true;
-            this.lblAdresse.Location = new System.Drawing.Point(16, 196);
-            this.lblAdresse.Name = "lblAdresse";
-            this.lblAdresse.Size = new System.Drawing.Size(54, 13);
-            this.lblAdresse.TabIndex = 7;
-            this.lblAdresse.Text = "Adresse : ";
+            this.textBox3.Location = new System.Drawing.Point(112, 318);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(147, 20);
+            this.textBox3.TabIndex = 14;
             // 
-            // textBox2
+            // label1
             // 
-            this.textBox2.Location = new System.Drawing.Point(102, 266);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(140, 20);
-            this.textBox2.TabIndex = 10;
-            // 
-            // lblVille
-            // 
-            this.lblVille.AutoSize = true;
-            this.lblVille.Location = new System.Drawing.Point(16, 269);
-            this.lblVille.Name = "lblVille";
-            this.lblVille.Size = new System.Drawing.Size(35, 13);
-            this.lblVille.TabIndex = 9;
-            this.lblVille.Text = "Ville : ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 321);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Ville : ";
             // 
             // CollaborateurForm
             // 
@@ -486,6 +527,7 @@
             this.Text = "CollaborateurForm";
             this.gbCollaborateur.ResumeLayout(false);
             this.gbCollaborateur.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).EndInit();
             this.gpxTypeContrat.ResumeLayout(false);
             this.gpxTypeContrat.PerformLayout();
             this.gpxDetailContrat.ResumeLayout(false);
@@ -499,7 +541,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -549,5 +590,9 @@
         private System.Windows.Forms.TextBox txtAdresse;
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.PictureBox picBoxCollabo;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCodePostal;
+        private System.Windows.Forms.Label lblCodePostal;
     }
 }
