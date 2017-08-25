@@ -67,6 +67,11 @@
             this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
+            this.picBoxCollabo = new System.Windows.Forms.PictureBox();
+            this.txtAdresse = new System.Windows.Forms.TextBox();
+            this.lblAdresse = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblVille = new System.Windows.Forms.Label();
             this.gbCollaborateur.SuspendLayout();
             this.gpxTypeContrat.SuspendLayout();
             this.gpxDetailContrat.SuspendLayout();
@@ -79,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
             this.SuspendLayout();
             // 
             // gbCollaborateur
@@ -86,31 +92,34 @@
             this.gbCollaborateur.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbCollaborateur.Controls.Add(this.txtFonction);
-            this.gbCollaborateur.Controls.Add(this.lblFonction);
+            this.gbCollaborateur.Controls.Add(this.textBox2);
+            this.gbCollaborateur.Controls.Add(this.lblVille);
+            this.gbCollaborateur.Controls.Add(this.txtAdresse);
+            this.gbCollaborateur.Controls.Add(this.lblAdresse);
+            this.gbCollaborateur.Controls.Add(this.picBoxCollabo);
             this.gbCollaborateur.Controls.Add(this.txtPrenom);
             this.gbCollaborateur.Controls.Add(this.lblPrenom);
             this.gbCollaborateur.Controls.Add(this.txtNom);
             this.gbCollaborateur.Controls.Add(this.lblNom);
             this.gbCollaborateur.Location = new System.Drawing.Point(12, 12);
             this.gbCollaborateur.Name = "gbCollaborateur";
-            this.gbCollaborateur.Size = new System.Drawing.Size(350, 144);
+            this.gbCollaborateur.Size = new System.Drawing.Size(288, 358);
             this.gbCollaborateur.TabIndex = 0;
             this.gbCollaborateur.TabStop = false;
             this.gbCollaborateur.Text = "Collaborateur";
             // 
             // txtFonction
             // 
-            this.txtFonction.Location = new System.Drawing.Point(102, 84);
+            this.txtFonction.Location = new System.Drawing.Point(102, 28);
             this.txtFonction.Name = "txtFonction";
-            this.txtFonction.Size = new System.Drawing.Size(140, 20);
+            this.txtFonction.Size = new System.Drawing.Size(204, 20);
             this.txtFonction.TabIndex = 5;
             this.txtFonction.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFonction_KeyUp);
             // 
             // lblFonction
             // 
             this.lblFonction.AutoSize = true;
-            this.lblFonction.Location = new System.Drawing.Point(16, 87);
+            this.lblFonction.Location = new System.Drawing.Point(16, 31);
             this.lblFonction.Name = "lblFonction";
             this.lblFonction.Size = new System.Drawing.Size(57, 13);
             this.lblFonction.TabIndex = 4;
@@ -118,7 +127,7 @@
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(102, 58);
+            this.txtPrenom.Location = new System.Drawing.Point(102, 167);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(140, 20);
             this.txtPrenom.TabIndex = 3;
@@ -127,7 +136,7 @@
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(16, 61);
+            this.lblPrenom.Location = new System.Drawing.Point(16, 170);
             this.lblPrenom.Name = "lblPrenom";
             this.lblPrenom.Size = new System.Drawing.Size(52, 13);
             this.lblPrenom.TabIndex = 2;
@@ -135,7 +144,7 @@
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(102, 32);
+            this.txtNom.Location = new System.Drawing.Point(102, 141);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(140, 20);
             this.txtNom.TabIndex = 1;
@@ -144,7 +153,7 @@
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(16, 35);
+            this.lblNom.Location = new System.Drawing.Point(16, 144);
             this.lblNom.Name = "lblNom";
             this.lblNom.Size = new System.Drawing.Size(38, 13);
             this.lblNom.TabIndex = 0;
@@ -153,7 +162,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(188, 520);
+            this.btnCancel.Location = new System.Drawing.Point(321, 376);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -162,7 +171,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(106, 520);
+            this.btnSave.Location = new System.Drawing.Point(239, 376);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
@@ -179,19 +188,23 @@
             "Mission Intérim",
             "Stage",
             "CDI"});
-            this.cbxTypeContrat.Location = new System.Drawing.Point(102, 34);
+            this.cbxTypeContrat.Location = new System.Drawing.Point(102, 59);
             this.cbxTypeContrat.Name = "cbxTypeContrat";
-            this.cbxTypeContrat.Size = new System.Drawing.Size(121, 21);
+            this.cbxTypeContrat.Size = new System.Drawing.Size(204, 21);
             this.cbxTypeContrat.TabIndex = 10;
             this.cbxTypeContrat.SelectedIndexChanged += new System.EventHandler(this.cbxTypeContrat_SelectedIndexChanged);
             // 
             // gpxTypeContrat
             // 
+            this.gpxTypeContrat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gpxTypeContrat.Controls.Add(this.lblTypeContrat);
             this.gpxTypeContrat.Controls.Add(this.cbxTypeContrat);
-            this.gpxTypeContrat.Location = new System.Drawing.Point(12, 162);
+            this.gpxTypeContrat.Controls.Add(this.txtFonction);
+            this.gpxTypeContrat.Controls.Add(this.lblFonction);
+            this.gpxTypeContrat.Location = new System.Drawing.Point(306, 17);
             this.gpxTypeContrat.Name = "gpxTypeContrat";
-            this.gpxTypeContrat.Size = new System.Drawing.Size(350, 73);
+            this.gpxTypeContrat.Size = new System.Drawing.Size(312, 99);
             this.gpxTypeContrat.TabIndex = 11;
             this.gpxTypeContrat.TabStop = false;
             this.gpxTypeContrat.Text = "Type Contrat";
@@ -199,14 +212,16 @@
             // lblTypeContrat
             // 
             this.lblTypeContrat.AutoSize = true;
-            this.lblTypeContrat.Location = new System.Drawing.Point(16, 37);
+            this.lblTypeContrat.Location = new System.Drawing.Point(16, 62);
             this.lblTypeContrat.Name = "lblTypeContrat";
-            this.lblTypeContrat.Size = new System.Drawing.Size(79, 13);
+            this.lblTypeContrat.Size = new System.Drawing.Size(77, 13);
             this.lblTypeContrat.TabIndex = 6;
-            this.lblTypeContrat.Text = "Type  listContrat : ";
+            this.lblTypeContrat.Text = "Type Contrat : ";
             // 
             // gpxDetailContrat
             // 
+            this.gpxDetailContrat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gpxDetailContrat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gpxDetailContrat.Controls.Add(this.txtMission);
             this.gpxDetailContrat.Controls.Add(this.lblMisson);
@@ -224,25 +239,25 @@
             this.gpxDetailContrat.Controls.Add(this.lblDateDebutContrat);
             this.gpxDetailContrat.Controls.Add(this.lblSalaireBrut);
             this.gpxDetailContrat.Controls.Add(this.lblStatut);
-            this.gpxDetailContrat.Location = new System.Drawing.Point(12, 241);
+            this.gpxDetailContrat.Location = new System.Drawing.Point(306, 122);
             this.gpxDetailContrat.Name = "gpxDetailContrat";
-            this.gpxDetailContrat.Size = new System.Drawing.Size(350, 273);
+            this.gpxDetailContrat.Size = new System.Drawing.Size(312, 248);
             this.gpxDetailContrat.TabIndex = 12;
             this.gpxDetailContrat.TabStop = false;
             this.gpxDetailContrat.Text = "Détails Contrat";
             // 
             // txtMission
             // 
-            this.txtMission.Location = new System.Drawing.Point(102, 210);
+            this.txtMission.Location = new System.Drawing.Point(102, 213);
             this.txtMission.Name = "txtMission";
-            this.txtMission.Size = new System.Drawing.Size(214, 20);
+            this.txtMission.Size = new System.Drawing.Size(204, 20);
             this.txtMission.TabIndex = 25;
             this.txtMission.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMission_KeyUp);
             // 
             // lblMisson
             // 
             this.lblMisson.AutoSize = true;
-            this.lblMisson.Location = new System.Drawing.Point(16, 214);
+            this.lblMisson.Location = new System.Drawing.Point(16, 217);
             this.lblMisson.Name = "lblMisson";
             this.lblMisson.Size = new System.Drawing.Size(48, 13);
             this.lblMisson.TabIndex = 24;
@@ -250,16 +265,16 @@
             // 
             // txtEcole
             // 
-            this.txtEcole.Location = new System.Drawing.Point(102, 184);
+            this.txtEcole.Location = new System.Drawing.Point(102, 187);
             this.txtEcole.Name = "txtEcole";
-            this.txtEcole.Size = new System.Drawing.Size(214, 20);
+            this.txtEcole.Size = new System.Drawing.Size(204, 20);
             this.txtEcole.TabIndex = 23;
             this.txtEcole.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtEcole_KeyUp);
             // 
             // lblEcole
             // 
             this.lblEcole.AutoSize = true;
-            this.lblEcole.Location = new System.Drawing.Point(16, 188);
+            this.lblEcole.Location = new System.Drawing.Point(16, 191);
             this.lblEcole.Name = "lblEcole";
             this.lblEcole.Size = new System.Drawing.Size(40, 13);
             this.lblEcole.TabIndex = 22;
@@ -267,15 +282,15 @@
             // 
             // dtpFinContrat
             // 
-            this.dtpFinContrat.Location = new System.Drawing.Point(102, 130);
+            this.dtpFinContrat.Location = new System.Drawing.Point(102, 133);
             this.dtpFinContrat.Name = "dtpFinContrat";
-            this.dtpFinContrat.Size = new System.Drawing.Size(214, 20);
+            this.dtpFinContrat.Size = new System.Drawing.Size(204, 20);
             this.dtpFinContrat.TabIndex = 21;
             // 
             // lblDateFinContrat
             // 
             this.lblDateFinContrat.AutoSize = true;
-            this.lblDateFinContrat.Location = new System.Drawing.Point(16, 134);
+            this.lblDateFinContrat.Location = new System.Drawing.Point(16, 137);
             this.lblDateFinContrat.Name = "lblDateFinContrat";
             this.lblDateFinContrat.Size = new System.Drawing.Size(64, 13);
             this.lblDateFinContrat.TabIndex = 20;
@@ -284,16 +299,16 @@
             // 
             // txtMotif
             // 
-            this.txtMotif.Location = new System.Drawing.Point(102, 156);
+            this.txtMotif.Location = new System.Drawing.Point(102, 159);
             this.txtMotif.Name = "txtMotif";
-            this.txtMotif.Size = new System.Drawing.Size(214, 20);
+            this.txtMotif.Size = new System.Drawing.Size(204, 20);
             this.txtMotif.TabIndex = 19;
             this.txtMotif.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMotif_KeyUp);
             // 
             // lblMotif
             // 
             this.lblMotif.AutoSize = true;
-            this.lblMotif.Location = new System.Drawing.Point(16, 160);
+            this.lblMotif.Location = new System.Drawing.Point(16, 163);
             this.lblMotif.Name = "lblMotif";
             this.lblMotif.Size = new System.Drawing.Size(36, 13);
             this.lblMotif.TabIndex = 18;
@@ -301,9 +316,9 @@
             // 
             // txtSalaire
             // 
-            this.txtSalaire.Location = new System.Drawing.Point(102, 78);
+            this.txtSalaire.Location = new System.Drawing.Point(102, 81);
             this.txtSalaire.Name = "txtSalaire";
-            this.txtSalaire.Size = new System.Drawing.Size(214, 20);
+            this.txtSalaire.Size = new System.Drawing.Size(204, 20);
             this.txtSalaire.TabIndex = 15;
             this.txtSalaire.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSalaire_KeyUp);
             // 
@@ -311,15 +326,15 @@
             // 
             this.cbxStatut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStatut.FormattingEnabled = true;
-            this.cbxStatut.Location = new System.Drawing.Point(102, 51);
+            this.cbxStatut.Location = new System.Drawing.Point(102, 54);
             this.cbxStatut.Name = "cbxStatut";
-            this.cbxStatut.Size = new System.Drawing.Size(214, 21);
+            this.cbxStatut.Size = new System.Drawing.Size(204, 21);
             this.cbxStatut.TabIndex = 17;
             // 
             // lblQualification
             // 
             this.lblQualification.AutoSize = true;
-            this.lblQualification.Location = new System.Drawing.Point(16, 30);
+            this.lblQualification.Location = new System.Drawing.Point(16, 33);
             this.lblQualification.Name = "lblQualification";
             this.lblQualification.Size = new System.Drawing.Size(71, 13);
             this.lblQualification.TabIndex = 10;
@@ -327,23 +342,23 @@
             // 
             // dtpDebutContrat
             // 
-            this.dtpDebutContrat.Location = new System.Drawing.Point(102, 104);
+            this.dtpDebutContrat.Location = new System.Drawing.Point(102, 107);
             this.dtpDebutContrat.Name = "dtpDebutContrat";
-            this.dtpDebutContrat.Size = new System.Drawing.Size(214, 20);
+            this.dtpDebutContrat.Size = new System.Drawing.Size(204, 20);
             this.dtpDebutContrat.TabIndex = 16;
             // 
             // txtQualification
             // 
-            this.txtQualification.Location = new System.Drawing.Point(102, 27);
+            this.txtQualification.Location = new System.Drawing.Point(102, 30);
             this.txtQualification.Name = "txtQualification";
-            this.txtQualification.Size = new System.Drawing.Size(214, 20);
+            this.txtQualification.Size = new System.Drawing.Size(204, 20);
             this.txtQualification.TabIndex = 11;
             this.txtQualification.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQualification_KeyUp);
             // 
             // lblDateDebutContrat
             // 
             this.lblDateDebutContrat.AutoSize = true;
-            this.lblDateDebutContrat.Location = new System.Drawing.Point(16, 107);
+            this.lblDateDebutContrat.Location = new System.Drawing.Point(16, 110);
             this.lblDateDebutContrat.Name = "lblDateDebutContrat";
             this.lblDateDebutContrat.Size = new System.Drawing.Size(79, 13);
             this.lblDateDebutContrat.TabIndex = 12;
@@ -352,7 +367,7 @@
             // lblSalaireBrut
             // 
             this.lblSalaireBrut.AutoSize = true;
-            this.lblSalaireBrut.Location = new System.Drawing.Point(16, 82);
+            this.lblSalaireBrut.Location = new System.Drawing.Point(16, 85);
             this.lblSalaireBrut.Name = "lblSalaireBrut";
             this.lblSalaireBrut.Size = new System.Drawing.Size(67, 13);
             this.lblSalaireBrut.TabIndex = 14;
@@ -361,7 +376,7 @@
             // lblStatut
             // 
             this.lblStatut.AutoSize = true;
-            this.lblStatut.Location = new System.Drawing.Point(16, 54);
+            this.lblStatut.Location = new System.Drawing.Point(16, 57);
             this.lblStatut.Name = "lblStatut";
             this.lblStatut.Size = new System.Drawing.Size(41, 13);
             this.lblStatut.TabIndex = 13;
@@ -412,16 +427,60 @@
             this.errorProviderMission.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderMission.ContainerControl = this;
             // 
+            // picBoxCollabo
+            // 
+            this.picBoxCollabo.Location = new System.Drawing.Point(19, 28);
+            this.picBoxCollabo.Name = "picBoxCollabo";
+            this.picBoxCollabo.Size = new System.Drawing.Size(83, 102);
+            this.picBoxCollabo.TabIndex = 6;
+            this.picBoxCollabo.TabStop = false;
+            // 
+            // txtAdresse
+            // 
+            this.txtAdresse.Location = new System.Drawing.Point(102, 193);
+            this.txtAdresse.Multiline = true;
+            this.txtAdresse.Name = "txtAdresse";
+            this.txtAdresse.Size = new System.Drawing.Size(140, 67);
+            this.txtAdresse.TabIndex = 8;
+            // 
+            // lblAdresse
+            // 
+            this.lblAdresse.AutoSize = true;
+            this.lblAdresse.Location = new System.Drawing.Point(16, 196);
+            this.lblAdresse.Name = "lblAdresse";
+            this.lblAdresse.Size = new System.Drawing.Size(54, 13);
+            this.lblAdresse.TabIndex = 7;
+            this.lblAdresse.Text = "Adresse : ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(102, 266);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(140, 20);
+            this.textBox2.TabIndex = 10;
+            // 
+            // lblVille
+            // 
+            this.lblVille.AutoSize = true;
+            this.lblVille.Location = new System.Drawing.Point(16, 269);
+            this.lblVille.Name = "lblVille";
+            this.lblVille.Size = new System.Drawing.Size(35, 13);
+            this.lblVille.TabIndex = 9;
+            this.lblVille.Text = "Ville : ";
+            // 
             // CollaborateurForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 555);
+            this.ClientSize = new System.Drawing.Size(630, 407);
             this.Controls.Add(this.gpxTypeContrat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gbCollaborateur);
             this.Controls.Add(this.gpxDetailContrat);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(650, 450);
             this.Name = "CollaborateurForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CollaborateurForm";
@@ -440,6 +499,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -484,5 +544,10 @@
         private System.Windows.Forms.ErrorProvider errorProviderMotif;
         private System.Windows.Forms.ErrorProvider errorProviderEcole;
         private System.Windows.Forms.ErrorProvider errorProviderMission;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblVille;
+        private System.Windows.Forms.TextBox txtAdresse;
+        private System.Windows.Forms.Label lblAdresse;
+        private System.Windows.Forms.PictureBox picBoxCollabo;
     }
 }

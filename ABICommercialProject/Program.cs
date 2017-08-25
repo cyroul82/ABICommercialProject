@@ -14,10 +14,18 @@ namespace ABICommercialProject
         [STAThread]
         static void Main()
         {
-        
+
+            try
+            {
                 MissionInterim m = new MissionInterim("", "motif", DateTime.Now.AddYears(1), "qualifications",
-                                                        DateTime.Now.AddMonths(-6), Statut.Cadre, 1850);
+                                                                DateTime.Now.AddMonths(-6), Statut.Cadre, 1850);
                 Console.WriteLine(m);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Exception :" + e);
+            }
        
 
             Application.EnableVisualStyles();
