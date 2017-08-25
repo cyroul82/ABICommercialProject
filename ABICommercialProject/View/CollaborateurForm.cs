@@ -153,7 +153,7 @@ namespace ABICommercialProject.View
         private void txtSalaire_KeyUp(object sender, KeyEventArgs e)
         {
             Decimal salaire;
-            if (Decimal.TryParse(txtSalaire.Text, out salaire))
+            if (Decimal.TryParse(txtSalaire.Text.Trim(), out salaire))
             {
                 if (salaire <= 0)
                 {
@@ -179,7 +179,7 @@ namespace ABICommercialProject.View
             if (Tools.IsNameValid(txtQualification.Text))
             {
                 errorProviderQualification.SetError(txtQualification, String.Empty);
-                this.qualification = txtQualification.Text;
+                this.qualification = txtQualification.Text.Trim(); ;
             }
             else
             {
@@ -194,7 +194,7 @@ namespace ABICommercialProject.View
             if (Tools.IsNameValid(txtFonction.Text))
             {
                 errorProviderFonction.SetError(txtFonction, String.Empty);
-                this.fonction = txtFonction.Text;
+                this.fonction = txtFonction.Text.Trim();
             }
             else
             {
@@ -209,7 +209,7 @@ namespace ABICommercialProject.View
             if (Tools.IsNameValid(txtPrenom.Text))
             {
                 errorProviderPrenom.SetError(txtPrenom, String.Empty);
-                this.prenom = txtPrenom.Text;
+                this.prenom = txtPrenom.Text.Trim();
             }
             else
             {
@@ -224,7 +224,7 @@ namespace ABICommercialProject.View
             if (Tools.IsNameValid(txtNom.Text))
             {
                 errorProviderNom.SetError(txtNom, String.Empty);
-                this.nom = txtNom.Text;
+                this.nom = txtNom.Text.Trim();
             }
             else
             {
