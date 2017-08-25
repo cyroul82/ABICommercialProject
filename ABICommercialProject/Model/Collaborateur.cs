@@ -5,6 +5,8 @@
  ***********************************************************************/
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ABICommercialProject
 {
@@ -19,50 +21,66 @@ namespace ABICommercialProject
         private String fonctionCollabo;
         private System.Boolean statut;
 
-        private System.Collections.ArrayList contrat;
+        private SortedDictionary<Int32, Contrat> listContrat;
 
-        private System.Collections.ArrayList augmentationSalaire;
+        private List<AugmentationSalaire> listAugmentationSalaire;
+
 
         public Collaborateur(String nom, String prenom, String fonctionCollabo)
         {
-            this.nomCollabo = nom;
-            this.prenomCollabo = prenom;
-            this.fonctionCollabo = fonctionCollabo;
-            this.contrat = new System.Collections.ArrayList();
-            this.augmentationSalaire = new System.Collections.ArrayList();
-            
+            NomCollabo = nom;
+            PrenomCollabo = prenom;
+            FonctionCollabo = fonctionCollabo;
+            this.listContrat = new SortedDictionary<Int32, Contrat>();
+            this.listAugmentationSalaire = new List<AugmentationSalaire>();
         }
 
-
+        /// <summary>
+        /// do something unknown so far !
+        /// </summary>
+        /// <param name="listAugmentation"></param>
+        /// <returns></returns>
         public int calculerAugmentation(AugmentationSalaire listAugmentation)
         {
             // TODO: implement
             return 0;
         }
 
+        /// <summary>
+        /// Display the collaborateur
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "Collaborateur : " + nomCollabo + " " + prenomCollabo + " " + fonctionCollabo;
         }
 
-        public void AddContrat(Contrat newContrat)
+        /// <summary>
+        /// Add a new contract
+        /// </summary>
+        /// <param name="contrat"></param>
+        public void AddContrat(Contrat contrat)
         {
-            if (newContrat == null)
+            if (contrat == null)
                 return;
-            if (this.contrat == null)
-                this.contrat = new System.Collections.ArrayList();
-            if (!this.contrat.Contains(newContrat))
-                this.contrat.Add(newContrat);
+            if (this.listContrat == null)
+                this.listContrat = new SortedDictionary<Int32, Contrat>();
+            if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
+                this.listContrat.Add(contrat.NumeroContrat, contrat);
         }
         
-        public void AddAugmentationSalaire(AugmentationSalaire newAugmentationSalaire)
+        /// <summary>
+        /// Add a pay rise
+        /// </summary>
+        /// <param name="augmentation"></param>
+        public void AddAugmentationSalaire(AugmentationSalaire augmentation)
         {
-            if (newAugmentationSalaire == null)
+            if (augmentation == null)
                 return;
-            if (this.augmentationSalaire == null)
-                this.augmentationSalaire = new System.Collections.ArrayList();
-            if (!this.augmentationSalaire.Contains(newAugmentationSalaire))
-                this.augmentationSalaire.Add(newAugmentationSalaire);
+            if (this.listAugmentationSalaire == null)
+                this.listAugmentationSalaire = new List<AugmentationSalaire>();
+            if (!this.listAugmentationSalaire.Contains(augmentation))
+                this.listAugmentationSalaire.Add(augmentation);
         }
 
         public String NomCollabo
@@ -74,7 +92,7 @@ namespace ABICommercialProject
             set
             {
                 if (this.nomCollabo != value)
-                    this.nomCollabo = value;
+                    this.nomCollabo = value.ToUpper().Trim();
             }
         }
 

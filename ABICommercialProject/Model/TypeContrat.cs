@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ABICommercialProject.Model
 {
+    /// <summary>
+    /// Contract Type Enumeration
+    /// </summary>
     public enum TypeContrat
     {
         CDI,

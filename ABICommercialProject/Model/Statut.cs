@@ -8,6 +8,9 @@ using System;
 
 namespace ABICommercialProject
 {
+    /// <summary>
+    /// Status Enumeration
+    /// </summary>
     public enum Statut
     {
         NonCadre,

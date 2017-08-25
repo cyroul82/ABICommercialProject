@@ -13,33 +13,30 @@ namespace ABICommercialProject
         private decimal salaireBrut;
         private String qualification;
         private DateTime dateDebutContrat;
+        private Int32 numeroContrat;
 
-        private Statut statut;
+        private Statut statutContrat;
         private System.Collections.ArrayList avenant;
 
+        /// <summary>
+        /// Constructor to instanciate a Contract
+        /// </summary>
+        /// <param name="qualification"></param>
+        /// <param name="dateDebutContrat"></param>
+        /// <param name="statut"></param>
+        /// <param name="salaireBrut"></param>
         public Contrat(String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut)
         {
-            // TODO: implement
+            Qualification = qualification;
+            SalaireBrut = salaireBrut;
+            DateDebutContrat = dateDebutContrat;
+            StatutContrat = statut;
         }
 
-        public Statut getStatut()
-        {
-            // TODO: implement
-            return statut;
-        }
-
-        public void setStatut(Statut statut)
-        {
-            // TODO: implement
-            this.statut = statut;
-        }
-
-        public override String ToString()
-        {
-            // TODO: implement
-            return null;
-        }
-
+        /// <summary>
+        /// Add an Avenant to the contract
+        /// </summary>
+        /// <param name="newAvenant"></param>
         public void AddAvenant(Avenant newAvenant)
         {
             if (newAvenant == null)
@@ -89,5 +86,43 @@ namespace ABICommercialProject
             }
         }
 
+        public Statut StatutContrat
+        {
+            get
+            {
+                return statutContrat;
+            }
+
+            set
+            {
+                statutContrat = value;
+            }
+        }
+
+        public int NumeroContrat
+        {
+            get
+            {
+                return numeroContrat;
+            }
+
+            set
+            {
+                numeroContrat = value;
+            }
+        }
+
+        /// <summary>
+        /// Return contrat + qualif + date debut + statut + salaire
+        /// </summary>
+        /// <returns></returns>
+        public override String ToString()
+        {
+            return "Contrat : "
+                    + "\nQualification : " + qualification
+                    + "\nDébut de listContrat : " + dateDebutContrat
+                    + "\nStatut : " + StatutContrat
+                    + "\nSalaire Brut : " + salaireBrut;
+        }
     }
 }

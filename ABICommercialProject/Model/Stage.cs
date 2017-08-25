@@ -10,16 +10,29 @@ namespace ABICommercialProject
 {
     public class Stage : ContratProvisoire
     {
+        /// <summary>
+        /// Constructor to instanciate a stage
+        /// </summary>
+        /// <param name="ecole"></param>
+        /// <param name="mission"></param>
+        /// <param name="motif"></param>
+        /// <param name="dateFinContrat"></param>
+        /// <param name="qualification"></param>
+        /// <param name="dateDebutContrat"></param>
+        /// <param name="statut"></param>
+        /// <param name="salaireBrut"></param>
         public Stage(String ecole, String mission, String motif, DateTime dateFinContrat, String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut) : base(motif, dateFinContrat, qualification, dateDebutContrat, statut, salaireBrut)
         {
-            this.ecole = ecole;
-            this.mission = mission;
+            Ecole = ecole;
+            Mission = mission;
         }
 
         public override String ToString()
         {
-            // TODO: implement
-            return null;
+            return "Contrat Provisoire : " + base.ToString() 
+                                           + "\nEcole : " + ecole 
+                                           + "\nMission : " + mission;
+
         }
 
         private String ecole;

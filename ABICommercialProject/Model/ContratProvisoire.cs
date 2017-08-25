@@ -12,10 +12,20 @@ namespace ABICommercialProject
     {
         private String motif;
         private DateTime dateFinContrat;
+
+        /// <summary>
+        /// Constructor to instanciate a temporary contract
+        /// </summary>
+        /// <param name="motif"></param>
+        /// <param name="dateFinContrat"></param>
+        /// <param name="qualification"></param>
+        /// <param name="dateDebutContrat"></param>
+        /// <param name="statut"></param>
+        /// <param name="salaireBrut"></param>
         public ContratProvisoire(String motif, DateTime dateFinContrat, String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut) : base(qualification, dateDebutContrat, statut, salaireBrut)
         {
-            this.motif = motif;
-            this.dateFinContrat = dateFinContrat;
+            Motif = motif;
+            DateFinContrat = dateFinContrat;
         }
 
         protected String Motif
@@ -44,9 +54,15 @@ namespace ABICommercialProject
             }
         }
 
+        /// <summary>
+        /// Return the temporary contract 
+        /// </summary>
+        /// <returns></returns>
         public override String ToString()
         {
-            return ("Contrat Provisoire");
+            return  base.ToString() 
+                + "\nMotif : " + motif 
+                + "\nDate Fin Contrat : " + dateFinContrat;
         }
 
 

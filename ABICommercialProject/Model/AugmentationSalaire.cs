@@ -13,16 +13,24 @@ namespace ABICommercialProject
         private DateTime date;
         private decimal taux;
 
+        /// <summary>
+        /// Constructor to instanciate a new pay rise
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="taux"></param>
         public AugmentationSalaire(DateTime date, Decimal taux)
         {
-            this.date = date;
-            this.taux = taux;
+            Date = date;
+            Taux = taux;
         }
 
+        /// <summary>
+        /// Return the pay rise and the date
+        /// </summary>
+        /// <returns></returns>
         public override String ToString()
         {
-            // TODO: implement
-            return null;
+            return "Augmentation Salaire : " + Taux + "\nDate : " + Date;
         }
 
 

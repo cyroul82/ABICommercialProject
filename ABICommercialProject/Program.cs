@@ -14,9 +14,16 @@ namespace ABICommercialProject
         [STAThread]
         static void Main()
         {
+        
+                MissionInterim m = new MissionInterim("", "motif", DateTime.Now.AddYears(1), "qualifications",
+                                                        DateTime.Now.AddMonths(-6), Statut.Cadre, 1850);
+                Console.WriteLine(m);
+       
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainApp.Instance());
+            
         }
     }
 }

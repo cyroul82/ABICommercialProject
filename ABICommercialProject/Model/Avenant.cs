@@ -10,19 +10,23 @@ namespace ABICommercialProject
 {
     public class Avenant
     {
-        public Avenant(DateTime dateAvenant)
-        {
-            this.dateAvenant = dateAvenant;
-        }
-
-        public override String ToString()
-        {
-            //TODO implement
-            return null;
-        }
-
         private DateTime dateAvenant;
         private String libelle;
+        private Int32 numeroAvenant;
+
+        public Avenant(DateTime dateAvenant)
+        {
+            DateAvenant = dateAvenant;
+        }
+
+        /// <summary>
+        /// Return l'avenant and the date
+        /// </summary>
+        /// <returns></returns>
+        public override String ToString()
+        {
+            return "Avenant : " + DateAvenant;
+        }
 
         public DateTime DateAvenant
         {
@@ -50,5 +54,17 @@ namespace ABICommercialProject
             }
         }
 
+        public int NumeroAvenant
+        {
+            get
+            {
+                return numeroAvenant;
+            }
+
+            set
+            {
+                numeroAvenant = value;
+            }
+        }
     }
 }

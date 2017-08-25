@@ -20,6 +20,9 @@ namespace ABICommercialProject.View
         private String fonction;
         private String qualification;
         private String motif;
+        private String ecole;
+        private String mission;
+        private String agence;
         private Decimal salaire = 0;
 
         public CollaborateurForm()
@@ -87,7 +90,7 @@ namespace ABICommercialProject.View
                 dtpFinContrat.Visible = true;
                 lblEcole.Text = "Ecole";
                 lblEcole.Visible = true;
-                txtName.Visible = true;
+                txtEcole.Visible = true;
                 lblMisson.Visible = true;
                 txtMission.Visible = true;
 
@@ -101,17 +104,21 @@ namespace ABICommercialProject.View
                 dtpFinContrat.Visible = true;
                 lblEcole.Text = "Agence";
                 lblEcole.Visible = true;
-                txtName.Visible = true;
+                txtEcole.Visible = true;
             }
+            isFormReady();
         }
 
         private void hideFields()
         {
             txtMotif.Visible = false;
+            txtMotif.Text = "";
             lblMotif.Visible = false;
-            txtName.Visible = false;
+            txtEcole.Visible = false;
+            txtEcole.Text = "";
             lblEcole.Visible = false;
             txtMission.Visible = false;
+            txtMission.Text = "";
             lblMisson.Visible = false;
             dtpFinContrat.Visible = false;
             lblDateFinContrat.Visible = false;
@@ -123,29 +130,48 @@ namespace ABICommercialProject.View
             DialogResult = DialogResult.OK;
         }
 
-        private void txtMotif_Validated(object sender, EventArgs e)
-        {
-            if (Tools.IsNameValid(txtMotif.Text))
-            {
-                errorProviderMotif.SetError(txtMotif, String.Empty);
-                this.motif = txtMotif.Text;
-            }
-            else
-            {
-                errorProviderMotif.SetError(txtMotif, "Requis");
-                this.motif = null;
-            }
-        }
-
         private void isFormReady()
         {
             Boolean ready;
-            if (String.IsNullOrEmpty(nom) || String.IsNullOrEmpty(prenom) || String.IsNullOrEmpty(fonction)
-                 || String.IsNullOrEmpty(qualification) || salaire == 0)
+            if (String.IsNullOrWhiteSpace(nom) || String.IsNullOrWhiteSpace(prenom) || String.IsNullOrWhiteSpace(fonction)
+                 || String.IsNullOrWhiteSpace(qualification) || salaire == 0)
             {
                 ready = false;
+                
             }
             else ready = true;
+
+            //if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDI.ToString())
+            //{
+            //    ready = false;
+            //}
+            if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDD.ToString())
+            {
+                if (String.IsNullOrWhiteSpace(motif))
+                {
+                    ready = false;
+                }
+                else ready = true;
+            }
+
+            if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Stage.ToString())
+            {
+                if (String.IsNullOrWhiteSpace(motif) || String.IsNullOrWhiteSpace(ecole) || String.IsNullOrWhiteSpace(mission))
+                {
+                    ready = false;
+                }
+                else ready = true;
+            }
+            if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Interim.ToString())
+            {
+                if (String.IsNullOrWhiteSpace(motif) || String.IsNullOrWhiteSpace(agence))
+                {
+                    ready = false;
+                }
+                else ready = true;
+
+            }
+            
             btnSave.Enabled = ready;
         }
 
@@ -229,6 +255,51 @@ namespace ABICommercialProject.View
             else
             {
                 errorProviderNom.SetError(txtNom, "Requis");
+                this.nom = null;
+            }
+            isFormReady();
+        }
+
+        private void txtMotif_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Tools.IsNameValid(txtMotif.Text))
+            {
+                errorProviderMotif.SetError(txtMotif, String.Empty);
+                this.motif = txtMotif.Text.Trim();
+            }
+            else
+            {
+                errorProviderMotif.SetError(txtMotif, "Requis");
+                this.nom = null;
+            }
+            isFormReady();
+        }
+
+        private void txtMission_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Tools.IsNameValid(txtMission.Text))
+            {
+                errorProviderMission.SetError(txtMission, String.Empty);
+                this.mission = txtMission.Text.Trim();
+            }
+            else
+            {
+                errorProviderMission.SetError(txtMission, "Requis");
+                this.nom = null;
+            }
+            isFormReady();
+        }
+
+        private void txtEcole_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Tools.IsNameValid(txtEcole.Text))
+            {
+                errorProviderEcole.SetError(txtEcole, String.Empty);
+                this.ecole = txtEcole.Text.Trim();
+            }
+            else
+            {
+                errorProviderEcole.SetError(txtEcole, "Requis");
                 this.nom = null;
             }
             isFormReady();

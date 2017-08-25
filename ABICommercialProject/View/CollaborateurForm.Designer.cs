@@ -44,7 +44,7 @@
             this.gpxDetailContrat = new System.Windows.Forms.GroupBox();
             this.txtMission = new System.Windows.Forms.TextBox();
             this.lblMisson = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtEcole = new System.Windows.Forms.TextBox();
             this.lblEcole = new System.Windows.Forms.Label();
             this.dtpFinContrat = new System.Windows.Forms.DateTimePicker();
             this.lblDateFinContrat = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.errorProviderQualification = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderSalaire = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProviderExole = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbCollaborateur.SuspendLayout();
             this.gpxTypeContrat.SuspendLayout();
@@ -77,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderExole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,14 +203,14 @@
             this.lblTypeContrat.Name = "lblTypeContrat";
             this.lblTypeContrat.Size = new System.Drawing.Size(79, 13);
             this.lblTypeContrat.TabIndex = 6;
-            this.lblTypeContrat.Text = "Type  contrat : ";
+            this.lblTypeContrat.Text = "Type  listContrat : ";
             // 
             // gpxDetailContrat
             // 
             this.gpxDetailContrat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gpxDetailContrat.Controls.Add(this.txtMission);
             this.gpxDetailContrat.Controls.Add(this.lblMisson);
-            this.gpxDetailContrat.Controls.Add(this.txtName);
+            this.gpxDetailContrat.Controls.Add(this.txtEcole);
             this.gpxDetailContrat.Controls.Add(this.lblEcole);
             this.gpxDetailContrat.Controls.Add(this.dtpFinContrat);
             this.gpxDetailContrat.Controls.Add(this.lblDateFinContrat);
@@ -237,6 +237,7 @@
             this.txtMission.Name = "txtMission";
             this.txtMission.Size = new System.Drawing.Size(214, 20);
             this.txtMission.TabIndex = 25;
+            this.txtMission.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMission_KeyUp);
             // 
             // lblMisson
             // 
@@ -247,12 +248,13 @@
             this.lblMisson.TabIndex = 24;
             this.lblMisson.Text = "Mission :";
             // 
-            // txtName
+            // txtEcole
             // 
-            this.txtName.Location = new System.Drawing.Point(102, 184);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(214, 20);
-            this.txtName.TabIndex = 23;
+            this.txtEcole.Location = new System.Drawing.Point(102, 184);
+            this.txtEcole.Name = "txtEcole";
+            this.txtEcole.Size = new System.Drawing.Size(214, 20);
+            this.txtEcole.TabIndex = 23;
+            this.txtEcole.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtEcole_KeyUp);
             // 
             // lblEcole
             // 
@@ -286,7 +288,7 @@
             this.txtMotif.Name = "txtMotif";
             this.txtMotif.Size = new System.Drawing.Size(214, 20);
             this.txtMotif.TabIndex = 19;
-            this.txtMotif.Validated += new System.EventHandler(this.txtMotif_Validated);
+            this.txtMotif.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMotif_KeyUp);
             // 
             // lblMotif
             // 
@@ -400,10 +402,10 @@
             this.errorProviderMotif.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderMotif.ContainerControl = this;
             // 
-            // errorProviderExole
+            // errorProviderEcole
             // 
-            this.errorProviderExole.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderExole.ContainerControl = this;
+            this.errorProviderEcole.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderEcole.ContainerControl = this;
             // 
             // errorProviderMission
             // 
@@ -436,7 +438,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderExole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).EndInit();
             this.ResumeLayout(false);
 
@@ -469,7 +471,7 @@
         private System.Windows.Forms.Label lblMotif;
         private System.Windows.Forms.DateTimePicker dtpFinContrat;
         private System.Windows.Forms.Label lblDateFinContrat;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtEcole;
         private System.Windows.Forms.Label lblEcole;
         private System.Windows.Forms.TextBox txtMission;
         private System.Windows.Forms.Label lblMisson;
@@ -480,7 +482,7 @@
         private System.Windows.Forms.ErrorProvider errorProviderQualification;
         private System.Windows.Forms.ErrorProvider errorProviderSalaire;
         private System.Windows.Forms.ErrorProvider errorProviderMotif;
-        private System.Windows.Forms.ErrorProvider errorProviderExole;
+        private System.Windows.Forms.ErrorProvider errorProviderEcole;
         private System.Windows.Forms.ErrorProvider errorProviderMission;
     }
 }

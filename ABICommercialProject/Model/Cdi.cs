@@ -10,18 +10,16 @@ namespace ABICommercialProject
 {
     public class Cdi : Contrat
     {
+        private DateTime dateCloture;
+
         public Cdi(String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut) : base(qualification, dateDebutContrat, statut, salaireBrut)
         {
-            // TODO: implement
         }
 
         public override String ToString()
         {
-            // TODO: implement
-            return null;
+            return "CDI : " + base.ToString();
         }
-
-        private DateTime dateCloture;
 
         public DateTime DateCloture
         {
