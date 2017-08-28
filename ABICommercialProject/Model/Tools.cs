@@ -14,7 +14,6 @@ namespace ABICommercialProject.Model
         /// <param name="name"></param>
         /// <returns>True or false</returns>
         public static Boolean IsNameValid(String name) {
-            Console.WriteLine("dans is name valid");
             return (name.Length > 1 && !String.IsNullOrWhiteSpace(name));
         }
 

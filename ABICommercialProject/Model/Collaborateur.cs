@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Collaborateur
  ***********************************************************************/
 
+using ABICommercialProject.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -91,8 +92,10 @@ namespace ABICommercialProject
             }
             set
             {
+     
                 if (this.nomCollabo != value)
                     this.nomCollabo = value.ToUpper().Trim();
+                
             }
         }
 
@@ -104,6 +107,14 @@ namespace ABICommercialProject
             }
             set
             {
+                if (!Tools.IsNameValid(value))
+                {
+                    throw new Exception("The surname lenght must be greater than 2 letters");
+                }
+                if (!Tools.isNameOnlyChar(value))
+                {
+                    throw new Exception("the surname must contains only characters");
+                }
                 if (this.prenomCollabo != value)
                     this.prenomCollabo = value;
             }
@@ -130,6 +141,14 @@ namespace ABICommercialProject
             }
             set
             {
+                if (!Tools.IsNameValid(value))
+                {
+                    throw new Exception("The surname lenght must be greater than 2 letters");
+                }
+                if (!Tools.isNameOnlyChar(value))
+                {
+                    throw new Exception("the surname must contains only characters");
+                }
                 if (this.fonctionCollabo != value)
                     this.fonctionCollabo = value;
             }

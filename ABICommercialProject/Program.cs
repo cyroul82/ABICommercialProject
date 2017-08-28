@@ -17,9 +17,12 @@ namespace ABICommercialProject
 
             try
             {
-                MissionInterim m = new MissionInterim("", "motif", DateTime.Now.AddYears(1), "qualifications",
+                MissionInterim m = new MissionInterim("sqdf", "motif", DateTime.Now.AddYears(1), "qualifications",
                                                                 DateTime.Now.AddMonths(-6), Statut.Cadre, 1850);
                 Console.WriteLine(m);
+
+                Collaborateur c = new Collaborateur("Santa", "Claus", "guess");
+                Console.WriteLine(c);
             }
             catch (Exception e)
             {
