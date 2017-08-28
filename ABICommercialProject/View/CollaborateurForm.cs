@@ -39,6 +39,11 @@ namespace ABICommercialProject.View
             this.DialogResult = DialogResult.Cancel;
         }
 
+
+        /// <summary>
+        /// Get the the data from the textbox, create a collaborateur and return it
+        /// </summary>
+        /// <returns></returns>
         private Collaborateur getCollaborateur()
         {
             if (String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtPrenom.Text) || String.IsNullOrEmpty(txtFonction.Text))
@@ -48,8 +53,8 @@ namespace ABICommercialProject.View
             else
             {
                 String nom = txtNom.Text.Trim().ToUpper();
-                String prenom = firstLetterUppercase(txtNom.Text.Trim());
-                String fonction = firstLetterUppercase(txtFonction.Text.Trim());
+                String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
+                String fonction = Tools.firstLetterUppercase(txtFonction.Text.Trim());
 
                 return new Collaborateur(nom, prenom, fonction);
             }
@@ -60,12 +65,7 @@ namespace ABICommercialProject.View
             return new Cdi("prof", DateTime.Now, Statut.Technicien, 1850);
         }
 
-        private String firstLetterUppercase(String s)
-        {
-            char[] a = s.ToCharArray();
-            a[0] = char.ToUpper(a[0]);
-            return new string(a);
-        }
+        
 
         private void cbxTypeContrat_SelectedIndexChanged(object sender, EventArgs e)
         {

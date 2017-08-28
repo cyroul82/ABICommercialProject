@@ -11,7 +11,7 @@ namespace ABICommercialProject
     public class Cdd : ContratProvisoire
     {
         /// <summary>
-        /// Construtor
+        /// Construtor to instanciate a CDD 
         /// </summary>
         /// <param name="motif"></param>
         /// <param name="dateFinContrat"></param>

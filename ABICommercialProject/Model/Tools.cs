@@ -37,5 +37,17 @@ namespace ABICommercialProject.Model
         {
             return name.ToUpper().Trim();
         }
+
+        /// <summary>
+        /// Convert the first letter in Uppercase
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static String firstLetterUppercase(String s)
+        {
+            char[] a = s.ToCharArray();
+            a[0] = char.ToUpper(a[0]);
+            return new string(a);
+        }
     }
 }

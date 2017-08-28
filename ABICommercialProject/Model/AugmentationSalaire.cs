@@ -47,7 +47,7 @@ namespace ABICommercialProject
             }
         }
 
-        public decimal Taux
+        public Decimal Taux
         {
             get
             {
