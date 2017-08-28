@@ -62,7 +62,51 @@ namespace ABICommercialProject.View
 
         private Contrat getContrat()
         {
-            return new Cdi("prof", DateTime.Now, Statut.Technicien, 1850);
+            Contrat contrat;
+            try
+            {
+                String typeContrat = cbxTypeContrat.SelectedItem.ToString();
+                Statut statut = Tools.getStatut(cbxStatut.SelectedItem.ToString());
+                DateTime debutContrat = Tools.getDate(dtpDebutContrat.Text);
+                Decimal salaire = Tools.getSalaireBrut(txtSalaire.Text);
+                String qualification = txtQualification.Text;
+
+                if (typeContrat == TypeContrat.CDI.ToString())
+                {
+                    contrat = new Cdi(qualification, debutContrat, statut, salaire);
+                    return contrat;
+                }
+                else
+                {
+                    DateTime finContrat = Tools.getDate(dtpFinContrat.Text);
+                    String motif = txtMotif.Text;
+
+                    if (typeContrat == TypeContrat.CDD.ToString())
+                    {
+                        contrat = new Cdd(motif, finContrat, qualification, debutContrat, statut, salaire);
+                        return contrat;
+                    }
+                    else if (typeContrat == TypeContrat.Interim.ToString())
+                    {
+                        contrat = new MissionInterim(txtEcole.Text, motif, finContrat, qualification, debutContrat, statut, salaire);
+                        return contrat;
+                    }
+                    else if (typeContrat == TypeContrat.Stage.ToString())
+                    {
+                        contrat = new Stage(txtEcole.Text, txtMission.Text, motif, finContrat, qualification, debutContrat, statut, salaire);
+                        return contrat;
+                    }
+                    else
+                    {
+                        throw new Exception("Impossible to instanciate the contrat, no type defined");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error creation contrat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         
@@ -126,8 +170,14 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            savingCollaborateur(getCollaborateur(), getContrat());
-            DialogResult = DialogResult.OK;
+            if(getContrat() != null && getCollaborateur() != null){
+                savingCollaborateur?.Invoke(getCollaborateur(), getContrat());
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Unexpected Error", "Error App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void isFormReady()

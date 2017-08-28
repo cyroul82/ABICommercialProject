@@ -49,5 +49,41 @@ namespace ABICommercialProject.Model
             a[0] = char.ToUpper(a[0]);
             return new string(a);
         }
+
+        public static Statut getStatut(String statut)
+        {
+            Statut theStatut;
+            if(Enum.TryParse(statut, out theStatut))
+            {
+                return theStatut;
+            }
+            else
+            {
+                throw new Exception("Error statut, can't convert the string into a known statut");
+            }
+        }
+
+        public static Decimal getSalaireBrut(String salaire)
+        {
+            Decimal theSalaire;
+            if(Decimal.TryParse(salaire, out theSalaire))
+            {
+                return theSalaire;
+            }
+            else
+            {
+                throw new Exception("Error salaire, can't convert into a decimal");
+            }
+        }
+
+        public static DateTime getDate(string date)
+        {
+            DateTime theDate;
+            if (DateTime.TryParse(date, out theDate))
+            {
+                return theDate;
+            }
+            else throw new Exception("the date can't be converted to a proper DateTime");
+        }
     }
 }

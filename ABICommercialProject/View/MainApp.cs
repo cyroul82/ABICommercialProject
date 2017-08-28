@@ -16,7 +16,7 @@ namespace ABICommercialProject
     {
         public static MainApp instance;
 
-        CollaborateurList cv;
+        private CollaborateurList cv;
         private MainApp()
         {
             InitializeComponent();

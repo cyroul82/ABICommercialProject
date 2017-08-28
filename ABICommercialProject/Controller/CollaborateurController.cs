@@ -13,6 +13,7 @@ namespace ABICommercialProject.Controller
         public CollaborateurController()
         {
             dt = new DataTable();
+            dt.Columns.Add("Matricule");
             dt.Columns.Add("Nom");
             dt.Columns.Add("Prénom");
             dt.Columns.Add("Fonction");
@@ -25,6 +26,7 @@ namespace ABICommercialProject.Controller
                 foreach (Collaborateur c in Collaborateur.collaborateurList)
                 {
                     DataRow dr = dt.NewRow();
+                    dr["Matricule"] = c.Matricule;
                     dr["Nom"] = c.NomCollabo;
                     dr["Prénom"] = c.PrenomCollabo;
                     dr["Fonction"] = c.FonctionCollabo;
@@ -35,14 +37,18 @@ namespace ABICommercialProject.Controller
             else return null;
         }
 
-        public void saveCollaborateur(Collaborateur c)
+        public void saveCollaborateur(Collaborateur collaborateur, Contrat contrat)
         {
-            DataRow dr = dt.NewRow();
-            dr["Nom"] = c.NomCollabo;
-            dr["Prénom"] = c.PrenomCollabo;
-            dr["Fonction"] = c.FonctionCollabo;
-            dt.Rows.Add(dr);
+            collaborateur.AddContrat(contrat);
+            Collaborateur.collaborateurList.Add(collaborateur);
 
+
+            DataRow dr = dt.NewRow();
+            dr["Matricule"] = collaborateur.Matricule;
+            dr["Nom"] = collaborateur.NomCollabo;
+            dr["Prénom"] = collaborateur.PrenomCollabo;
+            dr["Fonction"] = collaborateur.FonctionCollabo;
+            dt.Rows.Add(dr);
 
         }
     }

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnNewCollabo = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.collaborateurDataGrid = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnNewCollabo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.collaborateurDataGrid)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -61,24 +61,16 @@
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 2;
             // 
-            // flowLayoutPanel1
+            // panel2
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnNewCollabo);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(274, 37);
-            this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // btnNewCollabo
-            // 
-            this.btnNewCollabo.Location = new System.Drawing.Point(3, 3);
-            this.btnNewCollabo.Name = "btnNewCollabo";
-            this.btnNewCollabo.Size = new System.Drawing.Size(75, 23);
-            this.btnNewCollabo.TabIndex = 5;
-            this.btnNewCollabo.Text = "Nouveau";
-            this.btnNewCollabo.UseVisualStyleBackColor = true;
-            this.btnNewCollabo.Click += new System.EventHandler(this.btnNewCollabo_Click);
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.collaborateurDataGrid);
+            this.panel2.Location = new System.Drawing.Point(6, 46);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(271, 399);
+            this.panel2.TabIndex = 1;
             // 
             // collaborateurDataGrid
             // 
@@ -98,6 +90,8 @@
             this.collaborateurDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.collaborateurDataGrid.Size = new System.Drawing.Size(271, 401);
             this.collaborateurDataGrid.TabIndex = 4;
+            this.collaborateurDataGrid.SelectionChanged += new System.EventHandler(this.collaborateurDataGrid_SelectionChanged);
+            this.collaborateurDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.collaborateurDataGrid_MouseClick);
             // 
             // panel1
             // 
@@ -110,16 +104,24 @@
             this.panel1.Size = new System.Drawing.Size(274, 37);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // flowLayoutPanel1
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.collaborateurDataGrid);
-            this.panel2.Location = new System.Drawing.Point(6, 46);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(271, 399);
-            this.panel2.TabIndex = 1;
+            this.flowLayoutPanel1.Controls.Add(this.btnNewCollabo);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(274, 37);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
+            // btnNewCollabo
+            // 
+            this.btnNewCollabo.Location = new System.Drawing.Point(3, 3);
+            this.btnNewCollabo.Name = "btnNewCollabo";
+            this.btnNewCollabo.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCollabo.TabIndex = 5;
+            this.btnNewCollabo.Text = "Nouveau";
+            this.btnNewCollabo.UseVisualStyleBackColor = true;
+            this.btnNewCollabo.Click += new System.EventHandler(this.btnNewCollabo_Click);
             // 
             // CollaborateurList
             // 
@@ -132,10 +134,10 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.collaborateurDataGrid)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -14,8 +14,9 @@ namespace ABICommercialProject.View
 
     public partial class CollaborateurList : Form
     {
-        CollaborateurController cc;
+        private CollaborateurController cc;
         private BindingSource bindingSourceCollabo;
+        private Int32 selectedIndex;
 
         public CollaborateurList()
         {
@@ -38,7 +39,23 @@ namespace ABICommercialProject.View
 
         private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
         {
-            cc.saveCollaborateur(collaborateur);
+            cc.saveCollaborateur(collaborateur, contrat);
+        }
+
+        private void collaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            //if (collaborateurDataGrid.SelectedRows.Count > 0 &&
+            //    collaborateurDataGrid.SelectedRows[0].Index != collaborateurDataGrid.Rows.Count - 1)
+            //{
+
+            //}
+            Console.WriteLine(collaborateurDataGrid.CurrentRow.Cells[0].Value);
+       }
+
+        private void collaborateurDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            /*if(collaborateurDataGrid.SelectedRows.Count != 0)
+                selectedIndex = collaborateurDataGrid.SelectedRows[0].Index;*/
         }
     }
 

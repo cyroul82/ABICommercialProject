@@ -13,7 +13,8 @@ namespace ABICommercialProject
 {
     public class Collaborateur
     {
-        public static System.Collections.ArrayList collaborateurList = new System.Collections.ArrayList();
+        public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<Int32, Collaborateur>();
+        public static Int32 matriculeCount = 0;
 
         private int matricule;
         private String nomCollabo;
@@ -21,6 +22,7 @@ namespace ABICommercialProject
         private String photographie;
         private String fonctionCollabo;
         private System.Boolean statut;
+        private Contrat contratActif;
 
         private SortedDictionary<Int32, Contrat> listContrat;
 
@@ -34,6 +36,10 @@ namespace ABICommercialProject
             FonctionCollabo = fonctionCollabo;
             this.listContrat = new SortedDictionary<Int32, Contrat>();
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
+            ContratActif = null;
+
+            Matricule = matriculeCount;
+            matriculeCount++;
         }
 
         /// <summary>
@@ -62,12 +68,34 @@ namespace ABICommercialProject
         /// <param name="contrat"></param>
         public void AddContrat(Contrat contrat)
         {
-            if (contrat == null)
-                return;
-            if (this.listContrat == null)
-                this.listContrat = new SortedDictionary<Int32, Contrat>();
-            if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
-                this.listContrat.Add(contrat.NumeroContrat, contrat);
+            if(contratActif == null)
+            {
+                if (contrat == null)
+                    return;
+                if (this.listContrat == null)
+                    this.listContrat = new SortedDictionary<Int32, Contrat>();
+                if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
+                    this.listContrat.Add(contrat.NumeroContrat, contrat);
+            }
+            else
+            {
+                throw new Exception("Le collaborateur " + this.nomCollabo + " posséde déjà un contrat actif");
+            }
+            
+        }
+
+        public void FinishContrat(Contrat contrat)
+        {
+            if(contrat == null)
+            {
+
+            }
+            if(contrat is Cdi)
+            {
+                Cdi c = contrat as Cdi;
+                
+            }
+            this.contratActif = null;
         }
         
         /// <summary>
@@ -180,5 +208,17 @@ namespace ABICommercialProject
             }
         }
 
+        public Contrat ContratActif
+        {
+            get
+            {
+                return contratActif;
+            }
+
+            set
+            {
+                contratActif = value;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABICommercialProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ABICommercialProject
 
             try
             {
+                Console.WriteLine("Enum : " + TypeContrat.CDD);
                 MissionInterim m = new MissionInterim("sqdf", "motif", DateTime.Now.AddYears(1), "qualifications",
                                                                 DateTime.Now.AddMonths(-6), Statut.Cadre, 1850);
                 Console.WriteLine(m);
