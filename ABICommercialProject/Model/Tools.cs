@@ -9,7 +9,7 @@ namespace ABICommercialProject.Model
     class Tools
     {
         /// <summary>
-        /// Check if the name length > 1  and name isn't null or empty
+        /// Check if the name length > 1  and that the name isn't null or empty
         /// </summary>
         /// <param name="name"></param>
         /// <returns>True or false</returns>
@@ -50,6 +50,12 @@ namespace ABICommercialProject.Model
             return new string(a);
         }
 
+        /// <summary>
+        /// Convert a string into a Enum Statut
+        /// </summary>
+        /// <param name="statut"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception">Cannot Convert the string into a Statut Enum</exception>
         public static Statut getStatut(String statut)
         {
             Statut theStatut;
@@ -62,7 +68,12 @@ namespace ABICommercialProject.Model
                 throw new Exception("Error statut, can't convert the string into a known statut");
             }
         }
-
+        /// <summary>
+        /// Convert the string into a Decimal
+        /// </summary>
+        /// <param name="salaire"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception">Cannot convert into Decimal</exception>
         public static Decimal getSalaireBrut(String salaire)
         {
             Decimal theSalaire;
@@ -76,6 +87,12 @@ namespace ABICommercialProject.Model
             }
         }
 
+        /// <summary>
+        /// Convert the string into a Date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception">Cannot convert the date into a DateTime</exception>
         public static DateTime getDate(string date)
         {
             DateTime theDate;
@@ -84,6 +101,11 @@ namespace ABICommercialProject.Model
                 return theDate;
             }
             else throw new Exception("the date can't be converted to a proper DateTime");
+        }
+
+        public static Boolean isDateGreaterThanTodayDate(DateTime date)
+        {
+            return date >= DateTime.Now;
         }
     }
 }

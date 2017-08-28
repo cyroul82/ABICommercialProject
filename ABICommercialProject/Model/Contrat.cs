@@ -14,6 +14,8 @@ namespace ABICommercialProject
         private String qualification;
         private DateTime dateDebutContrat;
         private Int32 numeroContrat;
+        private DateTime? dateFinEffectif;
+        private DateTime? dateDebutEffectif;
 
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
@@ -31,6 +33,8 @@ namespace ABICommercialProject
             SalaireBrut = salaireBrut;
             DateDebutContrat = dateDebutContrat;
             StatutContrat = statut;
+            dateFinEffectif = null;
+            dateDebutEffectif = null;
         }
 
         /// <summary>

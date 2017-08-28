@@ -26,6 +26,7 @@ namespace ABICommercialProject
         {
             Motif = motif;
             DateFinContrat = dateFinContrat;
+            
         }
 
         protected String Motif

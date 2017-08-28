@@ -21,7 +21,7 @@ namespace ABICommercialProject
         private String prenomCollabo;
         private String photographie;
         private String fonctionCollabo;
-        private System.Boolean statut;
+        private Boolean statut;
         private Contrat contratActif;
 
         private SortedDictionary<Int32, Contrat> listContrat;
@@ -66,6 +66,7 @@ namespace ABICommercialProject
         /// Add a new contract
         /// </summary>
         /// <param name="contrat"></param>
+        /// <exception cref="Exception">Collaborateur possède déjà un contrat</exception>
         public void AddContrat(Contrat contrat)
         {
             if(contratActif == null)
@@ -84,6 +85,10 @@ namespace ABICommercialProject
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contrat"></param>
         public void FinishContrat(Contrat contrat)
         {
             if(contrat == null)
@@ -195,7 +200,7 @@ namespace ABICommercialProject
             }
         }
 
-        public System.Boolean Statut
+        public Boolean Statut
         {
             get
             {
