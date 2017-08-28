@@ -13,8 +13,6 @@ namespace ABICommercialProject
 {
     public class Collaborateur
     {
-        public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<Int32, Collaborateur>();
-        public static Int32 matriculeCount = 0;
 
         private int matricule;
         private String nomCollabo;
@@ -48,6 +46,7 @@ namespace ABICommercialProject
 
         private void initializeConstuctor(String nom, String prenom, String fonctionCollabo)
         {
+            Matricule = 0;
             NomCollabo = nom;
             PrenomCollabo = prenom;
             FonctionCollabo = fonctionCollabo;
@@ -55,8 +54,6 @@ namespace ABICommercialProject
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
             ContratActif = null;
 
-            Matricule = matriculeCount;
-            matriculeCount++;
         }
 
         /// <summary>

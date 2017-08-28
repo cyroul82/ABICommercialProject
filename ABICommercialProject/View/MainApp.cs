@@ -1,4 +1,5 @@
-﻿using ABICommercialProject.View;
+﻿using ABICommercialProject.Controller;
+using ABICommercialProject.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,29 +15,19 @@ namespace ABICommercialProject
     public delegate void SavingCollaborateur(Collaborateur collaborateur, Contrat contrat); 
     public partial class MainApp : Form
     {
-        public static MainApp instance;
 
         private CollaborateurList cv;
-        private MainApp()
+        public MainApp()
         {
             InitializeComponent();
-            Collaborateur c = new Collaborateur("Rat", "Cyril", "Concepteur");
-            Collaborateur.collaborateurList.Add(c);
-            c = new Collaborateur("Rat", "Chigusa", "Commercial");
-            Collaborateur.collaborateurList.Add(c);
-            c = new Collaborateur("Rat Ito", "Emma", "Designer");
-            Collaborateur.collaborateurList.Add(c);
-            c = new Collaborateur("Rat Ito", "Luca", "Développeur");
-            Collaborateur.collaborateurList.Add(c);
-        }
-
-        public static MainApp Instance()
-        {
-            if(instance == null)
-            {
-                instance = new MainApp();
-            }
-            return instance;
+            //Collaborateur c = new Collaborateur("Rat", "Cyril", "Concepteur");
+            //CollaborateurController.collaborateurList.Add(c);
+            //c = new Collaborateur("Rat", "Chigusa", "Commercial");
+            //CollaborateurController.collaborateurList.Add(c);
+            //c = new Collaborateur("Rat Ito", "Emma", "Designer");
+            //CollaborateurController.collaborateurList.Add(c);
+            //c = new Collaborateur("Rat Ito", "Luca", "Développeur");
+            //CollaborateurController.collaborateurList.Add(c);
         }
 
         private void collaborateurStripMenuItem_Click(object sender, EventArgs e)

@@ -17,6 +17,7 @@ namespace ABICommercialProject.View
         private BindingSource bindingSourceCollabo;
         private Int32 selectedIndex;
         private DataTable dt;
+        CollaborateurController cc = CollaborateurController.getCollaboInstance();
 
         public CollaborateurList()
         {
@@ -42,7 +43,7 @@ namespace ABICommercialProject.View
         {
             if (dt != null)
             {
-                foreach (KeyValuePair<Int32, Collaborateur> c in Collaborateur.collaborateurList)
+                foreach (KeyValuePair<Int32, Collaborateur> c in cc.getCollaborateurList())
                 {
                     DataRow dr = dt.NewRow();
                     dr["Matricule"] = c.Value.Matricule;
@@ -50,6 +51,7 @@ namespace ABICommercialProject.View
                     dr["Prénom"] = c.Value.PrenomCollabo;
                     dr["Fonction"] = c.Value.FonctionCollabo;
                     dt.Rows.Add(dr);
+
                 }
                 return dt;
             }

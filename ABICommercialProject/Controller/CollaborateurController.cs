@@ -9,10 +9,37 @@ namespace ABICommercialProject.Controller
 {
     class CollaborateurController
     {
-        
-        public CollaborateurController()
+        private SortedDictionary<Int32, Collaborateur> collaborateurList;
+        private static Int32 matriculeCount;
+
+        public static CollaborateurController instance; 
+        private CollaborateurController()
         {
-            
+            collaborateurList = new SortedDictionary<Int32, Collaborateur>();
+            matriculeCount = 0;
+        }
+
+        public static CollaborateurController getCollaboInstance()
+        {
+            if(instance == null)
+            {
+                instance = new CollaborateurController();
+            }
+            return instance;
+        }
+
+        public Collaborateur getCollaborateur(Int32 matricule)
+        {
+            if (collaborateurList.ContainsKey(matricule))
+            {
+                return collaborateurList[matricule];
+            }
+            else return null;
+        }
+
+        public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
+        {
+            return collaborateurList;
         }
 
         public void newCollaborateur(Collaborateur collaborateur, Contrat contrat)
@@ -33,7 +60,9 @@ namespace ABICommercialProject.Controller
                 try
                 {
                     collaborateur.AddContrat(contrat);
-                    Collaborateur.collaborateurList.Add(collaborateur.Matricule, collaborateur);
+                    matriculeCount++;
+                    collaborateur.Matricule = matriculeCount;
+                    collaborateurList.Add(collaborateur.Matricule, collaborateur);
                 }
                 catch (Exception ex)
                 {
