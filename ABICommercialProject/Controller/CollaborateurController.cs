@@ -9,46 +9,39 @@ namespace ABICommercialProject.Controller
 {
     class CollaborateurController
     {
-        DataTable dt;
+        
         public CollaborateurController()
         {
-            dt = new DataTable();
-            dt.Columns.Add("Matricule");
-            dt.Columns.Add("Nom");
-            dt.Columns.Add("Prénom");
-            dt.Columns.Add("Fonction");
+            
         }
 
-        public System.Data.DataTable getCollaborateurs()
+        public void newCollaborateur(Collaborateur collaborateur, Contrat contrat)
         {
-            if (dt != null)
+            if (contrat == null || collaborateur == null)
             {
-                foreach (Collaborateur c in Collaborateur.collaborateurList)
+                if (contrat == null)
                 {
-                    DataRow dr = dt.NewRow();
-                    dr["Matricule"] = c.Matricule;
-                    dr["Nom"] = c.NomCollabo;
-                    dr["Prénom"] = c.PrenomCollabo;
-                    dr["Fonction"] = c.FonctionCollabo;
-                    dt.Rows.Add(dr);
+                    throw new Exception("contrat is null, impossible to create a collaborateur");
                 }
-                return dt;
+                if (collaborateur == null)
+                {
+                    throw new Exception("collaborateur is null...");
+                }
             }
-            else return null;
-        }
+            else
+            {
+                try
+                {
+                    collaborateur.AddContrat(contrat);
+                    Collaborateur.collaborateurList.Add(collaborateur.Matricule, collaborateur);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
 
-        public void saveCollaborateur(Collaborateur collaborateur, Contrat contrat)
-        {
-            collaborateur.AddContrat(contrat);
-            Collaborateur.collaborateurList.Add(collaborateur);
-
-
-            DataRow dr = dt.NewRow();
-            dr["Matricule"] = collaborateur.Matricule;
-            dr["Nom"] = collaborateur.NomCollabo;
-            dr["Prénom"] = collaborateur.PrenomCollabo;
-            dr["Fonction"] = collaborateur.FonctionCollabo;
-            dt.Rows.Add(dr);
+            
 
         }
     }

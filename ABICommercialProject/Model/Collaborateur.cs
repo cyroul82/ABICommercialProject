@@ -28,8 +28,25 @@ namespace ABICommercialProject
 
         private List<AugmentationSalaire> listAugmentationSalaire;
 
-
+        /// <summary>
+        /// Constructor to instanciate a collaborateur 
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="fonctionCollabo"></param>
         public Collaborateur(String nom, String prenom, String fonctionCollabo)
+        {
+            initializeConstuctor(nom, prenom, fonctionCollabo);
+        }
+
+        public Collaborateur(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
+        {
+            initializeConstuctor(nom, prenom, fonctionCollabo);
+            this.contratActif = contratActif;
+        }
+
+
+        private void initializeConstuctor(String nom, String prenom, String fonctionCollabo)
         {
             NomCollabo = nom;
             PrenomCollabo = prenom;
@@ -47,9 +64,14 @@ namespace ABICommercialProject
         /// </summary>
         /// <param name="listAugmentation"></param>
         /// <returns></returns>
-        public int calculerAugmentation(AugmentationSalaire listAugmentation)
+        public Decimal calculerAugmentation()
         {
-            // TODO: implement
+            Decimal tauxTotal = 0;
+            foreach(AugmentationSalaire augmentation in listAugmentationSalaire)
+            {
+                tauxTotal += augmentation.Taux;
+            }
+
             return 0;
         }
 
@@ -66,17 +88,28 @@ namespace ABICommercialProject
         /// Add a new contract
         /// </summary>
         /// <param name="contrat"></param>
-        /// <exception cref="Exception">Collaborateur possède déjà un contrat</exception>
+        /// <exception cref="Exception">Error Contract Existing</exception>
+        /// <exception cref="ArgumentNullException">Contract is Null</exception>
         public void AddContrat(Contrat contrat)
         {
             if(contratActif == null)
             {
                 if (contrat == null)
-                    return;
-                if (this.listContrat == null)
-                    this.listContrat = new SortedDictionary<Int32, Contrat>();
-                if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
-                    this.listContrat.Add(contrat.NumeroContrat, contrat);
+                {
+                    throw new ArgumentNullException("Impossible to add a contract null");
+                }
+                else 
+                {
+                    if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
+                    {
+                        this.listContrat.Add(contrat.NumeroContrat, contrat);
+                        this.contratActif = contrat;
+                    }
+                    else
+                    {
+                        throw new Exception("The contract list has already a contrat with the same number");
+                    }
+                }
             }
             else
             {
@@ -107,14 +140,25 @@ namespace ABICommercialProject
         /// Add a pay rise
         /// </summary>
         /// <param name="augmentation"></param>
+        /// <exception cref="ArgumentNullException">Null Augmentation</exception>
+        /// <exception cref="Exception">Augmentation Existing</exception>
         public void AddAugmentationSalaire(AugmentationSalaire augmentation)
         {
             if (augmentation == null)
-                return;
-            if (this.listAugmentationSalaire == null)
-                this.listAugmentationSalaire = new List<AugmentationSalaire>();
-            if (!this.listAugmentationSalaire.Contains(augmentation))
-                this.listAugmentationSalaire.Add(augmentation);
+            {
+                throw new ArgumentNullException("Augmentation is null");
+            }
+
+            else {
+                if (!this.listAugmentationSalaire.Contains(augmentation))
+                { 
+                    this.listAugmentationSalaire.Add(augmentation);
+                }
+                else
+                {
+                    throw new Exception("Augmentation already Exist");
+                }
+            }
         }
 
         public String NomCollabo

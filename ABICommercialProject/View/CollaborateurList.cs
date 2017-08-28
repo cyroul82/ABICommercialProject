@@ -14,17 +14,46 @@ namespace ABICommercialProject.View
 
     public partial class CollaborateurList : Form
     {
-        private CollaborateurController cc;
         private BindingSource bindingSourceCollabo;
         private Int32 selectedIndex;
+        private DataTable dt;
 
         public CollaborateurList()
         {
             InitializeComponent();
-            cc = new CollaborateurController();
+            initializeDataTable();
+            
+        }
+
+        private void initializeDataTable()
+        {
+            dt = new DataTable();
+            dt.Columns.Add("Matricule");
+            dt.Columns.Add("Nom");
+            dt.Columns.Add("Prénom");
+            dt.Columns.Add("Fonction");
+
             bindingSourceCollabo = new BindingSource();
-            bindingSourceCollabo.DataSource = cc.getCollaborateurs();
+            bindingSourceCollabo.DataSource = getCollaborateurs();
             collaborateurDataGrid.DataSource = bindingSourceCollabo;
+        }
+
+        public DataTable getCollaborateurs()
+        {
+            if (dt != null)
+            {
+                foreach (KeyValuePair<Int32, Collaborateur> c in Collaborateur.collaborateurList)
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["Matricule"] = c.Value.Matricule;
+                    dr["Nom"] = c.Value.NomCollabo;
+                    dr["Prénom"] = c.Value.PrenomCollabo;
+                    dr["Fonction"] = c.Value.FonctionCollabo;
+                    dt.Rows.Add(dr);
+                }
+                return dt;
+            }
+            else return null;
         }
 
         private void btnNewCollabo_Click(object sender, EventArgs e)
@@ -37,9 +66,19 @@ namespace ABICommercialProject.View
             }
         }
 
+        private void addCollaborateur(Collaborateur collaborateur)
+        {
+            DataRow dr = dt.NewRow();
+            dr["Matricule"] = collaborateur.Matricule;
+            dr["Nom"] = collaborateur.NomCollabo;
+            dr["Prénom"] = collaborateur.PrenomCollabo;
+            dr["Fonction"] = collaborateur.FonctionCollabo;
+            dt.Rows.Add(dr);
+        }
+
         private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
         {
-            cc.saveCollaborateur(collaborateur, contrat);
+            addCollaborateur(collaborateur);
         }
 
         private void collaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)
