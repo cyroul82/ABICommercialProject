@@ -12,7 +12,7 @@ namespace ABICommercialProject.Controller
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
         private static Int32 matriculeCount;
 
-        public static CollaborateurController instance; 
+        private static CollaborateurController instance; 
         private CollaborateurController()
         {
             collaborateurList = new SortedDictionary<Int32, Collaborateur>();
@@ -65,14 +65,18 @@ namespace ABICommercialProject.Controller
                     collaborateur.Statut = true;
                     collaborateurList.Add(collaborateur.Matricule, collaborateur);
                 }
+                
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
+                    //Console.WriteLine("Exception : " + ex.Message );
                 }
             }
+        }
 
-            
-
+        public void clotureContratCollaborateur(Collaborateur c)
+        {
+            c.clotureContratActif(DateTime.Now, "cloture");
         }
     }
 }

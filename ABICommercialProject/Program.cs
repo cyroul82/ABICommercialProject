@@ -1,4 +1,5 @@
-﻿using ABICommercialProject.Model;
+﻿using ABICommercialProject.Controller;
+using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +19,22 @@ namespace ABICommercialProject
 
             try
             {
-                Console.WriteLine("Enum : " + TypeContrat.CDD);
-                MissionInterim m = new MissionInterim("sqdf", "motif", DateTime.Now.AddYears(1), "qualifications",
-                                                                DateTime.Now.AddMonths(-6), Statut.Cadre, 1850);
-                Console.WriteLine(m);
+                CollaborateurController cc = CollaborateurController.getCollaboInstance();
+                Collaborateur c = new Collaborateur("RAT", "Cyril", "Concepteur");
+                Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
+                cc.newCollaborateur(c, contrat);
 
-                Collaborateur c = new Collaborateur("Santa", "Claus", "guess");
-                Console.WriteLine(c);
+                c = new Collaborateur("Moiselet", "Renaud", "Développeur");
+                Cdd cont = new Cdd("motif", DateTime.Now.AddYears(1), "qualifié", DateTime.Now, Statut.Cadre, 1850);
+                cc.newCollaborateur(c, cont);
+                Console.WriteLine(c + " " + cont);
+                //cc.clotureContratCollaborateur(c);
+                //Console.WriteLine(c);
+                //c.AddContrat(new Stage("ecole", "mission", "motif", DateTime.Now.AddYears(1), "qualif", DateTime.Now, Statut.NonCadre, 1850));
+            }
+            catch(ArgumentNullException nullEx)
+            {
+                Console.WriteLine(nullEx.Message);
             }
             catch (Exception e)
             {

@@ -16,6 +16,7 @@ namespace ABICommercialProject.View
     {
         private BindingSource bindingSourceCollabo;
         private Int32 selectedIndex;
+        private Collaborateur selectedCollaborateur;
         private DataTable dt;
         CollaborateurController cc = CollaborateurController.getCollaboInstance();
 
@@ -23,6 +24,7 @@ namespace ABICommercialProject.View
         {
             InitializeComponent();
             initializeDataTable();
+            selectedCollaborateur = null;
             
         }
 
@@ -45,12 +47,19 @@ namespace ABICommercialProject.View
             {
                 foreach (KeyValuePair<Int32, Collaborateur> c in cc.getCollaborateurList())
                 {
-                    DataRow dr = dt.NewRow();
-                    dr["Matricule"] = c.Value.Matricule;
-                    dr["Nom"] = c.Value.NomCollabo;
-                    dr["Prénom"] = c.Value.PrenomCollabo;
-                    dr["Fonction"] = c.Value.FonctionCollabo;
-                    dt.Rows.Add(dr);
+                    if (c.Value.Statut)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["Matricule"] = c.Value.Matricule;
+                        dr["Nom"] = c.Value.NomCollabo;
+                        dr["Prénom"] = c.Value.PrenomCollabo;
+                        dr["Fonction"] = c.Value.FonctionCollabo;
+                        dt.Rows.Add(dr);
+                    }
+                    else
+                    {
+
+                    }
 
                 }
                 return dt;
@@ -90,13 +99,30 @@ namespace ABICommercialProject.View
             //{
 
             //}
-            Console.WriteLine(collaborateurDataGrid.CurrentRow.Cells[0].Value);
+            if(collaborateurDataGrid.RowCount > 0)
+            {
+                selectedCollaborateur = CollaborateurController.getCollaboInstance().getCollaborateur(Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value));
+                btnCloture.Enabled = true;
+                Console.WriteLine(selectedCollaborateur);
+            }
        }
 
         private void collaborateurDataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            /*if(collaborateurDataGrid.SelectedRows.Count != 0)
-                selectedIndex = collaborateurDataGrid.SelectedRows[0].Index;*/
+            if (collaborateurDataGrid.SelectedRows.Count != 0)
+            {
+                //selectedCollaborateur = CollaborateurController.getCollaboInstance().getCollaborateur(Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value));
+                
+            }
+            else
+            {
+                selectedCollaborateur = null;
+            }
+        }
+
+        private void btnCloture_Click(object sender, EventArgs e)
+        {
+            CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
         }
     }
 

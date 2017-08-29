@@ -34,6 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNewCollabo = new System.Windows.Forms.Button();
+            this.btnCloture = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -107,6 +108,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnNewCollabo);
+            this.flowLayoutPanel1.Controls.Add(this.btnCloture);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -122,6 +124,17 @@
             this.btnNewCollabo.Text = "Nouveau";
             this.btnNewCollabo.UseVisualStyleBackColor = true;
             this.btnNewCollabo.Click += new System.EventHandler(this.btnNewCollabo_Click);
+            // 
+            // btnCloture
+            // 
+            this.btnCloture.Enabled = false;
+            this.btnCloture.Location = new System.Drawing.Point(84, 3);
+            this.btnCloture.Name = "btnCloture";
+            this.btnCloture.Size = new System.Drawing.Size(75, 23);
+            this.btnCloture.TabIndex = 6;
+            this.btnCloture.Text = "Cloturer";
+            this.btnCloture.UseVisualStyleBackColor = true;
+            this.btnCloture.Click += new System.EventHandler(this.btnCloture_Click);
             // 
             // CollaborateurList
             // 
@@ -149,5 +162,6 @@
         private System.Windows.Forms.DataGridView collaborateurDataGrid;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCloture;
     }
 }

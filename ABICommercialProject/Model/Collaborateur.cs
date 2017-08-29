@@ -231,11 +231,11 @@ namespace ABICommercialProject
             {
                 if (!Tools.IsNameValid(value))
                 {
-                    throw new Exception("The surname lenght must be greater than 2 letters");
+                    throw new ArgumentException("The surname lenght must be greater than 2 letters");
                 }
                 if (!Tools.isNameOnlyChar(value))
                 {
-                    throw new Exception("the surname must contains only characters");
+                    throw new ArgumentException("the surname must contains only characters");
                 }
                 if (this.fonctionCollabo != value)
                     this.fonctionCollabo = value;
