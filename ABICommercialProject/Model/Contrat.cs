@@ -16,6 +16,7 @@ namespace ABICommercialProject
         private Int32 numeroContrat;
         private DateTime? dateFinEffectif;
         private DateTime? dateDebutEffectif;
+        private String motifCloture;
 
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
@@ -41,7 +42,7 @@ namespace ABICommercialProject
         /// Add an Avenant to the contract
         /// </summary>
         /// <param name="newAvenant"></param>
-        public void AddAvenant(Avenant newAvenant)
+        public void addAvenant(Avenant newAvenant)
         {
             if (newAvenant == null)
                 return;
@@ -49,6 +50,17 @@ namespace ABICommercialProject
                 this.avenant = new System.Collections.ArrayList();
             if (!this.avenant.Contains(newAvenant))
                 this.avenant.Add(newAvenant);
+        }
+
+        public void clotureContrat(DateTime dateFinEffectif, String motifCloture)
+        {
+            this.dateFinEffectif = dateFinEffectif;
+            this.motifCloture = motifCloture;
+        }
+
+        public void commenceContrat(DateTime dateDebutEffectif)
+        {
+            this.dateDebutEffectif = dateDebutEffectif;
         }
 
         public decimal SalaireBrut

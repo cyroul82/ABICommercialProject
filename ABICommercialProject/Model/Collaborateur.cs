@@ -44,6 +44,12 @@ namespace ABICommercialProject
         }
 
 
+        /// <summary>
+        /// Initialize properties
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="fonctionCollabo"></param>
         private void initializeConstuctor(String nom, String prenom, String fonctionCollabo)
         {
             Matricule = 0;
@@ -52,7 +58,7 @@ namespace ABICommercialProject
             FonctionCollabo = fonctionCollabo;
             this.listContrat = new SortedDictionary<Int32, Contrat>();
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
-            ContratActif = null;
+            contratActif = null;
 
         }
 
@@ -116,21 +122,39 @@ namespace ABICommercialProject
         }
 
         /// <summary>
-        /// 
+        /// Cloture le contrat actif, avec une date de date fin effective et un motif
         /// </summary>
         /// <param name="contrat"></param>
-        public void FinishContrat(Contrat contrat)
+        /// <exception cref="ArgumentNullException">contrat actif is null</exception>
+        public void clotureContrat(DateTime dateFinEffectif, String motifCloture)
         {
-            if(contrat == null)
+            if (contratActif != null)
             {
-
+                contratActif.clotureContrat(dateFinEffectif, motifCloture);
+                this.contratActif = null;
             }
-            if(contrat is Cdi)
+            else
             {
-                Cdi c = contrat as Cdi;
+                throw new ArgumentNullException("Le collaborateur n'a aucun contrat actif à cloturer");
+            }
+        }
+
+        /// <summary>
+        /// Commence un contrat, avec une date de date début effective
+        /// </summary>
+        /// <param name="contrat"></param>
+        /// <exception cref="ArgumentNullException">contrat actif is null</exception>
+        public void commenceContrat(DateTime dateDebutEffectif)
+        {
+            if (contratActif != null)
+            {
+                contratActif.commenceContrat(dateDebutEffectif);
                 
             }
-            this.contratActif = null;
+            else
+            {
+                throw new ArgumentNullException("Le collaborateur n'a aucun contrat actif à cloturer");
+            }
         }
         
         /// <summary>
@@ -157,7 +181,9 @@ namespace ABICommercialProject
                 }
             }
         }
-
+        /// <summary>
+        /// Propriété {get; set}, convertit en majuscule
+        /// </summary>
         public String NomCollabo
         {
             get
@@ -173,6 +199,10 @@ namespace ABICommercialProject
             }
         }
 
+        /// <summary>
+        /// Propriété {get ; set} 
+        /// </summary>
+        /// <exception cref="Exception">prenom n'est pas valide</exception>
         public String PrenomCollabo
         {
             get
@@ -251,19 +281,6 @@ namespace ABICommercialProject
             {
                 if (this.statut != value)
                     this.statut = value;
-            }
-        }
-
-        public Contrat ContratActif
-        {
-            get
-            {
-                return contratActif;
-            }
-
-            set
-            {
-                contratActif = value;
             }
         }
     }
