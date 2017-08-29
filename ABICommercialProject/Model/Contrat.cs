@@ -15,7 +15,6 @@ namespace ABICommercialProject
         private DateTime dateDebutContrat;
         private Int32 numeroContrat;
         private DateTime? dateFinEffectif;
-        private DateTime? dateDebutEffectif;
         private String motifCloture;
 
         private Statut statutContrat;
@@ -35,7 +34,6 @@ namespace ABICommercialProject
             DateDebutContrat = dateDebutContrat;
             StatutContrat = statut;
             dateFinEffectif = null;
-            dateDebutEffectif = null;
         }
 
         /// <summary>
@@ -46,21 +44,23 @@ namespace ABICommercialProject
         {
             if (newAvenant == null)
                 return;
-            if (this.avenant == null)
-                this.avenant = new System.Collections.ArrayList();
             if (!this.avenant.Contains(newAvenant))
                 this.avenant.Add(newAvenant);
         }
 
+        /// <summary>
+        /// Cloture le contrat
+        /// </summary>
+        /// <param name="dateFinEffectif"></param>
+        /// <param name="motifCloture"></param>
         public void clotureContrat(DateTime dateFinEffectif, String motifCloture)
         {
-            this.dateFinEffectif = dateFinEffectif;
-            this.motifCloture = motifCloture;
-        }
-
-        public void commenceContrat(DateTime dateDebutEffectif)
-        {
-            this.dateDebutEffectif = dateDebutEffectif;
+            if (dateFinEffectif < dateDebutContrat) throw new Exception("Date de fin ne peut pas etre inferieure à la date de début");
+            else
+            {
+                this.dateFinEffectif = dateFinEffectif;
+                this.motifCloture = motifCloture;
+            }
         }
 
         public decimal SalaireBrut

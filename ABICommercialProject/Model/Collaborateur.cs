@@ -126,12 +126,13 @@ namespace ABICommercialProject
         /// </summary>
         /// <param name="contrat"></param>
         /// <exception cref="ArgumentNullException">contrat actif is null</exception>
-        public void clotureContrat(DateTime dateFinEffectif, String motifCloture)
+        public void clotureContratActif(DateTime dateFinEffectif, String motifCloture)
         {
             if (contratActif != null)
             {
                 contratActif.clotureContrat(dateFinEffectif, motifCloture);
                 this.contratActif = null;
+                this.statut = false;
             }
             else
             {
@@ -139,23 +140,6 @@ namespace ABICommercialProject
             }
         }
 
-        /// <summary>
-        /// Commence un contrat, avec une date de date début effective
-        /// </summary>
-        /// <param name="contrat"></param>
-        /// <exception cref="ArgumentNullException">contrat actif is null</exception>
-        public void commenceContrat(DateTime dateDebutEffectif)
-        {
-            if (contratActif != null)
-            {
-                contratActif.commenceContrat(dateDebutEffectif);
-                
-            }
-            else
-            {
-                throw new ArgumentNullException("Le collaborateur n'a aucun contrat actif à cloturer");
-            }
-        }
         
         /// <summary>
         /// Add a pay rise

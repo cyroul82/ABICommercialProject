@@ -62,6 +62,7 @@ namespace ABICommercialProject.Controller
                     collaborateur.AddContrat(contrat);
                     matriculeCount++;
                     collaborateur.Matricule = matriculeCount;
+                    collaborateur.Statut = true;
                     collaborateurList.Add(collaborateur.Matricule, collaborateur);
                 }
                 catch (Exception ex)
