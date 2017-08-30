@@ -10,7 +10,7 @@ namespace ABICommercialProject.Model
     public interface IListerCollabo
     {
         Collaborateur collaboActif { get; }
-        void AfficheCollabo(Collaborateur collabo);
+        void AfficheCollabo();
         event ActionAjouterCollabo onAjoutCollabo;
     }
 }

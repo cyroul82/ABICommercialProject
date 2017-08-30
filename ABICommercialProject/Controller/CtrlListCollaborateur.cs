@@ -21,9 +21,19 @@ namespace ABICommercialProject.Controller
             //Tools.collaborateurList.Add(564, c);
 
             collaborateurListForm = new CollaborateurListForm(Tools.collaborateurList);
+
+            IListerCollabo visu = (IListerCollabo)collaborateurListForm;
+            visu.onAjoutCollabo += new ActionAjouterCollabo(this.ajoutCollabo);
+
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
+            //collaborateurListForm.onAjoutCollabo += new ActionAjouterCollabo(this.ajoutCollabo);
             collaborateurListForm.MdiParent = MainApp.getInstance();
             collaborateurListForm.Show();
+        }
+
+        private void ajoutCollabo()
+        {
+            collaborateurListForm.AfficheCollabo();
         }
 
         private void collobarateurViewClosing(object sender, FormClosingEventArgs e)

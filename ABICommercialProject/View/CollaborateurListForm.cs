@@ -20,7 +20,9 @@ namespace ABICommercialProject.View
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
-        public event ActionAjouterCollabo onAjoutCollabo;
+        public ActionAjouterCollabo onAjoutCollabo;
+
+        CtrlNewCollaborateur ctrl;
 
         public Collaborateur collaboActif
         {
@@ -93,7 +95,9 @@ namespace ABICommercialProject.View
 
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
-            CtrlNewCollaborateur ctrl = new CtrlNewCollaborateur();
+            //ctrl = new CtrlNewCollaborateur();
+            onAjoutCollabo?.Invoke();
+         
         }
 
         private void addCollaborateur(Collaborateur collaborateur)
@@ -144,9 +148,10 @@ namespace ABICommercialProject.View
             //CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
         }
 
-        public void AfficheCollabo(Collaborateur collabo)
+        public void AfficheCollabo()
         {
-            throw new NotImplementedException();
+            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
+            
         }
     }
 

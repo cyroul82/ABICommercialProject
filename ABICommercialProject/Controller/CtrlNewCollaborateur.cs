@@ -13,9 +13,11 @@ namespace ABICommercialProject.Controller
     public class CtrlNewCollaborateur
     {
         private CollaborateurForm collaborateurForm;
+        private IListerCollabo visu;
         public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
+           
             collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
             collaborateurForm.displayDialog();
         }
