@@ -8,6 +8,8 @@ namespace ABICommercialProject.Model
 {
     class Tools
     {
+        public static String save = "Enregister";
+
         /// <summary>
         /// Check if the name length > 1  and that the name isn't null or empty
         /// </summary>

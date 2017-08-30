@@ -15,45 +15,35 @@ namespace ABICommercialProject
     public delegate void SavingCollaborateur(Collaborateur collaborateur, Contrat contrat); 
     public partial class MainApp : Form
     {
-
-        private CollaborateurList cv;
-        public MainApp()
+        private static MainApp instance;
+        internal CtrlListCollaborateur ctrl;
+        private MainApp()
         {
             InitializeComponent();
-            //Collaborateur c = new Collaborateur("Rat", "Cyril", "Concepteur");
-            //CollaborateurController.collaborateurList.Add(c);
-            //c = new Collaborateur("Rat", "Chigusa", "Commercial");
-            //CollaborateurController.collaborateurList.Add(c);
-            //c = new Collaborateur("Rat Ito", "Emma", "Designer");
-            //CollaborateurController.collaborateurList.Add(c);
-            //c = new Collaborateur("Rat Ito", "Luca", "Développeur");
-            //CollaborateurController.collaborateurList.Add(c);
+        }
+
+        public static MainApp getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new MainApp();
+            }
+            return instance;
         }
 
         private void collaborateurStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(cv == null)
+            if (ctrl == null)
             {
-                cv = new CollaborateurList();
-                cv.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
-                cv.MdiParent = this;
-                cv.Show();
-            }
-            if(cv.WindowState == FormWindowState.Minimized)
-            {
-                cv.WindowState = FormWindowState.Normal;
+                ctrl = new CtrlListCollaborateur();
+                
             }
             else
             {
-                cv.Activate();
+                ctrl.display();
             }
+            
 
-        }
-
-
-        private void collobarateurViewClosing(object sender, FormClosingEventArgs e)
-        {
-            cv = null;
         }
     }
 }

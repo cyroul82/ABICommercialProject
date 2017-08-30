@@ -28,10 +28,10 @@ namespace ABICommercialProject
                 Cdd cont = new Cdd("motif", DateTime.Now.AddYears(1), "qualifié", DateTime.Now, Statut.Cadre, 1850);
                 cc.newCollaborateur(c, cont);
                 Console.WriteLine(c + " " + cont);
-                cc.clotureContratCollaborateur(c);
-                Console.WriteLine(c);
-                if(!c.hasContratActif())
-                c.AddContrat(new Stage("ecole", "mission", "motif", DateTime.Now.AddYears(1), "qualif", DateTime.Now, Statut.NonCadre, 1850));
+                //cc.clotureContratCollaborateur(c);
+                //Console.WriteLine(c);
+                //if(!c.hasContratActif())
+                //c.AddContrat(new Stage("ecole", "mission", "motif", DateTime.Now.AddYears(1), "qualif", DateTime.Now, Statut.NonCadre, 1850));
             }
             catch(ArgumentNullException nullEx)
             {
@@ -46,7 +46,7 @@ namespace ABICommercialProject
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainApp());
+            Application.Run(MainApp.getInstance());
             
         }
     }

@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.txtTel = new System.Windows.Forms.TextBox();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.txtCodePostal = new System.Windows.Forms.TextBox();
+            this.lblCodePostal = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lblVille = new System.Windows.Forms.Label();
             this.txtAdresse = new System.Windows.Forms.TextBox();
@@ -72,12 +78,6 @@
             this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtCodePostal = new System.Windows.Forms.TextBox();
-            this.lblCodePostal = new System.Windows.Forms.Label();
-            this.txtTel = new System.Windows.Forms.TextBox();
-            this.lblTel = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
             this.gbCollaborateur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
             this.gpxTypeContrat.SuspendLayout();
@@ -119,6 +119,54 @@
             this.gbCollaborateur.TabIndex = 0;
             this.gbCollaborateur.TabStop = false;
             this.gbCollaborateur.Text = "Collaborateur";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(112, 345);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(147, 20);
+            this.txtEmail.TabIndex = 16;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(33, 348);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(41, 13);
+            this.lblEmail.TabIndex = 15;
+            this.lblEmail.Text = "Email : ";
+            // 
+            // txtTel
+            // 
+            this.txtTel.Location = new System.Drawing.Point(112, 318);
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(147, 20);
+            this.txtTel.TabIndex = 14;
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(33, 321);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(67, 13);
+            this.lblTel.TabIndex = 13;
+            this.lblTel.Text = "Téléphone : ";
+            // 
+            // txtCodePostal
+            // 
+            this.txtCodePostal.Location = new System.Drawing.Point(112, 292);
+            this.txtCodePostal.Name = "txtCodePostal";
+            this.txtCodePostal.Size = new System.Drawing.Size(66, 20);
+            this.txtCodePostal.TabIndex = 12;
+            // 
+            // lblCodePostal
+            // 
+            this.lblCodePostal.AutoSize = true;
+            this.lblCodePostal.Location = new System.Drawing.Point(33, 295);
+            this.lblCodePostal.Name = "lblCodePostal";
+            this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
+            this.lblCodePostal.TabIndex = 11;
+            this.lblCodePostal.Text = "Code Postal : ";
             // 
             // textBox2
             // 
@@ -222,6 +270,7 @@
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -480,54 +529,6 @@
             // 
             this.errorProviderMission.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderMission.ContainerControl = this;
-            // 
-            // txtCodePostal
-            // 
-            this.txtCodePostal.Location = new System.Drawing.Point(112, 292);
-            this.txtCodePostal.Name = "txtCodePostal";
-            this.txtCodePostal.Size = new System.Drawing.Size(66, 20);
-            this.txtCodePostal.TabIndex = 12;
-            // 
-            // lblCodePostal
-            // 
-            this.lblCodePostal.AutoSize = true;
-            this.lblCodePostal.Location = new System.Drawing.Point(33, 295);
-            this.lblCodePostal.Name = "lblCodePostal";
-            this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
-            this.lblCodePostal.TabIndex = 11;
-            this.lblCodePostal.Text = "Code Postal : ";
-            // 
-            // txtTel
-            // 
-            this.txtTel.Location = new System.Drawing.Point(112, 318);
-            this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(147, 20);
-            this.txtTel.TabIndex = 14;
-            // 
-            // lblTel
-            // 
-            this.lblTel.AutoSize = true;
-            this.lblTel.Location = new System.Drawing.Point(33, 321);
-            this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(67, 13);
-            this.lblTel.TabIndex = 13;
-            this.lblTel.Text = "Téléphone : ";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(112, 345);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(147, 20);
-            this.txtEmail.TabIndex = 16;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(33, 348);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(41, 13);
-            this.lblEmail.TabIndex = 15;
-            this.lblEmail.Text = "Email : ";
             // 
             // CollaborateurForm
             // 

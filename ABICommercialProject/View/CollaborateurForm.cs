@@ -1,6 +1,7 @@
 ﻿using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -11,10 +12,12 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
+    public delegate void ClickHandler(String message);
+
     public partial class CollaborateurForm : Form
     {
         public SavingCollaborateur savingCollaborateur;
-
+         
         private String nom;
         private String prenom;
         private String fonction;
@@ -22,12 +25,19 @@ namespace ABICommercialProject.View
         private String motif;
         private String ecole;
         private String mission;
-        private String agence;
+
         private Decimal salaire = 0;
+
+        public ClickHandler clickEvent;
 
         public CollaborateurForm()
         {
             InitializeComponent();
+            init();
+        }
+
+        public void init()
+        {
             cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
             cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
             hideFields();
@@ -39,12 +49,26 @@ namespace ABICommercialProject.View
             this.DialogResult = DialogResult.Cancel;
         }
 
+        public void closeDialog()
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        public void displayDialog()
+        {
+            this.ShowDialog();
+        }
+
+        public void displayMessageBox(String message, String title, MessageBoxButtons btns, MessageBoxIcon icons)
+        {
+            MessageBox.Show(message, title, btns, icons);
+        }
 
         /// <summary>
         /// Get the the data from the textbox, create a collaborateur and return it
         /// </summary>
         /// <returns></returns>
-        private Collaborateur getCollaborateur()
+        public Collaborateur getCollaborateur()
         {
             if (String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtPrenom.Text) || String.IsNullOrEmpty(txtFonction.Text))
             {
@@ -60,7 +84,7 @@ namespace ABICommercialProject.View
             }
         }
 
-        private Contrat getContrat()
+        public Contrat getContrat()
         {
             Contrat contrat;
             try
@@ -107,9 +131,12 @@ namespace ABICommercialProject.View
                 MessageBox.Show(ex.Message, "Error creation contrat", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+
         }
 
-        
+
+
+
 
         private void cbxTypeContrat_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -170,14 +197,7 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(getContrat() != null && getCollaborateur() != null){
-                savingCollaborateur?.Invoke(getCollaborateur(), getContrat());
-                DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Unexpected Error", "Error App", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            clickEvent?.Invoke(Tools.save);
         }
 
         private void isFormReady()
@@ -214,7 +234,7 @@ namespace ABICommercialProject.View
             }
             if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Interim.ToString())
             {
-                if (String.IsNullOrWhiteSpace(motif) || String.IsNullOrWhiteSpace(agence))
+                if (String.IsNullOrWhiteSpace(motif) )
                 {
                     ready = false;
                 }
