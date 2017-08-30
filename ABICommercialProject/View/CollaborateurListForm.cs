@@ -12,32 +12,19 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-
-    public partial class CollaborateurListForm : Form, IListerCollabo
+    public partial class CollaborateurListForm : Form
     {
         private BindingSource bindingSourceCollabo;
-        private Collaborateur selectedCollaborateur;
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
-        public ActionAjouterCollabo onAjoutCollabo;
-
-        CtrlNewCollaborateur ctrl;
-
-        public Collaborateur collaboActif
-        {
-            get
-            {
-               return selectedCollaborateur;
-            }
-        }
+        public event EventHandler onClickNewCollabo;
 
         public CollaborateurListForm(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
             InitializeComponent();
             this.collaborateurList = collaborateurList;
             initializeDataTable();
-            selectedCollaborateur = null;
             
         }
 
@@ -95,9 +82,7 @@ namespace ABICommercialProject.View
 
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
-            //ctrl = new CtrlNewCollaborateur();
-            onAjoutCollabo?.Invoke();
-         
+            onClickNewCollabo(sender, e);
         }
 
         private void addCollaborateur(Collaborateur collaborateur)
@@ -132,26 +117,12 @@ namespace ABICommercialProject.View
 
         private void collaborateurDataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            if (collaborateurDataGrid.SelectedRows.Count != 0)
-            {
-                selectedCollaborateur = null;
-                
-            }
-            else
-            {
-                selectedCollaborateur = null;
-            }
+           
         }
 
         private void btnCloture_Click(object sender, EventArgs e)
         {
             //CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
-        }
-
-        public void AfficheCollabo()
-        {
-            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            
         }
     }
 

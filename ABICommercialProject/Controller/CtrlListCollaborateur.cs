@@ -11,6 +11,8 @@ namespace ABICommercialProject.Controller
 {
     public class CtrlListCollaborateur
     {
+        public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<int, Collaborateur>();
+
         private CollaborateurListForm collaborateurListForm;
 
         public CtrlListCollaborateur()
@@ -20,20 +22,22 @@ namespace ABICommercialProject.Controller
             //Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
             //Tools.collaborateurList.Add(564, c);
 
-            collaborateurListForm = new CollaborateurListForm(Tools.collaborateurList);
-
-            IListerCollabo visu = (IListerCollabo)collaborateurListForm;
-            visu.onAjoutCollabo += new ActionAjouterCollabo(this.ajoutCollabo);
-
+            collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
-            //collaborateurListForm.onAjoutCollabo += new ActionAjouterCollabo(this.ajoutCollabo);
+            collaborateurListForm.onClickNewCollabo += new EventHandler(this.ajoutCollabo);
             collaborateurListForm.MdiParent = MainApp.getInstance();
             collaborateurListForm.Show();
         }
 
-        private void ajoutCollabo()
+        private void ajoutCollabo(object sender, EventArgs e)
         {
-            collaborateurListForm.AfficheCollabo();
+            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
+            ctrlNewCollabo.onSaveCollabo += new SaveCollaboHandler(this.saveCollabo);
+        }
+
+        private void saveCollabo(Collaborateur collabo)
+        {
+            collaborateurList.Add(564, collabo);
         }
 
         private void collobarateurViewClosing(object sender, FormClosingEventArgs e)

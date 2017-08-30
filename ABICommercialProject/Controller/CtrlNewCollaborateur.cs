@@ -10,12 +10,13 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
+    public delegate void SaveCollaboHandler(Collaborateur collabo);
     public class CtrlNewCollaborateur
     {
+        public SaveCollaboHandler onSaveCollabo;
         private CollaborateurForm collaborateurForm;
-        private IListerCollabo visu;
         public CtrlNewCollaborateur()
-        {
+        { 
             this.collaborateurForm = new CollaborateurForm();
            
             collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
@@ -32,7 +33,8 @@ namespace ABICommercialProject.Controller
 
                 if (contrat != null && collaborateur != null)
                 {
-                    savingCollaborateur(collaborateur, contrat);
+                    onSaveCollabo?.Invoke(collaborateur);
+                    //savingCollaborateur(collaborateur, contrat);
                     collaborateurForm.closeDialog();
                 }
                 else
@@ -48,8 +50,7 @@ namespace ABICommercialProject.Controller
         private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
         {
             //this.addCollaborateur(collaborateur);
-            collaborateur.Statut = true;
-            Tools.collaborateurList.Add(65431, collaborateur);
+
 
         }
 
