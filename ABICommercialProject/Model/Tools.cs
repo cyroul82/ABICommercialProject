@@ -8,6 +8,8 @@ namespace ABICommercialProject.Model
 {
     class Tools
     {
+        public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<int, Collaborateur>();
+
         public static String save = "Enregister";
 
         /// <summary>

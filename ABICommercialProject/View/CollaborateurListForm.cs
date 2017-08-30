@@ -12,17 +12,17 @@ using System.Windows.Forms;
 namespace ABICommercialProject.View
 {
 
-    public partial class CollaborateurList : Form
+    public partial class CollaborateurListForm : Form
     {
         private BindingSource bindingSourceCollabo;
-        private Int32 selectedIndex;
         private Collaborateur selectedCollaborateur;
         private DataTable dt;
-        CollaborateurController cc = CollaborateurController.getCollaboInstance();
+        private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
-        public CollaborateurList()
+        public CollaborateurListForm(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
             InitializeComponent();
+            this.collaborateurList = collaborateurList;
             initializeDataTable();
             selectedCollaborateur = null;
             
@@ -41,11 +41,23 @@ namespace ABICommercialProject.View
             collaborateurDataGrid.DataSource = bindingSourceCollabo;
         }
 
+        public void display()
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.Activate();
+            }
+        }
+
         public DataTable getCollaborateurs()
         {
             if (dt != null)
             {
-                foreach (KeyValuePair<Int32, Collaborateur> c in cc.getCollaborateurList())
+                foreach (KeyValuePair<Int32, Collaborateur> c in collaborateurList)
                 {
                     if (c.Value.Statut)
                     {
@@ -55,6 +67,7 @@ namespace ABICommercialProject.View
                         dr["Prénom"] = c.Value.PrenomCollabo;
                         dr["Fonction"] = c.Value.FonctionCollabo;
                         dt.Rows.Add(dr);
+                        Console.WriteLine(c.Value.NomCollabo);
                     }
                     else
                     {
@@ -69,12 +82,7 @@ namespace ABICommercialProject.View
 
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
-            CollaborateurForm cv = new CollaborateurForm();
-            cv.savingCollaborateur += new SavingCollaborateur(this.savingCollaborateur);
-            if(cv.ShowDialog() == DialogResult.OK)
-            {
-                
-            }
+            CtrlNewCollaborateur ctrl = new CtrlNewCollaborateur();
         }
 
         private void addCollaborateur(Collaborateur collaborateur)
@@ -99,12 +107,12 @@ namespace ABICommercialProject.View
             //{
 
             //}
-            if(collaborateurDataGrid.RowCount > 0)
-            {
-                selectedCollaborateur = CollaborateurController.getCollaboInstance().getCollaborateur(Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value));
-                btnCloture.Enabled = true;
-                Console.WriteLine(selectedCollaborateur);
-            }
+            //if(collaborateurDataGrid.RowCount > 0)
+            //{
+            //    selectedCollaborateur = CollaborateurController.getCollaboInstance().getCollaborateur(Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value));
+            //    btnCloture.Enabled = true;
+            //    Console.WriteLine(selectedCollaborateur);
+            //}
        }
 
         private void collaborateurDataGrid_SelectionChanged(object sender, EventArgs e)
@@ -122,7 +130,7 @@ namespace ABICommercialProject.View
 
         private void btnCloture_Click(object sender, EventArgs e)
         {
-            CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
+            //CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
         }
     }
 

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
-    public class CtrlCollaborateur
+    public class CtrlNewCollaborateur
     {
         private CollaborateurForm collaborateurForm;
-        public CtrlCollaborateur()
+        public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
             collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
@@ -41,11 +41,14 @@ namespace ABICommercialProject.Controller
             }
 
         }
-        
+
 
         private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
         {
             //this.addCollaborateur(collaborateur);
+            collaborateur.Statut = true;
+            Tools.collaborateurList.Add(65431, collaborateur);
+
         }
 
         //private void addCollaborateur(Collaborateur collaborateur)
@@ -59,7 +62,7 @@ namespace ABICommercialProject.Controller
         //}
 
 
-        
+
     }
 
 

@@ -19,15 +19,15 @@ namespace ABICommercialProject
 
             try
             {
-                CollaborateurController cc = CollaborateurController.getCollaboInstance();
-                Collaborateur c = new Collaborateur("RAT", "Cyril", "Concepteur");
-                Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
-                cc.newCollaborateur(c, contrat);
+                //CollaborateurController cc = CollaborateurController.getCollaboInstance();
+                //Collaborateur c = new Collaborateur("RAT", "Cyril", "Concepteur");
+                //Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
+                //cc.newCollaborateur(c, contrat);
 
-                c = new Collaborateur("Moiselet", "Renaud", "Développeur");
-                Cdd cont = new Cdd("motif", DateTime.Now.AddYears(1), "qualifié", DateTime.Now, Statut.Cadre, 1850);
-                cc.newCollaborateur(c, cont);
-                Console.WriteLine(c + " " + cont);
+                //c = new Collaborateur("Moiselet", "Renaud", "Développeur");
+                //Cdd cont = new Cdd("motif", DateTime.Now.AddYears(1), "qualifié", DateTime.Now, Statut.Cadre, 1850);
+                //cc.newCollaborateur(c, cont);
+                //Console.WriteLine(c + " " + cont);
                 //cc.clotureContratCollaborateur(c);
                 //Console.WriteLine(c);
                 //if(!c.hasContratActif())

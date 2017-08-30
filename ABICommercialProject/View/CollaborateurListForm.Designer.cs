@@ -1,6 +1,6 @@
 ﻿namespace ABICommercialProject.View
 {
-    partial class CollaborateurList
+    partial class CollaborateurListForm
     {
         /// <summary>
         /// Required designer variable.

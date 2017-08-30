@@ -16,7 +16,7 @@ namespace ABICommercialProject
     public partial class MainApp : Form
     {
         private static MainApp instance;
-        internal CtrlListCollaborateur ctrl;
+        internal CtrlListCollaborateur ctrlListCollaborateur;
         private MainApp()
         {
             InitializeComponent();
@@ -33,17 +33,18 @@ namespace ABICommercialProject
 
         private void collaborateurStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ctrl == null)
+            if (ctrlListCollaborateur == null)
             {
-                ctrl = new CtrlListCollaborateur();
+                ctrlListCollaborateur = new CtrlListCollaborateur();
                 
             }
             else
             {
-                ctrl.display();
+                ctrlListCollaborateur.display();
             }
             
 
         }
+
     }
 }
