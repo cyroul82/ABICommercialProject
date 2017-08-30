@@ -17,7 +17,7 @@ namespace ABICommercialProject.Controller
         {
             this.collaborateurForm = new CollaborateurForm();
             collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
-            collaborateurForm.displayDialog(); ;
+            collaborateurForm.displayDialog();
         }
 
         private void clickEvent(String message)

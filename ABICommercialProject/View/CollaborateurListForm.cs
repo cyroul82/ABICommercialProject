@@ -1,4 +1,5 @@
 ﻿using ABICommercialProject.Controller;
+using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,12 +13,22 @@ using System.Windows.Forms;
 namespace ABICommercialProject.View
 {
 
-    public partial class CollaborateurListForm : Form
+    public partial class CollaborateurListForm : Form, IListerCollabo
     {
         private BindingSource bindingSourceCollabo;
         private Collaborateur selectedCollaborateur;
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
+
+        public event ActionAjouterCollabo onAjoutCollabo;
+
+        public Collaborateur collaboActif
+        {
+            get
+            {
+               return selectedCollaborateur;
+            }
+        }
 
         public CollaborateurListForm(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
@@ -119,7 +130,7 @@ namespace ABICommercialProject.View
         {
             if (collaborateurDataGrid.SelectedRows.Count != 0)
             {
-                //selectedCollaborateur = CollaborateurController.getCollaboInstance().getCollaborateur(Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value));
+                selectedCollaborateur = null;
                 
             }
             else
@@ -131,6 +142,11 @@ namespace ABICommercialProject.View
         private void btnCloture_Click(object sender, EventArgs e)
         {
             //CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
+        }
+
+        public void AfficheCollabo(Collaborateur collabo)
+        {
+            throw new NotImplementedException();
         }
     }
 
