@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CollaborateurController.cs" />
+    <Compile Include="Controller\ctrlCollaborateur.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
     <Compile Include="Model\Cdd.cs" />

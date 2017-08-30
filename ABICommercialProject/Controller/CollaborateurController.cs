@@ -11,12 +11,14 @@ namespace ABICommercialProject.Controller
     {
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
         private static Int32 matriculeCount;
+        private static Int32 numeroContrat;
 
         private static CollaborateurController instance; 
         private CollaborateurController()
         {
             collaborateurList = new SortedDictionary<Int32, Collaborateur>();
             matriculeCount = 0;
+            numeroContrat = 0;
         }
 
         public static CollaborateurController getCollaboInstance()
@@ -59,6 +61,8 @@ namespace ABICommercialProject.Controller
             {
                 try
                 {
+                    numeroContrat++;
+                    contrat.NumeroContrat = numeroContrat;
                     collaborateur.AddContrat(contrat);
                     matriculeCount++;
                     collaborateur.Matricule = matriculeCount;
@@ -73,7 +77,7 @@ namespace ABICommercialProject.Controller
                 }
             }
         }
-
+        
         public void clotureContratCollaborateur(Collaborateur c)
         {
             c.clotureContratActif(DateTime.Now, "cloture");

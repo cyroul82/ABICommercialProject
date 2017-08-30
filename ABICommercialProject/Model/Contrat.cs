@@ -34,6 +34,7 @@ namespace ABICommercialProject
             DateDebutContrat = dateDebutContrat;
             StatutContrat = statut;
             dateFinEffectif = null;
+            NumeroContrat = 0;
         }
 
         /// <summary>
@@ -114,7 +115,11 @@ namespace ABICommercialProject
                 statutContrat = value;
             }
         }
-
+        
+        /// <summary>
+        /// Check that the numero isn't less than or equal to 0
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Contrat number lesser or equal than</exception>
         public int NumeroContrat
         {
             get
@@ -124,7 +129,9 @@ namespace ABICommercialProject
 
             set
             {
-                numeroContrat = value;
+                //if (value <= 0) throw new ArgumentOutOfRangeException("Le contract number can't be less or equal to 0");
+                //else
+                    numeroContrat = value;
             }
         }
 

@@ -140,6 +140,15 @@ namespace ABICommercialProject
             }
         }
 
+        /// <summary>
+        /// Return True if the collaborateur has a Contrat Actif, false otherwise
+        /// </summary>
+        /// <returns></returns>
+        public Boolean hasContratActif()
+        {
+            return contratActif == null ? false : true;
+        }
+
         
         /// <summary>
         /// Add a pay rise
