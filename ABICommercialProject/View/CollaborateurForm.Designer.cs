@@ -36,7 +36,7 @@
             this.lblTel = new System.Windows.Forms.Label();
             this.txtCodePostal = new System.Windows.Forms.TextBox();
             this.lblCodePostal = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtVille = new System.Windows.Forms.TextBox();
             this.lblVille = new System.Windows.Forms.Label();
             this.txtAdresse = new System.Windows.Forms.TextBox();
             this.lblAdresse = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@
             this.gbCollaborateur.Controls.Add(this.lblTel);
             this.gbCollaborateur.Controls.Add(this.txtCodePostal);
             this.gbCollaborateur.Controls.Add(this.lblCodePostal);
-            this.gbCollaborateur.Controls.Add(this.textBox2);
+            this.gbCollaborateur.Controls.Add(this.txtVille);
             this.gbCollaborateur.Controls.Add(this.lblVille);
             this.gbCollaborateur.Controls.Add(this.txtAdresse);
             this.gbCollaborateur.Controls.Add(this.lblAdresse);
@@ -171,12 +171,12 @@
             this.lblCodePostal.TabIndex = 11;
             this.lblCodePostal.Text = "Code Postal : ";
             // 
-            // textBox2
+            // txtVille
             // 
-            this.textBox2.Location = new System.Drawing.Point(112, 266);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(147, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtVille.Location = new System.Drawing.Point(112, 266);
+            this.txtVille.Name = "txtVille";
+            this.txtVille.Size = new System.Drawing.Size(147, 20);
+            this.txtVille.TabIndex = 10;
             // 
             // lblVille
             // 
@@ -219,7 +219,6 @@
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(147, 20);
             this.txtPrenom.TabIndex = 3;
-            this.txtPrenom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPrenom_KeyUp);
             // 
             // lblPrenom
             // 
@@ -236,7 +235,6 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(147, 20);
             this.txtNom.TabIndex = 1;
-            this.txtNom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNom_KeyUp);
             // 
             // lblNom
             // 
@@ -253,7 +251,6 @@
             this.txtFonction.Name = "txtFonction";
             this.txtFonction.Size = new System.Drawing.Size(204, 20);
             this.txtFonction.TabIndex = 5;
-            this.txtFonction.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFonction_KeyUp);
             // 
             // lblFonction
             // 
@@ -358,7 +355,6 @@
             this.txtMission.Name = "txtMission";
             this.txtMission.Size = new System.Drawing.Size(204, 20);
             this.txtMission.TabIndex = 25;
-            this.txtMission.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMission_KeyUp);
             // 
             // lblMisson
             // 
@@ -375,7 +371,6 @@
             this.txtEcole.Name = "txtEcole";
             this.txtEcole.Size = new System.Drawing.Size(204, 20);
             this.txtEcole.TabIndex = 23;
-            this.txtEcole.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtEcole_KeyUp);
             // 
             // lblEcole
             // 
@@ -409,7 +404,6 @@
             this.txtMotif.Name = "txtMotif";
             this.txtMotif.Size = new System.Drawing.Size(204, 20);
             this.txtMotif.TabIndex = 19;
-            this.txtMotif.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMotif_KeyUp);
             // 
             // lblMotif
             // 
@@ -426,7 +420,6 @@
             this.txtSalaire.Name = "txtSalaire";
             this.txtSalaire.Size = new System.Drawing.Size(204, 20);
             this.txtSalaire.TabIndex = 15;
-            this.txtSalaire.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSalaire_KeyUp);
             // 
             // cbxStatut
             // 
@@ -459,7 +452,6 @@
             this.txtQualification.Name = "txtQualification";
             this.txtQualification.Size = new System.Drawing.Size(204, 20);
             this.txtQualification.TabIndex = 11;
-            this.txtQualification.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQualification_KeyUp);
             // 
             // lblDateDebutContrat
             // 
@@ -641,7 +633,7 @@
         private System.Windows.Forms.ErrorProvider errorProviderMotif;
         private System.Windows.Forms.ErrorProvider errorProviderEcole;
         private System.Windows.Forms.ErrorProvider errorProviderMission;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtVille;
         private System.Windows.Forms.Label lblVille;
         private System.Windows.Forms.TextBox txtAdresse;
         private System.Windows.Forms.Label lblAdresse;

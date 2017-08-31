@@ -17,15 +17,7 @@ namespace ABICommercialProject.View
 
     public partial class CollaborateurForm : Form
     {
-         
-        private String nom;
-        private String prenom;
-        private String fonction;
-        private String qualification;
-        private String motif;
-        private String ecole;
-        private String mission;
-        private Decimal salaire;
+
         private Collaborateur collaborateur;
 
         public event SaveHandler onSaved;
@@ -52,7 +44,6 @@ namespace ABICommercialProject.View
             {
                 setFormToDetailCollabo();
             }
-     
         }
 
         public void init()
@@ -64,41 +55,56 @@ namespace ABICommercialProject.View
         private void setFormToNewCollabo()
         {
             collaborateur = null;
-            setControlEnabled(false);
-            btnSave.Enabled = false;
+            setContratControlEnabled(false);
+            setActionControlEnabled(false);
+            setCollaborateurControlEnabled(false);
         }
 
         private void setFormToDetailCollabo()
         {
-            setControlEnabled(true);
+            setContratControlEnabled(true);
+            setActionControlEnabled(false);
+            setCollaborateurControlEnabled(true);
             btnSave.Text = Tools.edit;
-            btnSave.Enabled = true;
         }
 
         private void setFormToEditCollabo()
         {
-            setControlEnabled(false);
-            btnSave.Enabled = true;
+            setContratControlEnabled(true);
+            setActionControlEnabled(true);
+            setCollaborateurControlEnabled(false);
         }
-
-        private void setControlEnabled(Boolean enable)
+        
+        private void setContratControlEnabled(Boolean enable)
         {
-            txtNom.ReadOnly = enable;
-            txtPrenom.ReadOnly = enable;
             txtMotif.ReadOnly = enable;
             txtMission.ReadOnly = enable;
-            txtEmail.ReadOnly = enable;
             txtEcole.ReadOnly = enable;
-            txtCodePostal.ReadOnly = enable;
-            txtAdresse.ReadOnly = enable;
-            txtQualification.ReadOnly = enable;
             txtSalaire.ReadOnly = enable;
-            txtTel.ReadOnly = enable;
+            txtQualification.ReadOnly = enable;
             txtFonction.ReadOnly = enable;
             cbxStatut.Enabled = !enable;
             cbxTypeContrat.Enabled = !enable;
             dtpDebutContrat.Enabled = !enable;
             dtpFinContrat.Enabled = !enable;
+        }
+
+        private void setActionControlEnabled(Boolean enable)
+        {
+            btnAugmentation.Visible = enable;
+            btnAvenant.Visible = enable;
+            btnCloturer.Visible = enable;
+        }
+
+        private void setCollaborateurControlEnabled(Boolean enable)
+        {
+            txtNom.ReadOnly = enable;
+            txtPrenom.ReadOnly = enable;
+            txtEmail.ReadOnly = enable;
+            txtCodePostal.ReadOnly = enable;
+            txtAdresse.ReadOnly = enable;
+            txtTel.ReadOnly = enable;
+            txtVille.ReadOnly = enable;
         }
 
         private void setCollaborateur(Collaborateur collaborateur)
@@ -149,7 +155,6 @@ namespace ABICommercialProject.View
                     txtEcole.Text = mission.AgenceInterim;
 
                     displayFormInterim();
-
                 }
             }
             if (contrat is Cdi)
@@ -157,7 +162,6 @@ namespace ABICommercialProject.View
                 cbxTypeContrat.SelectedItem = TypeContrat.CDI;
                 displayFormCdi();
             }
-
         }
 
         private void displayFormCdd()
@@ -173,7 +177,6 @@ namespace ABICommercialProject.View
         private void displayFormCdi()
         {
             hideFields();
-
         }
 
         private void displayFormStage()
@@ -201,10 +204,6 @@ namespace ABICommercialProject.View
             lblEcole.Visible = true;
             txtEcole.Visible = true;
         }
-
-
-
-        
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -291,27 +290,6 @@ namespace ABICommercialProject.View
 
         }
 
-
-
-        private void setActionControl(Boolean choice)
-        {
-            btnSave.Enabled = true;
-            btnCancel.Enabled = true;
-
-            if (!choice)
-            {
-                btnSave.Text = Tools.edit;
-                
-            }
-            else
-            {
-                btnSave.Text = Tools.save;
-            }
-        }
-
-
-
-
         private void cbxTypeContrat_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDD.ToString())
@@ -331,13 +309,7 @@ namespace ABICommercialProject.View
             {
                 displayFormInterim();
             }
-            isFormReady();
         }
-
-
-        
-
-        
 
         private void hideFields()
         {
@@ -356,9 +328,11 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(btnSave.Text == Tools.save) onSaved(Tools.save);
-            if(btnSave.Text == Tools.edit) onSaved(Tools.edit);
-            
+            if (checkup())
+            {
+                if (btnSave.Text == Tools.save) onSaved(Tools.save);
+                if (btnSave.Text == Tools.edit) onSaved(Tools.edit);
+            }
         }
 
         public void displayErrorMessage(String message, String title)
@@ -366,181 +340,118 @@ namespace ABICommercialProject.View
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void isFormReady()
+        private Boolean checkup()
         {
-            Boolean ready;
-            if (String.IsNullOrWhiteSpace(nom) || String.IsNullOrWhiteSpace(prenom) || String.IsNullOrWhiteSpace(fonction)
-                 || String.IsNullOrWhiteSpace(qualification) || salaire < 0)
-            {
-                ready = false;
-                
-            }
-            else ready = true;
-
-            //if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDI.ToString())
+            Boolean checkPassed = true;
+            //Decimal salaire;
+            //if (Decimal.TryParse(txtSalaire.Text.Trim(), out salaire))
             //{
-            //    ready = false;
+            //    if (salaire <= 0)
+            //    {
+            //        errorProviderSalaire.SetError(txtSalaire, "Requis");
+            //        checkPassed = false;
+            //        this.salaire = 0;
+            //    }
+            //    else
+            //    {
+            //        errorProviderSalaire.SetError(txtSalaire, String.Empty);
+            //        this.salaire = salaire;
+            //    }
             //}
-            if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDD.ToString())
-            {
-                if (String.IsNullOrWhiteSpace(motif))
-                {
-                    ready = false;
-                }
-                else ready = true;
-            }
+            //else
+            //{
+            //    errorProviderSalaire.SetError(txtSalaire, "Requis");
+            //    this.salaire = 0;
+            //    checkPassed = false;
+            //}
 
-            if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Stage.ToString())
-            {
-                if (String.IsNullOrWhiteSpace(motif) || String.IsNullOrWhiteSpace(ecole) || String.IsNullOrWhiteSpace(mission))
-                {
-                    ready = false;
-                }
-                else ready = true;
-            }
-            if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Interim.ToString())
-            {
-                if (String.IsNullOrWhiteSpace(motif) )
-                {
-                    ready = false;
-                }
-                else ready = true;
+            //if (Tools.IsNameValid(txtQualification.Text))
+            //{
+            //    errorProviderQualification.SetError(txtQualification, String.Empty);
+            //    this.qualification = txtQualification.Text.Trim(); ;
+            //}
+            //else
+            //{
+            //    errorProviderQualification.SetError(txtQualification, "Requis");
+            //    this.qualification = null;
+            //    checkPassed = false;
+            //}
 
-            }
-            
-            btnSave.Enabled = ready;
+            //if (Tools.IsNameValid(txtFonction.Text))
+            //{
+            //    errorProviderFonction.SetError(txtFonction, String.Empty);
+            //    this.fonction = txtFonction.Text.Trim();
+            //}
+            //else
+            //{
+            //    errorProviderFonction.SetError(txtFonction, "Requis");
+            //    this.fonction = null;
+            //    checkPassed = false;
+            //}
+
+            //if (Tools.IsNameValid(txtPrenom.Text))
+            //{
+            //    errorProviderPrenom.SetError(txtPrenom, String.Empty);
+            //    this.prenom = txtPrenom.Text.Trim();
+            //}
+            //else
+            //{
+            //    errorProviderPrenom.SetError(txtPrenom, "Requis");
+            //    this.prenom = null;
+            //    checkPassed = false;
+            //}
+
+            //if (Tools.IsNameValid(txtNom.Text))
+            //{
+            //    errorProviderNom.SetError(txtNom, String.Empty);
+            //    this.nom = txtNom.Text.Trim();
+            //}
+            //else
+            //{
+            //    errorProviderNom.SetError(txtNom, "Requis");
+            //    this.nom = null;
+            //    checkPassed = false;
+            //}
+
+            //if (Tools.IsNameValid(txtMotif.Text))
+            //{
+            //    errorProviderMotif.SetError(txtMotif, String.Empty);
+            //    this.motif = txtMotif.Text.Trim();
+            //}
+            //else
+            //{
+            //    errorProviderMotif.SetError(txtMotif, "Requis");
+            //    this.nom = null;
+            //    checkPassed = false;
+            //}
+
+            //if (Tools.IsNameValid(txtMission.Text))
+            //{
+            //    errorProviderMission.SetError(txtMission, String.Empty);
+            //    this.mission = txtMission.Text.Trim();
+            //}
+            //else
+            //{
+            //    errorProviderMission.SetError(txtMission, "Requis");
+            //    this.nom = null;
+            //    checkPassed = false;
+            //}
+
+            //if (Tools.IsNameValid(txtEcole.Text))
+            //{
+            //    errorProviderEcole.SetError(txtEcole, String.Empty);
+            //    this.ecole = txtEcole.Text.Trim();
+            //}
+            //else
+            //{
+            //    errorProviderEcole.SetError(txtEcole, "Requis");
+            //    this.nom = null;
+            //    checkPassed = false;
+            //}
+
+            return checkPassed;
         }
-
-
-        private void txtSalaire_KeyUp(object sender, KeyEventArgs e)
-        {
-            Decimal salaire;
-            if (Decimal.TryParse(txtSalaire.Text.Trim(), out salaire))
-            {
-                if (salaire <= 0)
-                {
-                    errorProviderSalaire.SetError(txtSalaire, "Requis");
-                    this.salaire = 0;
-                }
-                else
-                {
-                    errorProviderSalaire.SetError(txtSalaire, String.Empty);
-                    this.salaire = salaire;
-                }
-            }
-            else
-            {
-                errorProviderSalaire.SetError(txtSalaire, "Requis");
-                this.salaire = 0;
-            }
-            isFormReady();
-        }
-
-        private void txtQualification_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtQualification.Text))
-            {
-                errorProviderQualification.SetError(txtQualification, String.Empty);
-                this.qualification = txtQualification.Text.Trim(); ;
-            }
-            else
-            {
-                errorProviderQualification.SetError(txtQualification, "Requis");
-                this.qualification = null;
-            }
-            isFormReady();
-        }
-
-        private void txtFonction_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtFonction.Text))
-            {
-                errorProviderFonction.SetError(txtFonction, String.Empty);
-                this.fonction = txtFonction.Text.Trim();
-            }
-            else
-            {
-                errorProviderFonction.SetError(txtFonction, "Requis");
-                this.fonction = null;
-            }
-            isFormReady();
-        }
-
-        private void txtPrenom_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtPrenom.Text))
-            {
-                errorProviderPrenom.SetError(txtPrenom, String.Empty);
-                this.prenom = txtPrenom.Text.Trim();
-            }
-            else
-            {
-                errorProviderPrenom.SetError(txtPrenom, "Requis");
-                this.prenom = null;
-            }
-            isFormReady();
-        }
-
-        private void txtNom_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtNom.Text))
-            {
-                errorProviderNom.SetError(txtNom, String.Empty);
-                this.nom = txtNom.Text.Trim();
-            }
-            else
-            {
-                errorProviderNom.SetError(txtNom, "Requis");
-                this.nom = null;
-            }
-            isFormReady();
-        }
-
-        private void txtMotif_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtMotif.Text))
-            {
-                errorProviderMotif.SetError(txtMotif, String.Empty);
-                this.motif = txtMotif.Text.Trim();
-            }
-            else
-            {
-                errorProviderMotif.SetError(txtMotif, "Requis");
-                this.nom = null;
-            }
-            isFormReady();
-        }
-
-        private void txtMission_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtMission.Text))
-            {
-                errorProviderMission.SetError(txtMission, String.Empty);
-                this.mission = txtMission.Text.Trim();
-            }
-            else
-            {
-                errorProviderMission.SetError(txtMission, "Requis");
-                this.nom = null;
-            }
-            isFormReady();
-        }
-
-        private void txtEcole_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Tools.IsNameValid(txtEcole.Text))
-            {
-                errorProviderEcole.SetError(txtEcole, String.Empty);
-                this.ecole = txtEcole.Text.Trim();
-            }
-            else
-            {
-                errorProviderEcole.SetError(txtEcole, "Requis");
-                this.nom = null;
-            }
-            isFormReady();
-        }
-
+        
         private void btnCloturer_Click(object sender, EventArgs e)
         {
             onClotured();

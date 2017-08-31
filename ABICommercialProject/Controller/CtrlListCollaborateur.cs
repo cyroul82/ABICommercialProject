@@ -31,7 +31,7 @@ namespace ABICommercialProject.Controller
             if (collaborateurList.ContainsKey(id))
             {
                 Collaborateur collabo = collaborateurList[id];
-                CtrlDetailCollaborateur ctrlNewCollabo = new CtrlDetailCollaborateur(collabo);
+                CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
             }
             else
             {

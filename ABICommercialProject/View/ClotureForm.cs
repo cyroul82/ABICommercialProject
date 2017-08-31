@@ -12,9 +12,15 @@ namespace ABICommercialProject.View
 {
     public partial class ClotureForm : Form
     {
+        public ClotureHandler onClotured;
         public ClotureForm()
         {
             InitializeComponent();
+        }
+
+        private void lblCloture_Click(object sender, EventArgs e)
+        {
+            onClotured();
         }
     }
 }

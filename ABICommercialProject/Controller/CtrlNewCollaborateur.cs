@@ -19,13 +19,8 @@ namespace ABICommercialProject.Controller
         {
             this.collaborateurForm = new CollaborateurForm();
             collaborateurForm.onSaved += new SaveHandler(this.savingCollabo);
-            collaborateurForm.onClotured += new ClotureHandler(this.cloturingContract);
         }
 
-        private void cloturingContract()
-        {
-            
-        }
 
         public void init()
         {

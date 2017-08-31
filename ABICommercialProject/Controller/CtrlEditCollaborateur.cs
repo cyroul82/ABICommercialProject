@@ -1,4 +1,5 @@
-﻿using ABICommercialProject.View;
+﻿using ABICommercialProject.Model;
+using ABICommercialProject.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,32 @@ namespace ABICommercialProject.Controller
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
             collaborateurForm.onSaved += new SaveHandler(this.clickEvent);
+            
+        }
+
+        public void init()
+        {
             collaborateurForm.displayDialog();
         }
 
         private void clickEvent(string message)
         {
-            //throw new NotImplementedException();
+            if (message == Tools.edit)
+            {
+                
+
+                if (collaborateur != null)
+                {
+                    collaborateur.Matricule = MainApp.matricule++;
+                    //onSavedCollabo(collaborateur);
+                    collaborateurForm.closeDialog();
+                }
+                else
+                {
+                    collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
+
+                }
+            }
         }
     }
 }

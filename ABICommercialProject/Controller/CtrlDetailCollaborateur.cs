@@ -24,6 +24,7 @@ namespace ABICommercialProject.Controller
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
                 collaborateurForm.onSaved += new SaveHandler(this.clickEvent);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.closingForm);
+                collaborateurForm.onClotured += new ClotureHandler(this.clotureContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
 
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
@@ -43,7 +44,12 @@ namespace ABICommercialProject.Controller
                     collaborateurForm.Activate();
                 }
             }
-            
+        }
+
+        private void clotureContrat()
+        {
+            ClotureForm clotureForm = new ClotureForm();
+            clotureForm.ShowDialog();
         }
 
         private void closingForm(object sender, FormClosingEventArgs e)
@@ -60,6 +66,7 @@ namespace ABICommercialProject.Controller
             {
                 collaborateurForm.Close();
                 CtrlEditCollaborateur edit = new CtrlEditCollaborateur(collaborateur);
+                        
 
             }
         }
