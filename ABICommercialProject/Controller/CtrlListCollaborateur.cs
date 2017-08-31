@@ -1,6 +1,7 @@
 ﻿using ABICommercialProject.Model;
 using ABICommercialProject.View;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +18,25 @@ namespace ABICommercialProject.Controller
 
         public CtrlListCollaborateur()
         {
-            //Collaborateur c = new Collaborateur("RAT", "Cyril", "Concepteur");
-            //c.Statut = true;
-            //Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
-            //Tools.collaborateurList.Add(564, c);
+            Collaborateur c = new Collaborateur("RAT", "Cyril", "Concepteur");
+            c.Matricule = 0;
+            c.Statut = true;
+            Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
+            collaborateurList.Add(0, c);
 
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
             collaborateurListForm.onClickNewCollabo += new EventHandler(this.ajoutCollabo);
+            collaborateurListForm.onSelectedCollabo += new SelectedColloboHandler(this.selectedCollabo);
             collaborateurListForm.MdiParent = MainApp.getInstance();
             collaborateurListForm.Show();
+        }
+
+        private void selectedCollabo(Int32 id)
+        {
+            Collaborateur collabo = collaborateurList[id];
+            CtrlDetailCollaborateur ctrlNewCollabo = new CtrlDetailCollaborateur(collabo);
+
         }
 
         private void ajoutCollabo(object sender, EventArgs e)

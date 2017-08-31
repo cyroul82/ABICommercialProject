@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
+    public delegate void SelectedColloboHandler(Int32 id);
     public partial class CollaborateurListForm : Form
     {
         private BindingSource bindingSourceCollabo;
@@ -19,6 +20,7 @@ namespace ABICommercialProject.View
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
         public event EventHandler onClickNewCollabo;
+        public SelectedColloboHandler onSelectedCollabo;
 
         public CollaborateurListForm(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
@@ -123,6 +125,12 @@ namespace ABICommercialProject.View
         private void btnCloture_Click(object sender, EventArgs e)
         {
             //CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
+        }
+
+        private void collaborateurDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Int32 id = Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value);
+            onSelectedCollabo(id);
         }
     }
 

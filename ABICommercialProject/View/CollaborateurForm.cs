@@ -29,11 +29,58 @@ namespace ABICommercialProject.View
         private Decimal salaire = 0;
 
         public ClickHandler clickEvent;
+        private Collaborateur collaborateur;
 
         public CollaborateurForm()
         {
             InitializeComponent();
             init();
+            collaborateur = null;
+        }
+
+        public CollaborateurForm(Collaborateur collaborateur)
+        {
+            InitializeComponent();
+            this.collaborateur = collaborateur;
+            setFormEnabled(false);
+            setCollaborateur(collaborateur);
+        }
+
+        private void setFormToContractType(Contrat contrat)
+        {
+            if (contrat != null)
+            {
+                cbxStatut.SelectedItem = contrat.StatutContrat;
+
+                if (contrat is Cdd)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.CDD;
+                    setFormToFormCdd();
+                }
+                if (contrat is Cdi)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.CDI;
+                    setFormToCdi();
+                }
+                if (contrat is Stage)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.Stage;
+                    setFormToStage();
+                }
+                if (contrat is MissionInterim)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.Interim;
+                    setFormToIterim();
+                }
+            }
+        }
+
+        private void setCollaborateur(Collaborateur collaborateur)
+        {
+            txtNom.Text = collaborateur.NomCollabo;
+            txtPrenom.Text = collaborateur.PrenomCollabo;
+            txtFonction.Text = collaborateur.FonctionCollabo;
+            setFormToContractType(collaborateur.getContrat());
         }
 
         public void init()
@@ -134,6 +181,22 @@ namespace ABICommercialProject.View
 
         }
 
+        /// <summary>
+        /// Set all the controls of the form to enable or disable
+        /// </summary>
+        /// <param name="enable"></param>
+        public void setFormEnabled(Boolean enable)
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Enabled = enable;
+            }
+
+            btnSave.Text = Tools.edit;
+            btnSave.Enabled = true;
+            btnCancel.Enabled = true;
+
+        }
 
 
 
@@ -142,42 +205,96 @@ namespace ABICommercialProject.View
         {
             if(cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDD.ToString())
             {
-                hideFields();
-                txtMotif.Visible = true;
-                lblMotif.Visible = true;
-                lblDateFinContrat.Visible = true;
-                dtpFinContrat.Visible = true;
+                setFormToFormCdd();
             }
-           else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDI.ToString())
+            else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDI.ToString())
             {
-                hideFields();
+                setFormToCdi();
             }
             else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Stage.ToString())
             {
-                hideFields();
-                txtMotif.Visible = true;
-                lblMotif.Visible = true;
-                lblDateFinContrat.Visible = true;
-                dtpFinContrat.Visible = true;
-                lblEcole.Text = "Ecole";
-                lblEcole.Visible = true;
-                txtEcole.Visible = true;
-                lblMisson.Visible = true;
-                txtMission.Visible = true;
+                setFormToStage();
 
             }
             else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Interim.ToString())
             {
-                hideFields();
-                txtMotif.Visible = true;
-                lblMotif.Visible = true;
-                lblDateFinContrat.Visible = true;
-                dtpFinContrat.Visible = true;
-                lblEcole.Text = "Agence";
-                lblEcole.Visible = true;
-                txtEcole.Visible = true;
+                setFormToIterim();
             }
             isFormReady();
+        }
+
+
+        public void setFormToFormCdd()
+        {
+            hideFields();
+            txtMotif.Visible = true;
+            lblMotif.Visible = true;
+            lblDateFinContrat.Visible = true;
+            dtpFinContrat.Visible = true;
+
+            if (collaborateur != null)
+            {
+                if (collaborateur.getContrat() is Cdd)
+                {
+                    Cdd cddContrat = collaborateur.getContrat() as Cdd;
+                    txtMotif.Text = cddContrat.Motif;
+                    dtpFinContrat.Text = cddContrat.DateFinContrat.ToString();
+                }
+            }
+        }
+
+        public void setFormToCdi()
+        {
+            hideFields();
+        }
+
+        public void setFormToStage()
+        {
+            hideFields();
+            txtMotif.Visible = true;
+            lblMotif.Visible = true;
+            lblDateFinContrat.Visible = true;
+            dtpFinContrat.Visible = true;
+            lblEcole.Text = "Ecole";
+            lblEcole.Visible = true;
+            txtEcole.Visible = true;
+            lblMisson.Visible = true;
+            txtMission.Visible = true;
+
+            if(collaborateur != null)
+            {
+                if(collaborateur.getContrat() is Stage)
+                {
+                    Stage stage = collaborateur.getContrat() as Stage;
+                    txtEcole.Text = stage.Ecole;
+                    txtMission.Text = stage.Mission;
+                    txtMotif.Text = stage.Mission;
+                    dtpFinContrat.Text = stage.DateFinContrat.ToString();
+                }
+            }
+        }
+
+        public void setFormToIterim()
+        {
+            hideFields();
+            txtMotif.Visible = true;
+            lblMotif.Visible = true;
+            lblDateFinContrat.Visible = true;
+            dtpFinContrat.Visible = true;
+            lblEcole.Text = "Agence";
+            lblEcole.Visible = true;
+            txtEcole.Visible = true;
+
+            if (collaborateur != null)
+            {
+                if (collaborateur.getContrat() is MissionInterim)
+                {
+                    MissionInterim mission = collaborateur.getContrat() as MissionInterim;
+                    txtMotif.Text = mission.Motif;
+                    dtpFinContrat.Text = mission.DateFinContrat.ToString();
+                    txtEcole.Text = mission.AgenceInterim;
+                }
+            }
         }
 
         private void hideFields()
@@ -197,7 +314,8 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            clickEvent?.Invoke(Tools.save);
+            if(btnSave.Text == Tools.save) clickEvent(Tools.save);
+            if(btnSave.Text == Tools.edit) clickEvent(Tools.edit);
         }
 
         private void isFormReady()

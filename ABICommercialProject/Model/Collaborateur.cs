@@ -149,6 +149,15 @@ namespace ABICommercialProject
             return contratActif == null ? false : true;
         }
 
+        /// <summary>
+        /// Return the contract actif of the collaborateur
+        /// </summary>
+        /// <returns></returns>
+        public Contrat getContrat()
+        {
+            return contratActif;
+        }
+
         
         /// <summary>
         /// Add a pay rise

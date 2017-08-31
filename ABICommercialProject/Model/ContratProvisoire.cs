@@ -29,7 +29,7 @@ namespace ABICommercialProject
             
         }
 
-        protected String Motif
+        public String Motif
         {
             get
             {
@@ -42,7 +42,7 @@ namespace ABICommercialProject
             }
         }
 
-        protected DateTime DateFinContrat
+        public DateTime DateFinContrat
         {
             get
             {

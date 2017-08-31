@@ -44,7 +44,6 @@ namespace ABICommercialProject.Controller
 
                 }
             }
-
         }
 
 

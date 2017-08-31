@@ -10,6 +10,7 @@ namespace ABICommercialProject.Model
     {
 
         public static String save = "Enregister";
+        public static String edit = "Editer";
 
         /// <summary>
         /// Check if the name length > 1  and that the name isn't null or empty

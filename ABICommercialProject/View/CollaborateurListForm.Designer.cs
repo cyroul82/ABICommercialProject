@@ -93,6 +93,7 @@
             this.collaborateurDataGrid.TabIndex = 4;
             this.collaborateurDataGrid.SelectionChanged += new System.EventHandler(this.collaborateurDataGrid_SelectionChanged);
             this.collaborateurDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.collaborateurDataGrid_MouseClick);
+            this.collaborateurDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.collaborateurDataGrid_MouseDoubleClick);
             // 
             // panel1
             // 
@@ -136,13 +137,13 @@
             this.btnCloture.UseVisualStyleBackColor = true;
             this.btnCloture.Click += new System.EventHandler(this.btnCloture_Click);
             // 
-            // CollaborateurList
+            // CollaborateurListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 472);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "CollaborateurList";
+            this.Name = "CollaborateurListForm";
             this.Text = "CollobarateurView";
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
