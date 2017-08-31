@@ -99,7 +99,7 @@ namespace ABICommercialProject
             {
                 if (contrat == null)
                 {
-                    throw new ArgumentNullException("Impossible to add a contract null");
+                    throw new NullReferenceException("Impossible to add a contract null");
                 }
                 else 
                 {
@@ -136,7 +136,7 @@ namespace ABICommercialProject
             }
             else
             {
-                throw new ArgumentNullException("Le collaborateur n'a aucun contrat actif à cloturer");
+                throw new NullReferenceException("Le collaborateur n'a aucun contrat actif à cloturer");
             }
         }
 
@@ -160,7 +160,7 @@ namespace ABICommercialProject
         {
             if (augmentation == null)
             {
-                throw new ArgumentNullException("Augmentation is null");
+                throw new NullReferenceException("Augmentation is null");
             }
 
             else {

@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
-    public delegate void SaveCollaboHandler(Collaborateur collabo);
+    public delegate void SavedCollaboHandler(Collaborateur collabo);
     public class CtrlNewCollaborateur
     {
-        public SaveCollaboHandler onSaveCollabo;
+        public SavedCollaboHandler onSavedCollabo;
+
         private CollaborateurForm collaborateurForm;
         public CtrlNewCollaborateur()
         { 
@@ -33,7 +34,7 @@ namespace ABICommercialProject.Controller
 
                 if (contrat != null && collaborateur != null)
                 {
-                    onSaveCollabo?.Invoke(collaborateur);
+                    onSavedCollabo?.Invoke(collaborateur);
                     //savingCollaborateur(collaborateur, contrat);
                     collaborateurForm.closeDialog();
                 }

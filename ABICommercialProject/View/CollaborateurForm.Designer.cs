@@ -575,7 +575,6 @@
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cbxTypeContrat;
         private System.Windows.Forms.GroupBox gpxTypeContrat;
         private System.Windows.Forms.Label lblTypeContrat;
@@ -616,5 +615,6 @@
         private System.Windows.Forms.Label lblCodePostal;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
+        internal System.Windows.Forms.Button btnSave;
     }
 }

@@ -32,7 +32,7 @@ namespace ABICommercialProject.Controller
         private void ajoutCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.onSaveCollabo += new SaveCollaboHandler(this.saveCollabo);
+            ctrlNewCollabo.onSavedCollabo += new SavedCollaboHandler(this.saveCollabo);
         }
 
         private void saveCollabo(Collaborateur collabo)
