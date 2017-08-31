@@ -78,6 +78,9 @@
             this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnAugmentation = new System.Windows.Forms.Button();
+            this.btnCloturer = new System.Windows.Forms.Button();
+            this.btnAvenant = new System.Windows.Forms.Button();
             this.gbCollaborateur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
             this.gpxTypeContrat.SuspendLayout();
@@ -530,11 +533,45 @@
             this.errorProviderMission.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderMission.ContainerControl = this;
             // 
+            // btnAugmentation
+            // 
+            this.btnAugmentation.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAugmentation.Location = new System.Drawing.Point(10, 407);
+            this.btnAugmentation.Name = "btnAugmentation";
+            this.btnAugmentation.Size = new System.Drawing.Size(89, 23);
+            this.btnAugmentation.TabIndex = 13;
+            this.btnAugmentation.Text = "Augmentation";
+            this.btnAugmentation.UseVisualStyleBackColor = true;
+            // 
+            // btnCloturer
+            // 
+            this.btnCloturer.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCloturer.Location = new System.Drawing.Point(560, 407);
+            this.btnCloturer.Name = "btnCloturer";
+            this.btnCloturer.Size = new System.Drawing.Size(75, 23);
+            this.btnCloturer.TabIndex = 14;
+            this.btnCloturer.Text = "Clôturer";
+            this.btnCloturer.UseVisualStyleBackColor = true;
+            this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
+            // 
+            // btnAvenant
+            // 
+            this.btnAvenant.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAvenant.Location = new System.Drawing.Point(465, 407);
+            this.btnAvenant.Name = "btnAvenant";
+            this.btnAvenant.Size = new System.Drawing.Size(89, 23);
+            this.btnAvenant.TabIndex = 15;
+            this.btnAvenant.Text = "Avenant";
+            this.btnAvenant.UseVisualStyleBackColor = true;
+            // 
             // CollaborateurForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 443);
+            this.Controls.Add(this.btnAvenant);
+            this.Controls.Add(this.btnCloturer);
+            this.Controls.Add(this.btnAugmentation);
             this.Controls.Add(this.gpxTypeContrat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -616,5 +653,8 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         internal System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAvenant;
+        private System.Windows.Forms.Button btnCloturer;
+        private System.Windows.Forms.Button btnAugmentation;
     }
 }

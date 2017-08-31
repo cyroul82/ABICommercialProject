@@ -43,6 +43,11 @@ namespace ABICommercialProject.View
             dt.Columns.Add("Nom");
             dt.Columns.Add("Prénom");
             dt.Columns.Add("Fonction");
+            dt.Columns.Add("Qualification");
+            dt.Columns.Add("Contrat");
+            dt.Columns.Add("Statut");
+            dt.Columns.Add("SalaireBrut");
+            dt.Columns.Add("Actif");
         }
 
         public void display()
@@ -87,6 +92,20 @@ namespace ABICommercialProject.View
                 dr["Nom"] = collaborateur.NomCollabo;
                 dr["Prénom"] = collaborateur.PrenomCollabo;
                 dr["Fonction"] = collaborateur.FonctionCollabo;
+                dr["Qualification"] = collaborateur.getContratActif().Qualification;
+
+                TypeContrat type = TypeContrat.CDI;
+
+                if (collaborateur.getContratActif() is Cdi) type = TypeContrat.CDI;
+                if (collaborateur.getContratActif() is Cdd) type = TypeContrat.CDD;
+                if (collaborateur.getContratActif() is Stage) type = TypeContrat.Stage;
+                if (collaborateur.getContratActif() is MissionInterim) type = TypeContrat.Interim;
+
+
+                dr["Contrat"] =  type.ToString();
+                dr["Statut"] = collaborateur.getContratActif().StatutContrat;
+                dr["SalaireBrut"] = collaborateur.getContratActif().SalaireBrut;
+                dr["Actif"] = collaborateur.hasContratActif() ? "Actif" : "Cloturé";
                 dt.Rows.Add(dr);
             }
         }

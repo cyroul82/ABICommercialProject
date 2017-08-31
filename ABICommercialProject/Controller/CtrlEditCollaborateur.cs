@@ -16,7 +16,7 @@ namespace ABICommercialProject.Controller
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
-            collaborateurForm.onSaved += new ActionSaveHandler(this.clickEvent);
+            collaborateurForm.onSaved += new SaveHandler(this.clickEvent);
             collaborateurForm.displayDialog();
         }
 

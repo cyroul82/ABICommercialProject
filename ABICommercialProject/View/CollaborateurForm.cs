@@ -12,7 +12,8 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public delegate void ActionSaveHandler(String message);
+    public delegate void SaveHandler(String message);
+    public delegate void ClotureHandler();
 
     public partial class CollaborateurForm : Form
     {
@@ -27,8 +28,8 @@ namespace ABICommercialProject.View
         private Decimal salaire;
         private Collaborateur collaborateur;
 
-        public event ActionSaveHandler onSaved;
-
+        public event SaveHandler onSaved;
+        public event ClotureHandler onClotured;
         public CollaborateurForm()
         {
             InitializeComponent();
@@ -69,14 +70,15 @@ namespace ABICommercialProject.View
 
         private void setFormToDetailCollabo()
         {
-            setControlEnabled(false);
+            setControlEnabled(true);
             btnSave.Text = Tools.edit;
+            btnSave.Enabled = true;
         }
 
         private void setFormToEditCollabo()
         {
-            setControlEnabled(true);
-            
+            setControlEnabled(false);
+            btnSave.Enabled = true;
         }
 
         private void setControlEnabled(Boolean enable)
@@ -537,6 +539,11 @@ namespace ABICommercialProject.View
                 this.nom = null;
             }
             isFormReady();
+        }
+
+        private void btnCloturer_Click(object sender, EventArgs e)
+        {
+            onClotured();
         }
     }
 }
