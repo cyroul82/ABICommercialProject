@@ -9,7 +9,7 @@ namespace ABICommercialProject.Model
     class Tools
     {
 
-        public static String save = "Enregister";
+        public static String save = "Enregistrer";
         public static String edit = "Editer";
 
         /// <summary>

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public delegate void ActionClickSave(String message);
+    public delegate void ActionSaveHandler(String message);
 
     public partial class CollaborateurForm : Form
     {
@@ -27,7 +27,7 @@ namespace ABICommercialProject.View
         private Decimal salaire;
         private Collaborateur collaborateur;
 
-        public ActionClickSave onSaved;
+        public event ActionSaveHandler onSaved;
 
         public CollaborateurForm()
         {
@@ -139,11 +139,11 @@ namespace ABICommercialProject.View
                 String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
                 String fonction = Tools.firstLetterUppercase(txtFonction.Text.Trim());
 
-                return new Collaborateur(nom, prenom, fonction);
+                return new Collaborateur(nom, prenom, fonction, getContrat());
             }
         }
 
-        public Contrat getContrat()
+        private Contrat getContrat()
         {
             Contrat contrat;
             try
@@ -343,6 +343,11 @@ namespace ABICommercialProject.View
             if(btnSave.Text == Tools.save) onSaved(Tools.save);
             if(btnSave.Text == Tools.edit) onSaved(Tools.edit);
             
+        }
+
+        public void displayErrorMessage(String message, String title)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void isFormReady()

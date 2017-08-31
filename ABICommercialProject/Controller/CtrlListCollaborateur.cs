@@ -18,12 +18,6 @@ namespace ABICommercialProject.Controller
 
         public CtrlListCollaborateur()
         {
-            Collaborateur c = new Collaborateur("RAT", "Cyril", "Concepteur");
-            c.Matricule = 0;
-            c.Statut = true;
-            Cdi contrat = new Cdi("qualifié", DateTime.Now, Statut.Cadre, 1850);
-            collaborateurList.Add(0, c);
-
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
             collaborateurListForm.onClickNewCollabo += new EventHandler(this.newCollabo);
@@ -49,12 +43,14 @@ namespace ABICommercialProject.Controller
         private void newCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.onSavedCollabo += new SavedCollaboHandler(this.saveCollabo);
+            ctrlNewCollabo.onSavedCollabo += new SavedCollaboHandler(this.onSavedCollabo);
+            ctrlNewCollabo.init();
         }
 
-        private void saveCollabo(Collaborateur collabo)
+        private void onSavedCollabo(Collaborateur collabo)
         {
-            Console.WriteLine("dans saveCollabo....");
+            collaborateurList.Add(collabo.Matricule, collabo);
+            collaborateurListForm.setDataSource();
         }
 
         private void collobarateurViewClosing(object sender, FormClosingEventArgs e)

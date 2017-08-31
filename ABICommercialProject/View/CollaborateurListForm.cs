@@ -15,7 +15,6 @@ namespace ABICommercialProject.View
     public delegate void SelectedColloboHandler(Int32 id);
     public partial class CollaborateurListForm : Form
     {
-        private BindingSource bindingSourceCollabo;
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
@@ -27,7 +26,14 @@ namespace ABICommercialProject.View
             InitializeComponent();
             this.collaborateurList = collaborateurList;
             initializeDataTable();
-            
+            setDataSource();
+        }
+
+        public void setDataSource()
+        {
+            dt.Clear();
+            collaborateurDataGrid.DataSource = getCollaborateurs();
+            collaborateurDataGrid.Refresh();
         }
 
         private void initializeDataTable()
@@ -37,10 +43,6 @@ namespace ABICommercialProject.View
             dt.Columns.Add("Nom");
             dt.Columns.Add("Prénom");
             dt.Columns.Add("Fonction");
-
-            bindingSourceCollabo = new BindingSource();
-            bindingSourceCollabo.DataSource = getCollaborateurs();
-            collaborateurDataGrid.DataSource = bindingSourceCollabo;
         }
 
         public void display()
@@ -55,7 +57,7 @@ namespace ABICommercialProject.View
             }
         }
 
-        public DataTable getCollaborateurs()
+        private DataTable getCollaborateurs()
         {
             if (dt != null)
             {
@@ -63,13 +65,7 @@ namespace ABICommercialProject.View
                 {
                     if (c.Value.Statut)
                     {
-                        DataRow dr = dt.NewRow();
-                        dr["Matricule"] = c.Value.Matricule;
-                        dr["Nom"] = c.Value.NomCollabo;
-                        dr["Prénom"] = c.Value.PrenomCollabo;
-                        dr["Fonction"] = c.Value.FonctionCollabo;
-                        dt.Rows.Add(dr);
-                        Console.WriteLine(c.Value.NomCollabo);
+                        addCollaborateur(c.Value);
                     }
                     else
                     {
@@ -82,20 +78,25 @@ namespace ABICommercialProject.View
             else return null;
         }
 
+        private void addCollaborateur(Collaborateur collaborateur)
+        {
+            if (dt != null)
+            {
+                DataRow dr = dt.NewRow();
+                dr["Matricule"] = collaborateur.Matricule;
+                dr["Nom"] = collaborateur.NomCollabo;
+                dr["Prénom"] = collaborateur.PrenomCollabo;
+                dr["Fonction"] = collaborateur.FonctionCollabo;
+                dt.Rows.Add(dr);
+            }
+        }
+
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
             onClickNewCollabo(sender, e);
         }
 
-        public void addCollaborateur(Collaborateur collaborateur)
-        {
-            DataRow dr = dt.NewRow();
-            dr["Matricule"] = collaborateur.Matricule;
-            dr["Nom"] = collaborateur.NomCollabo;
-            dr["Prénom"] = collaborateur.PrenomCollabo;
-            dr["Fonction"] = collaborateur.FonctionCollabo;
-            dt.Rows.Add(dr);
-        }
+        
 
         private void collaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)
         {

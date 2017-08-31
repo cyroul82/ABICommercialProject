@@ -32,17 +32,11 @@ namespace ABICommercialProject
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
-        public Collaborateur(String nom, String prenom, String fonctionCollabo)
-        {
-            initializeConstuctor(nom, prenom, fonctionCollabo);
-        }
-
         public Collaborateur(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
         {
-            initializeConstuctor(nom, prenom, fonctionCollabo);
-            this.contratActif = contratActif;
+            initializeConstuctor(nom, prenom, fonctionCollabo, contratActif);
+            statut = true;
         }
-
 
         /// <summary>
         /// Initialize properties
@@ -50,7 +44,7 @@ namespace ABICommercialProject
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
-        private void initializeConstuctor(String nom, String prenom, String fonctionCollabo)
+        private void initializeConstuctor(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
         {
             Matricule = 0;
             NomCollabo = nom;
@@ -58,7 +52,7 @@ namespace ABICommercialProject
             FonctionCollabo = fonctionCollabo;
             this.listContrat = new SortedDictionary<Int32, Contrat>();
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
-            contratActif = null;
+            this.contratActif = contratActif;
 
         }
 

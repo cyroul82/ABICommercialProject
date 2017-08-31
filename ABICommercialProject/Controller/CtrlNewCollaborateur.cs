@@ -6,7 +6,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
@@ -17,35 +16,32 @@ namespace ABICommercialProject.Controller
 
         private CollaborateurForm collaborateurForm;
         public CtrlNewCollaborateur()
-        { 
+        {
             this.collaborateurForm = new CollaborateurForm();
-           
-            collaborateurForm.onSaved += new ActionClickSave(this.savingCollabo);
+            collaborateurForm.onSaved += new ActionSaveHandler(this.savingCollabo);
+        }
+
+        public void init()
+        {
             collaborateurForm.displayDialog();
         }
 
         private void savingCollabo(String message)
         {
-            Console.WriteLine("dans saving collabo ctrlNEw");
             if (message == Tools.save)
             {
-                Console.WriteLine("dans saving collabo ctrlNEw");
-                Contrat contrat = collaborateurForm.getContrat();
+                //Contrat contrat = collaborateurForm.getContrat();
                 Collaborateur collaborateur = collaborateurForm.getCollaborateur();
 
-
-                if (contrat != null && collaborateur != null)
+                if (collaborateur != null)
                 {
-                    collaborateur.AddContrat(contrat);
-                    collaborateur.setContratActif(contrat);
-                    collaborateur.Statut = true;
                     collaborateur.Matricule = MainApp.matricule++;
                     onSavedCollabo(collaborateur);
                     collaborateurForm.closeDialog();
                 }
                 else
                 {
-                    collaborateurForm.displayMessageBox("Unexpected Error, Contrat or Collaborateur is null", "Error App", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
 
                 }
             }
