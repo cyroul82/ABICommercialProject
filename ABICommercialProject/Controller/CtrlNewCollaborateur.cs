@@ -30,7 +30,6 @@ namespace ABICommercialProject.Controller
         {
             if (message == Tools.save)
             {
-                //Contrat contrat = collaborateurForm.getContrat();
                 Collaborateur collaborateur = collaborateurForm.getCollaborateur();
 
                 if (collaborateur != null)

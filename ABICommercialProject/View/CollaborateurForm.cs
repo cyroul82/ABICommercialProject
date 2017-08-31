@@ -40,13 +40,33 @@ namespace ABICommercialProject.View
         {
             InitializeComponent();
             this.collaborateur = collaborateur;
-            setFormEnabled(false);
+            init();
+            setFormEnabled(edit);
             setCollaborateur(collaborateur);
             setActionControl(edit);
             if (edit)
             {
                 setFormEdit();
             }
+        }
+
+        void setFormToNewCollabo()
+        {
+
+        }
+
+        void setFormToDetailCollabo()
+        {
+        }
+
+        void setFormToEditCollabo()
+        {
+
+        }
+
+        void setControlEnabled(Boolean enable)
+        {
+
         }
 
         private void setFormEdit()
@@ -92,6 +112,7 @@ namespace ABICommercialProject.View
             txtNom.Text = collaborateur.NomCollabo;
             txtPrenom.Text = collaborateur.PrenomCollabo;
             txtFonction.Text = collaborateur.FonctionCollabo;
+            setContractValue();
             setFormToContractType(collaborateur.getContratActif());
         }
 
@@ -116,11 +137,6 @@ namespace ABICommercialProject.View
         public void displayDialog()
         {
             this.ShowDialog();
-        }
-
-        public void displayMessageBox(String message, String title, MessageBoxButtons btns, MessageBoxIcon icons)
-        {
-            MessageBox.Show(message, title, btns, icons);
         }
 
         /// <summary>
@@ -199,12 +215,23 @@ namespace ABICommercialProject.View
         /// <param name="enable"></param>
         public void setFormEnabled(Boolean enable)
         {
-            foreach (Control ctrl in this.Controls)
-            {
-                ctrl.Enabled = enable;
-            }
 
-            
+            txtNom.ReadOnly = enable;
+            txtPrenom.ReadOnly = enable;
+            txtMotif.ReadOnly = enable;
+            txtMission.ReadOnly = enable;
+            txtEmail.ReadOnly = enable;
+            txtEcole.ReadOnly = enable;
+            txtCodePostal.ReadOnly = enable;
+            txtAdresse.ReadOnly = enable;
+            txtQualification.ReadOnly = enable;
+            txtSalaire.ReadOnly = enable;
+            txtTel.ReadOnly = enable;
+            txtFonction.ReadOnly = enable;
+            cbxStatut.Enabled = !enable;
+            cbxTypeContrat.Enabled = !enable;
+            dtpDebutContrat.Enabled = !enable;
+            dtpFinContrat.Enabled = !enable;
 
         }
 
@@ -272,6 +299,7 @@ namespace ABICommercialProject.View
         public void setFormToCdi()
         {
             hideFields();
+
         }
 
         public void setFormToStage()
@@ -296,6 +324,7 @@ namespace ABICommercialProject.View
                     txtMission.Text = stage.Mission;
                     txtMotif.Text = stage.Mission;
                     dtpFinContrat.Text = stage.DateFinContrat.ToString();
+
                 }
             }
         }
@@ -319,8 +348,17 @@ namespace ABICommercialProject.View
                     txtMotif.Text = mission.Motif;
                     dtpFinContrat.Text = mission.DateFinContrat.ToString();
                     txtEcole.Text = mission.AgenceInterim;
+
                 }
             }
+        }
+
+        private void setContractValue()
+        {
+            txtSalaire.Text = collaborateur.getContratActif().SalaireBrut.ToString();
+            txtQualification.Text = collaborateur.getContratActif().Qualification;
+            dtpDebutContrat.Text = collaborateur.getContratActif().DateDebutContrat.ToString();
+
         }
 
         private void hideFields()
@@ -354,7 +392,7 @@ namespace ABICommercialProject.View
         {
             Boolean ready;
             if (String.IsNullOrWhiteSpace(nom) || String.IsNullOrWhiteSpace(prenom) || String.IsNullOrWhiteSpace(fonction)
-                 || String.IsNullOrWhiteSpace(qualification) || salaire == 0)
+                 || String.IsNullOrWhiteSpace(qualification) || salaire < 0)
             {
                 ready = false;
                 
