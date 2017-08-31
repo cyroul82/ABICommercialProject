@@ -26,7 +26,7 @@ namespace ABICommercialProject.Controller
 
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
-            collaborateurListForm.onClickNewCollabo += new EventHandler(this.ajoutCollabo);
+            collaborateurListForm.onClickNewCollabo += new EventHandler(this.newCollabo);
             collaborateurListForm.onSelectedCollabo += new SelectedColloboHandler(this.selectedCollabo);
             collaborateurListForm.MdiParent = MainApp.getInstance();
             collaborateurListForm.Show();
@@ -34,12 +34,19 @@ namespace ABICommercialProject.Controller
 
         private void selectedCollabo(Int32 id)
         {
-            Collaborateur collabo = collaborateurList[id];
-            CtrlDetailCollaborateur ctrlNewCollabo = new CtrlDetailCollaborateur(collabo);
+            if (collaborateurList.ContainsKey(id))
+            {
+                Collaborateur collabo = collaborateurList[id];
+                CtrlDetailCollaborateur ctrlNewCollabo = new CtrlDetailCollaborateur(collabo);
+            }
+            else
+            {
+                MessageBox.Show("Cant't find the id ", "Error collabo matricule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
-        private void ajoutCollabo(object sender, EventArgs e)
+        private void newCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
             ctrlNewCollabo.onSavedCollabo += new SavedCollaboHandler(this.saveCollabo);
@@ -47,7 +54,7 @@ namespace ABICommercialProject.Controller
 
         private void saveCollabo(Collaborateur collabo)
         {
-            collaborateurList.Add(564, collabo);
+            Console.WriteLine("dans saveCollabo....");
         }
 
         private void collobarateurViewClosing(object sender, FormClosingEventArgs e)

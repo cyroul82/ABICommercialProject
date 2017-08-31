@@ -87,7 +87,7 @@ namespace ABICommercialProject.View
             onClickNewCollabo(sender, e);
         }
 
-        private void addCollaborateur(Collaborateur collaborateur)
+        public void addCollaborateur(Collaborateur collaborateur)
         {
             DataRow dr = dt.NewRow();
             dr["Matricule"] = collaborateur.Matricule;
@@ -95,11 +95,6 @@ namespace ABICommercialProject.View
             dr["Prénom"] = collaborateur.PrenomCollabo;
             dr["Fonction"] = collaborateur.FonctionCollabo;
             dt.Rows.Add(dr);
-        }
-
-        private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
-        {
-            addCollaborateur(collaborateur);
         }
 
         private void collaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)

@@ -20,22 +20,27 @@ namespace ABICommercialProject.Controller
         { 
             this.collaborateurForm = new CollaborateurForm();
            
-            collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
+            collaborateurForm.onSaved += new ActionClickSave(this.savingCollabo);
             collaborateurForm.displayDialog();
         }
 
-        private void clickEvent(String message)
+        private void savingCollabo(String message)
         {
+            Console.WriteLine("dans saving collabo ctrlNEw");
             if (message == Tools.save)
             {
+                Console.WriteLine("dans saving collabo ctrlNEw");
                 Contrat contrat = collaborateurForm.getContrat();
                 Collaborateur collaborateur = collaborateurForm.getCollaborateur();
 
 
                 if (contrat != null && collaborateur != null)
                 {
-                    onSavedCollabo?.Invoke(collaborateur);
-                    //savingCollaborateur(collaborateur, contrat);
+                    collaborateur.AddContrat(contrat);
+                    collaborateur.setContratActif(contrat);
+                    collaborateur.Statut = true;
+                    collaborateur.Matricule = MainApp.matricule++;
+                    onSavedCollabo(collaborateur);
                     collaborateurForm.closeDialog();
                 }
                 else
@@ -45,28 +50,5 @@ namespace ABICommercialProject.Controller
                 }
             }
         }
-
-
-        private void savingCollaborateur(Collaborateur collaborateur, Contrat contrat)
-        {
-            //this.addCollaborateur(collaborateur);
-
-
-        }
-
-        //private void addCollaborateur(Collaborateur collaborateur)
-        //{
-        //    DataRow dr = dt.NewRow();
-        //    dr["Matricule"] = collaborateur.Matricule;
-        //    dr["Nom"] = collaborateur.NomCollabo;
-        //    dr["Prénom"] = collaborateur.PrenomCollabo;
-        //    dr["Fonction"] = collaborateur.FonctionCollabo;
-        //    dt.Rows.Add(dr);
-        //}
-
-
-
     }
-
-
 }

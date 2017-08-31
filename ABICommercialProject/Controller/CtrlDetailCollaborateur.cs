@@ -22,7 +22,7 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
+                collaborateurForm.onSaved += new ActionClickSave(this.clickEvent);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.closingForm);
                 collaborateurForm.MdiParent = MainApp.getInstance();
 

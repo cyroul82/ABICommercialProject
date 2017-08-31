@@ -12,11 +12,10 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public delegate void ClickHandler(String message);
+    public delegate void ActionClickSave(String message);
 
     public partial class CollaborateurForm : Form
     {
-        public SavingCollaborateur savingCollaborateur;
          
         private String nom;
         private String prenom;
@@ -25,11 +24,10 @@ namespace ABICommercialProject.View
         private String motif;
         private String ecole;
         private String mission;
-
-        private Decimal salaire = 0;
-
-        public ClickHandler clickEvent;
+        private Decimal salaire;
         private Collaborateur collaborateur;
+
+        public ActionClickSave onSaved;
 
         public CollaborateurForm()
         {
@@ -53,7 +51,6 @@ namespace ABICommercialProject.View
 
         private void setFormEdit()
         {
-
             txtAdresse.Enabled = true;
             txtCodePostal.Enabled = true;
             txtNom.Enabled = true;
@@ -95,7 +92,7 @@ namespace ABICommercialProject.View
             txtNom.Text = collaborateur.NomCollabo;
             txtPrenom.Text = collaborateur.PrenomCollabo;
             txtFonction.Text = collaborateur.FonctionCollabo;
-            setFormToContractType(collaborateur.getContrat());
+            setFormToContractType(collaborateur.getContratActif());
         }
 
         public void init()
@@ -263,9 +260,9 @@ namespace ABICommercialProject.View
 
             if (collaborateur != null)
             {
-                if (collaborateur.getContrat() is Cdd)
+                if (collaborateur.getContratActif() is Cdd)
                 {
-                    Cdd cddContrat = collaborateur.getContrat() as Cdd;
+                    Cdd cddContrat = collaborateur.getContratActif() as Cdd;
                     txtMotif.Text = cddContrat.Motif;
                     dtpFinContrat.Text = cddContrat.DateFinContrat.ToString();
                 }
@@ -292,9 +289,9 @@ namespace ABICommercialProject.View
 
             if(collaborateur != null)
             {
-                if(collaborateur.getContrat() is Stage)
+                if(collaborateur.getContratActif() is Stage)
                 {
-                    Stage stage = collaborateur.getContrat() as Stage;
+                    Stage stage = collaborateur.getContratActif() as Stage;
                     txtEcole.Text = stage.Ecole;
                     txtMission.Text = stage.Mission;
                     txtMotif.Text = stage.Mission;
@@ -316,9 +313,9 @@ namespace ABICommercialProject.View
 
             if (collaborateur != null)
             {
-                if (collaborateur.getContrat() is MissionInterim)
+                if (collaborateur.getContratActif() is MissionInterim)
                 {
-                    MissionInterim mission = collaborateur.getContrat() as MissionInterim;
+                    MissionInterim mission = collaborateur.getContratActif() as MissionInterim;
                     txtMotif.Text = mission.Motif;
                     dtpFinContrat.Text = mission.DateFinContrat.ToString();
                     txtEcole.Text = mission.AgenceInterim;
@@ -343,8 +340,9 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(btnSave.Text == Tools.save) clickEvent(Tools.save);
-            if(btnSave.Text == Tools.edit) clickEvent(Tools.edit);
+            if(btnSave.Text == Tools.save) onSaved(Tools.save);
+            if(btnSave.Text == Tools.edit) onSaved(Tools.edit);
+            
         }
 
         private void isFormReady()

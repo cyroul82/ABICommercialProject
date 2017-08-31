@@ -17,6 +17,7 @@ namespace ABICommercialProject
     {
         private static MainApp instance;
         internal CtrlListCollaborateur ctrlListCollaborateur;
+        public static Int32 matricule = 0;
         private MainApp()
         {
             InitializeComponent();

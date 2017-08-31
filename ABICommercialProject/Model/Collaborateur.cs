@@ -153,9 +153,18 @@ namespace ABICommercialProject
         /// Return the contract actif of the collaborateur
         /// </summary>
         /// <returns></returns>
-        public Contrat getContrat()
+        public Contrat getContratActif()
         {
             return contratActif;
+        }
+
+        /// <summary>
+        /// Set the contrat actif 
+        /// </summary>
+        /// <param name="contrat"></param>
+        public void setContratActif(Contrat contrat)
+        {
+            this.contratActif = contrat != null ? contrat : null;
         }
 
         
