@@ -14,7 +14,7 @@ namespace ABICommercialProject.Controller
 		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
-            this.collaborateurForm = new CollaborateurForm(collaborateur, false);
+            this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
             collaborateurForm.onSaved += new ActionSaveHandler(this.clickEvent);
             collaborateurForm.displayDialog();

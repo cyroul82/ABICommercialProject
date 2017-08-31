@@ -33,7 +33,7 @@ namespace ABICommercialProject.View
         {
             InitializeComponent();
             init();
-            collaborateur = null;
+            setFormToNewCollabo();
         }
 
         public CollaborateurForm(Collaborateur collaborateur, Boolean edit)
@@ -41,70 +41,62 @@ namespace ABICommercialProject.View
             InitializeComponent();
             this.collaborateur = collaborateur;
             init();
-            setFormEnabled(edit);
+
             setCollaborateur(collaborateur);
-            setActionControl(edit);
             if (edit)
             {
-                setFormEdit();
+                setFormToEditCollabo();
             }
-        }
-
-        void setFormToNewCollabo()
-        {
-
-        }
-
-        void setFormToDetailCollabo()
-        {
-        }
-
-        void setFormToEditCollabo()
-        {
-
-        }
-
-        void setControlEnabled(Boolean enable)
-        {
-
-        }
-
-        private void setFormEdit()
-        {
-            txtAdresse.Enabled = true;
-            txtCodePostal.Enabled = true;
-            txtNom.Enabled = true;
-            txtPrenom.Enabled = true;
-            txtTel.Enabled = true;
-        }
-
-        private void setFormToContractType(Contrat contrat)
-        {
-            if (contrat != null)
+            else
             {
-                cbxStatut.SelectedItem = contrat.StatutContrat;
-
-                if (contrat is Cdd)
-                {
-                    cbxTypeContrat.SelectedItem = TypeContrat.CDD;
-                    setFormToFormCdd();
-                }
-                if (contrat is Cdi)
-                {
-                    cbxTypeContrat.SelectedItem = TypeContrat.CDI;
-                    setFormToCdi();
-                }
-                if (contrat is Stage)
-                {
-                    cbxTypeContrat.SelectedItem = TypeContrat.Stage;
-                    setFormToStage();
-                }
-                if (contrat is MissionInterim)
-                {
-                    cbxTypeContrat.SelectedItem = TypeContrat.Interim;
-                    setFormToIterim();
-                }
+                setFormToDetailCollabo();
             }
+     
+        }
+
+        public void init()
+        {
+            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
+            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
+        }
+
+        private void setFormToNewCollabo()
+        {
+            collaborateur = null;
+            setControlEnabled(false);
+            btnSave.Enabled = false;
+        }
+
+        private void setFormToDetailCollabo()
+        {
+            setControlEnabled(false);
+            btnSave.Text = Tools.edit;
+        }
+
+        private void setFormToEditCollabo()
+        {
+            setControlEnabled(true);
+            
+        }
+
+        private void setControlEnabled(Boolean enable)
+        {
+            txtNom.ReadOnly = enable;
+            txtPrenom.ReadOnly = enable;
+            txtMotif.ReadOnly = enable;
+            txtMission.ReadOnly = enable;
+            txtEmail.ReadOnly = enable;
+            txtEcole.ReadOnly = enable;
+            txtCodePostal.ReadOnly = enable;
+            txtAdresse.ReadOnly = enable;
+            txtQualification.ReadOnly = enable;
+            txtSalaire.ReadOnly = enable;
+            txtTel.ReadOnly = enable;
+            txtFonction.ReadOnly = enable;
+            cbxStatut.Enabled = !enable;
+            cbxTypeContrat.Enabled = !enable;
+            dtpDebutContrat.Enabled = !enable;
+            dtpFinContrat.Enabled = !enable;
         }
 
         private void setCollaborateur(Collaborateur collaborateur)
@@ -112,17 +104,105 @@ namespace ABICommercialProject.View
             txtNom.Text = collaborateur.NomCollabo;
             txtPrenom.Text = collaborateur.PrenomCollabo;
             txtFonction.Text = collaborateur.FonctionCollabo;
-            setContractValue();
-            setFormToContractType(collaborateur.getContratActif());
+
+            setContract();
         }
 
-        public void init()
+        private void setContract()
         {
-            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
-            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
-            hideFields();
-            btnSave.Enabled = false;
+            Contrat contrat = collaborateur.getContratActif();
+            txtSalaire.Text = contrat.SalaireBrut.ToString();
+            txtQualification.Text = contrat.Qualification;
+            dtpDebutContrat.Text = contrat.DateDebutContrat.ToString();
+            cbxStatut.SelectedItem = contrat.StatutContrat;
+
+            if (contrat is ContratProvisoire)
+            {
+                ContratProvisoire contratProvisoire = contrat as ContratProvisoire;
+
+                txtMotif.Text = contratProvisoire.Motif;
+                dtpFinContrat.Text = contratProvisoire.DateFinContrat.ToString();
+
+                if (contratProvisoire is Cdd)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.CDD;
+                    Cdd cddContrat = collaborateur.getContratActif() as Cdd;
+
+                    displayFormCdd();
+                }
+                
+                if (contratProvisoire is Stage)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.Stage;
+                    Stage stage = collaborateur.getContratActif() as Stage;
+                    txtEcole.Text = stage.Ecole;
+                    txtMission.Text = stage.Mission;
+
+                    displayFormStage();
+                }
+                if (contratProvisoire is MissionInterim)
+                {
+                    cbxTypeContrat.SelectedItem = TypeContrat.Interim;
+                    MissionInterim mission = collaborateur.getContratActif() as MissionInterim;
+                    txtEcole.Text = mission.AgenceInterim;
+
+                    displayFormInterim();
+
+                }
+            }
+            if (contrat is Cdi)
+            {
+                cbxTypeContrat.SelectedItem = TypeContrat.CDI;
+                displayFormCdi();
+            }
+
         }
+
+        private void displayFormCdd()
+        {
+            hideFields();
+            txtMotif.Visible = true;
+            lblMotif.Visible = true;
+            lblDateFinContrat.Visible = true;
+            dtpFinContrat.Visible = true;
+        }
+
+
+        private void displayFormCdi()
+        {
+            hideFields();
+
+        }
+
+        private void displayFormStage()
+        {
+            hideFields();
+            txtMotif.Visible = true;
+            lblMotif.Visible = true;
+            lblDateFinContrat.Visible = true;
+            dtpFinContrat.Visible = true;
+            lblEcole.Text = "Ecole";
+            lblEcole.Visible = true;
+            txtEcole.Visible = true;
+            lblMisson.Visible = true;
+            txtMission.Visible = true;
+        }
+
+        public void displayFormInterim()
+        {
+            hideFields();
+            txtMotif.Visible = true;
+            lblMotif.Visible = true;
+            lblDateFinContrat.Visible = true;
+            dtpFinContrat.Visible = true;
+            lblEcole.Text = "Agence";
+            lblEcole.Visible = true;
+            txtEcole.Visible = true;
+        }
+
+
+
+        
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -209,31 +289,7 @@ namespace ABICommercialProject.View
 
         }
 
-        /// <summary>
-        /// Set all the controls of the form to enable or disable
-        /// </summary>
-        /// <param name="enable"></param>
-        public void setFormEnabled(Boolean enable)
-        {
 
-            txtNom.ReadOnly = enable;
-            txtPrenom.ReadOnly = enable;
-            txtMotif.ReadOnly = enable;
-            txtMission.ReadOnly = enable;
-            txtEmail.ReadOnly = enable;
-            txtEcole.ReadOnly = enable;
-            txtCodePostal.ReadOnly = enable;
-            txtAdresse.ReadOnly = enable;
-            txtQualification.ReadOnly = enable;
-            txtSalaire.ReadOnly = enable;
-            txtTel.ReadOnly = enable;
-            txtFonction.ReadOnly = enable;
-            cbxStatut.Enabled = !enable;
-            cbxTypeContrat.Enabled = !enable;
-            dtpDebutContrat.Enabled = !enable;
-            dtpFinContrat.Enabled = !enable;
-
-        }
 
         private void setActionControl(Boolean choice)
         {
@@ -258,108 +314,28 @@ namespace ABICommercialProject.View
         {
             if(cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDD.ToString())
             {
-                setFormToFormCdd();
+                displayFormCdd();
             }
             else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDI.ToString())
             {
-                setFormToCdi();
+                displayFormCdi();
             }
             else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Stage.ToString())
             {
-                setFormToStage();
+                displayFormStage();
 
             }
             else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.Interim.ToString())
             {
-                setFormToIterim();
+                displayFormInterim();
             }
             isFormReady();
         }
 
 
-        public void setFormToFormCdd()
-        {
-            hideFields();
-            txtMotif.Visible = true;
-            lblMotif.Visible = true;
-            lblDateFinContrat.Visible = true;
-            dtpFinContrat.Visible = true;
+        
 
-            if (collaborateur != null)
-            {
-                if (collaborateur.getContratActif() is Cdd)
-                {
-                    Cdd cddContrat = collaborateur.getContratActif() as Cdd;
-                    txtMotif.Text = cddContrat.Motif;
-                    dtpFinContrat.Text = cddContrat.DateFinContrat.ToString();
-                }
-            }
-        }
-
-        public void setFormToCdi()
-        {
-            hideFields();
-
-        }
-
-        public void setFormToStage()
-        {
-            hideFields();
-            txtMotif.Visible = true;
-            lblMotif.Visible = true;
-            lblDateFinContrat.Visible = true;
-            dtpFinContrat.Visible = true;
-            lblEcole.Text = "Ecole";
-            lblEcole.Visible = true;
-            txtEcole.Visible = true;
-            lblMisson.Visible = true;
-            txtMission.Visible = true;
-
-            if(collaborateur != null)
-            {
-                if(collaborateur.getContratActif() is Stage)
-                {
-                    Stage stage = collaborateur.getContratActif() as Stage;
-                    txtEcole.Text = stage.Ecole;
-                    txtMission.Text = stage.Mission;
-                    txtMotif.Text = stage.Mission;
-                    dtpFinContrat.Text = stage.DateFinContrat.ToString();
-
-                }
-            }
-        }
-
-        public void setFormToIterim()
-        {
-            hideFields();
-            txtMotif.Visible = true;
-            lblMotif.Visible = true;
-            lblDateFinContrat.Visible = true;
-            dtpFinContrat.Visible = true;
-            lblEcole.Text = "Agence";
-            lblEcole.Visible = true;
-            txtEcole.Visible = true;
-
-            if (collaborateur != null)
-            {
-                if (collaborateur.getContratActif() is MissionInterim)
-                {
-                    MissionInterim mission = collaborateur.getContratActif() as MissionInterim;
-                    txtMotif.Text = mission.Motif;
-                    dtpFinContrat.Text = mission.DateFinContrat.ToString();
-                    txtEcole.Text = mission.AgenceInterim;
-
-                }
-            }
-        }
-
-        private void setContractValue()
-        {
-            txtSalaire.Text = collaborateur.getContratActif().SalaireBrut.ToString();
-            txtQualification.Text = collaborateur.getContratActif().Qualification;
-            dtpDebutContrat.Text = collaborateur.getContratActif().DateDebutContrat.ToString();
-
-        }
+        
 
         private void hideFields()
         {
