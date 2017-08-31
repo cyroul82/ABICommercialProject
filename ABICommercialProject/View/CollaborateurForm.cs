@@ -38,12 +38,27 @@ namespace ABICommercialProject.View
             collaborateur = null;
         }
 
-        public CollaborateurForm(Collaborateur collaborateur)
+        public CollaborateurForm(Collaborateur collaborateur, Boolean edit)
         {
             InitializeComponent();
             this.collaborateur = collaborateur;
             setFormEnabled(false);
             setCollaborateur(collaborateur);
+            setActionControl(edit);
+            if (edit)
+            {
+                setFormEdit();
+            }
+        }
+
+        private void setFormEdit()
+        {
+
+            txtAdresse.Enabled = true;
+            txtCodePostal.Enabled = true;
+            txtNom.Enabled = true;
+            txtPrenom.Enabled = true;
+            txtTel.Enabled = true;
         }
 
         private void setFormToContractType(Contrat contrat)
@@ -192,10 +207,24 @@ namespace ABICommercialProject.View
                 ctrl.Enabled = enable;
             }
 
-            btnSave.Text = Tools.edit;
+            
+
+        }
+
+        private void setActionControl(Boolean choice)
+        {
             btnSave.Enabled = true;
             btnCancel.Enabled = true;
 
+            if (!choice)
+            {
+                btnSave.Text = Tools.edit;
+                
+            }
+            else
+            {
+                btnSave.Text = Tools.save;
+            }
         }
 
 

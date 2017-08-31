@@ -21,7 +21,7 @@ namespace ABICommercialProject.Controller
             this.collaborateur = collaborateur;
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
-                this.collaborateurForm = new CollaborateurForm(collaborateur);
+                this.collaborateurForm = new CollaborateurForm(collaborateur, false);
                 collaborateurForm.clickEvent += new ClickHandler(this.clickEvent);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.closingForm);
                 collaborateurForm.MdiParent = MainApp.getInstance();
@@ -59,6 +59,7 @@ namespace ABICommercialProject.Controller
             if (message == Tools.edit)
             {
                 collaborateurForm.Close();
+                CtrlEditCollaborateur edit = new CtrlEditCollaborateur(collaborateur);
 
             }
         }
