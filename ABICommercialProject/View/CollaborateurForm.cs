@@ -20,8 +20,8 @@ namespace ABICommercialProject.View
 
         private Collaborateur collaborateur;
 
-        public event SaveHandler onSaved;
-        public event ClotureHandler onClotured;
+        public  SaveHandler onSaved;
+        public  ClotureHandler onClotured;
         public CollaborateurForm()
         {
             InitializeComponent();

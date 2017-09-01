@@ -11,10 +11,11 @@ namespace ABICommercialProject.Controller
 {
     public class CtrlDetailCollaborateur
     {
-        Collaborateur collaborateur;
-        CollaborateurForm collaborateurForm;
+        private Collaborateur collaborateur;
+        private CollaborateurForm collaborateurForm;
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
+        
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
             
@@ -66,8 +67,7 @@ namespace ABICommercialProject.Controller
             {
                 collaborateurForm.Close();
                 CtrlEditCollaborateur edit = new CtrlEditCollaborateur(collaborateur);
-                        
-
+                    
             }
         }
     }
