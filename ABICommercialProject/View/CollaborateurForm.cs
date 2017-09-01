@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public delegate void SaveHandler(String message);
+    public delegate void SavingCollaboHandler(String message);
     public delegate void CloturingContratHandler();
 
     public partial class CollaborateurForm : Form
@@ -20,7 +20,7 @@ namespace ABICommercialProject.View
 
         private Collaborateur collaborateur;
 
-        public  SaveHandler SavingCollabo;
+        public  SavingCollaboHandler SavingCollabo;
         public  CloturingContratHandler CloturingContrat;
         public CollaborateurForm()
         {

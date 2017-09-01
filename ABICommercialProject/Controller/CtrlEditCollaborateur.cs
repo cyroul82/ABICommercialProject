@@ -19,7 +19,7 @@ namespace ABICommercialProject.Controller
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
-            collaborateurForm.SavingCollabo += new SaveHandler(this.onSavedCollaborateur);
+            collaborateurForm.SavingCollabo += new SavingCollaboHandler(this.onSavedCollaborateur);
             
         }
 

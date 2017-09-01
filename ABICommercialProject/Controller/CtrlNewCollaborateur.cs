@@ -18,7 +18,7 @@ namespace ABICommercialProject.Controller
         public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
-            collaborateurForm.SavingCollabo += new SaveHandler(this.savingCollabo);
+            collaborateurForm.SavingCollabo += new SavingCollaboHandler(this.savingCollabo);
         }
 
 

@@ -24,7 +24,7 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.SavingCollabo += new SaveHandler(this.onEditedCollabo);
+                collaborateurForm.SavingCollabo += new SavingCollaboHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.CloturingContrat += new CloturingContratHandler(this.onCloturedContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
