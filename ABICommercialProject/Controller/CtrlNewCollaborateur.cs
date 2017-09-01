@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace ABICommercialProject.Controller
 {
-    public delegate void SavedCollaboHandler(Collaborateur collabo);
+    public delegate void SaveCollaboHandler(Collaborateur collabo);
     public class CtrlNewCollaborateur
     {
-        public SavedCollaboHandler onSavedCollabo;
+        public SaveCollaboHandler onSavedCollabo;
 
         private CollaborateurForm collaborateurForm;
         public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
-            collaborateurForm.onSaved += new SaveHandler(this.savingCollabo);
+            collaborateurForm.SavingCollabo += new SaveHandler(this.savingCollabo);
         }
 
 

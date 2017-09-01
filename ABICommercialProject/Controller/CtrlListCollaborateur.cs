@@ -19,19 +19,21 @@ namespace ABICommercialProject.Controller
         public CtrlListCollaborateur()
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
-            collaborateurListForm.FormClosing += new FormClosingEventHandler(this.collobarateurViewClosing);
-            collaborateurListForm.onClickNewCollabo += new EventHandler(this.newCollabo);
-            collaborateurListForm.onSelectedCollabo += new SelectedColloboHandler(this.selectedCollabo);
+            collaborateurListForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
+            collaborateurListForm.CreatingCollabo += new CreatingCollaboHandler(this.onCreatedCollabo);
+            collaborateurListForm.SelectingCollabo += new SelectingColloboHandler(this.onSelectedCollabo);
             collaborateurListForm.MdiParent = MainApp.getInstance();
             collaborateurListForm.Show();
         }
 
-        private void selectedCollabo(Int32 id)
+        private void onSelectedCollabo(Int32 id)
         {
             if (collaborateurList.ContainsKey(id))
             {
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
+                ctrlDetailCollabo.EditingCollaborateur += new EditingCollaboHandler(this.editingCollabo);
+                ctrlDetailCollabo.init();
             }
             else
             {
@@ -40,11 +42,24 @@ namespace ABICommercialProject.Controller
 
         }
 
-        private void newCollabo(object sender, EventArgs e)
+        private void editingCollabo(Collaborateur collaborateur)
         {
-            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.onSavedCollabo += new SavedCollaboHandler(this.onSavedCollabo);
-            ctrlNewCollabo.init();
+            CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
+            ctrlEditCollaborateur.SavingCollabo += new SaveCollaboHandler(this.onUpdatedCollabo);
+            ctrlEditCollaborateur.init();
+        }
+
+        private void onUpdatedCollabo(Collaborateur collabo)
+        {
+            if (collaborateurList.ContainsKey(collabo.Matricule))
+            {
+                collaborateurList[collabo.Matricule] = collabo;
+                collaborateurListForm.setDataSource();
+            }
+            else
+            {
+                Console.WriteLine("Can't find the collabo in Memory to update it + " + collabo + " mat : " + collabo.Matricule );
+            }
         }
 
         private void onSavedCollabo(Collaborateur collabo)
@@ -53,7 +68,16 @@ namespace ABICommercialProject.Controller
             collaborateurListForm.setDataSource();
         }
 
-        private void collobarateurViewClosing(object sender, FormClosingEventArgs e)
+        private void onCreatedCollabo()
+        {
+            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
+            ctrlNewCollabo.onSavedCollabo += new SaveCollaboHandler(this.onSavedCollabo);
+            ctrlNewCollabo.init();
+        }
+
+        
+
+        private void onClosedForm(object sender, FormClosingEventArgs e)
         {
             collaborateurListForm = null;
             MainApp.getInstance().ctrlListCollaborateur = null;

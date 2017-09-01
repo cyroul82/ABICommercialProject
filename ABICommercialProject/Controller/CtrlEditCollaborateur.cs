@@ -10,14 +10,16 @@ namespace ABICommercialProject.Controller
 {
     public class CtrlEditCollaborateur
     {
-        Collaborateur collaborateur;
-        CollaborateurForm collaborateurForm;
+        private Collaborateur collaborateur;
+        private CollaborateurForm collaborateurForm;
+
+        public SaveCollaboHandler SavingCollabo;
 		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
-            collaborateurForm.onSaved += new SaveHandler(this.clickEvent);
+            collaborateurForm.SavingCollabo += new SaveHandler(this.onSavedCollaborateur);
             
         }
 
@@ -26,16 +28,15 @@ namespace ABICommercialProject.Controller
             collaborateurForm.displayDialog();
         }
 
-        private void clickEvent(string message)
+        private void onSavedCollaborateur(string message)
         {
-            if (message == Tools.edit)
+
+            if (message == Tools.save)
             {
-                
 
                 if (collaborateur != null)
                 {
-                    collaborateur.Matricule = MainApp.matricule++;
-                    //onSavedCollabo(collaborateur);
+                    SavingCollabo?.Invoke(collaborateurForm.getCollaborateur());
                     collaborateurForm.closeDialog();
                 }
                 else

@@ -13,15 +13,15 @@ using System.Windows.Forms;
 namespace ABICommercialProject.View
 {
     public delegate void SaveHandler(String message);
-    public delegate void ClotureHandler();
+    public delegate void CloturingContratHandler();
 
     public partial class CollaborateurForm : Form
     {
 
         private Collaborateur collaborateur;
 
-        public  SaveHandler onSaved;
-        public  ClotureHandler onClotured;
+        public  SaveHandler SavingCollabo;
+        public  CloturingContratHandler CloturingContrat;
         public CollaborateurForm()
         {
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace ABICommercialProject.View
         private void setFormToDetailCollabo()
         {
             setContratControlEnabled(true);
-            setActionControlEnabled(false);
+            setActionControlEnabled(true);
             setCollaborateurControlEnabled(true);
             btnSave.Text = Tools.edit;
         }
@@ -71,10 +71,14 @@ namespace ABICommercialProject.View
         private void setFormToEditCollabo()
         {
             setContratControlEnabled(true);
-            setActionControlEnabled(true);
+            setActionControlEnabled(false);
             setCollaborateurControlEnabled(false);
         }
         
+        /// <summary>
+        /// Set All textboxes, comboboxes and dateTimePickers related to Contract to param
+        /// </summary>
+        /// <param name="enable"></param>
         private void setContratControlEnabled(Boolean enable)
         {
             txtMotif.ReadOnly = enable;
@@ -89,6 +93,10 @@ namespace ABICommercialProject.View
             dtpFinContrat.Enabled = !enable;
         }
 
+        /// <summary>
+        /// set buttons Augmentation, Avenant, Cloturer to param
+        /// </summary>
+        /// <param name="enable"></param>
         private void setActionControlEnabled(Boolean enable)
         {
             btnAugmentation.Visible = enable;
@@ -96,6 +104,10 @@ namespace ABICommercialProject.View
             btnCloturer.Visible = enable;
         }
 
+        /// <summary>
+        /// Set All textboxes related to Collaborateur to param
+        /// </summary>
+        /// <param name="enable"></param>
         private void setCollaborateurControlEnabled(Boolean enable)
         {
             txtNom.ReadOnly = enable;
@@ -330,8 +342,8 @@ namespace ABICommercialProject.View
         {
             if (checkup())
             {
-                if (btnSave.Text == Tools.save) onSaved(Tools.save);
-                if (btnSave.Text == Tools.edit) onSaved(Tools.edit);
+                if (btnSave.Text == Tools.save) SavingCollabo(Tools.save);
+                if (btnSave.Text == Tools.edit) SavingCollabo(Tools.edit);
             }
         }
 
@@ -454,7 +466,7 @@ namespace ABICommercialProject.View
         
         private void btnCloturer_Click(object sender, EventArgs e)
         {
-            onClotured();
+            CloturingContrat();
         }
     }
 }

@@ -9,28 +9,27 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
+    public delegate void EditingCollaboHandler(Collaborateur collaborateur);
     public class CtrlDetailCollaborateur
     {
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
+        public EditingCollaboHandler EditingCollaborateur;
         
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
-            
             this.collaborateur = collaborateur;
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.onSaved += new SaveHandler(this.clickEvent);
-                collaborateurForm.FormClosing += new FormClosingEventHandler(this.closingForm);
-                collaborateurForm.onClotured += new ClotureHandler(this.clotureContrat);
+                collaborateurForm.SavingCollabo += new SaveHandler(this.onEditedCollabo);
+                collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
+                collaborateurForm.CloturingContrat += new CloturingContratHandler(this.onCloturedContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
 
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
-
-                collaborateurForm.Show();
             }
             else
             {
@@ -47,13 +46,18 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void clotureContrat()
+        public void init()
         {
-            ClotureForm clotureForm = new ClotureForm();
+            collaborateurForm.Show();
+        }
+
+        private void onCloturedContrat()
+        {
+            ClotureForm clotureForm = new ClotureForm(collaborateur.getContratActif());
             clotureForm.ShowDialog();
         }
 
-        private void closingForm(object sender, FormClosingEventArgs e)
+        private void onClosedForm(object sender, FormClosingEventArgs e)
         {
             if (collaborateur != null)
             {
@@ -61,13 +65,15 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void clickEvent(string message)
+        private void onEditedCollabo(string message)
         {
             if (message == Tools.edit)
             {
-                collaborateurForm.Close();
-                CtrlEditCollaborateur edit = new CtrlEditCollaborateur(collaborateur);
-                    
+                if (collaborateur != null)
+                {
+                    collaborateurForm.Close();
+                    EditingCollaborateur?.Invoke(collaborateur);
+                }
             }
         }
     }

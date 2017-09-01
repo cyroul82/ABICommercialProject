@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CollaborateurController.cs" />
     <Compile Include="Controller\CtrlDetailCollaborateur.cs" />
     <Compile Include="Controller\CtrlListCollaborateur.cs" />
     <Compile Include="Controller\CtrlNewCollaborateur.cs" />

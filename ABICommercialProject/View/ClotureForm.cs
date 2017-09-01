@@ -12,15 +12,17 @@ namespace ABICommercialProject.View
 {
     public partial class ClotureForm : Form
     {
-        public ClotureHandler onClotured;
-        public ClotureForm()
+        public CloturingContratHandler CloturingContrat;
+        private Contrat contrat;
+        public ClotureForm(Contrat contrat)
         {
             InitializeComponent();
+            this.contrat = contrat;
         }
 
-        private void lblCloture_Click(object sender, EventArgs e)
+        private void btnCloturer_Click(object sender, EventArgs e)
         {
-            onClotured();
+            CloturingContrat?.Invoke();
         }
     }
 }

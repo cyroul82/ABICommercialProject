@@ -32,7 +32,7 @@
             this.lblDate = new System.Windows.Forms.Label();
             this.lblMotif = new System.Windows.Forms.Label();
             this.txtMotif = new System.Windows.Forms.TextBox();
-            this.lblCloture = new System.Windows.Forms.Button();
+            this.btnCloturer = new System.Windows.Forms.Button();
             this.lblCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -69,15 +69,15 @@
             this.txtMotif.Size = new System.Drawing.Size(200, 67);
             this.txtMotif.TabIndex = 3;
             // 
-            // lblCloture
+            // btnCloturer
             // 
-            this.lblCloture.Location = new System.Drawing.Point(84, 219);
-            this.lblCloture.Name = "lblCloture";
-            this.lblCloture.Size = new System.Drawing.Size(75, 23);
-            this.lblCloture.TabIndex = 4;
-            this.lblCloture.Text = "Clôturer";
-            this.lblCloture.UseVisualStyleBackColor = true;
-            this.lblCloture.Click += new System.EventHandler(this.lblCloture_Click);
+            this.btnCloturer.Location = new System.Drawing.Point(84, 219);
+            this.btnCloturer.Name = "btnCloturer";
+            this.btnCloturer.Size = new System.Drawing.Size(75, 23);
+            this.btnCloturer.TabIndex = 4;
+            this.btnCloturer.Text = "Clôturer";
+            this.btnCloturer.UseVisualStyleBackColor = true;
+            this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
             // 
             // lblCancel
             // 
@@ -94,7 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 261);
             this.Controls.Add(this.lblCancel);
-            this.Controls.Add(this.lblCloture);
+            this.Controls.Add(this.btnCloturer);
             this.Controls.Add(this.txtMotif);
             this.Controls.Add(this.lblMotif);
             this.Controls.Add(this.lblDate);
@@ -113,7 +113,7 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblMotif;
         private System.Windows.Forms.TextBox txtMotif;
-        private System.Windows.Forms.Button lblCloture;
+        private System.Windows.Forms.Button btnCloturer;
         private System.Windows.Forms.Button lblCancel;
     }
 }
