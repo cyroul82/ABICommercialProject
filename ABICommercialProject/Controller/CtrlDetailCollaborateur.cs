@@ -9,14 +9,16 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
-    public delegate void EditingCollaboHandler(Collaborateur collaborateur);
+    
     public class CtrlDetailCollaborateur
     {
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
+        private ContratListForm contratList;
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
-        public EditingCollaboHandler EditingCollaborateur;
+        public CollaboHandler EditingCollaborateur;
+        public ClotureContratHandler CloturingContrat;
         
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
@@ -24,9 +26,9 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.SavingCollabo += new SavingCollaboHandler(this.onEditedCollabo);
+                collaborateurForm.SavingCollabo += new SavingEventHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
-                collaborateurForm.CloturingContrat += new CloturingContratHandler(this.onCloturedContrat);
+                collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
 
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
@@ -46,15 +48,56 @@ namespace ABICommercialProject.Controller
             }
         }
 
+        private void onListedContrat(object sender, EventArgs e)
+        {
+            contratList = new ContratListForm(collaborateur.getListContrat());
+            contratList.CloturingContrat += new ClotureContratHandler(this.onCloturedContrat);
+            contratList.CreatingContrat += new EventHandler(this.onCreatedContrat);
+            contratList.ShowDialog();
+        }
+
+        private void onCreatedContrat(object sender, EventArgs e)
+        {
+            if (collaborateur.hasContratActif())
+            {
+                MessageBox.Show("Le collaborateur a déjà un contrat actif\nClôturer le contrat actif avant d'ajouter un nouveau contrat");
+            }
+            else
+            {
+                collaborateurForm.displayContractPart(true);
+                contratList.DialogResult = DialogResult.OK;
+            }
+
+        }
+
         public void init()
         {
             collaborateurForm.Show();
         }
 
-        private void onCloturedContrat()
+        private void onCloturedContrat(Contrat contrat)
         {
-            ClotureForm clotureForm = new ClotureForm(collaborateur.getContratActif());
-            clotureForm.ShowDialog();
+            if(contrat != null)
+            {
+                if(contrat == collaborateur.getContratActif())
+                {
+                    ClotureForm clotureForm = new ClotureForm(ref contrat);
+                    if (clotureForm.ShowDialog() == DialogResult.OK)
+                    {
+                        collaborateur.setContratActif(null);
+                        collaborateur.Statut = false;
+                        contratList.setDataSource();
+                        collaborateurForm.displayContractPart(false);
+                        CloturingContrat?.Invoke(contrat);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Impossible de cloturer un contrat non actif", "Erreur Cloture", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            
         }
 
         private void onClosedForm(object sender, FormClosingEventArgs e)

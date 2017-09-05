@@ -16,6 +16,7 @@ namespace ABICommercialProject
         private Int32 numeroContrat;
         private DateTime? dateFinEffectif;
         private String motifCloture;
+        private Boolean cloture;
 
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
@@ -33,8 +34,9 @@ namespace ABICommercialProject
             SalaireBrut = salaireBrut;
             DateDebutContrat = dateDebutContrat;
             StatutContrat = statut;
-            dateFinEffectif = null;
+            DateFinEffectif = null;
             NumeroContrat = 0;
+            Cloture = false;
         }
 
         /// <summary>
@@ -59,8 +61,8 @@ namespace ABICommercialProject
             if (dateFinEffectif < dateDebutContrat) throw new Exception("Date de fin ne peut pas etre inferieure à la date de début");
             else
             {
-                this.dateFinEffectif = dateFinEffectif;
-                this.motifCloture = motifCloture;
+                this.DateFinEffectif = dateFinEffectif;
+                this.MotifCloture = motifCloture;
             }
         }
 
@@ -132,6 +134,45 @@ namespace ABICommercialProject
                 //if (value <= 0) throw new ArgumentOutOfRangeException("Le contract number can't be less or equal to 0");
                 //else
                     numeroContrat = value;
+            }
+        }
+
+        public DateTime? DateFinEffectif
+        {
+            get
+            {
+                return dateFinEffectif;
+            }
+
+            set
+            {
+                dateFinEffectif = value;
+            }
+        }
+
+        public string MotifCloture
+        {
+            get
+            {
+                return motifCloture;
+            }
+
+            set
+            {
+                motifCloture = value;
+            }
+        }
+
+        public bool Cloture
+        {
+            get
+            {
+                return cloture;
+            }
+
+            set
+            {
+                cloture = value;
             }
         }
 

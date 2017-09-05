@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
+    public delegate void SelectingHandler(Int32 id);
+    public delegate void ClotureContratHandler(Contrat contrat);
+    public delegate void CollaboHandler(Collaborateur collaborateur);
+    public delegate void SavingEventHandler(String message);
+
     public class CtrlListCollaborateur
     {
         public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<int, Collaborateur>();
@@ -20,8 +25,8 @@ namespace ABICommercialProject.Controller
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
-            collaborateurListForm.CreatingCollabo += new CreatingCollaboHandler(this.onCreatedCollabo);
-            collaborateurListForm.SelectingCollabo += new SelectingColloboHandler(this.onSelectedCollabo);
+            collaborateurListForm.CreatingCollabo += new EventHandler(this.onCreatedCollabo);
+            collaborateurListForm.SelectingCollabo += new SelectingHandler(this.onSelectedCollabo);
             collaborateurListForm.MdiParent = MainApp.getInstance();
             collaborateurListForm.Show();
         }
@@ -32,7 +37,8 @@ namespace ABICommercialProject.Controller
             {
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
-                ctrlDetailCollabo.EditingCollaborateur += new EditingCollaboHandler(this.editingCollabo);
+                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.editingCollabo);
+                ctrlDetailCollabo.CloturingContrat += new ClotureContratHandler(this.cloturingContrat);
                 ctrlDetailCollabo.init();
             }
             else
@@ -42,10 +48,15 @@ namespace ABICommercialProject.Controller
 
         }
 
+        private void cloturingContrat(Contrat contrat)
+        {
+            collaborateurListForm.setDataSource();
+        }
+
         private void editingCollabo(Collaborateur collaborateur)
         {
             CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
-            ctrlEditCollaborateur.SavingCollabo += new SaveCollaboHandler(this.onUpdatedCollabo);
+            ctrlEditCollaborateur.SavingCollabo += new CollaboHandler(this.onUpdatedCollabo);
             ctrlEditCollaborateur.init();
         }
 
@@ -68,10 +79,10 @@ namespace ABICommercialProject.Controller
             collaborateurListForm.setDataSource();
         }
 
-        private void onCreatedCollabo()
+        private void onCreatedCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.onSavedCollabo += new SaveCollaboHandler(this.onSavedCollabo);
+            ctrlNewCollabo.onSavedCollabo += new CollaboHandler(this.onSavedCollabo);
             ctrlNewCollabo.init();
         }
 

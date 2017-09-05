@@ -13,13 +13,13 @@ namespace ABICommercialProject.Controller
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
 
-        public SaveCollaboHandler SavingCollabo;
+        public CollaboHandler SavingCollabo;
 		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
-            collaborateurForm.SavingCollabo += new SavingCollaboHandler(this.onSavedCollaborateur);
+            collaborateurForm.SavingCollabo += new SavingEventHandler(this.onSavedCollaborateur);
             
         }
 

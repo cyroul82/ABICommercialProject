@@ -33,7 +33,7 @@
             this.lblMotif = new System.Windows.Forms.Label();
             this.txtMotif = new System.Windows.Forms.TextBox();
             this.btnCloturer = new System.Windows.Forms.Button();
-            this.lblCancel = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dtpFinEffecif
@@ -79,21 +79,24 @@
             this.btnCloturer.UseVisualStyleBackColor = true;
             this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
             // 
-            // lblCancel
+            // btnCancel
             // 
-            this.lblCancel.Location = new System.Drawing.Point(186, 219);
-            this.lblCancel.Name = "lblCancel";
-            this.lblCancel.Size = new System.Drawing.Size(75, 23);
-            this.lblCancel.TabIndex = 5;
-            this.lblCancel.Text = "Annuler";
-            this.lblCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(186, 219);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // ClotureForm
             // 
+            this.AcceptButton = this.btnCloturer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(345, 261);
-            this.Controls.Add(this.lblCancel);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCloturer);
             this.Controls.Add(this.txtMotif);
             this.Controls.Add(this.lblMotif);
@@ -114,6 +117,6 @@
         private System.Windows.Forms.Label lblMotif;
         private System.Windows.Forms.TextBox txtMotif;
         private System.Windows.Forms.Button btnCloturer;
-        private System.Windows.Forms.Button lblCancel;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

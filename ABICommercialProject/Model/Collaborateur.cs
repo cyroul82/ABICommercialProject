@@ -53,6 +53,7 @@ namespace ABICommercialProject
             this.listContrat = new SortedDictionary<Int32, Contrat>();
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
             this.contratActif = contratActif;
+            listContrat.Add(contratActif.NumeroContrat, contratActif);
 
         }
 
@@ -113,6 +114,11 @@ namespace ABICommercialProject
                 throw new Exception("Le collaborateur " + this.nomCollabo + " posséde déjà un contrat actif");
             }
             
+        }
+
+        public SortedDictionary<Int32, Contrat> getListContrat()
+        {
+            return listContrat;
         }
 
         /// <summary>

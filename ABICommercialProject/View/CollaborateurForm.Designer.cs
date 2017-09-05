@@ -79,8 +79,8 @@
             this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnAugmentation = new System.Windows.Forms.Button();
-            this.btnCloturer = new System.Windows.Forms.Button();
             this.btnAvenant = new System.Windows.Forms.Button();
+            this.btnContrat = new System.Windows.Forms.Button();
             this.gbCollaborateur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
             this.gpxTypeContrat.SuspendLayout();
@@ -98,12 +98,11 @@
             // 
             // gbCollaborateur
             // 
-            this.gbCollaborateur.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbCollaborateur.Controls.Add(this.txtEmail);
             this.gbCollaborateur.Controls.Add(this.lblEmail);
+            this.gbCollaborateur.Controls.Add(this.txtFonction);
             this.gbCollaborateur.Controls.Add(this.txtTel);
+            this.gbCollaborateur.Controls.Add(this.lblFonction);
             this.gbCollaborateur.Controls.Add(this.lblTel);
             this.gbCollaborateur.Controls.Add(this.txtCodePostal);
             this.gbCollaborateur.Controls.Add(this.lblCodePostal);
@@ -118,7 +117,7 @@
             this.gbCollaborateur.Controls.Add(this.lblNom);
             this.gbCollaborateur.Location = new System.Drawing.Point(12, 12);
             this.gbCollaborateur.Name = "gbCollaborateur";
-            this.gbCollaborateur.Size = new System.Drawing.Size(288, 389);
+            this.gbCollaborateur.Size = new System.Drawing.Size(282, 400);
             this.gbCollaborateur.TabIndex = 0;
             this.gbCollaborateur.TabStop = false;
             this.gbCollaborateur.Text = "Collaborateur";
@@ -247,15 +246,15 @@
             // 
             // txtFonction
             // 
-            this.txtFonction.Location = new System.Drawing.Point(102, 28);
+            this.txtFonction.Location = new System.Drawing.Point(112, 373);
             this.txtFonction.Name = "txtFonction";
-            this.txtFonction.Size = new System.Drawing.Size(204, 20);
+            this.txtFonction.Size = new System.Drawing.Size(147, 20);
             this.txtFonction.TabIndex = 5;
             // 
             // lblFonction
             // 
             this.lblFonction.AutoSize = true;
-            this.lblFonction.Location = new System.Drawing.Point(16, 31);
+            this.lblFonction.Location = new System.Drawing.Point(28, 373);
             this.lblFonction.Name = "lblFonction";
             this.lblFonction.Size = new System.Drawing.Size(57, 13);
             this.lblFonction.TabIndex = 4;
@@ -263,8 +262,9 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(324, 407);
+            this.btnCancel.Location = new System.Drawing.Point(164, 437);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -274,7 +274,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(242, 407);
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSave.Location = new System.Drawing.Point(83, 437);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
@@ -291,7 +292,7 @@
             "Mission Intérim",
             "Stage",
             "CDI"});
-            this.cbxTypeContrat.Location = new System.Drawing.Point(102, 59);
+            this.cbxTypeContrat.Location = new System.Drawing.Point(102, 39);
             this.cbxTypeContrat.Name = "cbxTypeContrat";
             this.cbxTypeContrat.Size = new System.Drawing.Size(204, 21);
             this.cbxTypeContrat.TabIndex = 10;
@@ -303,11 +304,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpxTypeContrat.Controls.Add(this.lblTypeContrat);
             this.gpxTypeContrat.Controls.Add(this.cbxTypeContrat);
-            this.gpxTypeContrat.Controls.Add(this.txtFonction);
-            this.gpxTypeContrat.Controls.Add(this.lblFonction);
             this.gpxTypeContrat.Location = new System.Drawing.Point(306, 17);
             this.gpxTypeContrat.Name = "gpxTypeContrat";
-            this.gpxTypeContrat.Size = new System.Drawing.Size(329, 99);
+            this.gpxTypeContrat.Size = new System.Drawing.Size(328, 75);
             this.gpxTypeContrat.TabIndex = 11;
             this.gpxTypeContrat.TabStop = false;
             this.gpxTypeContrat.Text = "Type Contrat";
@@ -315,7 +314,7 @@
             // lblTypeContrat
             // 
             this.lblTypeContrat.AutoSize = true;
-            this.lblTypeContrat.Location = new System.Drawing.Point(16, 62);
+            this.lblTypeContrat.Location = new System.Drawing.Point(16, 42);
             this.lblTypeContrat.Name = "lblTypeContrat";
             this.lblTypeContrat.Size = new System.Drawing.Size(77, 13);
             this.lblTypeContrat.TabIndex = 6;
@@ -342,9 +341,9 @@
             this.gpxDetailContrat.Controls.Add(this.lblDateDebutContrat);
             this.gpxDetailContrat.Controls.Add(this.lblSalaireBrut);
             this.gpxDetailContrat.Controls.Add(this.lblStatut);
-            this.gpxDetailContrat.Location = new System.Drawing.Point(306, 122);
+            this.gpxDetailContrat.Location = new System.Drawing.Point(306, 98);
             this.gpxDetailContrat.Name = "gpxDetailContrat";
-            this.gpxDetailContrat.Size = new System.Drawing.Size(329, 279);
+            this.gpxDetailContrat.Size = new System.Drawing.Size(328, 314);
             this.gpxDetailContrat.TabIndex = 12;
             this.gpxDetailContrat.TabStop = false;
             this.gpxDetailContrat.Text = "Détails Contrat";
@@ -527,42 +526,45 @@
             // 
             // btnAugmentation
             // 
+            this.btnAugmentation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAugmentation.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAugmentation.Location = new System.Drawing.Point(10, 407);
+            this.btnAugmentation.Location = new System.Drawing.Point(428, 437);
             this.btnAugmentation.Name = "btnAugmentation";
             this.btnAugmentation.Size = new System.Drawing.Size(89, 23);
             this.btnAugmentation.TabIndex = 13;
             this.btnAugmentation.Text = "Augmentation";
             this.btnAugmentation.UseVisualStyleBackColor = true;
             // 
-            // btnCloturer
-            // 
-            this.btnCloturer.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCloturer.Location = new System.Drawing.Point(560, 407);
-            this.btnCloturer.Name = "btnCloturer";
-            this.btnCloturer.Size = new System.Drawing.Size(75, 23);
-            this.btnCloturer.TabIndex = 14;
-            this.btnCloturer.Text = "Clôturer";
-            this.btnCloturer.UseVisualStyleBackColor = true;
-            this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
-            // 
             // btnAvenant
             // 
+            this.btnAvenant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAvenant.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAvenant.Location = new System.Drawing.Point(465, 407);
+            this.btnAvenant.Location = new System.Drawing.Point(523, 437);
             this.btnAvenant.Name = "btnAvenant";
             this.btnAvenant.Size = new System.Drawing.Size(89, 23);
             this.btnAvenant.TabIndex = 15;
             this.btnAvenant.Text = "Avenant";
             this.btnAvenant.UseVisualStyleBackColor = true;
             // 
+            // btnContrat
+            // 
+            this.btnContrat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnContrat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnContrat.Location = new System.Drawing.Point(347, 437);
+            this.btnContrat.Name = "btnContrat";
+            this.btnContrat.Size = new System.Drawing.Size(75, 23);
+            this.btnContrat.TabIndex = 16;
+            this.btnContrat.Text = "Contrat";
+            this.btnContrat.UseVisualStyleBackColor = true;
+            this.btnContrat.Click += new System.EventHandler(this.btnContrat_Click);
+            // 
             // CollaborateurForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 443);
+            this.ClientSize = new System.Drawing.Size(646, 473);
+            this.Controls.Add(this.btnContrat);
             this.Controls.Add(this.btnAvenant);
-            this.Controls.Add(this.btnCloturer);
             this.Controls.Add(this.btnAugmentation);
             this.Controls.Add(this.gpxTypeContrat);
             this.Controls.Add(this.btnCancel);
@@ -646,7 +648,7 @@
         private System.Windows.Forms.Label lblEmail;
         internal System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAvenant;
-        private System.Windows.Forms.Button btnCloturer;
         private System.Windows.Forms.Button btnAugmentation;
+        private System.Windows.Forms.Button btnContrat;
     }
 }

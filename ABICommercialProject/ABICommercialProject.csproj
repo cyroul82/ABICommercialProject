@@ -79,6 +79,12 @@
     <Compile Include="View\CollaborateurListForm.Designer.cs">
       <DependentUpon>CollaborateurListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ContratListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ContratListForm.Designer.cs">
+      <DependentUpon>ContratListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CollaborateurListForm.resx">
       <DependentUpon>CollaborateurListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ContratListForm.resx">
+      <DependentUpon>ContratListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainApp.resx">
       <DependentUpon>MainApp.cs</DependentUpon>

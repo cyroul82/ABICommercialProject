@@ -1,4 +1,5 @@
-﻿using ABICommercialProject.Model;
+﻿using ABICommercialProject.Controller;
+using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -12,16 +13,15 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public delegate void SavingCollaboHandler(String message);
-    public delegate void CloturingContratHandler();
-
+    
     public partial class CollaborateurForm : Form
     {
 
         private Collaborateur collaborateur;
 
-        public  SavingCollaboHandler SavingCollabo;
-        public  CloturingContratHandler CloturingContrat;
+        public  SavingEventHandler SavingCollabo;
+        public  EventHandler CloturingContrat;
+        public  EventHandler ListContrat;
         public CollaborateurForm()
         {
             InitializeComponent();
@@ -86,7 +86,6 @@ namespace ABICommercialProject.View
             txtEcole.ReadOnly = enable;
             txtSalaire.ReadOnly = enable;
             txtQualification.ReadOnly = enable;
-            txtFonction.ReadOnly = enable;
             cbxStatut.Enabled = !enable;
             cbxTypeContrat.Enabled = !enable;
             dtpDebutContrat.Enabled = !enable;
@@ -101,7 +100,7 @@ namespace ABICommercialProject.View
         {
             btnAugmentation.Visible = enable;
             btnAvenant.Visible = enable;
-            btnCloturer.Visible = enable;
+            btnContrat.Visible = enable;
         }
 
         /// <summary>
@@ -117,6 +116,7 @@ namespace ABICommercialProject.View
             txtAdresse.ReadOnly = enable;
             txtTel.ReadOnly = enable;
             txtVille.ReadOnly = enable;
+            txtFonction.ReadOnly = enable;
         }
 
         private void setCollaborateur(Collaborateur collaborateur)
@@ -131,48 +131,54 @@ namespace ABICommercialProject.View
         private void setContract()
         {
             Contrat contrat = collaborateur.getContratActif();
-            txtSalaire.Text = contrat.SalaireBrut.ToString();
-            txtQualification.Text = contrat.Qualification;
-            dtpDebutContrat.Text = contrat.DateDebutContrat.ToString();
-            cbxStatut.SelectedItem = contrat.StatutContrat;
-
-            if (contrat is ContratProvisoire)
+            if (contrat != null)
             {
-                ContratProvisoire contratProvisoire = contrat as ContratProvisoire;
+                txtSalaire.Text = contrat.SalaireBrut.ToString();
+                txtQualification.Text = contrat.Qualification;
+                dtpDebutContrat.Text = contrat.DateDebutContrat.ToString();
+                cbxStatut.SelectedItem = contrat.StatutContrat;
 
-                txtMotif.Text = contratProvisoire.Motif;
-                dtpFinContrat.Text = contratProvisoire.DateFinContrat.ToString();
-
-                if (contratProvisoire is Cdd)
+                if (contrat is ContratProvisoire)
                 {
-                    cbxTypeContrat.SelectedItem = TypeContrat.CDD;
-                    Cdd cddContrat = collaborateur.getContratActif() as Cdd;
+                    ContratProvisoire contratProvisoire = contrat as ContratProvisoire;
 
-                    displayFormCdd();
+                    txtMotif.Text = contratProvisoire.Motif;
+                    dtpFinContrat.Text = contratProvisoire.DateFinContrat.ToString();
+
+                    if (contratProvisoire is Cdd)
+                    {
+                        cbxTypeContrat.SelectedItem = TypeContrat.CDD;
+                        Cdd cddContrat = collaborateur.getContratActif() as Cdd;
+
+                        displayFormCdd();
+                    }
+
+                    if (contratProvisoire is Stage)
+                    {
+                        cbxTypeContrat.SelectedItem = TypeContrat.Stage;
+                        Stage stage = collaborateur.getContratActif() as Stage;
+                        txtEcole.Text = stage.Ecole;
+                        txtMission.Text = stage.Mission;
+
+                        displayFormStage();
+                    }
+                    if (contratProvisoire is MissionInterim)
+                    {
+                        cbxTypeContrat.SelectedItem = TypeContrat.Interim;
+                        MissionInterim mission = collaborateur.getContratActif() as MissionInterim;
+                        txtEcole.Text = mission.AgenceInterim;
+
+                        displayFormInterim();
+                    }
                 }
-                
-                if (contratProvisoire is Stage)
+                if (contrat is Cdi)
                 {
-                    cbxTypeContrat.SelectedItem = TypeContrat.Stage;
-                    Stage stage = collaborateur.getContratActif() as Stage;
-                    txtEcole.Text = stage.Ecole;
-                    txtMission.Text = stage.Mission;
-
-                    displayFormStage();
+                    cbxTypeContrat.SelectedItem = TypeContrat.CDI;
+                    displayFormCdi();
                 }
-                if (contratProvisoire is MissionInterim)
-                {
-                    cbxTypeContrat.SelectedItem = TypeContrat.Interim;
-                    MissionInterim mission = collaborateur.getContratActif() as MissionInterim;
-                    txtEcole.Text = mission.AgenceInterim;
-
-                    displayFormInterim();
-                }
-            }
-            if (contrat is Cdi)
+            }else
             {
-                cbxTypeContrat.SelectedItem = TypeContrat.CDI;
-                displayFormCdi();
+                displayContractPart(false);
             }
         }
 
@@ -219,7 +225,14 @@ namespace ABICommercialProject.View
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            if (sender is DialogResult)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         public void closeDialog()
@@ -230,6 +243,29 @@ namespace ABICommercialProject.View
         public void displayDialog()
         {
             this.ShowDialog();
+        }
+
+        public void displayContractPart(Boolean b)
+        {
+            if(!b)
+            {
+                gpxDetailContrat.Hide();
+                gpxTypeContrat.Hide();
+                btnAvenant.Enabled = !b;
+                btnAugmentation.Enabled = !b;
+                btnAugmentation.Hide();
+                btnAvenant.Hide();
+            }
+            else
+            {
+                gpxDetailContrat.Show();
+                gpxTypeContrat.Show();
+                btnAvenant.Enabled = b;
+                btnAugmentation.Enabled = b;
+                btnAugmentation.Show();
+                btnAvenant.Show();
+            }
+            
         }
 
         /// <summary>
@@ -463,10 +499,10 @@ namespace ABICommercialProject.View
 
             return checkPassed;
         }
-        
-        private void btnCloturer_Click(object sender, EventArgs e)
+
+        private void btnContrat_Click(object sender, EventArgs e)
         {
-            CloturingContrat();
+            ListContrat?.Invoke(sender, e);
         }
     }
 }

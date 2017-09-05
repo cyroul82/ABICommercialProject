@@ -12,9 +12,8 @@ namespace ABICommercialProject.View
 {
     public partial class ClotureForm : Form
     {
-        public CloturingContratHandler CloturingContrat;
         private Contrat contrat;
-        public ClotureForm(Contrat contrat)
+        public ClotureForm(ref Contrat contrat)
         {
             InitializeComponent();
             this.contrat = contrat;
@@ -22,7 +21,18 @@ namespace ABICommercialProject.View
 
         private void btnCloturer_Click(object sender, EventArgs e)
         {
-            CloturingContrat?.Invoke();
+            if(dtpFinEffecif.Text != "" && txtMotif.Text != "")
+            {
+                contrat.DateFinEffectif = dtpFinEffecif.Value.Date;
+                contrat.MotifCloture = txtMotif.Text;
+                contrat.Cloture = true;
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Merci de renseigner les champs ", "Erreur champs", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

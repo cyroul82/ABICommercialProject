@@ -12,15 +12,14 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.View
 {
-    public delegate void SelectingColloboHandler(Int32 id);
-    public delegate void CreatingCollaboHandler();
+    
     public partial class CollaborateurListForm : Form
     {
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
-        public CreatingCollaboHandler CreatingCollabo;
-        public SelectingColloboHandler SelectingCollabo;
+        public EventHandler CreatingCollabo;
+        public SelectingHandler SelectingCollabo;
 
         public CollaborateurListForm(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
@@ -69,14 +68,8 @@ namespace ABICommercialProject.View
             {
                 foreach (KeyValuePair<Int32, Collaborateur> c in collaborateurList)
                 {
-                    if (c.Value.Statut)
-                    {
-                        addCollaborateur(c.Value);
-                    }
-                    else
-                    {
-
-                    }
+                    
+                addCollaborateur(c.Value);
 
                 }
                 return dt;
@@ -93,19 +86,24 @@ namespace ABICommercialProject.View
                 dr["Nom"] = collaborateur.NomCollabo;
                 dr["Prénom"] = collaborateur.PrenomCollabo;
                 dr["Fonction"] = collaborateur.FonctionCollabo;
-                dr["Qualification"] = collaborateur.getContratActif().Qualification;
 
-                TypeContrat type = TypeContrat.CDI;
+                if (collaborateur.getContratActif() != null)
+                {
+                    dr["Qualification"] = collaborateur.getContratActif().Qualification;
 
-                if (collaborateur.getContratActif() is Cdi) type = TypeContrat.CDI;
-                if (collaborateur.getContratActif() is Cdd) type = TypeContrat.CDD;
-                if (collaborateur.getContratActif() is Stage) type = TypeContrat.Stage;
-                if (collaborateur.getContratActif() is MissionInterim) type = TypeContrat.Interim;
+                    TypeContrat type = TypeContrat.CDI;
+
+                    if (collaborateur.getContratActif() is Cdi) type = TypeContrat.CDI;
+                    if (collaborateur.getContratActif() is Cdd) type = TypeContrat.CDD;
+                    if (collaborateur.getContratActif() is Stage) type = TypeContrat.Stage;
+                    if (collaborateur.getContratActif() is MissionInterim) type = TypeContrat.Interim;
 
 
-                dr["Contrat"] =  type.ToString();
-                dr["Statut"] = collaborateur.getContratActif().StatutContrat;
-                dr["SalaireBrut"] = collaborateur.getContratActif().SalaireBrut;
+                    dr["Contrat"] = type.ToString();
+                    dr["Statut"] = collaborateur.getContratActif().StatutContrat;
+                    dr["SalaireBrut"] = collaborateur.getContratActif().SalaireBrut;
+                    
+                }
                 dr["Actif"] = collaborateur.hasContratActif() ? "Actif" : "Cloturé";
                 dt.Rows.Add(dr);
             }
@@ -113,7 +111,7 @@ namespace ABICommercialProject.View
 
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
-            CreatingCollabo?.Invoke();
+            CreatingCollabo?.Invoke(sender, e);
         }
 
         
