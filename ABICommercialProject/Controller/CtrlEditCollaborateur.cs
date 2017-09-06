@@ -13,22 +13,13 @@ namespace ABICommercialProject.Controller
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
 
-        public CollaboHandler UpdatingCollabo;
 		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
-
             collaborateurForm.SavingCollabo += new EventHandler(this.onSavedCollabo);
-            collaborateurForm.UpdatingCollabo += new EventHandler(this.onUpdatedCollabo);
 
         }
-
-        private void onUpdatedCollabo(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         public void init()
         {
             collaborateurForm.displayDialog();
@@ -38,7 +29,7 @@ namespace ABICommercialProject.Controller
         {
             if (collaborateur != null)
             {
-                UpdatingCollabo?.Invoke(collaborateurForm.getCollaborateur());
+                collaborateur = collaborateurForm.getCollaborateur();
                 collaborateurForm.closeDialog();
             }
             else

@@ -15,7 +15,7 @@ namespace ABICommercialProject.Controller
         private Collaborateur collaborateur;
         private Contrat contrat;
 
-        public CollaboHandler SavingCollaboData;
+        //public CollaboHandler SavingCollaboData;
 
         private CollaborateurForm collaborateurForm;
         public CtrlNewCollaborateur()
@@ -40,11 +40,12 @@ namespace ABICommercialProject.Controller
 
         private void savingNewCollaborateur()
         {
-            collaborateur.Matricule = MainApp.matricule++;
+            collaborateur.Matricule = CtrlMain.matricule++;
             contrat.NumeroContrat = collaborateur.Matricule;
             collaborateur.setContratActif(contrat);
             collaborateur.AddContrat(contrat);
-            SavingCollaboData?.Invoke(collaborateur);
+            //SavingCollaboData?.Invoke(collaborateur);
+            CtrlMain.getInstance().updateView();
             this.collaborateurForm.Close();
         }
 

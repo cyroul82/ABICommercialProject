@@ -13,24 +13,29 @@ namespace ABICommercialProject.Controller
     public delegate void SelectingHandler(Int32 id);
     public delegate void ContratHandler(Contrat contrat);
     public delegate void CollaboHandler(Collaborateur collaborateur);
+    public delegate void SavingCollaborateur(Collaborateur collaborateur, Contrat contrat);
     //public delegate void EventHandler(String message);
 
     public class CtrlListCollaborateur
     {
-        public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<int, Collaborateur>();
+        private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
         private CollaborateurListForm collaborateurListForm;
 
-        private Collaborateur collaborateur;
-
-        public CtrlListCollaborateur()
+        public CtrlListCollaborateur(ref SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
+            this.collaborateurList = collaborateurList;
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
             collaborateurListForm.CreatingCollabo += new EventHandler(this.onCreatedCollabo);
             collaborateurListForm.SelectingCollabo += new SelectingHandler(this.onSelectedCollabo);
-            collaborateurListForm.MdiParent = MainApp.getInstance();
+            collaborateurListForm.MdiParent = CtrlMain.getInstance().getMainForm();
             collaborateurListForm.Show();
+        }
+
+        internal void update()
+        {
+            collaborateurListForm.setDataSource();
         }
 
         private void onSelectedCollabo(Int32 id)
@@ -39,8 +44,8 @@ namespace ABICommercialProject.Controller
             {
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
-                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.editingCollabo);
-                ctrlDetailCollabo.CloturingContrat += new ContratHandler(this.cloturingContrat);
+                //ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.editingCollabo);
+                //ctrlDetailCollabo.CloturingContrat += new ContratHandler(this.cloturingContrat);
                 ctrlDetailCollabo.init();
             }
             else
@@ -53,13 +58,6 @@ namespace ABICommercialProject.Controller
         private void cloturingContrat(Contrat contrat)
         {
             collaborateurListForm.setDataSource();
-        }
-
-        private void editingCollabo(Collaborateur collaborateur)
-        {
-            CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
-            ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.onUpdatedCollabo);
-            ctrlEditCollaborateur.init();
         }
 
         private void onUpdatedCollabo(Collaborateur collabo)
@@ -80,7 +78,7 @@ namespace ABICommercialProject.Controller
         private void onCreatedCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.SavingCollaboData += new CollaboHandler(this.onSavedNewCollabo);
+            //ctrlNewCollabo.SavingCollaboData += new CollaboHandler(this.onSavedNewCollabo);
             ctrlNewCollabo.init();
         }
 
@@ -94,7 +92,7 @@ namespace ABICommercialProject.Controller
         private void onClosedForm(object sender, FormClosingEventArgs e)
         {
             collaborateurListForm = null;
-            MainApp.getInstance().ctrlListCollaborateur = null;
+            CtrlMain.getInstance().ctrlListCollaborateur = null;
         }
 
         public void display()

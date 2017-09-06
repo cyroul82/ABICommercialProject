@@ -16,8 +16,8 @@ namespace ABICommercialProject.Controller
         private ContratListForm contratList;
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
-        public CollaboHandler EditingCollaborateur;
-        public ContratHandler CloturingContrat;
+        //public CollaboHandler EditingCollaborateur;
+        //public ContratHandler CloturingContrat;
         
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
@@ -25,10 +25,11 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.SavingCollabo += new EventHandler(this.onEditedCollabo);
+                //collaborateurForm.SavingCollabo += new EventHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
-                collaborateurForm.MdiParent = MainApp.getInstance();
+                collaborateurForm.UpdatingCollabo += new EventHandler(this.onUpdatedCollabo);
+                collaborateurForm.MdiParent = CtrlMain.getInstance().getMainForm();
 
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
             }
@@ -44,6 +45,16 @@ namespace ABICommercialProject.Controller
                 {
                     collaborateurForm.Activate();
                 }
+            }
+        }
+
+        private void onUpdatedCollabo(object sender, EventArgs e)
+        {
+            if (collaborateur != null)
+            {
+                collaborateurForm.Close();
+                CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
+                ctrlEditCollaborateur.init();
             }
         }
 
@@ -85,7 +96,7 @@ namespace ABICommercialProject.Controller
                         collaborateur.setContratActif(null);
                         collaborateur.Statut = false;
                         contratList.setDataSource();
-                        CloturingContrat?.Invoke(contrat);
+                        //CloturingContrat?.Invoke(contrat);
                     }
                 }
                 else
@@ -105,13 +116,6 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onEditedCollabo(object sender, EventArgs e)
-        {
-            if (collaborateur != null)
-            {
-                collaborateurForm.Close();
-                EditingCollaborateur?.Invoke(collaborateur);
-            }
-        }
+        
     }
 }

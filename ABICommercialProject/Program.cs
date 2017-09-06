@@ -1,5 +1,6 @@
 ﻿using ABICommercialProject.Controller;
 using ABICommercialProject.Model;
+using ABICommercialProject.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,17 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(MainApp.getInstance());
+            Application.Run(CtrlMain.getInstance().getMainForm());
             
         }
     }
