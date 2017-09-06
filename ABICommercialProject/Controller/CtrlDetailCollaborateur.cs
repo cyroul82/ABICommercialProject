@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
-    
     public class CtrlDetailCollaborateur
     {
         private Collaborateur collaborateur;
@@ -26,7 +25,7 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.UpdatingCollabo += new SavingCollaboHandler(this.onEditedCollabo);
+                collaborateurForm.SavingCollabo += new EventHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
@@ -106,15 +105,12 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onEditedCollabo(string message)
+        private void onEditedCollabo(object sender, EventArgs e)
         {
-            if (message == Tools.edit)
+            if (collaborateur != null)
             {
-                if (collaborateur != null)
-                {
-                    collaborateurForm.Close();
-                    EditingCollaborateur?.Invoke(collaborateur);
-                }
+                collaborateurForm.Close();
+                EditingCollaborateur?.Invoke(collaborateur);
             }
         }
     }

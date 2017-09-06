@@ -19,7 +19,7 @@ namespace ABICommercialProject.Controller
         public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
-            collaborateurForm.UpdatingCollabo += new SavingCollaboHandler(this.savingCollabo);
+            collaborateurForm.SavingCollabo += new EventHandler(this.savingCollabo);
         }
 
 
@@ -28,17 +28,13 @@ namespace ABICommercialProject.Controller
             collaborateurForm.displayDialog();
         }
 
-        private void savingCollabo(String message)
+        private void savingCollabo(object sender, EventArgs e)
         {
-            if (message == Tools.save)
-            {
+            collaborateur = collaborateurForm.getCollaborateur();
+            ContratForm cf = new ContratForm(collaborateur.getContratActif());
+            cf.SavingContrat = new ContratHandler(this.onSavedContrat);
+            cf.ShowDialog();
 
-                collaborateur = collaborateurForm.getCollaborateur();
-                ContratForm cf = new ContratForm(collaborateur.getContratActif());
-                cf.SavingContrat = new ContratHandler(this.onSavedContrat);                
-                cf.ShowDialog();
-                
-            }
         }
 
         private void onSavedContrat(Contrat contrat)

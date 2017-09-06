@@ -13,7 +13,7 @@ namespace ABICommercialProject.Controller
     public delegate void SelectingHandler(Int32 id);
     public delegate void ContratHandler(Contrat contrat);
     public delegate void CollaboHandler(Collaborateur collaborateur);
-    public delegate void SavingCollaboHandler(String message);
+    //public delegate void EventHandler(String message);
 
     public class CtrlListCollaborateur
     {
