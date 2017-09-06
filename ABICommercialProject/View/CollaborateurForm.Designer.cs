@@ -156,6 +156,7 @@
             this.btnContrat.TabIndex = 16;
             this.btnContrat.Text = "Contrat";
             this.btnContrat.UseVisualStyleBackColor = true;
+            this.btnContrat.Click += new System.EventHandler(this.btnContrat_Click);
             // 
             // btnAvenant
             // 

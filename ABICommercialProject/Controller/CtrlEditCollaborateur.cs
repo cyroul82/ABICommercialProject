@@ -13,13 +13,13 @@ namespace ABICommercialProject.Controller
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
 
-        public CollaboHandler SavingCollabo;
+        public CollaboHandler UpdatingCollabo;
 		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
 
-            collaborateurForm.SavingCollabo += new SavingEventHandler(this.onSavedCollaborateur);
+            collaborateurForm.UpdatingCollabo += new SavingCollaboHandler(this.onUpdatedCollabo);
             
         }
 
@@ -28,7 +28,7 @@ namespace ABICommercialProject.Controller
             collaborateurForm.displayDialog();
         }
 
-        private void onSavedCollaborateur(string message)
+        private void onUpdatedCollabo(string message)
         {
 
             if (message == Tools.save)
@@ -36,14 +36,13 @@ namespace ABICommercialProject.Controller
 
                 if (collaborateur != null)
                 {
-                    SavingCollabo?.Invoke(collaborateurForm.getCollaborateur());
+                    UpdatingCollabo?.Invoke(collaborateurForm.getCollaborateur());
                     collaborateurForm.closeDialog();
                 }
                 else
                 {
                     collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
-
-                }
+               }
             }
         }
     }

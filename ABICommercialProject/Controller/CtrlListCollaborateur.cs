@@ -13,7 +13,7 @@ namespace ABICommercialProject.Controller
     public delegate void SelectingHandler(Int32 id);
     public delegate void ContratHandler(Contrat contrat);
     public delegate void CollaboHandler(Collaborateur collaborateur);
-    public delegate void SavingEventHandler(String message);
+    public delegate void SavingCollaboHandler(String message);
 
     public class CtrlListCollaborateur
     {
@@ -56,7 +56,7 @@ namespace ABICommercialProject.Controller
         private void editingCollabo(Collaborateur collaborateur)
         {
             CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
-            ctrlEditCollaborateur.SavingCollabo += new CollaboHandler(this.onUpdatedCollabo);
+            ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.onUpdatedCollabo);
             ctrlEditCollaborateur.init();
         }
 
