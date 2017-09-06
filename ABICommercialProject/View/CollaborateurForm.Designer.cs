@@ -32,7 +32,9 @@
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.txtFonction = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
+            this.lblFonction = new System.Windows.Forms.Label();
             this.lblTel = new System.Windows.Forms.Label();
             this.txtCodePostal = new System.Windows.Forms.TextBox();
             this.lblCodePostal = new System.Windows.Forms.Label();
@@ -45,8 +47,6 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
-            this.txtFonction = new System.Windows.Forms.TextBox();
-            this.lblFonction = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cbxTypeContrat = new System.Windows.Forms.ComboBox();
@@ -138,12 +138,28 @@
             this.lblEmail.TabIndex = 15;
             this.lblEmail.Text = "Email : ";
             // 
+            // txtFonction
+            // 
+            this.txtFonction.Location = new System.Drawing.Point(112, 373);
+            this.txtFonction.Name = "txtFonction";
+            this.txtFonction.Size = new System.Drawing.Size(147, 20);
+            this.txtFonction.TabIndex = 5;
+            // 
             // txtTel
             // 
             this.txtTel.Location = new System.Drawing.Point(112, 318);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(147, 20);
             this.txtTel.TabIndex = 14;
+            // 
+            // lblFonction
+            // 
+            this.lblFonction.AutoSize = true;
+            this.lblFonction.Location = new System.Drawing.Point(28, 373);
+            this.lblFonction.Name = "lblFonction";
+            this.lblFonction.Size = new System.Drawing.Size(57, 13);
+            this.lblFonction.TabIndex = 4;
+            this.lblFonction.Text = "Fonction : ";
             // 
             // lblTel
             // 
@@ -243,22 +259,6 @@
             this.lblNom.Size = new System.Drawing.Size(38, 13);
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nom : ";
-            // 
-            // txtFonction
-            // 
-            this.txtFonction.Location = new System.Drawing.Point(112, 373);
-            this.txtFonction.Name = "txtFonction";
-            this.txtFonction.Size = new System.Drawing.Size(147, 20);
-            this.txtFonction.TabIndex = 5;
-            // 
-            // lblFonction
-            // 
-            this.lblFonction.AutoSize = true;
-            this.lblFonction.Location = new System.Drawing.Point(28, 373);
-            this.lblFonction.Name = "lblFonction";
-            this.lblFonction.Size = new System.Drawing.Size(57, 13);
-            this.lblFonction.TabIndex = 4;
-            this.lblFonction.Text = "Fonction : ";
             // 
             // btnCancel
             // 
@@ -575,7 +575,7 @@
             this.MaximizeBox = false;
             this.Name = "CollaborateurForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CollaborateurForm";
+            this.Text = "Collaborateur";
             this.gbCollaborateur.ResumeLayout(false);
             this.gbCollaborateur.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).EndInit();
