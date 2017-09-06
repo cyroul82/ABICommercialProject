@@ -13,7 +13,6 @@ namespace ABICommercialProject.Controller
     public delegate void SelectingHandler(Int32 id);
     public delegate void ContratHandler(Contrat contrat);
     public delegate void CollaboHandler(Collaborateur collaborateur);
-    //public delegate void EventHandler(String message);
 
     public class CtrlListCollaborateur
     {
@@ -37,7 +36,7 @@ namespace ABICommercialProject.Controller
             {
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
-                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.editingCollabo);
+                ctrlDetailCollabo.EditingCollabo += new CollaboHandler(this.onEditedCollabo);
                 ctrlDetailCollabo.CloturingContrat += new ContratHandler(this.cloturingContrat);
                 ctrlDetailCollabo.init();
             }
@@ -53,7 +52,7 @@ namespace ABICommercialProject.Controller
             collaborateurListForm.setDataSource();
         }
 
-        private void editingCollabo(Collaborateur collaborateur)
+        private void onEditedCollabo(Collaborateur collaborateur)
         {
             CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
             ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.onUpdatedCollabo);

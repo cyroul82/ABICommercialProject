@@ -17,6 +17,8 @@ namespace ABICommercialProject.View
     {
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
+        private CollaborateurForm collaborateurForm;
+        private Collaborateur collaborateur;
 
         public EventHandler CreatingCollabo;
         public SelectingHandler SelectingCollabo;
@@ -112,9 +114,36 @@ namespace ABICommercialProject.View
         private void btnNewCollabo_Click(object sender, EventArgs e)
         {
             CreatingCollabo?.Invoke(sender, e);
+            
         }
 
-        
+        private void savingCollabo(object sender, EventArgs e)
+        {
+            collaborateur = collaborateurForm.getCollaborateur();
+            ContratForm cf = new ContratForm(collaborateur.getContratActif());
+            cf.SavingContrat = new ContratHandler(this.onSavedContrat);
+            cf.ShowDialog();
+
+        }
+
+        private void onSavedContrat(Contrat contrat)
+        {
+            if (contrat != null && collaborateur != null)
+            {
+                collaborateur.Matricule = MainApp.matricule++;
+                collaborateur.setContratActif(contrat);
+                collaborateur.AddContrat(contrat);
+                collaborateurForm.closeDialog();
+            }
+            else
+            {
+                collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
+
+            }
+
+        }
+
+
 
         private void collaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)
         {
@@ -144,7 +173,7 @@ namespace ABICommercialProject.View
         private void collaborateurDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Int32 id = Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value);
-            SelectingCollabo(id);
+            SelectingCollabo?.Invoke(id);
         }
     }
 

@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Controller\CtrlDetailCollaborateur.cs" />
     <Compile Include="Controller\CtrlListCollaborateur.cs" />
-    <Compile Include="Controller\CtrlNewCollaborateur.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
     <Compile Include="Model\Cdd.cs" />

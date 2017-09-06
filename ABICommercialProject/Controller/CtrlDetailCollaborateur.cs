@@ -16,7 +16,7 @@ namespace ABICommercialProject.Controller
         private ContratListForm contratList;
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
-        public CollaboHandler EditingCollaborateur;
+        public CollaboHandler EditingCollabo;
         public ContratHandler CloturingContrat;
         
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
@@ -25,7 +25,7 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.SavingCollabo += new EventHandler(this.onEditedCollabo);
+                collaborateurForm.EditingCollabo += new EventHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
@@ -91,7 +91,6 @@ namespace ABICommercialProject.Controller
                 else
                 {
                     MessageBox.Show("Impossible de cloturer un contrat non actif", "Erreur Cloture", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
             
@@ -110,7 +109,7 @@ namespace ABICommercialProject.Controller
             if (collaborateur != null)
             {
                 collaborateurForm.Close();
-                EditingCollaborateur?.Invoke(collaborateur);
+                EditingCollabo?.Invoke(collaborateur);
             }
         }
     }

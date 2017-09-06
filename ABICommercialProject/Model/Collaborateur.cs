@@ -93,30 +93,27 @@ namespace ABICommercialProject
         /// <exception cref="ArgumentNullException">Contract is Null</exception>
         public void AddContrat(Contrat contrat)
         {
-            if(contratActif == null)
+            if (contrat != null)
             {
-                if (contrat == null)
-                {
-                    throw new NullReferenceException("Impossible to add a contract null");
-                }
-                else 
+                if(!hasContratActif())
                 {
                     if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
                     {
                         this.listContrat.Add(contrat.NumeroContrat, contrat);
-                        this.contratActif = contrat;
                     }
                     else
                     {
                         throw new Exception("The contract list has already a contrat with the same number");
                     }
                 }
+                else
+                {
+                    throw new Exception("Un contrat est déja en cours, impossible d'ajouter un nouveau contrat");
+                }
+ 
             }
-            else
-            {
-                throw new Exception("Le collaborateur " + this.nomCollabo + " posséde déjà un contrat actif");
-            }
-            
+
+
         }
 
         public SortedDictionary<Int32, Contrat> getListContrat()
