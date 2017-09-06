@@ -1,4 +1,5 @@
-﻿using ABICommercialProject.Model;
+﻿using ABICommercialProject.Controller;
+using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,17 @@ namespace ABICommercialProject.View
 {
     public partial class ContratForm : Form
     {
-        public ContratForm()
+        private Contrat contrat;
+
+        public ContratHandler SavingContrat;
+        public ContratForm(Contrat contrat)
         {
             InitializeComponent();
+            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
+            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
             cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
+            this.contrat = contrat;
+            this.setContract();
         }
 
 
@@ -40,10 +48,11 @@ namespace ABICommercialProject.View
             txtMission.ReadOnly = !enable;
         }
 
-        public void setContract(Contrat contrat)
+        private void setContract()
         {
             if (contrat != null)
             {
+                btnSave.Enabled = false;
                 txtSalaire.Text = contrat.SalaireBrut.ToString();
                 txtQualification.Text = contrat.Qualification;
                 dtpDebutContrat.Text = contrat.DateDebutContrat.ToString();
@@ -88,6 +97,11 @@ namespace ABICommercialProject.View
                     displayFormCdi();
                 }
             }
+            else
+            {
+                btnSave.Enabled = true;
+            }
+            
         }
 
         private void displayFormCdd()
@@ -217,6 +231,14 @@ namespace ABICommercialProject.View
             }
         }
 
-        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(contrat == null)
+            {
+                SavingContrat?.Invoke(getContrat());
+                this.Close();
+            }
+            
+        }
     }
 }

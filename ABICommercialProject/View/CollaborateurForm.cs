@@ -152,17 +152,11 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            ContratForm cf = new ContratForm();
-            
-            //this.Size = new Size(284, 420);
-            cf.ShowDialog();
-
-            //if (checkup())
-            //{
-            //    if (btnSave.Text == Tools.save) SavingCollabo(Tools.save);
-            //    if (btnSave.Text == Tools.edit) SavingCollabo(Tools.edit);
-            //}
+            if (checkup())
+            {
+                if (btnSave.Text == Tools.save) SavingCollabo(Tools.save);
+                if (btnSave.Text == Tools.edit) SavingCollabo(Tools.edit);
+            }
         }
 
         public void displayErrorMessage(String message, String title)

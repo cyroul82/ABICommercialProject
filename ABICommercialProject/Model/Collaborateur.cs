@@ -34,12 +34,12 @@ namespace ABICommercialProject
         /// <param name="fonctionCollabo"></param>
         public Collaborateur(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
         {
-            initializeConstuctor(nom, prenom, fonctionCollabo, contratActif);
+            initializeConstuctor(nom, prenom, fonctionCollabo);
             statut = true;
         }
         public Collaborateur(String nom, String prenom, String fonctionCollabo)
         {
-            initializeConstuctor(nom, prenom, fonctionCollabo, contratActif);
+            initializeConstuctor(nom, prenom, fonctionCollabo);
             statut = true;
             contratActif = null;
         }
@@ -49,7 +49,7 @@ namespace ABICommercialProject
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
-        private void initializeConstuctor(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
+        private void initializeConstuctor(String nom, String prenom, String fonctionCollabo)
         {
             Matricule = 0;
             NomCollabo = nom;
@@ -57,8 +57,6 @@ namespace ABICommercialProject
             FonctionCollabo = fonctionCollabo;
             this.listContrat = new SortedDictionary<Int32, Contrat>();
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
-            this.contratActif = contratActif;
-            listContrat.Add(contratActif.NumeroContrat, contratActif);
 
         }
 
@@ -170,6 +168,10 @@ namespace ABICommercialProject
         public void setContratActif(Contrat contrat)
         {
             this.contratActif = contrat != null ? contrat : null;
+            if(contratActif != null)
+            {
+                listContrat.Add(contrat.NumeroContrat, contrat);
+            }
         }
 
         

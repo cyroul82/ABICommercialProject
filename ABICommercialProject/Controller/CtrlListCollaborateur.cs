@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace ABICommercialProject.Controller
 {
     public delegate void SelectingHandler(Int32 id);
-    public delegate void ClotureContratHandler(Contrat contrat);
+    public delegate void ContratHandler(Contrat contrat);
     public delegate void CollaboHandler(Collaborateur collaborateur);
     public delegate void SavingEventHandler(String message);
 
@@ -38,7 +38,7 @@ namespace ABICommercialProject.Controller
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
                 ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.editingCollabo);
-                ctrlDetailCollabo.CloturingContrat += new ClotureContratHandler(this.cloturingContrat);
+                ctrlDetailCollabo.CloturingContrat += new ContratHandler(this.cloturingContrat);
                 ctrlDetailCollabo.init();
             }
             else

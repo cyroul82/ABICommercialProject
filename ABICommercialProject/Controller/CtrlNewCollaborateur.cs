@@ -12,6 +12,7 @@ namespace ABICommercialProject.Controller
     
     public class CtrlNewCollaborateur
     {
+        private Collaborateur collaborateur;
         public CollaboHandler onSavedCollabo;
 
         private CollaborateurForm collaborateurForm;
@@ -31,7 +32,11 @@ namespace ABICommercialProject.Controller
         {
             if (message == Tools.save)
             {
-                Collaborateur collaborateur = collaborateurForm.getCollaborateur();
+
+                collaborateur = collaborateurForm.getCollaborateur();
+                ContratForm cf = new ContratForm(collaborateur.getContratActif());
+                cf.SavingContrat = new ContratHandler(this.onSavedContrat);                
+                cf.ShowDialog();
 
                 if (collaborateur != null)
                 {
@@ -45,6 +50,23 @@ namespace ABICommercialProject.Controller
 
                 }
             }
+        }
+
+        private void onSavedContrat(Contrat contrat)
+        {
+            if(contrat != null && collaborateur != null)
+            {
+                collaborateur.Matricule = MainApp.matricule++;
+                collaborateur.setContratActif(contrat);
+                onSavedCollabo(collaborateur);
+                collaborateurForm.closeDialog();
+            }
+            else
+            {
+                collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
+
+            }
+
         }
     }
 }

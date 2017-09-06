@@ -19,7 +19,7 @@ namespace ABICommercialProject.View
         private DataTable dt;
         private Contrat contrat;
 
-        public ClotureContratHandler CloturingContrat;
+        public ContratHandler CloturingContrat;
         public SelectingHandler SelectingContrat;
         public EventHandler CreatingContrat;
         public ContratListForm(SortedDictionary<Int32, Contrat> listContrat)
