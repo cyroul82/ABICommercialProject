@@ -21,6 +21,8 @@ namespace ABICommercialProject.Controller
 
         private CollaborateurListForm collaborateurListForm;
 
+        private Collaborateur collaborateur;
+
         public CtrlListCollaborateur()
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
@@ -73,20 +75,21 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onSavedCollabo(Collaborateur collabo)
+        
+
+        private void onCreatedCollabo(object sender, EventArgs e)
+        {
+            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
+            ctrlNewCollabo.SavingCollaboData += new CollaboHandler(this.onSavedNewCollabo);
+            ctrlNewCollabo.init();
+        }
+
+        private void onSavedNewCollabo(Collaborateur collabo)
         {
             collaborateurList.Add(collabo.Matricule, collabo);
             collaborateurListForm.setDataSource();
         }
 
-        private void onCreatedCollabo(object sender, EventArgs e)
-        {
-            CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.onSavedCollabo += new CollaboHandler(this.onSavedCollabo);
-            ctrlNewCollabo.init();
-        }
-
-        
 
         private void onClosedForm(object sender, FormClosingEventArgs e)
         {

@@ -16,7 +16,7 @@ namespace ABICommercialProject.View
     {
         private Contrat contrat;
 
-        public ContratHandler SavingContrat;
+        public ContratHandler SavingContratOfForm;
         public ContratForm(Contrat contrat)
         {
             InitializeComponent();
@@ -235,7 +235,7 @@ namespace ABICommercialProject.View
         {
             if(contrat == null)
             {
-                SavingContrat?.Invoke(getContrat());
+                SavingContratOfForm?.Invoke(getContrat());
                 this.Close();
             }
             

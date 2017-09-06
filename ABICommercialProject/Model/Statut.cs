@@ -17,6 +17,7 @@ namespace ABICommercialProject
         Cadre,
         Commercial,
         Technicien,
-        TechnicoCommercial
+        TechnicoCommercial,
+        Service
     }
 }

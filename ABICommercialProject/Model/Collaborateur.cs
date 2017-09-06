@@ -93,28 +93,9 @@ namespace ABICommercialProject
         /// <exception cref="ArgumentNullException">Contract is Null</exception>
         public void AddContrat(Contrat contrat)
         {
-            if(contratActif == null)
+            if(contrat != null)
             {
-                if (contrat == null)
-                {
-                    throw new NullReferenceException("Impossible to add a contract null");
-                }
-                else 
-                {
-                    if (!this.listContrat.ContainsKey(contrat.NumeroContrat))
-                    {
-                        this.listContrat.Add(contrat.NumeroContrat, contrat);
-                        this.contratActif = contrat;
-                    }
-                    else
-                    {
-                        throw new Exception("The contract list has already a contrat with the same number");
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("Le collaborateur " + this.nomCollabo + " posséde déjà un contrat actif");
+                listContrat.Add(contrat.NumeroContrat, contrat);
             }
             
         }
@@ -168,10 +149,10 @@ namespace ABICommercialProject
         public void setContratActif(Contrat contrat)
         {
             this.contratActif = contrat != null ? contrat : null;
-            if(contratActif != null)
-            {
-                listContrat.Add(contrat.NumeroContrat, contrat);
-            }
+            //if(contratActif != null)
+            //{
+            //    listContrat.Add(contrat.NumeroContrat, contrat);
+            //}
         }
 
         

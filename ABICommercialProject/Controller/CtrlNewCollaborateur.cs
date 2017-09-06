@@ -13,45 +13,45 @@ namespace ABICommercialProject.Controller
     public class CtrlNewCollaborateur
     {
         private Collaborateur collaborateur;
-        public CollaboHandler onSavedCollabo;
+        private Contrat contrat;
+
+        public CollaboHandler SavingCollaboData;
 
         private CollaborateurForm collaborateurForm;
         public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
-            collaborateurForm.SavingCollabo += new EventHandler(this.savingCollabo);
+            collaborateurForm.SavingCollabo += new EventHandler(this.onSavedCollabo);
         }
 
+        private void onSavedCollabo(object sender, EventArgs e)
+        {
+            collaborateur = collaborateurForm.getCollaborateur();
+            CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
+            ctrlNewContrat.SavingContrat += new ContratHandler(this.onSavedContrat);
+            ctrlNewContrat.init();
+        }
+
+        private void onSavedContrat(Contrat contrat)
+        {
+            this.contrat = contrat;
+            this.savingNewCollaborateur();
+        }
+
+        private void savingNewCollaborateur()
+        {
+            collaborateur.Matricule = MainApp.matricule++;
+            contrat.NumeroContrat = collaborateur.Matricule;
+            collaborateur.setContratActif(contrat);
+            collaborateur.AddContrat(contrat);
+            SavingCollaboData?.Invoke(collaborateur);
+            this.collaborateurForm.Close();
+        }
 
         public void init()
         {
             collaborateurForm.displayDialog();
         }
-
-        private void savingCollabo(object sender, EventArgs e)
-        {
-            collaborateur = collaborateurForm.getCollaborateur();
-            ContratForm cf = new ContratForm(collaborateur.getContratActif());
-            cf.SavingContrat = new ContratHandler(this.onSavedContrat);
-            cf.ShowDialog();
-
-        }
-
-        private void onSavedContrat(Contrat contrat)
-        {
-            if(contrat != null && collaborateur != null)
-            {
-                collaborateur.Matricule = MainApp.matricule++;
-                collaborateur.setContratActif(contrat);
-                onSavedCollabo?.Invoke(collaborateur);
-                collaborateurForm.closeDialog();
-            }
-            else
-            {
-                collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
-
-            }
-
-        }
+        
     }
 }

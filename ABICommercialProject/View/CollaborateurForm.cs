@@ -148,15 +148,12 @@ namespace ABICommercialProject.View
         }
 
 
-
-
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (checkup())
             {
-                if (btnSave.Text == Tools.save) SavingCollabo(sender, e);
-                if (btnSave.Text == Tools.edit) UpdatingCollabo(sender, e);
+                if (btnSave.Text == Tools.save) SavingCollabo?.Invoke(sender, e);
+                if (btnSave.Text == Tools.edit) UpdatingCollabo?.Invoke(sender, e);
             }
         }
 
