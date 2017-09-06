@@ -21,7 +21,6 @@ namespace ABICommercialProject.View
 
         public EventHandler SavingCollabo;
         public EventHandler UpdatingCollabo;
-        public EventHandler EditingCollabo;
         public System.EventHandler CloturingContrat;
         public System.EventHandler ListContrat;
         public CollaborateurForm()
@@ -156,8 +155,8 @@ namespace ABICommercialProject.View
         {
             if (checkup())
             {
-                if (btnSave.Text == Tools.save) SavingCollabo?.Invoke(sender, e);
-                if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(sender, e);
+                if (btnSave.Text == Tools.save) SavingCollabo(sender, e);
+                if (btnSave.Text == Tools.edit) UpdatingCollabo(sender, e);
             }
         }
 
