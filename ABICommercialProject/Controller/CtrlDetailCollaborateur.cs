@@ -64,7 +64,6 @@ namespace ABICommercialProject.Controller
             }
             else
             {
-                collaborateurForm.displayContractPart(true);
                 contratList.DialogResult = DialogResult.OK;
             }
 
@@ -87,7 +86,6 @@ namespace ABICommercialProject.Controller
                         collaborateur.setContratActif(null);
                         collaborateur.Statut = false;
                         contratList.setDataSource();
-                        collaborateurForm.displayContractPart(false);
                         CloturingContrat?.Invoke(contrat);
                     }
                 }

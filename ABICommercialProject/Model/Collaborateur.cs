@@ -37,7 +37,12 @@ namespace ABICommercialProject
             initializeConstuctor(nom, prenom, fonctionCollabo, contratActif);
             statut = true;
         }
-
+        public Collaborateur(String nom, String prenom, String fonctionCollabo)
+        {
+            initializeConstuctor(nom, prenom, fonctionCollabo, contratActif);
+            statut = true;
+            contratActif = null;
+        }
         /// <summary>
         /// Initialize properties
         /// </summary>

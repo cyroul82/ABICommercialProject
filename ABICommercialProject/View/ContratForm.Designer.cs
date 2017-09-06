@@ -28,6 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.errorProviderQualification = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderSalaire = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderMotif = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEcole = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderMission = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panelContrat = new System.Windows.Forms.Panel();
             this.gpxTypeContrat = new System.Windows.Forms.GroupBox();
             this.lblTypeContrat = new System.Windows.Forms.Label();
             this.cbxTypeContrat = new System.Windows.Forms.ComboBox();
@@ -48,11 +55,51 @@
             this.lblDateDebutContrat = new System.Windows.Forms.Label();
             this.lblSalaireBrut = new System.Windows.Forms.Label();
             this.lblStatut = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).BeginInit();
+            this.panelContrat.SuspendLayout();
             this.gpxTypeContrat.SuspendLayout();
             this.gpxDetailContrat.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // errorProviderQualification
+            // 
+            this.errorProviderQualification.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderQualification.ContainerControl = this;
+            // 
+            // errorProviderSalaire
+            // 
+            this.errorProviderSalaire.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderSalaire.ContainerControl = this;
+            // 
+            // errorProviderMotif
+            // 
+            this.errorProviderMotif.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderMotif.ContainerControl = this;
+            // 
+            // errorProviderEcole
+            // 
+            this.errorProviderEcole.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderEcole.ContainerControl = this;
+            // 
+            // errorProviderMission
+            // 
+            this.errorProviderMission.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderMission.ContainerControl = this;
+            // 
+            // panelContrat
+            // 
+            this.panelContrat.Controls.Add(this.gpxTypeContrat);
+            this.panelContrat.Controls.Add(this.gpxDetailContrat);
+            this.panelContrat.Location = new System.Drawing.Point(12, 12);
+            this.panelContrat.Name = "panelContrat";
+            this.panelContrat.Size = new System.Drawing.Size(351, 420);
+            this.panelContrat.TabIndex = 22;
             // 
             // gpxTypeContrat
             // 
@@ -60,17 +107,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpxTypeContrat.Controls.Add(this.lblTypeContrat);
             this.gpxTypeContrat.Controls.Add(this.cbxTypeContrat);
-            this.gpxTypeContrat.Location = new System.Drawing.Point(12, 12);
+            this.gpxTypeContrat.Location = new System.Drawing.Point(7, -2);
             this.gpxTypeContrat.Name = "gpxTypeContrat";
-            this.gpxTypeContrat.Size = new System.Drawing.Size(331, 75);
-            this.gpxTypeContrat.TabIndex = 17;
+            this.gpxTypeContrat.Size = new System.Drawing.Size(337, 64);
+            this.gpxTypeContrat.TabIndex = 19;
             this.gpxTypeContrat.TabStop = false;
             this.gpxTypeContrat.Text = "Type Contrat";
             // 
             // lblTypeContrat
             // 
             this.lblTypeContrat.AutoSize = true;
-            this.lblTypeContrat.Location = new System.Drawing.Point(16, 42);
+            this.lblTypeContrat.Location = new System.Drawing.Point(16, 32);
             this.lblTypeContrat.Name = "lblTypeContrat";
             this.lblTypeContrat.Size = new System.Drawing.Size(77, 13);
             this.lblTypeContrat.TabIndex = 6;
@@ -85,7 +132,7 @@
             "Mission Intérim",
             "Stage",
             "CDI"});
-            this.cbxTypeContrat.Location = new System.Drawing.Point(102, 39);
+            this.cbxTypeContrat.Location = new System.Drawing.Point(102, 29);
             this.cbxTypeContrat.Name = "cbxTypeContrat";
             this.cbxTypeContrat.Size = new System.Drawing.Size(204, 21);
             this.cbxTypeContrat.TabIndex = 10;
@@ -112,10 +159,10 @@
             this.gpxDetailContrat.Controls.Add(this.lblDateDebutContrat);
             this.gpxDetailContrat.Controls.Add(this.lblSalaireBrut);
             this.gpxDetailContrat.Controls.Add(this.lblStatut);
-            this.gpxDetailContrat.Location = new System.Drawing.Point(12, 93);
+            this.gpxDetailContrat.Location = new System.Drawing.Point(7, 68);
             this.gpxDetailContrat.Name = "gpxDetailContrat";
-            this.gpxDetailContrat.Size = new System.Drawing.Size(331, 369);
-            this.gpxDetailContrat.TabIndex = 18;
+            this.gpxDetailContrat.Size = new System.Drawing.Size(337, 349);
+            this.gpxDetailContrat.TabIndex = 20;
             this.gpxDetailContrat.TabStop = false;
             this.gpxDetailContrat.Text = "Détails Contrat";
             // 
@@ -250,38 +297,44 @@
             this.lblStatut.TabIndex = 13;
             this.lblStatut.Text = "Statut :";
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(181, 483);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 21;
-            this.btnCancel.Text = "Annuler";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Location = new System.Drawing.Point(100, 483);
+            this.btnSave.Location = new System.Drawing.Point(110, 442);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Enregistrer";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(191, 442);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 21;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // ContratForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 518);
+            this.ClientSize = new System.Drawing.Size(375, 477);
+            this.Controls.Add(this.panelContrat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.gpxTypeContrat);
-            this.Controls.Add(this.gpxDetailContrat);
             this.Name = "ContratForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contrat";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEcole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMission)).EndInit();
+            this.panelContrat.ResumeLayout(false);
             this.gpxTypeContrat.ResumeLayout(false);
             this.gpxTypeContrat.PerformLayout();
             this.gpxDetailContrat.ResumeLayout(false);
@@ -291,6 +344,12 @@
         }
 
         #endregion
+        private System.Windows.Forms.ErrorProvider errorProviderQualification;
+        private System.Windows.Forms.ErrorProvider errorProviderSalaire;
+        private System.Windows.Forms.ErrorProvider errorProviderMotif;
+        private System.Windows.Forms.ErrorProvider errorProviderEcole;
+        private System.Windows.Forms.ErrorProvider errorProviderMission;
+        private System.Windows.Forms.Panel panelContrat;
         private System.Windows.Forms.GroupBox gpxTypeContrat;
         private System.Windows.Forms.Label lblTypeContrat;
         private System.Windows.Forms.ComboBox cbxTypeContrat;

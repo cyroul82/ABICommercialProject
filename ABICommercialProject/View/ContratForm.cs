@@ -16,6 +16,7 @@ namespace ABICommercialProject.View
         public ContratForm()
         {
             InitializeComponent();
+            cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
         }
 
 
