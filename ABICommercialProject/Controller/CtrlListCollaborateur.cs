@@ -38,6 +38,7 @@ namespace ABICommercialProject.Controller
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
                 ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.onEditedCollabo);
+                ctrlDetailCollabo.Refreshing += new EventHandler(this.onRefreshed);
                 ctrlDetailCollabo.init();
             }
             else
@@ -47,6 +48,10 @@ namespace ABICommercialProject.Controller
 
         }
 
+        private void onRefreshed(object sender, EventArgs e)
+        {
+            collaborateurListForm.setDataSource();
+        }
 
         private void onEditedCollabo(Collaborateur collaborateur)
         {

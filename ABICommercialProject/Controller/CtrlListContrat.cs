@@ -1,18 +1,17 @@
 ﻿using ABICommercialProject.View;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
     public class CtrlListContrat
     {
-        ContratListForm contratListForm;
-        SortedDictionary<Int32, Contrat> listContrat;
-        Collaborateur collaborateur;
+        private ContratListForm contratListForm;
+        private SortedDictionary<Int32, Contrat> listContrat;
+        private Collaborateur collaborateur;
+
+        public EventHandler Refreshing;
         public CtrlListContrat(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
@@ -21,7 +20,15 @@ namespace ABICommercialProject.Controller
             contratListForm.CloturingContrat += new ContratHandler(this.onCloturedContrat);
             contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
             contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
-            contratListForm.ShowDialog();
+            
+        }
+
+        public void init()
+        {
+            if (contratListForm != null)
+            {
+                contratListForm.ShowDialog();
+            }
         }
 
         private void onSelectedContrat(int id)
@@ -39,6 +46,7 @@ namespace ABICommercialProject.Controller
             if (!collaborateur.hasContratActif())
             {
                 CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
+                ctrlNewContrat.SavingContrat += new ContratHandler(this.onSavedContrat);
                 ctrlNewContrat.init();
             }
             else
@@ -48,13 +56,33 @@ namespace ABICommercialProject.Controller
             
         }
 
+        private void onSavedContrat(Contrat contrat)
+        {
+            if (contrat != null)
+            {
+                Random r = new Random();
+                Int32 i = r.Next(1001, 10000);
+                contrat.NumeroContrat = i;
+                collaborateur.getListContrat().Add(contrat.NumeroContrat, contrat);
+                collaborateur.setContratActif(contrat);
+                refresh();
+            }
+        }
+
         private void onCloturedContrat(Contrat contrat)
         {
             if(contrat == collaborateur.getContratActif())
             {
                 collaborateur.setContratActif(null);
                 collaborateur.getListContrat()[contrat.NumeroContrat] = contrat;
+                refresh();
             }
+        }
+
+        private void refresh()
+        {
+            contratListForm.setDataSource();
+            Refreshing?.Invoke(this, null);
         }
     }
 }

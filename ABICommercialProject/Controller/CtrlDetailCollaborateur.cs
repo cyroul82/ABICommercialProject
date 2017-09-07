@@ -13,11 +13,10 @@ namespace ABICommercialProject.Controller
     {
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
-        private ContratListForm contratList;
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
         public CollaboHandler EditingCollaborateur;
-        //public ContratHandler CloturingContrat;
+        public EventHandler Refreshing;
         
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
@@ -51,48 +50,18 @@ namespace ABICommercialProject.Controller
         {
             
             CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur);
+            ctrlListContrat.Refreshing += new EventHandler(this.onRefreshed);
+            ctrlListContrat.init();
         }
 
-        private void onCreatedContrat(object sender, EventArgs e)
+        private void onRefreshed(object sender, EventArgs e)
         {
-            if (collaborateur.hasContratActif())
-            {
-                MessageBox.Show("Le collaborateur a déjà un contrat actif\nClôturer le contrat actif avant d'ajouter un nouveau contrat");
-            }
-            else
-            {
-                contratList.DialogResult = DialogResult.OK;
-            }
-
+            Refreshing?.Invoke(this, null);
         }
 
         public void init()
         {
             collaborateurForm.Show();
-        }
-
-        private void onCloturedContrat(Contrat contrat)
-        {
-            if(contrat != null)
-            {
-                if(contrat == collaborateur.getContratActif())
-                {
-                    ClotureForm clotureForm = new ClotureForm(ref contrat);
-                    if (clotureForm.ShowDialog() == DialogResult.OK)
-                    {
-                        collaborateur.setContratActif(null);
-                        collaborateur.Statut = false;
-                        contratList.setDataSource();
-                        //CloturingContrat?.Invoke(contrat);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Impossible de cloturer un contrat non actif", "Erreur Cloture", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
-            
         }
 
         private void onClosedForm(object sender, FormClosingEventArgs e)

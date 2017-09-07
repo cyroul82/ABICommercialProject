@@ -1,9 +1,5 @@
 ﻿using ABICommercialProject.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ABICommercialProject.Controller
 {
@@ -31,7 +27,6 @@ namespace ABICommercialProject.Controller
         {
             if (contrat != null)
             {
-                
                 SavingContrat?.Invoke(contrat);
             }
         }

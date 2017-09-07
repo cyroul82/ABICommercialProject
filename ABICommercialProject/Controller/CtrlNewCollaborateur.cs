@@ -1,11 +1,6 @@
 ﻿using ABICommercialProject.Model;
 using ABICommercialProject.View;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ABICommercialProject.Controller
 {
@@ -41,7 +36,9 @@ namespace ABICommercialProject.Controller
         private void savingNewCollaborateur()
         {
             collaborateur.Matricule = MainApp.matricule++;
-            contrat.NumeroContrat = collaborateur.Matricule;
+            Random r = new Random();
+            Int32 i = r.Next(1001, 10000);
+            contrat.NumeroContrat = i;
             collaborateur.setContratActif(contrat);
             collaborateur.AddContrat(contrat);
             SavingCollaboData?.Invoke(collaborateur);
