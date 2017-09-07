@@ -58,6 +58,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCloturer = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAvenant = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
@@ -66,6 +68,7 @@
             this.panelContrat.SuspendLayout();
             this.gpxTypeContrat.SuspendLayout();
             this.gpxDetailContrat.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProviderQualification
@@ -301,7 +304,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Location = new System.Drawing.Point(12, 442);
+            this.btnSave.Location = new System.Drawing.Point(3, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
@@ -313,7 +316,7 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(93, 442);
+            this.btnCancel.Location = new System.Drawing.Point(246, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 21;
@@ -322,7 +325,7 @@
             // 
             // btnCloturer
             // 
-            this.btnCloturer.Location = new System.Drawing.Point(174, 442);
+            this.btnCloturer.Location = new System.Drawing.Point(84, 3);
             this.btnCloturer.Name = "btnCloturer";
             this.btnCloturer.Size = new System.Drawing.Size(75, 23);
             this.btnCloturer.TabIndex = 23;
@@ -330,15 +333,37 @@
             this.btnCloturer.UseVisualStyleBackColor = true;
             this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.btnSave);
+            this.flowLayoutPanel1.Controls.Add(this.btnCloturer);
+            this.flowLayoutPanel1.Controls.Add(this.btnAvenant);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(19, 441);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(324, 29);
+            this.flowLayoutPanel1.TabIndex = 23;
+            // 
+            // btnAvenant
+            // 
+            this.btnAvenant.Location = new System.Drawing.Point(165, 3);
+            this.btnAvenant.Name = "btnAvenant";
+            this.btnAvenant.Size = new System.Drawing.Size(75, 23);
+            this.btnAvenant.TabIndex = 24;
+            this.btnAvenant.Text = "Avenants";
+            this.btnAvenant.UseVisualStyleBackColor = true;
+            // 
             // ContratForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 477);
-            this.Controls.Add(this.btnCloturer);
+            this.ClientSize = new System.Drawing.Size(375, 482);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelContrat);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
             this.Name = "ContratForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contrat";
@@ -352,7 +377,9 @@
             this.gpxTypeContrat.PerformLayout();
             this.gpxDetailContrat.ResumeLayout(false);
             this.gpxDetailContrat.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -386,5 +413,7 @@
         private System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCloturer;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnAvenant;
     }
 }

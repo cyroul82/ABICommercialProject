@@ -17,7 +17,6 @@ namespace ABICommercialProject.View
     {
         private SortedDictionary<Int32, Contrat> listContrat;
         private DataTable dt;
-        private Contrat contrat;
 
         public ContratHandler CloturingContrat;
         public SelectingHandler SelectingContrat;
@@ -28,7 +27,6 @@ namespace ABICommercialProject.View
             this.listContrat = listContrat;
             initializeDataTable();
             setDataSource();
-            contrat = null;
         }
 
 
@@ -72,11 +70,10 @@ namespace ABICommercialProject.View
             {
                 DataRow dr = dt.NewRow();
                 dr["Numéro"] = contrat.NumeroContrat;
-                dr["Début"] = contrat.DateDebutContrat;
+                dr["Début"] = contrat.DateDebutContrat.Date.ToShortDateString();
                 dr["Qualification"] = contrat.Qualification;
                 dr["Statut"] = contrat.StatutContrat;
                 dr["Salaire"] = contrat.SalaireBrut;
-                Console.WriteLine("qualif : " + contrat.Qualification);
 
                 TypeContrat type = TypeContrat.CDI;
 

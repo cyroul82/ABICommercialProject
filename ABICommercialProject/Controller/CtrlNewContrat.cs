@@ -16,7 +16,7 @@ namespace ABICommercialProject.Controller
         public CtrlNewContrat(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
-            cf = new ContratForm(collaborateur.getContratActif());
+            cf = new ContratForm();
             cf.SavingContrat += new ContratHandler(this.onSavedContrat);
         }
 
@@ -31,6 +31,7 @@ namespace ABICommercialProject.Controller
         {
             if (contrat != null)
             {
+                
                 SavingContrat?.Invoke(contrat);
             }
         }

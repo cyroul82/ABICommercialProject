@@ -17,14 +17,15 @@ namespace ABICommercialProject.View
         private Contrat contrat;
 
         public ContratHandler SavingContrat;
-        
+        public ContratHandler CloturingContrat;
         public ContratForm()
         {
             InitializeComponent();
             cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
             cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
             cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
-            
+            ControlEnabled(true);
+
         }
         public ContratForm(Contrat contrat)
         {
@@ -34,6 +35,7 @@ namespace ABICommercialProject.View
             cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
             this.contrat = contrat;
             this.setContract();
+            ControlEnabled(false);
         }
 
 
@@ -55,6 +57,11 @@ namespace ABICommercialProject.View
             txtMotif.ReadOnly = !enable;
             txtEcole.ReadOnly = !enable;
             txtMission.ReadOnly = !enable;
+            btnSave.Enabled = enable;
+            btnCloturer.Visible = !enable;
+            btnSave.Visible = enable;
+            btnAvenant.Visible = !enable;
+
         }
 
         private void setContract()
@@ -63,7 +70,7 @@ namespace ABICommercialProject.View
                 btnSave.Enabled = false;
                 txtSalaire.Text = contrat.SalaireBrut.ToString();
                 txtQualification.Text = contrat.Qualification;
-                dtpDebutContrat.Text = contrat.DateDebutContrat.ToString();
+                dtpDebutContrat.Text = contrat.DateDebutContrat.Date.ToShortDateString();
                 cbxStatut.SelectedItem = contrat.StatutContrat;
 
                 if (contrat is ContratProvisoire)
@@ -256,7 +263,13 @@ namespace ABICommercialProject.View
 
         private void btnCloturer_Click(object sender, EventArgs e)
         {
-
+            if(contrat != null)
+            {
+                
+                CloturingContrat?.Invoke(contrat);
+                this.Close();
+            }
         }
+
     }
 }

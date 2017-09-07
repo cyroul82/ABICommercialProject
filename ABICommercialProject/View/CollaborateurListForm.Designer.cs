@@ -31,7 +31,6 @@
             this.collaborateurDataGrid = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNewCollabo = new System.Windows.Forms.Button();
-            this.btnCloture = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.collaborateurDataGrid)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,12 +46,12 @@
             this.collaborateurDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.collaborateurDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.collaborateurDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.collaborateurDataGrid.Location = new System.Drawing.Point(12, 55);
+            this.collaborateurDataGrid.Location = new System.Drawing.Point(12, 44);
             this.collaborateurDataGrid.MultiSelect = false;
             this.collaborateurDataGrid.Name = "collaborateurDataGrid";
             this.collaborateurDataGrid.ReadOnly = true;
             this.collaborateurDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.collaborateurDataGrid.Size = new System.Drawing.Size(639, 408);
+            this.collaborateurDataGrid.Size = new System.Drawing.Size(639, 419);
             this.collaborateurDataGrid.TabIndex = 4;
             this.collaborateurDataGrid.SelectionChanged += new System.EventHandler(this.collaborateurDataGrid_SelectionChanged);
             this.collaborateurDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.collaborateurDataGrid_MouseClick);
@@ -63,10 +62,9 @@
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.btnNewCollabo);
-            this.flowLayoutPanel1.Controls.Add(this.btnCloture);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(639, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(639, 29);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnNewCollabo
@@ -78,17 +76,6 @@
             this.btnNewCollabo.Text = "Nouveau";
             this.btnNewCollabo.UseVisualStyleBackColor = true;
             this.btnNewCollabo.Click += new System.EventHandler(this.btnNewCollabo_Click);
-            // 
-            // btnCloture
-            // 
-            this.btnCloture.Enabled = false;
-            this.btnCloture.Location = new System.Drawing.Point(84, 3);
-            this.btnCloture.Name = "btnCloture";
-            this.btnCloture.Size = new System.Drawing.Size(75, 23);
-            this.btnCloture.TabIndex = 6;
-            this.btnCloture.Text = "Cloturer";
-            this.btnCloture.UseVisualStyleBackColor = true;
-            this.btnCloture.Click += new System.EventHandler(this.btnCloture_Click);
             // 
             // CollaborateurListForm
             // 
@@ -109,6 +96,5 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnNewCollabo;
         private System.Windows.Forms.DataGridView collaborateurDataGrid;
-        private System.Windows.Forms.Button btnCloture;
     }
 }

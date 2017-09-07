@@ -50,7 +50,7 @@ namespace ABICommercialProject.Controller
         private void onListedContrat(object sender, EventArgs e)
         {
             
-            CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur.getListContrat());
+            CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur);
         }
 
         private void onCreatedContrat(object sender, EventArgs e)
