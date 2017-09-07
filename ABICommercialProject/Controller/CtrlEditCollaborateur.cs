@@ -25,8 +25,9 @@ namespace ABICommercialProject.Controller
         {
             if (collaborateur != null)
             {
-                UpdatingCollabo?.Invoke(collaborateurForm.getCollaborateur());
+                collaborateur = collaborateurForm.getCollaborateur();
                 collaborateurForm.closeDialog();
+                UpdatingCollabo?.Invoke(collaborateur);
             }
             else
             {

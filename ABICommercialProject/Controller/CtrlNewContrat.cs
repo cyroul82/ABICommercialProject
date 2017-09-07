@@ -17,7 +17,7 @@ namespace ABICommercialProject.Controller
         {
             this.collaborateur = collaborateur;
             cf = new ContratForm(collaborateur.getContratActif());
-            cf.SavingContratOfForm += new ContratHandler(this.onSavedContrat);
+            cf.SavingContrat += new ContratHandler(this.onSavedContrat);
         }
 
         public void init()

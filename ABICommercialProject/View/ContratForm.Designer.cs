@@ -57,6 +57,7 @@
             this.lblStatut = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnCloturer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).BeginInit();
@@ -300,7 +301,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Location = new System.Drawing.Point(110, 442);
+            this.btnSave.Location = new System.Drawing.Point(12, 442);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 20;
@@ -312,18 +313,29 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(191, 442);
+            this.btnCancel.Location = new System.Drawing.Point(93, 442);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 21;
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // btnCloturer
+            // 
+            this.btnCloturer.Location = new System.Drawing.Point(174, 442);
+            this.btnCloturer.Name = "btnCloturer";
+            this.btnCloturer.Size = new System.Drawing.Size(75, 23);
+            this.btnCloturer.TabIndex = 23;
+            this.btnCloturer.Text = "Clôturer";
+            this.btnCloturer.UseVisualStyleBackColor = true;
+            this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
+            // 
             // ContratForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 477);
+            this.Controls.Add(this.btnCloturer);
             this.Controls.Add(this.panelContrat);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -373,5 +385,6 @@
         private System.Windows.Forms.Label lblStatut;
         private System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCloturer;
     }
 }

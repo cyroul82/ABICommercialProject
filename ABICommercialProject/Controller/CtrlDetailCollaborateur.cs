@@ -17,7 +17,7 @@ namespace ABICommercialProject.Controller
         private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
 
         public CollaboHandler EditingCollaborateur;
-        public ContratHandler CloturingContrat;
+        //public ContratHandler CloturingContrat;
         
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
@@ -49,10 +49,8 @@ namespace ABICommercialProject.Controller
 
         private void onListedContrat(object sender, EventArgs e)
         {
-            contratList = new ContratListForm(collaborateur.getListContrat());
-            contratList.CloturingContrat += new ContratHandler(this.onCloturedContrat);
-            contratList.CreatingContrat += new EventHandler(this.onCreatedContrat);
-            contratList.ShowDialog();
+            
+            CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur.getListContrat());
         }
 
         private void onCreatedContrat(object sender, EventArgs e)
@@ -85,7 +83,7 @@ namespace ABICommercialProject.Controller
                         collaborateur.setContratActif(null);
                         collaborateur.Statut = false;
                         contratList.setDataSource();
-                        CloturingContrat?.Invoke(contrat);
+                        //CloturingContrat?.Invoke(contrat);
                     }
                 }
                 else

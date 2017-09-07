@@ -147,7 +147,17 @@ namespace ABICommercialProject.View
                 String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
                 String fonction = Tools.firstLetterUppercase(txtFonction.Text.Trim());
 
-                return new Collaborateur(nom, prenom, fonction);
+                if (collaborateur == null)
+                {
+                    return new Collaborateur(nom, prenom, fonction);
+                }
+                else
+                {
+                    collaborateur.NomCollabo = nom;
+                    collaborateur.PrenomCollabo = prenom;
+                    collaborateur.FonctionCollabo = fonction;
+                    return collaborateur;
+                }
             }
         }
 

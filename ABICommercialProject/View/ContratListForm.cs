@@ -29,7 +29,6 @@ namespace ABICommercialProject.View
             initializeDataTable();
             setDataSource();
             contrat = null;
-            btnCloturer.Enabled = false;
         }
 
 
@@ -92,34 +91,16 @@ namespace ABICommercialProject.View
                 dt.Rows.Add(dr);
             }
         }
-
-        private void btnCloturer_Click(object sender, EventArgs e)
-        {
-            if(contrat != null)
-            {
-                CloturingContrat?.Invoke(contrat);
-                btnCloturer.Enabled = false;
-            }
-        }
-
-        private void grdListContrat_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Int32 numero = Convert.ToInt32(grdListContrat.CurrentRow.Cells[0].Value);
-            btnCloturer.Enabled = true;
-            if (listContrat.ContainsKey(numero))
-            {
-                contrat = listContrat[numero];
-                if(contrat.Cloture)
-                {
-                    btnCloturer.Enabled = false;
-                }
-            }
-            else contrat = null;
-        }
-
+        
         private void btnNew_Click(object sender, EventArgs e)
         {
             CreatingContrat?.Invoke(sender, e);
+        }
+
+        private void grdListContrat_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Int32 id = Convert.ToInt32(grdListContrat.CurrentRow.Cells[0].Value);
+            SelectingContrat?.Invoke(id);
         }
     }
 }

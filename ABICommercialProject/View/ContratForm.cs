@@ -16,8 +16,16 @@ namespace ABICommercialProject.View
     {
         private Contrat contrat;
 
-        public ContratHandler SavingContratOfForm;
+        public ContratHandler SavingContrat;
         
+        public ContratForm()
+        {
+            InitializeComponent();
+            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
+            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
+            cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
+            
+        }
         public ContratForm(Contrat contrat)
         {
             InitializeComponent();
@@ -51,8 +59,7 @@ namespace ABICommercialProject.View
 
         private void setContract()
         {
-            if (contrat != null)
-            {
+            
                 btnSave.Enabled = false;
                 txtSalaire.Text = contrat.SalaireBrut.ToString();
                 txtQualification.Text = contrat.Qualification;
@@ -97,11 +104,7 @@ namespace ABICommercialProject.View
                     cbxTypeContrat.SelectedItem = TypeContrat.CDI;
                     displayFormCdi();
                 }
-            }
-            else
-            {
-                btnSave.Enabled = true;
-            }
+            
             
         }
 
@@ -163,51 +166,60 @@ namespace ABICommercialProject.View
 
         private Contrat getContrat()
         {
-            Contrat contrat;
-            try
+            String typeContrat = cbxTypeContrat.SelectedItem.ToString();
+            Statut statut = Tools.getStatut(cbxStatut.SelectedItem.ToString());
+            DateTime debutContrat = Tools.getDate(dtpDebutContrat.Text);
+            Decimal salaire = Tools.getSalaireBrut(txtSalaire.Text);
+            String qualification = txtQualification.Text;
+
+
+            if (contrat == null)
             {
-                String typeContrat = cbxTypeContrat.SelectedItem.ToString();
-                Statut statut = Tools.getStatut(cbxStatut.SelectedItem.ToString());
-                DateTime debutContrat = Tools.getDate(dtpDebutContrat.Text);
-                Decimal salaire = Tools.getSalaireBrut(txtSalaire.Text);
-                String qualification = txtQualification.Text;
-
-                if (typeContrat == TypeContrat.CDI.ToString())
+                try
                 {
-                    contrat = new Cdi(qualification, debutContrat, statut, salaire);
-                    return contrat;
-                }
-                else
-                {
-                    DateTime finContrat = Tools.getDate(dtpFinContrat.Text);
-                    String motif = txtMotif.Text;
-
-                    if (typeContrat == TypeContrat.CDD.ToString())
+                    if (typeContrat == TypeContrat.CDI.ToString())
                     {
-                        contrat = new Cdd(motif, finContrat, qualification, debutContrat, statut, salaire);
-                        return contrat;
-                    }
-                    else if (typeContrat == TypeContrat.Interim.ToString())
-                    {
-                        contrat = new MissionInterim(txtEcole.Text, motif, finContrat, qualification, debutContrat, statut, salaire);
-                        return contrat;
-                    }
-                    else if (typeContrat == TypeContrat.Stage.ToString())
-                    {
-                        contrat = new Stage(txtEcole.Text, txtMission.Text, motif, finContrat, qualification, debutContrat, statut, salaire);
+                        contrat = new Cdi(qualification, debutContrat, statut, salaire);
                         return contrat;
                     }
                     else
                     {
-                        throw new Exception("Impossible to instanciate the contrat, no type defined");
+                        DateTime finContrat = dtpFinContrat.Value.Date;
+                        String motif = txtMotif.Text;
+
+                        if (typeContrat == TypeContrat.CDD.ToString())
+                        {
+                            contrat = new Cdd(motif, finContrat, qualification, debutContrat, statut, salaire);
+                            return contrat;
+                        }
+                        else if (typeContrat == TypeContrat.Interim.ToString())
+                        {
+                            contrat = new MissionInterim(txtEcole.Text, motif, finContrat, qualification, debutContrat, statut, salaire);
+                            return contrat;
+                        }
+                        else if (typeContrat == TypeContrat.Stage.ToString())
+                        {
+                            contrat = new Stage(txtEcole.Text, txtMission.Text, motif, finContrat, qualification, debutContrat, statut, salaire);
+                            return contrat;
+                        }
+                        else
+                        {
+                            throw new Exception("Impossible to instanciate the contrat, no type defined");
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error creation contrat", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error creation contrat", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+        
+            else return contrat;
+                
+                
+            
 
         }
 
@@ -236,10 +248,15 @@ namespace ABICommercialProject.View
         {
             if(contrat == null)
             {
-                SavingContratOfForm?.Invoke(getContrat());
+                SavingContrat?.Invoke(getContrat());
                 this.Close();
             }
             
+        }
+
+        private void btnCloturer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

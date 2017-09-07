@@ -13,7 +13,6 @@ namespace ABICommercialProject.Controller
     public delegate void SelectingHandler(Int32 id);
     public delegate void ContratHandler(Contrat contrat);
     public delegate void CollaboHandler(Collaborateur collaborateur);
-    //public delegate void EventHandler(String message);
 
     public class CtrlListCollaborateur
     {
@@ -58,6 +57,7 @@ namespace ABICommercialProject.Controller
 
         private void onUpdatedCollabo(Collaborateur collabo)
         {
+            Console.WriteLine("dans on updated collabo on ctrllist");
             if (collaborateurList.ContainsKey(collabo.Matricule))
             {
                 collaborateurList[collabo.Matricule] = collabo;
@@ -65,11 +65,11 @@ namespace ABICommercialProject.Controller
             }
             else
             {
-                Console.WriteLine("Can't find the collabo in Memory to update it + " + collabo + " mat : " + collabo.Matricule );
+                Console.WriteLine("Can't find the collabo in Memory to update it + " + collabo + " mat : " + collabo.Matricule);
             }
         }
 
-        
+
 
         private void onCreatedCollabo(object sender, EventArgs e)
         {
