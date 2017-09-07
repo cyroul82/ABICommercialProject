@@ -17,6 +17,7 @@ namespace ABICommercialProject.View
         private Contrat contrat;
 
         public ContratHandler SavingContratOfForm;
+        
         public ContratForm(Contrat contrat)
         {
             InitializeComponent();

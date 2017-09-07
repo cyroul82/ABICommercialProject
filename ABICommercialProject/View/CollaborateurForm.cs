@@ -23,6 +23,9 @@ namespace ABICommercialProject.View
         public EventHandler UpdatingCollabo;
         public System.EventHandler CloturingContrat;
         public System.EventHandler ListContrat;
+
+        public CollaboHandler EditingCollabo;
+
         public CollaborateurForm()
         {
             InitializeComponent();
@@ -51,6 +54,7 @@ namespace ABICommercialProject.View
             collaborateur = null;
             setActionControlEnabled(false);
             setCollaborateurControlEnabled(false);
+            btnSave.Text = Tools.create;
         }
 
         private void setFormToDetailCollabo()
@@ -152,8 +156,9 @@ namespace ABICommercialProject.View
         {
             if (checkup())
             {
-                if (btnSave.Text == Tools.save) SavingCollabo?.Invoke(sender, e);
-                if (btnSave.Text == Tools.edit) UpdatingCollabo?.Invoke(sender, e);
+                if (btnSave.Text == Tools.create) SavingCollabo?.Invoke(sender, e);
+                if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(getCollaborateur());
+                if (btnSave.Text == Tools.update) UpdatingCollabo?.Invoke(sender, e);
             }
         }
 

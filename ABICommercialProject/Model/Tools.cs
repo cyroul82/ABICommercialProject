@@ -9,8 +9,9 @@ namespace ABICommercialProject.Model
     class Tools
     {
 
-        public static String save = "Enregistrer";
+        public static String create = "Créer";
         public static String edit = "Editer";
+        public static String update = "Enregistrer";
 
         /// <summary>
         /// Check if the name length > 1  and that the name isn't null or empty

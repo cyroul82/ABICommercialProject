@@ -18,23 +18,10 @@ namespace ABICommercialProject.Controller
         {
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
-
-            collaborateurForm.SavingCollabo += new EventHandler(this.onSavedCollabo);
             collaborateurForm.UpdatingCollabo += new EventHandler(this.onUpdatedCollabo);
-
         }
 
         private void onUpdatedCollabo(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void init()
-        {
-            collaborateurForm.displayDialog();
-        }
-
-        private void onSavedCollabo(object sender, EventArgs e)
         {
             if (collaborateur != null)
             {
@@ -45,6 +32,11 @@ namespace ABICommercialProject.Controller
             {
                 collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
             }
+        }
+
+        public void init()
+        {
+            collaborateurForm.displayDialog();
         }
     }
 }

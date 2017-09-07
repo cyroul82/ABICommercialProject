@@ -25,7 +25,7 @@ namespace ABICommercialProject.Controller
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
                 this.collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.SavingCollabo += new EventHandler(this.onEditedCollabo);
+                collaborateurForm.EditingCollabo += new CollaboHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
                 collaborateurForm.MdiParent = MainApp.getInstance();
@@ -105,12 +105,12 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onEditedCollabo(object sender, EventArgs e)
+        private void onEditedCollabo(Collaborateur collabo)
         {
-            if (collaborateur != null)
+            if (collabo != null)
             {
                 collaborateurForm.Close();
-                EditingCollaborateur?.Invoke(collaborateur);
+                EditingCollaborateur?.Invoke(collabo);
             }
         }
     }

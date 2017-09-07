@@ -144,7 +144,7 @@ namespace ABICommercialProject.View
         private void collaborateurDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Int32 id = Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value);
-            SelectingCollabo(id);
+            SelectingCollabo?.Invoke(id);
         }
     }
 

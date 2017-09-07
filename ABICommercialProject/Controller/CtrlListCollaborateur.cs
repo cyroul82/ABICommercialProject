@@ -21,8 +21,6 @@ namespace ABICommercialProject.Controller
 
         private CollaborateurListForm collaborateurListForm;
 
-        private Collaborateur collaborateur;
-
         public CtrlListCollaborateur()
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
@@ -35,12 +33,12 @@ namespace ABICommercialProject.Controller
 
         private void onSelectedCollabo(Int32 id)
         {
+            Console.WriteLine("id collabo : " + id);
             if (collaborateurList.ContainsKey(id))
             {
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
-                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.editingCollabo);
-                ctrlDetailCollabo.CloturingContrat += new ContratHandler(this.cloturingContrat);
+                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.onEditedCollabo);
                 ctrlDetailCollabo.init();
             }
             else
@@ -50,12 +48,8 @@ namespace ABICommercialProject.Controller
 
         }
 
-        private void cloturingContrat(Contrat contrat)
-        {
-            collaborateurListForm.setDataSource();
-        }
 
-        private void editingCollabo(Collaborateur collaborateur)
+        private void onEditedCollabo(Collaborateur collaborateur)
         {
             CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
             ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.onUpdatedCollabo);
