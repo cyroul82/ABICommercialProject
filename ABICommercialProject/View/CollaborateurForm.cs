@@ -137,27 +137,40 @@ namespace ABICommercialProject.View
         /// <returns></returns>
         public Collaborateur getCollaborateur()
         {
-            if (String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtPrenom.Text) || String.IsNullOrEmpty(txtFonction.Text))
+            try
             {
-                return null;
-            }
-            else
-            {
-                String nom = txtNom.Text.Trim().ToUpper();
-                String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
-                String fonction = Tools.firstLetterUppercase(txtFonction.Text.Trim());
-
-                if (collaborateur == null)
+                if (String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtPrenom.Text))
                 {
-                    return new Collaborateur(nom, prenom, fonction);
+                    return null;
                 }
                 else
                 {
-                    collaborateur.NomCollabo = nom;
-                    collaborateur.PrenomCollabo = prenom;
-                    collaborateur.FonctionCollabo = fonction;
-                    return collaborateur;
+                    String nom = txtNom.Text.Trim().ToUpper();
+                    String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
+                    String fonction = Tools.firstLetterUppercase(txtFonction.Text.Trim());
+                    String address = txtAdresse.Text.Trim();
+                    String zipCode = txtCodePostal.Text.Trim();
+                    String town = txtVille.Text.Trim();
+                    String tel = txtTel.Text.Trim();
+                    String email = txtEmail.Text.Trim();
+
+                    if (collaborateur == null)
+                    {
+                        return new Collaborateur(nom, prenom, fonction, address, zipCode, town, tel, email);
+                    }
+                    else
+                    {
+                        collaborateur.NomCollabo = nom;
+                        collaborateur.PrenomCollabo = prenom;
+                        collaborateur.FonctionCollabo = fonction;
+                        return collaborateur;
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error Creation Collaborateur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
