@@ -79,6 +79,8 @@ namespace ABICommercialProject.View
             btnAugmentation.Visible = enable;
             btnAvenant.Visible = enable;
             btnContrat.Visible = enable;
+            lblMatricule.Visible = enable;
+            lblTextMatricule.Visible = enable;
         }
 
         /// <summary>
@@ -107,6 +109,7 @@ namespace ABICommercialProject.View
             txtVille.Text = collaborateur.Town;
             txtTel.Text = collaborateur.Tel;
             txtEmail.Text = collaborateur.Email;
+            lblTextMatricule.Text = collaborateur.Matricule.ToString();
 
         }
 

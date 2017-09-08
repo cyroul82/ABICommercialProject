@@ -57,6 +57,8 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
+            this.lblMatricule = new System.Windows.Forms.Label();
+            this.lblTextMatricule = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -119,6 +121,8 @@
             // 
             // gbCollaborateur
             // 
+            this.gbCollaborateur.Controls.Add(this.lblTextMatricule);
+            this.gbCollaborateur.Controls.Add(this.lblMatricule);
             this.gbCollaborateur.Controls.Add(this.btnContrat);
             this.gbCollaborateur.Controls.Add(this.btnAvenant);
             this.gbCollaborateur.Controls.Add(this.txtEmail);
@@ -150,7 +154,7 @@
             // 
             this.btnContrat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnContrat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnContrat.Location = new System.Drawing.Point(146, 29);
+            this.btnContrat.Location = new System.Drawing.Point(146, 22);
             this.btnContrat.Name = "btnContrat";
             this.btnContrat.Size = new System.Drawing.Size(89, 23);
             this.btnContrat.TabIndex = 16;
@@ -162,7 +166,7 @@
             // 
             this.btnAvenant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAvenant.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAvenant.Location = new System.Drawing.Point(146, 87);
+            this.btnAvenant.Location = new System.Drawing.Point(146, 80);
             this.btnAvenant.Name = "btnAvenant";
             this.btnAvenant.Size = new System.Drawing.Size(89, 23);
             this.btnAvenant.TabIndex = 15;
@@ -180,7 +184,7 @@
             // 
             this.btnAugmentation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAugmentation.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAugmentation.Location = new System.Drawing.Point(146, 58);
+            this.btnAugmentation.Location = new System.Drawing.Point(146, 51);
             this.btnAugmentation.Name = "btnAugmentation";
             this.btnAugmentation.Size = new System.Drawing.Size(89, 23);
             this.btnAugmentation.TabIndex = 13;
@@ -318,6 +322,23 @@
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nom : ";
             // 
+            // lblMatricule
+            // 
+            this.lblMatricule.AutoSize = true;
+            this.lblMatricule.Location = new System.Drawing.Point(143, 112);
+            this.lblMatricule.Name = "lblMatricule";
+            this.lblMatricule.Size = new System.Drawing.Size(59, 13);
+            this.lblMatricule.TabIndex = 17;
+            this.lblMatricule.Text = "Matricule : ";
+            // 
+            // lblTextMatricule
+            // 
+            this.lblTextMatricule.AutoSize = true;
+            this.lblTextMatricule.Location = new System.Drawing.Point(200, 112);
+            this.lblTextMatricule.Name = "lblTextMatricule";
+            this.lblTextMatricule.Size = new System.Drawing.Size(0, 13);
+            this.lblTextMatricule.TabIndex = 18;
+            // 
             // CollaborateurForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,5 +393,7 @@
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label lblNom;
+        private System.Windows.Forms.Label lblTextMatricule;
+        private System.Windows.Forms.Label lblMatricule;
     }
 }

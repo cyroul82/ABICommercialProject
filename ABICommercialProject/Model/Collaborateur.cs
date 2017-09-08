@@ -54,7 +54,11 @@ namespace ABICommercialProject
             Name = nom;
             Firstname = prenom;
             FonctionCollabo = fonctionCollabo;
-            
+            Address = address;
+            ZipCode = zipCode;
+            Town = town;
+            Tel = tel;
+            Email = email;
             statut = true;
             contratActif = null;
             init();
