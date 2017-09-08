@@ -173,17 +173,17 @@ namespace ABICommercialProject.View
 
         private Contrat getContrat()
         {
-            String typeContrat = cbxTypeContrat.SelectedItem.ToString();
-            Statut statut = Tools.getStatut(cbxStatut.SelectedItem.ToString());
-            DateTime debutContrat = Tools.getDate(dtpDebutContrat.Text);
-            Decimal salaire = Tools.getSalaireBrut(txtSalaire.Text);
-            String qualification = txtQualification.Text;
-
-
+            
             if (contrat == null)
             {
                 try
                 {
+                    String typeContrat = cbxTypeContrat.SelectedItem.ToString();
+                    Statut statut = Tools.getStatut(cbxStatut.SelectedItem.ToString());
+                    DateTime debutContrat = Tools.getDate(dtpDebutContrat.Text);
+                    Decimal salaire = Tools.getSalaireBrut(txtSalaire.Text);
+                    String qualification = txtQualification.Text;
+
                     if (typeContrat == TypeContrat.CDI.ToString())
                     {
                         contrat = new Cdi(qualification, debutContrat, statut, salaire);
@@ -253,19 +253,19 @@ namespace ABICommercialProject.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(contrat == null)
+            contrat = getContrat();
+            if (contrat != null)
             {
-                SavingContrat?.Invoke(getContrat());
+                SavingContrat?.Invoke(contrat);
                 this.Close();
             }
-            
+
         }
 
         private void btnCloturer_Click(object sender, EventArgs e)
         {
             if(contrat != null)
             {
-                
                 CloturingContrat?.Invoke(contrat);
                 this.Close();
             }
