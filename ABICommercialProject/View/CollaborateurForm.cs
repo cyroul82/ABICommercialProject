@@ -30,6 +30,7 @@ namespace ABICommercialProject.View
         {
             InitializeComponent();
             setFormToNewCollabo();
+            
         }
 
         public CollaborateurForm(Collaborateur collaborateur, Boolean edit)
@@ -37,7 +38,7 @@ namespace ABICommercialProject.View
             InitializeComponent();
             this.collaborateur = collaborateur;
 
-            setCollaborateur(collaborateur);
+            setCollaborateur();
             if (edit)
             {
                 setFormToEditCollabo();
@@ -99,7 +100,7 @@ namespace ABICommercialProject.View
             txtFonction.ReadOnly = enable;
         }
 
-        private void setCollaborateur(Collaborateur collaborateur)
+        private void setCollaborateur()
         {
             txtNom.Text = collaborateur.Name;
             txtPrenom.Text = collaborateur.Firstname;
@@ -145,15 +146,31 @@ namespace ABICommercialProject.View
         /// <returns></returns>
         public Collaborateur getCollaborateur()
         {
+            return collaborateur;
+        }
+
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (savedCollabo())
+            {
+                if (btnSave.Text == Tools.create) SavingCollabo?.Invoke(sender, e);
+                if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(getCollaborateur());
+                if (btnSave.Text == Tools.update) UpdatingCollabo?.Invoke(sender, e);
+            }
+        }
+        
+
+        private Boolean savedCollabo()
+        {
             try
             {
                 if (String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtPrenom.Text))
                 {
                     errorProviderNom.SetError(txtNom, "Requis");
                     errorProviderPrenom.SetError(txtPrenom, "Requis");
-
-                    //throw new Exception("Name is required ");
-                    return null;
+                    return false;
+               
                 }
                 else
                 {
@@ -168,7 +185,8 @@ namespace ABICommercialProject.View
 
                     if (collaborateur == null)
                     {
-                        return new Collaborateur(nom, prenom, fonction, address, zipCode, town, tel, email);
+                        collaborateur =  new Collaborateur(nom, prenom, fonction, address, zipCode, town, tel, email);
+                        return true;
                     }
                     else
                     {
@@ -180,25 +198,14 @@ namespace ABICommercialProject.View
                         collaborateur.Town = town;
                         collaborateur.Tel = tel;
                         collaborateur.Email = email;
-                        return collaborateur;
+                        return true;
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Error Creation Collaborateur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (checkup())
-            {
-                if (btnSave.Text == Tools.create) SavingCollabo?.Invoke(sender, e);
-                if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(getCollaborateur());
-                if (btnSave.Text == Tools.update) UpdatingCollabo?.Invoke(sender, e);
+                return false;
             }
         }
 
