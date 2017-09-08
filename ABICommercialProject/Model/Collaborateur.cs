@@ -63,6 +63,21 @@ namespace ABICommercialProject
             contratActif = null;
             init();
         }
+        public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
+        {
+            Matricule = matricule;
+            Name = nom;
+            Firstname = prenom;
+            FonctionCollabo = fonctionCollabo;
+            Address = address;
+            ZipCode = zipCode;
+            Town = town;
+            Tel = tel;
+            Email = email;
+            statut = true;
+            contratActif = null;
+            init();
+        }
         public Collaborateur(String nom, String prenom, String fonctionCollabo)
         {
             Matricule = 0;
@@ -218,8 +233,16 @@ namespace ABICommercialProject
             }
             set
             {
-     
-                if (this.name != value)
+
+                if (!Tools.IsNameValid(value))
+                {
+                    throw new Exception("The surname lenght must be greater than 2 letters");
+                }
+                else if (!Tools.isNameOnlyChar(value))
+                {
+                    throw new Exception("the surname must contains only characters");
+                }
+                else if (this.name != value)
                     this.name = value.ToUpper().Trim();
                 
             }
@@ -271,14 +294,6 @@ namespace ABICommercialProject
             }
             set
             {
-                if (!Tools.IsNameValid(value))
-                {
-                    throw new ArgumentException("The surname lenght must be greater than 2 letters");
-                }
-                if (!Tools.isNameOnlyChar(value))
-                {
-                    throw new ArgumentException("the surname must contains only characters");
-                }
                 if (this.fonction != value)
                     this.fonction = value;
             }

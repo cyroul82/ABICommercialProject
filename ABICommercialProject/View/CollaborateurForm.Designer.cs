@@ -33,8 +33,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProviderNom = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPrenom = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProviderFonction = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
             this.btnContrat = new System.Windows.Forms.Button();
@@ -61,8 +59,6 @@
             this.lblTextMatricule = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFonction)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbCollaborateur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCollabo)).BeginInit();
@@ -100,16 +96,6 @@
             // 
             this.errorProviderPrenom.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderPrenom.ContainerControl = this;
-            // 
-            // errorProvider2
-            // 
-            this.errorProvider2.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider2.ContainerControl = this;
-            // 
-            // errorProviderFonction
-            // 
-            this.errorProviderFonction.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderFonction.ContainerControl = this;
             // 
             // panel1
             // 
@@ -354,8 +340,6 @@
             this.Text = "Collaborateur";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFonction)).EndInit();
             this.panel1.ResumeLayout(false);
             this.gbCollaborateur.ResumeLayout(false);
             this.gbCollaborateur.PerformLayout();
@@ -368,8 +352,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ErrorProvider errorProviderNom;
         private System.Windows.Forms.ErrorProvider errorProviderPrenom;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
-        private System.Windows.Forms.ErrorProvider errorProviderFonction;
         internal System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbCollaborateur;

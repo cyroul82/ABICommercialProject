@@ -149,13 +149,17 @@ namespace ABICommercialProject.View
             {
                 if (String.IsNullOrEmpty(txtNom.Text) || String.IsNullOrEmpty(txtPrenom.Text))
                 {
+                    errorProviderNom.SetError(txtNom, "Requis");
+                    errorProviderPrenom.SetError(txtPrenom, "Requis");
+
+                    //throw new Exception("Name is required ");
                     return null;
                 }
                 else
                 {
                     String nom = txtNom.Text.Trim().ToUpper();
                     String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
-                    String fonction = Tools.firstLetterUppercase(txtFonction.Text.Trim());
+                    String fonction = txtFonction.Text.Trim();
                     String address = txtAdresse.Text.Trim();
                     String zipCode = txtCodePostal.Text.Trim();
                     String town = txtVille.Text.Trim();

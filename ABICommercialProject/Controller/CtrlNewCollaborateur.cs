@@ -22,9 +22,12 @@ namespace ABICommercialProject.Controller
         private void onSavedCollabo(object sender, EventArgs e)
         {
             collaborateur = collaborateurForm.getCollaborateur();
-            CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
-            ctrlNewContrat.SavingContrat += new ContratHandler(this.onSavedContrat);
-            ctrlNewContrat.init();
+            if (collaborateur != null)
+            {
+                CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
+                ctrlNewContrat.SavingContrat += new ContratHandler(this.onSavedContrat);
+                ctrlNewContrat.init();
+            }
         }
 
         private void onSavedContrat(Contrat contrat)

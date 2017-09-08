@@ -32,7 +32,6 @@ namespace ABICommercialProject.Controller
 
         private void onSelectedCollabo(Int32 id)
         {
-            Console.WriteLine("id collabo : " + id);
             if (collaborateurList.ContainsKey(id))
             {
                 Collaborateur collabo = collaborateurList[id];
