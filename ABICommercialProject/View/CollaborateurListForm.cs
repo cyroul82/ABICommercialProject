@@ -83,8 +83,8 @@ namespace ABICommercialProject.View
             {
                 DataRow dr = dt.NewRow();
                 dr["Matricule"] = collaborateur.Matricule;
-                dr["Nom"] = collaborateur.NomCollabo;
-                dr["Prénom"] = collaborateur.PrenomCollabo;
+                dr["Nom"] = collaborateur.Name;
+                dr["Prénom"] = collaborateur.Firstname;
                 dr["Fonction"] = collaborateur.FonctionCollabo;
 
                 if (collaborateur.getContratActif() != null)

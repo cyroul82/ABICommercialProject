@@ -15,10 +15,15 @@ namespace ABICommercialProject
     {
 
         private int matricule;
-        private String nomCollabo;
-        private String prenomCollabo;
-        private String photographie;
-        private String fonctionCollabo;
+        private String name;
+        private String firstname;
+        private String picture;
+        private String fonction;
+        private String address;
+        private String zipCode;
+        private String town;
+        private String tel;
+        private String email;
         private Boolean statut;
         private Contrat contratActif;
 
@@ -34,16 +39,22 @@ namespace ABICommercialProject
         /// <param name="fonctionCollabo"></param>
         public Collaborateur(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
         {
-            initializeConstuctor(nom, prenom, fonctionCollabo);
+            Matricule = 0;
+            Name = nom;
+            Firstname = prenom;
+            FonctionCollabo = fonctionCollabo;
+            init();
+            this.contratActif = contratActif;
             statut = true;
         }
 
         public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
         {
             Matricule = 0;
-            NomCollabo = nom;
-            PrenomCollabo = prenom;
+            Name = nom;
+            Firstname = prenom;
             FonctionCollabo = fonctionCollabo;
+            
             statut = true;
             contratActif = null;
             init();
@@ -51,8 +62,8 @@ namespace ABICommercialProject
         public Collaborateur(String nom, String prenom, String fonctionCollabo)
         {
             Matricule = 0;
-            NomCollabo = nom;
-            PrenomCollabo = prenom;
+            Name = nom;
+            Firstname = prenom;
             FonctionCollabo = fonctionCollabo;
             init();
             statut = true;
@@ -94,7 +105,7 @@ namespace ABICommercialProject
         /// <returns></returns>
         public override string ToString()
         {
-            return "Collaborateur : " + nomCollabo + " " + prenomCollabo + " " + fonctionCollabo;
+            return "Collaborateur : " + name + " " + firstname + " " + fonction;
         }
 
         /// <summary>
@@ -195,17 +206,17 @@ namespace ABICommercialProject
         /// <summary>
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>
-        public String NomCollabo
+        public String Name
         {
             get
             {
-                return nomCollabo;
+                return name;
             }
             set
             {
      
-                if (this.nomCollabo != value)
-                    this.nomCollabo = value.ToUpper().Trim();
+                if (this.name != value)
+                    this.name = value.ToUpper().Trim();
                 
             }
         }
@@ -214,11 +225,11 @@ namespace ABICommercialProject
         /// Propriété {get ; set} 
         /// </summary>
         /// <exception cref="Exception">prenom n'est pas valide</exception>
-        public String PrenomCollabo
+        public String Firstname
         {
             get
             {
-                return prenomCollabo;
+                return firstname;
             }
             set
             {
@@ -230,21 +241,21 @@ namespace ABICommercialProject
                 {
                     throw new Exception("the surname must contains only characters");
                 }
-                if (this.prenomCollabo != value)
-                    this.prenomCollabo = value;
+                if (this.firstname != value)
+                    this.firstname = value;
             }
         }
 
-        public String Photographie
+        public String Picture
         {
             get
             {
-                return photographie;
+                return picture;
             }
             set
             {
-                if (this.photographie != value)
-                    this.photographie = value;
+                if (this.picture != value)
+                    this.picture = value;
             }
         }
 
@@ -252,7 +263,7 @@ namespace ABICommercialProject
         {
             get
             {
-                return fonctionCollabo;
+                return fonction;
             }
             set
             {
@@ -264,8 +275,8 @@ namespace ABICommercialProject
                 {
                     throw new ArgumentException("the surname must contains only characters");
                 }
-                if (this.fonctionCollabo != value)
-                    this.fonctionCollabo = value;
+                if (this.fonction != value)
+                    this.fonction = value;
             }
         }
 
@@ -292,6 +303,71 @@ namespace ABICommercialProject
             {
                 if (this.statut != value)
                     this.statut = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public string ZipCode
+        {
+            get
+            {
+                return zipCode;
+            }
+
+            set
+            {
+                zipCode = value;
+            }
+        }
+
+        public string Town
+        {
+            get
+            {
+                return town;
+            }
+
+            set
+            {
+                town = value;
+            }
+        }
+
+        public string Tel
+        {
+            get
+            {
+                return tel;
+            }
+
+            set
+            {
+                tel = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
             }
         }
     }

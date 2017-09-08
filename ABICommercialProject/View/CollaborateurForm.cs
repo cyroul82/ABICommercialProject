@@ -99,9 +99,14 @@ namespace ABICommercialProject.View
 
         private void setCollaborateur(Collaborateur collaborateur)
         {
-            txtNom.Text = collaborateur.NomCollabo;
-            txtPrenom.Text = collaborateur.PrenomCollabo;
+            txtNom.Text = collaborateur.Name;
+            txtPrenom.Text = collaborateur.Firstname;
             txtFonction.Text = collaborateur.FonctionCollabo;
+            txtAdresse.Text = collaborateur.Address;
+            txtCodePostal.Text = collaborateur.ZipCode;
+            txtVille.Text = collaborateur.Town;
+            txtTel.Text = collaborateur.Tel;
+            txtEmail.Text = collaborateur.Email;
 
         }
 
@@ -160,9 +165,14 @@ namespace ABICommercialProject.View
                     }
                     else
                     {
-                        collaborateur.NomCollabo = nom;
-                        collaborateur.PrenomCollabo = prenom;
+                        collaborateur.Name = nom;
+                        collaborateur.Firstname = prenom;
                         collaborateur.FonctionCollabo = fonction;
+                        collaborateur.Address = address;
+                        collaborateur.ZipCode = zipCode;
+                        collaborateur.Town = town;
+                        collaborateur.Tel = tel;
+                        collaborateur.Email = email;
                         return collaborateur;
                     }
                 }
