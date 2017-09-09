@@ -139,7 +139,7 @@
             this.cbxTypeContrat.Location = new System.Drawing.Point(102, 29);
             this.cbxTypeContrat.Name = "cbxTypeContrat";
             this.cbxTypeContrat.Size = new System.Drawing.Size(204, 21);
-            this.cbxTypeContrat.TabIndex = 10;
+            this.cbxTypeContrat.TabIndex = 1;
             this.cbxTypeContrat.SelectedIndexChanged += new System.EventHandler(this.cbxTypeContrat_SelectedIndexChanged);
             // 
             // gpxDetailContrat
@@ -175,7 +175,7 @@
             this.txtMission.Location = new System.Drawing.Point(102, 213);
             this.txtMission.Name = "txtMission";
             this.txtMission.Size = new System.Drawing.Size(204, 20);
-            this.txtMission.TabIndex = 25;
+            this.txtMission.TabIndex = 9;
             // 
             // lblMisson
             // 
@@ -191,7 +191,7 @@
             this.txtEcole.Location = new System.Drawing.Point(102, 187);
             this.txtEcole.Name = "txtEcole";
             this.txtEcole.Size = new System.Drawing.Size(204, 20);
-            this.txtEcole.TabIndex = 23;
+            this.txtEcole.TabIndex = 8;
             // 
             // lblEcole
             // 
@@ -207,7 +207,7 @@
             this.dtpFinContrat.Location = new System.Drawing.Point(102, 133);
             this.dtpFinContrat.Name = "dtpFinContrat";
             this.dtpFinContrat.Size = new System.Drawing.Size(204, 20);
-            this.dtpFinContrat.TabIndex = 21;
+            this.dtpFinContrat.TabIndex = 6;
             // 
             // lblDateFinContrat
             // 
@@ -224,7 +224,7 @@
             this.txtMotif.Location = new System.Drawing.Point(102, 159);
             this.txtMotif.Name = "txtMotif";
             this.txtMotif.Size = new System.Drawing.Size(204, 20);
-            this.txtMotif.TabIndex = 19;
+            this.txtMotif.TabIndex = 7;
             // 
             // lblMotif
             // 
@@ -240,7 +240,7 @@
             this.txtSalaire.Location = new System.Drawing.Point(102, 81);
             this.txtSalaire.Name = "txtSalaire";
             this.txtSalaire.Size = new System.Drawing.Size(204, 20);
-            this.txtSalaire.TabIndex = 15;
+            this.txtSalaire.TabIndex = 4;
             // 
             // cbxStatut
             // 
@@ -249,7 +249,7 @@
             this.cbxStatut.Location = new System.Drawing.Point(102, 54);
             this.cbxStatut.Name = "cbxStatut";
             this.cbxStatut.Size = new System.Drawing.Size(204, 21);
-            this.cbxStatut.TabIndex = 17;
+            this.cbxStatut.TabIndex = 3;
             // 
             // lblQualification
             // 
@@ -265,14 +265,14 @@
             this.dtpDebutContrat.Location = new System.Drawing.Point(102, 107);
             this.dtpDebutContrat.Name = "dtpDebutContrat";
             this.dtpDebutContrat.Size = new System.Drawing.Size(204, 20);
-            this.dtpDebutContrat.TabIndex = 16;
+            this.dtpDebutContrat.TabIndex = 5;
             // 
             // txtQualification
             // 
             this.txtQualification.Location = new System.Drawing.Point(102, 30);
             this.txtQualification.Name = "txtQualification";
             this.txtQualification.Size = new System.Drawing.Size(204, 20);
-            this.txtQualification.TabIndex = 11;
+            this.txtQualification.TabIndex = 2;
             // 
             // lblDateDebutContrat
             // 
@@ -307,7 +307,7 @@
             this.btnSave.Location = new System.Drawing.Point(3, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 20;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Enregistrer";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -319,7 +319,7 @@
             this.btnCancel.Location = new System.Drawing.Point(246, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -328,7 +328,7 @@
             this.btnCloturer.Location = new System.Drawing.Point(84, 3);
             this.btnCloturer.Name = "btnCloturer";
             this.btnCloturer.Size = new System.Drawing.Size(75, 23);
-            this.btnCloturer.TabIndex = 23;
+            this.btnCloturer.TabIndex = 11;
             this.btnCloturer.Text = "Clôturer";
             this.btnCloturer.UseVisualStyleBackColor = true;
             this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
@@ -353,20 +353,22 @@
             this.btnAvenant.Location = new System.Drawing.Point(165, 3);
             this.btnAvenant.Name = "btnAvenant";
             this.btnAvenant.Size = new System.Drawing.Size(75, 23);
-            this.btnAvenant.TabIndex = 24;
+            this.btnAvenant.TabIndex = 12;
             this.btnAvenant.Text = "Avenants";
             this.btnAvenant.UseVisualStyleBackColor = true;
             // 
             // ContratForm
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(375, 482);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelContrat);
             this.Name = "ContratForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Contrat";
+            this.Text = "Nouveau Contrat";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderQualification)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSalaire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderMotif)).EndInit();

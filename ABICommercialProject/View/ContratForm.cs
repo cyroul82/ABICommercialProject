@@ -21,21 +21,28 @@ namespace ABICommercialProject.View
         public ContratForm()
         {
             InitializeComponent();
-            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
-            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
-            cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
+            init();
             ControlEnabled(true);
 
         }
         public ContratForm(Contrat contrat)
         {
             InitializeComponent();
-            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
-            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
-            cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
+            init();
             this.contrat = contrat;
             this.setContract();
             ControlEnabled(false);
+            if (contrat.Cloture)
+            {
+                HideControl();
+            }
+        }
+
+        private void init()
+        {
+            cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
+            cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
+            cbxTypeContrat.SelectedItem = TypeContrat.CDI.ToString();
         }
 
 
@@ -64,6 +71,20 @@ namespace ABICommercialProject.View
 
         }
 
+        /// <summary>
+        /// Hide button Cloturer, Save and Cancel
+        /// </summary>
+        private void HideControl()
+        {
+            btnCloturer.Visible = false;
+            btnSave.Visible = false;
+            btnAvenant.Visible = false;
+            btnCancel.Text = "Fermer";
+        }
+
+        /// <summary>
+        /// Fills up the textboxes
+        /// </summary>
         private void setContract()
         {
             
@@ -115,6 +136,9 @@ namespace ABICommercialProject.View
             
         }
 
+        /// <summary>
+        /// D
+        /// </summary>
         private void displayFormCdd()
         {
             hideFields();

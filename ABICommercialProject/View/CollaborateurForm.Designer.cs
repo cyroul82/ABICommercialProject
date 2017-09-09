@@ -35,6 +35,8 @@
             this.errorProviderPrenom = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
+            this.lblTextMatricule = new System.Windows.Forms.Label();
+            this.lblMatricule = new System.Windows.Forms.Label();
             this.btnContrat = new System.Windows.Forms.Button();
             this.btnAvenant = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
-            this.lblMatricule = new System.Windows.Forms.Label();
-            this.lblTextMatricule = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,7 +71,7 @@
             this.btnCancel.Location = new System.Drawing.Point(169, 453);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -82,7 +82,7 @@
             this.btnSave.Location = new System.Drawing.Point(88, 453);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Enregistrer";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -136,6 +136,23 @@
             this.gbCollaborateur.TabStop = false;
             this.gbCollaborateur.Text = "Collaborateur";
             // 
+            // lblTextMatricule
+            // 
+            this.lblTextMatricule.AutoSize = true;
+            this.lblTextMatricule.Location = new System.Drawing.Point(200, 112);
+            this.lblTextMatricule.Name = "lblTextMatricule";
+            this.lblTextMatricule.Size = new System.Drawing.Size(0, 13);
+            this.lblTextMatricule.TabIndex = 18;
+            // 
+            // lblMatricule
+            // 
+            this.lblMatricule.AutoSize = true;
+            this.lblMatricule.Location = new System.Drawing.Point(143, 112);
+            this.lblMatricule.Name = "lblMatricule";
+            this.lblMatricule.Size = new System.Drawing.Size(59, 13);
+            this.lblMatricule.TabIndex = 17;
+            this.lblMatricule.Text = "Matricule : ";
+            // 
             // btnContrat
             // 
             this.btnContrat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -164,7 +181,7 @@
             this.txtEmail.Location = new System.Drawing.Point(112, 345);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(147, 20);
-            this.txtEmail.TabIndex = 16;
+            this.txtEmail.TabIndex = 7;
             // 
             // btnAugmentation
             // 
@@ -191,14 +208,14 @@
             this.txtFonction.Location = new System.Drawing.Point(112, 373);
             this.txtFonction.Name = "txtFonction";
             this.txtFonction.Size = new System.Drawing.Size(147, 20);
-            this.txtFonction.TabIndex = 5;
+            this.txtFonction.TabIndex = 8;
             // 
             // txtTel
             // 
             this.txtTel.Location = new System.Drawing.Point(112, 318);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(147, 20);
-            this.txtTel.TabIndex = 14;
+            this.txtTel.TabIndex = 6;
             // 
             // lblFonction
             // 
@@ -223,7 +240,7 @@
             this.txtCodePostal.Location = new System.Drawing.Point(112, 292);
             this.txtCodePostal.Name = "txtCodePostal";
             this.txtCodePostal.Size = new System.Drawing.Size(66, 20);
-            this.txtCodePostal.TabIndex = 12;
+            this.txtCodePostal.TabIndex = 5;
             // 
             // lblCodePostal
             // 
@@ -239,7 +256,7 @@
             this.txtVille.Location = new System.Drawing.Point(112, 266);
             this.txtVille.Name = "txtVille";
             this.txtVille.Size = new System.Drawing.Size(147, 20);
-            this.txtVille.TabIndex = 10;
+            this.txtVille.TabIndex = 4;
             // 
             // lblVille
             // 
@@ -256,7 +273,7 @@
             this.txtAdresse.Multiline = true;
             this.txtAdresse.Name = "txtAdresse";
             this.txtAdresse.Size = new System.Drawing.Size(147, 67);
-            this.txtAdresse.TabIndex = 8;
+            this.txtAdresse.TabIndex = 3;
             // 
             // lblAdresse
             // 
@@ -281,7 +298,7 @@
             this.txtPrenom.Location = new System.Drawing.Point(112, 166);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(147, 20);
-            this.txtPrenom.TabIndex = 3;
+            this.txtPrenom.TabIndex = 2;
             // 
             // lblPrenom
             // 
@@ -308,27 +325,12 @@
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nom : ";
             // 
-            // lblMatricule
-            // 
-            this.lblMatricule.AutoSize = true;
-            this.lblMatricule.Location = new System.Drawing.Point(143, 112);
-            this.lblMatricule.Name = "lblMatricule";
-            this.lblMatricule.Size = new System.Drawing.Size(59, 13);
-            this.lblMatricule.TabIndex = 17;
-            this.lblMatricule.Text = "Matricule : ";
-            // 
-            // lblTextMatricule
-            // 
-            this.lblTextMatricule.AutoSize = true;
-            this.lblTextMatricule.Location = new System.Drawing.Point(200, 112);
-            this.lblTextMatricule.Name = "lblTextMatricule";
-            this.lblTextMatricule.Size = new System.Drawing.Size(0, 13);
-            this.lblTextMatricule.TabIndex = 18;
-            // 
             // CollaborateurForm
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(329, 488);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
@@ -337,7 +339,7 @@
             this.MaximizeBox = false;
             this.Name = "CollaborateurForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Collaborateur";
+            this.Text = "Nouveau Collaborateur";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).EndInit();
             this.panel1.ResumeLayout(false);

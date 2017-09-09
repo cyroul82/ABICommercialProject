@@ -37,7 +37,7 @@ namespace ABICommercialProject.View
         {
             InitializeComponent();
             this.collaborateur = collaborateur;
-
+            this.Text = collaborateur.Name + " " + collaborateur.Firstname;
             setCollaborateur();
             if (edit)
             {
