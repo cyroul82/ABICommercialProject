@@ -32,20 +32,27 @@ namespace ABICommercialProject.Controller
 
         private void onSavedContrat(Contrat contrat)
         {
-            this.contrat = contrat;
-            this.savingNewCollaborateur();
+            if (contrat != null)
+            {
+                this.contrat = contrat;
+                this.savingNewCollaborateur();
+            }
         }
 
         private void savingNewCollaborateur()
         {
-            collaborateur.Matricule = MainApp.matricule++;
-            Random r = new Random();
-            Int32 i = r.Next(1001, 10000);
-            contrat.NumeroContrat = i;
-            collaborateur.setContratActif(contrat);
-            collaborateur.AddContrat(contrat);
-            SavingCollaboData?.Invoke(collaborateur);
-            this.collaborateurForm.Close();
+            try
+            {
+                DAO.getInstance().NewCollaborateur(ref collaborateur, contrat);
+                //invoke savingCollaboData, The CtrlListColloborateur listening to it to update the list
+                SavingCollaboData?.Invoke(collaborateur);
+                //close the form
+                this.collaborateurForm.Close();
+            }
+            catch (Exception e)
+            {
+                collaborateurForm.displayErrorMessage(e.Message, "Error DB");
+            }
         }
 
         public void init()

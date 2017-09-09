@@ -16,11 +16,23 @@ namespace ABICommercialProject.Controller
 
     public class CtrlListCollaborateur
     {
-        public static SortedDictionary<Int32, Collaborateur> collaborateurList = new SortedDictionary<int, Collaborateur>();
-
+        
         private CollaborateurListForm collaborateurListForm;
-
+        private SortedDictionary<Int32, Collaborateur> collaborateurList;
         public CtrlListCollaborateur()
+        {
+            try
+            {
+                collaborateurList = DAO.getInstance().getCollaborateurList();
+                init();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        private void init()
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
@@ -61,7 +73,6 @@ namespace ABICommercialProject.Controller
 
         private void onUpdatedCollabo(Collaborateur collabo)
         {
-            Console.WriteLine("dans on updated collabo on ctrllist");
             if (collaborateurList.ContainsKey(collabo.Matricule))
             {
                 collaborateurList[collabo.Matricule] = collabo;

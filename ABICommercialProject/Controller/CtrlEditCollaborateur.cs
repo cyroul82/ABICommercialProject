@@ -23,15 +23,17 @@ namespace ABICommercialProject.Controller
 
         private void onUpdatedCollabo(object sender, EventArgs e)
         {
-            if (collaborateur != null)
+            try
             {
                 collaborateur = collaborateurForm.getCollaborateur();
+                DAO.getInstance().UpdateCollaborateur(collaborateur);
                 collaborateurForm.closeDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }
-            else
+            catch (Exception ex)
             {
-                collaborateurForm.displayErrorMessage("Unexpected Error, Contrat or Collaborateur is null", "Error App");
+                collaborateurForm.displayErrorMessage(ex.Message, "Error Updating Collaborateur");
+
             }
         }
 

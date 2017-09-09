@@ -37,16 +37,6 @@ namespace ABICommercialProject
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
-        public Collaborateur(String nom, String prenom, String fonctionCollabo, Contrat contratActif)
-        {
-            Matricule = 0;
-            Name = nom;
-            Firstname = prenom;
-            FonctionCollabo = fonctionCollabo;
-            init();
-            this.contratActif = contratActif;
-            statut = true;
-        }
 
         public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
         {
@@ -63,7 +53,7 @@ namespace ABICommercialProject
             contratActif = null;
             init();
         }
-        public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
+        public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif, Boolean statut)
         {
             Matricule = matricule;
             Name = nom;
@@ -74,20 +64,11 @@ namespace ABICommercialProject
             Town = town;
             Tel = tel;
             Email = email;
-            statut = true;
-            contratActif = null;
+            this.Statut = statut;
+            this.contratActif = contratActif;
             init();
         }
-        public Collaborateur(String nom, String prenom, String fonctionCollabo)
-        {
-            Matricule = 0;
-            Name = nom;
-            Firstname = prenom;
-            FonctionCollabo = fonctionCollabo;
-            init();
-            statut = true;
-            contratActif = null;
-        }
+
         /// <summary>
         /// Initialize properties
         /// </summary>

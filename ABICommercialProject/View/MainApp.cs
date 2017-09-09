@@ -36,7 +36,14 @@ namespace ABICommercialProject
         {
             if (ctrlListCollaborateur == null)
             {
-                ctrlListCollaborateur = new CtrlListCollaborateur();
+                try
+                {
+                    ctrlListCollaborateur = new CtrlListCollaborateur();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 
             }
             else

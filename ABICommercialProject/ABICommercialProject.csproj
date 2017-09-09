@@ -55,6 +55,7 @@
     <Compile Include="Controller\CtrlNewCollaborateur.cs" />
     <Compile Include="Controller\CtrlNewContrat.cs" />
     <Compile Include="Controller\CtrlViewContrat.cs" />
+    <Compile Include="DAO.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
     <Compile Include="Model\Cdd.cs" />
