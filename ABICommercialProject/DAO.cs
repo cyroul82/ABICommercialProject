@@ -11,7 +11,7 @@ namespace ABICommercialProject
 
         private static DAO dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
-
+        private  static Int32 matricule = 0;
         private DAO()
         {
             collaborateurList = new SortedDictionary<int, Collaborateur>();
@@ -30,7 +30,7 @@ namespace ABICommercialProject
         {
             try
             {
-                collaborateur.Matricule = MainApp.matricule++;
+                collaborateur.Matricule = matricule++;
                 Random r = new Random();
                 Int32 i = r.Next(1001, 10000);
                 contrat.NumeroContrat = i;

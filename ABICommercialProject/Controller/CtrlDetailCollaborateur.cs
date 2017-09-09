@@ -27,7 +27,7 @@ namespace ABICommercialProject.Controller
                 collaborateurForm.EditingCollabo += new CollaboHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
-                collaborateurForm.MdiParent = MainApp.getInstance();
+                collaborateurForm.MdiParent = CtrlMain.getInstance().getMainApp();
 
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
             }

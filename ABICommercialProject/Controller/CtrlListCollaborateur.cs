@@ -38,7 +38,7 @@ namespace ABICommercialProject.Controller
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
             collaborateurListForm.CreatingCollabo += new EventHandler(this.onCreatedCollabo);
             collaborateurListForm.SelectingCollabo += new SelectingHandler(this.onSelectedCollabo);
-            collaborateurListForm.MdiParent = MainApp.getInstance();
+            collaborateurListForm.MdiParent = CtrlMain.getInstance().getMainApp();
             collaborateurListForm.Show();
         }
 
@@ -103,7 +103,7 @@ namespace ABICommercialProject.Controller
         private void onClosedForm(object sender, FormClosingEventArgs e)
         {
             collaborateurListForm = null;
-            MainApp.getInstance().ctrlListCollaborateur = null;
+            CtrlMain.getInstance().closeCtrlListCollaborateur(); ;
         }
 
         public void display()
