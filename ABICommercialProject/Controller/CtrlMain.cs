@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
@@ -29,7 +28,7 @@ namespace ABICommercialProject.Controller
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mainApp.displayErrorMessage(ex.Message, "Error DB");
                 }
 
             }
@@ -57,5 +56,6 @@ namespace ABICommercialProject.Controller
         {
             return mainApp;
         }
+
     }
 }

@@ -116,5 +116,10 @@ namespace ABICommercialProject.View
         {
             OpeningCollaborateur?.Invoke(sender, e);
         }
+
+        public void displayErrorMessage(String message, String title)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
