@@ -36,6 +36,7 @@ namespace ABICommercialProject
                 contrat.NumeroContrat = i;
                 collaborateur.setContratActif(contrat);
                 collaborateur.AddContrat(contrat);
+
             }
             catch(Exception e)
             {

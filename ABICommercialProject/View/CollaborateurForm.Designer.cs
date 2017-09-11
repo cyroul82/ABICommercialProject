@@ -57,6 +57,7 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
+            this.panelContrat = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
             this.panel1.SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(169, 453);
+            this.btnCancel.Location = new System.Drawing.Point(349, 509);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -79,7 +80,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Location = new System.Drawing.Point(88, 453);
+            this.btnSave.Location = new System.Drawing.Point(268, 509);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 9;
@@ -99,10 +100,12 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.gbCollaborateur);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 429);
+            this.panel1.Size = new System.Drawing.Size(305, 485);
             this.panel1.TabIndex = 11;
             // 
             // gbCollaborateur
@@ -325,18 +328,27 @@
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nom : ";
             // 
+            // panelContrat
+            // 
+            this.panelContrat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelContrat.Location = new System.Drawing.Point(324, 12);
+            this.panelContrat.Name = "panelContrat";
+            this.panelContrat.Size = new System.Drawing.Size(352, 485);
+            this.panelContrat.TabIndex = 12;
+            // 
             // CollaborateurForm
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(329, 488);
+            this.ClientSize = new System.Drawing.Size(688, 544);
+            this.Controls.Add(this.panelContrat);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "CollaborateurForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nouveau Collaborateur";
@@ -379,5 +391,6 @@
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblTextMatricule;
         private System.Windows.Forms.Label lblMatricule;
+        internal System.Windows.Forms.Panel panelContrat;
     }
 }

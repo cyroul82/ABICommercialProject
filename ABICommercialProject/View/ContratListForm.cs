@@ -15,16 +15,16 @@ namespace ABICommercialProject.View
     
     public partial class ContratListForm : Form
     {
-        private SortedDictionary<Int32, Contrat> listContrat;
         private DataTable dt;
-
+        private Collaborateur collaborateur;
         public ContratHandler CloturingContrat;
         public SelectingHandler SelectingContrat;
         public EventHandler CreatingContrat;
-        public ContratListForm(SortedDictionary<Int32, Contrat> listContrat)
+        public ContratListForm(Collaborateur collaborateur)
         {
+            this.collaborateur = collaborateur;
             InitializeComponent();
-            this.listContrat = listContrat;
+            this.Text = "Liste des contrats :" + collaborateur.Name + " " + collaborateur.Firstname;
             initializeDataTable();
             setDataSource();
         }
@@ -54,7 +54,7 @@ namespace ABICommercialProject.View
         {
             if (dt != null)
             {
-                foreach (KeyValuePair<Int32, Contrat> c in listContrat)
+                foreach (KeyValuePair<Int32, Contrat> c in collaborateur.getListContrat())
                 {
                     addContrat(c.Value);
 

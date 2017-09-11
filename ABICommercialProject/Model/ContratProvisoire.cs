@@ -42,6 +42,9 @@ namespace ABICommercialProject
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime DateFinContrat
         {
             get

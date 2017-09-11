@@ -23,12 +23,14 @@ namespace ABICommercialProject.Controller
             this.collaborateur = collaborateur;
             if (!openedForm.ContainsKey(collaborateur.Matricule))
             {
-                this.collaborateurForm = new CollaborateurForm(collaborateur, false);
+                collaborateurForm = new CollaborateurForm(collaborateur, false);
                 collaborateurForm.EditingCollabo += new CollaboHandler(this.onEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
                 collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
                 collaborateurForm.MdiParent = CtrlMain.getInstance().getMainApp();
 
+                CtrlListContrat clc = new CtrlListContrat(collaborateur, collaborateurForm);
+                
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
             }
             else

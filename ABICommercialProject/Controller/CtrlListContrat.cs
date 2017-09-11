@@ -8,20 +8,33 @@ namespace ABICommercialProject.Controller
     public class CtrlListContrat
     {
         private ContratListForm contratListForm;
-        private SortedDictionary<Int32, Contrat> listContrat;
         private Collaborateur collaborateur;
 
         public EventHandler Refreshing;
         public CtrlListContrat(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
-            listContrat = collaborateur.getListContrat();
-            contratListForm = new ContratListForm(listContrat);
+            contratListForm = new ContratListForm(collaborateur);
             contratListForm.CloturingContrat += new ContratHandler(this.onCloturedContrat);
             contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
             contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
             
         }
+        public CtrlListContrat(Collaborateur collaborateur, CollaborateurForm clf)
+        {
+            this.collaborateur = collaborateur;
+            contratListForm = new ContratListForm(collaborateur);
+            contratListForm.FormBorderStyle = FormBorderStyle.None;
+            contratListForm.TopLevel = false;
+            contratListForm.AutoScroll = true;
+            clf.panelContrat.Controls.Add(contratListForm);
+            contratListForm.Show();
+            contratListForm.CloturingContrat += new ContratHandler(this.onCloturedContrat);
+            contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
+            contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
+
+        }
+                
 
         public void init()
         {
@@ -33,9 +46,9 @@ namespace ABICommercialProject.Controller
 
         private void onSelectedContrat(int id)
         {
-            if (listContrat.ContainsKey(id))
+            if (collaborateur.getListContrat().ContainsKey(id))
             {
-                CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(listContrat[id]);
+                CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(collaborateur.getListContrat()[id]);
                 ctrlViewContrat.CloturingContrat += new ContratHandler(this.onCloturedContrat);
                 ctrlViewContrat.init();
             }
