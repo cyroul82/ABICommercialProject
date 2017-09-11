@@ -46,7 +46,7 @@
             this.grdListContrat.Name = "grdListContrat";
             this.grdListContrat.ReadOnly = true;
             this.grdListContrat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdListContrat.Size = new System.Drawing.Size(759, 289);
+            this.grdListContrat.Size = new System.Drawing.Size(550, 289);
             this.grdListContrat.TabIndex = 0;
             this.grdListContrat.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdListContrat_MouseDoubleClick);
             // 
@@ -64,7 +64,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 342);
+            this.ClientSize = new System.Drawing.Size(574, 342);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.grdListContrat);
             this.Name = "ContratListForm";
