@@ -30,7 +30,7 @@ namespace ABICommercialProject.Controller
                 collaborateurForm.MdiParent = CtrlMain.getInstance().getMainApp();
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur, collaborateurForm);
-                
+                clc.Refreshing += new EventHandler(this.onRefreshed);
                 openedForm.Add(collaborateur.Matricule, collaborateurForm);
             }
             else

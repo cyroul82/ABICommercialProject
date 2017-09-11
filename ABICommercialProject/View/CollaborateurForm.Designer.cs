@@ -69,7 +69,7 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(349, 509);
+            this.btnCancel.Location = new System.Drawing.Point(472, 456);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -80,7 +80,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Location = new System.Drawing.Point(268, 509);
+            this.btnSave.Location = new System.Drawing.Point(391, 456);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 9;
@@ -105,7 +105,7 @@
             this.panel1.Controls.Add(this.gbCollaborateur);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 485);
+            this.panel1.Size = new System.Drawing.Size(305, 432);
             this.panel1.TabIndex = 11;
             // 
             // gbCollaborateur
@@ -335,7 +335,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContrat.Location = new System.Drawing.Point(324, 12);
             this.panelContrat.Name = "panelContrat";
-            this.panelContrat.Size = new System.Drawing.Size(352, 485);
+            this.panelContrat.Size = new System.Drawing.Size(598, 432);
             this.panelContrat.TabIndex = 12;
             // 
             // CollaborateurForm
@@ -344,7 +344,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(688, 544);
+            this.ClientSize = new System.Drawing.Size(934, 491);
             this.Controls.Add(this.panelContrat);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);

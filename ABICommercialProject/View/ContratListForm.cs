@@ -41,10 +41,10 @@ namespace ABICommercialProject.View
         {
             dt = new DataTable();
             dt.Columns.Add("Numéro");
-            dt.Columns.Add("Début");
+            //dt.Columns.Add("Début");
             dt.Columns.Add("Qualification");
-            dt.Columns.Add("Statut");
-            dt.Columns.Add("Salaire");
+            //dt.Columns.Add("Statut");
+            //dt.Columns.Add("Salaire");
             dt.Columns.Add("Type");
             dt.Columns.Add("Cloturé");
         }
@@ -70,10 +70,10 @@ namespace ABICommercialProject.View
             {
                 DataRow dr = dt.NewRow();
                 dr["Numéro"] = contrat.NumeroContrat;
-                dr["Début"] = contrat.DateDebutContrat.Date.ToShortDateString();
+                //dr["Début"] = contrat.DateDebutContrat.Date.ToShortDateString();
                 dr["Qualification"] = contrat.Qualification;
-                dr["Statut"] = contrat.StatutContrat;
-                dr["Salaire"] = contrat.SalaireBrut;
+                //dr["Statut"] = contrat.StatutContrat;
+                //dr["Salaire"] = contrat.SalaireBrut;
 
                 TypeContrat type = TypeContrat.CDI;
 
