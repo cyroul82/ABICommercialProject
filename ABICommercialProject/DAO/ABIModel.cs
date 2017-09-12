@@ -25,6 +25,14 @@ namespace ABICommercialProject.DAO
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Collaborateur>()
+            //    .Property(t => t.Name)
+            //    .IsRequired();
+                
+        }
     }
 
     //public class MyEntity

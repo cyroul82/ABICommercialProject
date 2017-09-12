@@ -8,6 +8,7 @@ using ABICommercialProject.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ABICommercialProject
 {
@@ -206,8 +207,6 @@ namespace ABICommercialProject
         /// <summary>
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>
-        /// 
-        [REqui]
         public String Name
         {
             get
