@@ -28,10 +28,24 @@ namespace ABICommercialProject.DAO
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Collaborateur>()
-            //    .Property(t => t.Name)
-            //    .IsRequired();
-                
+            modelBuilder.Entity<Collaborateur>()
+                .Property(t => t.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Collaborateur>()
+                .Property(t => t.Firstname)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Contrat>()
+                .HasRequired(c => c.Collaborateur)
+                .WithMany(c => c.Contrats)
+                .HasForeignKey(c => c.CollaborateurID)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
+
         }
     }
 

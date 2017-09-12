@@ -77,6 +77,14 @@
     <Compile Include="Migrations\201709120910396_AddAugmentatonSalaireTable.Designer.cs">
       <DependentUpon>201709120910396_AddAugmentatonSalaireTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.cs" />
+    <Compile Include="Migrations\201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.Designer.cs">
+      <DependentUpon>201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs" />
+    <Compile Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.Designer.cs">
+      <DependentUpon>201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
@@ -133,6 +141,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709120910396_AddAugmentatonSalaireTable.resx">
       <DependentUpon>201709120910396_AddAugmentatonSalaireTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.resx">
+      <DependentUpon>201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.resx">
+      <DependentUpon>201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>

@@ -54,9 +54,9 @@ namespace ABICommercialProject.View
         {
             if (dt != null)
             {
-                foreach (KeyValuePair<Int32, Contrat> c in collaborateur.getListContrat())
+                foreach (Contrat c in collaborateur.getListContrat())
                 {
-                    addContrat(c.Value);
+                    addContrat(c);
 
                 }
                 return dt;

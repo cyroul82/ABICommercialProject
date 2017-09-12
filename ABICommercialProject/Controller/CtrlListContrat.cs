@@ -46,12 +46,26 @@ namespace ABICommercialProject.Controller
 
         private void onSelectedContrat(int id)
         {
-            if (collaborateur.getListContrat().ContainsKey(id))
+            Contrat contrat = getContrat(id);
+            if (contrat != null)
             {
-                CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(collaborateur.getListContrat()[id]);
+                CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(contrat);
                 ctrlViewContrat.CloturingContrat += new ContratHandler(this.onCloturedContrat);
                 ctrlViewContrat.init();
             }
+        }
+
+        private Contrat getContrat(Int32 id)
+        {
+            Contrat contrat = null;
+            foreach(Contrat c in collaborateur.getListContrat())
+            {
+                if (c.Id == id)
+                {
+                    contrat = c;
+                }
+            }
+            return contrat;
         }
 
         private void onCreatedContrat(object sender, EventArgs e)
@@ -76,7 +90,7 @@ namespace ABICommercialProject.Controller
                 Random r = new Random();
                 Int32 i = r.Next(1001, 10000);
                 contrat.Id = i;
-                collaborateur.getListContrat().Add(contrat.Id, contrat);
+                collaborateur.getListContrat().Add(contrat);
                 collaborateur.setContratActif(contrat);
                 refresh();
             }
@@ -87,7 +101,9 @@ namespace ABICommercialProject.Controller
             if(contrat == collaborateur.getContratActif())
             {
                 collaborateur.setContratActif(null);
-                collaborateur.getListContrat()[contrat.Id] = contrat;
+                Contrat oldContrat = getContrat(contrat.Id);
+                collaborateur.getListContrat().Remove(oldContrat);
+                collaborateur.getListContrat().Add(contrat);
                 refresh();
             }
         }

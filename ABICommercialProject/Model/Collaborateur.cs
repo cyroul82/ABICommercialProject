@@ -28,9 +28,10 @@ namespace ABICommercialProject
         private Boolean statut;
         private Contrat contratActif;
 
-        private SortedDictionary<Int32, Contrat> listContrat;
+        //private IDictionary<Int32, Contrat> contrats;
+        private ICollection<Contrat> contrats;
 
-        private List<AugmentationSalaire> listAugmentationSalaire;
+        private List<AugmentationSalaire> augmentations;
 
         /// <summary>
         /// Constructor to instanciate a collaborateur 
@@ -78,9 +79,10 @@ namespace ABICommercialProject
         /// <param name="fonctionCollabo"></param>
         private void init()
         {
-            
-            this.ListContrat = new SortedDictionary<Int32, Contrat>();
-            this.listAugmentationSalaire = new List<AugmentationSalaire>();
+
+            //this.Contrats = new SortedDictionary<Int32, Contrat>();
+            this.Contrats = new HashSet<Contrat>();
+            this.augmentations = new List<AugmentationSalaire>();
 
         }
 
@@ -92,7 +94,7 @@ namespace ABICommercialProject
         public Decimal calculerAugmentation()
         {
             Decimal tauxTotal = 0;
-            foreach(AugmentationSalaire augmentation in listAugmentationSalaire)
+            foreach(AugmentationSalaire augmentation in augmentations)
             {
                 tauxTotal += augmentation.Taux;
             }
@@ -119,14 +121,14 @@ namespace ABICommercialProject
         {
             if(contrat != null)
             {
-                ListContrat.Add(contrat.Id, contrat);
+                Contrats.Add(contrat);
             }
             
         }
 
-        public SortedDictionary<Int32, Contrat> getListContrat()
+        public ICollection<Contrat> getListContrat()
         {
-            return ListContrat;
+            return Contrats;
         }
 
         /// <summary>
@@ -194,9 +196,9 @@ namespace ABICommercialProject
             }
 
             else {
-                if (!this.listAugmentationSalaire.Contains(augmentation))
+                if (!this.augmentations.Contains(augmentation))
                 { 
-                    this.listAugmentationSalaire.Add(augmentation);
+                    this.augmentations.Add(augmentation);
                 }
                 else
                 {
@@ -372,16 +374,16 @@ namespace ABICommercialProject
             }
         }
 
-        public SortedDictionary<int, Contrat> ListContrat
+        public virtual ICollection<Contrat> Contrats
         {
             get
             {
-                return listContrat;
+                return contrats;
             }
 
             set
             {
-                listContrat = value;
+                contrats = value;
             }
         }
     }

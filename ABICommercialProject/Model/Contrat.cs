@@ -22,6 +22,8 @@ namespace ABICommercialProject
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
 
+        public int CollaborateurID { get; set; }
+
         /// <summary>
         /// Constructor to instanciate a Contract
         /// </summary>
