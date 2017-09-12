@@ -10,7 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ABICommercialProject
+namespace ABICommercialProject.Model
 {
     public class Collaborateur
     {
@@ -39,7 +39,7 @@ namespace ABICommercialProject
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
-
+        public Collaborateur() { }
         public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
         {
             Id = 0;
@@ -126,10 +126,10 @@ namespace ABICommercialProject
             
         }
 
-        public ICollection<Contrat> getListContrat()
-        {
-            return Contrats;
-        }
+        //public ICollection<Contrat> getListContrat()
+        //{
+        //    return Contrats;
+        //}
 
         /// <summary>
         /// Cloture le contrat actif, avec une date de date fin effective et un motif

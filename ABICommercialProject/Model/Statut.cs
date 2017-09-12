@@ -6,7 +6,7 @@
 
 using System;
 
-namespace ABICommercialProject
+namespace ABICommercialProject.Model
 {
     /// <summary>
     /// Status Enumeration

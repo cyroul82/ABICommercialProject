@@ -87,7 +87,12 @@
     <Compile Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.Designer.cs">
       <DependentUpon>201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121421132_AddedDummyDataInSeeMethod.cs" />
+    <Compile Include="Migrations\201709121421132_AddedDummyDataInSeeMethod.Designer.cs">
+      <DependentUpon>201709121421132_AddedDummyDataInSeeMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Dictionnary.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
     <Compile Include="Model\Cdd.cs" />
@@ -149,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.resx">
       <DependentUpon>201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121421132_AddedDummyDataInSeeMethod.resx">
+      <DependentUpon>201709121421132_AddedDummyDataInSeeMethod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>

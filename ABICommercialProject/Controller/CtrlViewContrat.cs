@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ABICommercialProject.Model;
 
 namespace ABICommercialProject.Controller
 {
@@ -11,11 +12,15 @@ namespace ABICommercialProject.Controller
     {
         ContratForm cf;
         public ContratHandler CloturingContrat;
+        private Contrat contrat;
+
         public CtrlViewContrat(Contrat contrat)
         {
             cf = new ContratForm(contrat);
+            this.contrat = contrat;
             cf.CloturingContrat += new ContratHandler(this.onCloturedContrat);
         }
+
 
         public void init()
         {

@@ -7,7 +7,7 @@
 using ABICommercialProject.Model;
 using System;
 
-namespace ABICommercialProject
+namespace ABICommercialProject.Model
 {
     public class MissionInterim : ContratProvisoire
     {

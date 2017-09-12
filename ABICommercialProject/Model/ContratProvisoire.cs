@@ -6,7 +6,7 @@
 
 using System;
 
-namespace ABICommercialProject
+namespace ABICommercialProject.Model
 {
     public abstract class ContratProvisoire : Contrat
     {

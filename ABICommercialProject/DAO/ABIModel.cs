@@ -1,6 +1,7 @@
 namespace ABICommercialProject.DAO
 {
     using EntityConfiguration;
+    using Model;
     using System;
     using System.Data.Entity;
     using System.Linq;

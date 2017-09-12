@@ -1,4 +1,5 @@
-﻿using ABICommercialProject.View;
+﻿using ABICommercialProject.Model;
+using ABICommercialProject.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -58,7 +59,7 @@ namespace ABICommercialProject.Controller
         private Contrat getContrat(Int32 id)
         {
             Contrat contrat = null;
-            foreach(Contrat c in collaborateur.getListContrat())
+            foreach(Contrat c in collaborateur.Contrats)
             {
                 if (c.Id == id)
                 {
@@ -90,7 +91,7 @@ namespace ABICommercialProject.Controller
                 Random r = new Random();
                 Int32 i = r.Next(1001, 10000);
                 contrat.Id = i;
-                collaborateur.getListContrat().Add(contrat);
+                collaborateur.Contrats.Add(contrat);
                 collaborateur.setContratActif(contrat);
                 refresh();
             }
@@ -102,8 +103,8 @@ namespace ABICommercialProject.Controller
             {
                 collaborateur.setContratActif(null);
                 Contrat oldContrat = getContrat(contrat.Id);
-                collaborateur.getListContrat().Remove(oldContrat);
-                collaborateur.getListContrat().Add(contrat);
+                collaborateur.Contrats.Remove(oldContrat);
+                collaborateur.Contrats.Add(contrat);
                 refresh();
             }
         }

@@ -54,7 +54,7 @@ namespace ABICommercialProject.View
         {
             if (dt != null)
             {
-                foreach (Contrat c in collaborateur.getListContrat())
+                foreach (Contrat c in collaborateur.Contrats)
                 {
                     addContrat(c);
 

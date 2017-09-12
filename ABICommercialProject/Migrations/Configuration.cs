@@ -1,6 +1,8 @@
 namespace ABICommercialProject.Migrations
 {
+    using Model;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -14,18 +16,18 @@ namespace ABICommercialProject.Migrations
 
         protected override void Seed(ABICommercialProject.DAO.ABIModel context)
         {
-            //  This method will be called after migrating to the latest version.
+            var cc = new Dictionary<Int32, Collaborateur>()
+            {
+                { 1,  new Collaborateur ( "rat", "cyril", "fonctionDev", "109 Soleillette", "83700", "SaintRaph", "0645248403", "cyril.rat@gmail.com" ) },
+                { 2,  new Collaborateur ( "Moiselet", "renaud", "fonctionDev", "turin", "06400", "Nice", "0625879652", "ayss@gmail.com" ) }
+        };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            foreach(Collaborateur col in cc.Values)
+            {
+                context.Collaborateurs.AddOrUpdate(col);
+            }
+            
+            
         }
     }
 }

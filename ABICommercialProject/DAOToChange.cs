@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ABICommercialProject.DAO;
+using ABICommercialProject.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +14,11 @@ namespace ABICommercialProject
         private static DAOToChange dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
         private  static Int32 matricule = 0;
+        ABIModel context;
+
         private DAOToChange()
         {
+            context = new ABIModel();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
         }
 
@@ -58,6 +63,14 @@ namespace ABICommercialProject
 
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
+            //var query = from c in context.Collaborateurs
+            //            select c;
+            var collabos = context.Collaborateurs;
+            foreach(var collabo in collabos)
+            {
+                collaborateurList.Add(collabo.Id, collabo);
+                Console.WriteLine(collabo);;
+            }
             return collaborateurList;
         }
 
