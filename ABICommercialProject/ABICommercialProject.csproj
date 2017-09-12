@@ -69,6 +69,8 @@
     <Compile Include="Controller\CtrlViewContrat.cs" />
     <Compile Include="DAOToChange.cs" />
     <Compile Include="DAO\ABIModel.cs" />
+    <Compile Include="DAO\EntityConfiguration\CollaborateurConfiguration.cs" />
+    <Compile Include="DAO\EntityConfiguration\ContratConfiguration.cs" />
     <Compile Include="Migrations\201709120846416_InitialModel.cs" />
     <Compile Include="Migrations\201709120846416_InitialModel.Designer.cs">
       <DependentUpon>201709120846416_InitialModel.cs</DependentUpon>

@@ -1,5 +1,6 @@
 namespace ABICommercialProject.DAO
 {
+    using EntityConfiguration;
     using System;
     using System.Data.Entity;
     using System.Linq;
@@ -21,37 +22,12 @@ namespace ABICommercialProject.DAO
         public virtual DbSet<Contrat> Contrats { get; set; }
         public virtual DbSet<AugmentationSalaire> AugmentationSalaires { get; set; }
 
-        // Add a DbSet for each entity type that you want to include in your model. For more information 
-        // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
-
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Collaborateur>()
-                .Property(t => t.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-
-            modelBuilder.Entity<Collaborateur>()
-                .Property(t => t.Firstname)
-                .IsRequired()
-                .HasMaxLength(50);
-
-            modelBuilder.Entity<Contrat>()
-                .HasRequired(c => c.Collaborateur)
-                .WithMany(c => c.Contrats)
-                .HasForeignKey(c => c.CollaborateurID)
-                .WillCascadeOnDelete(false);
-
-            base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Configurations.Add(new CollaborateurConfiguration());
+            modelBuilder.Configurations.Add(new ContratConfiguration());
         }
+            
     }
-
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }
