@@ -12,6 +12,10 @@ namespace ABICommercialProject.Model
     {
         private DateTime dateCloture;
 
+        public Cdi()
+        {
+
+        }
         public Cdi(String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut) : base(qualification, dateDebutContrat, statut, salaireBrut)
         {
         }

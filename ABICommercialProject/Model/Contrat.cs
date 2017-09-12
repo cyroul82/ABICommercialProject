@@ -25,6 +25,11 @@ namespace ABICommercialProject.Model
 
         public int CollaborateurID { get; set; }
 
+
+        public Contrat()
+        {
+
+        }
         /// <summary>
         /// Constructor to instanciate a Contract
         /// </summary>

@@ -13,6 +13,10 @@ namespace ABICommercialProject.Model
         private String motif;
         private DateTime dateFinContrat;
 
+        public ContratProvisoire()
+        {
+
+        }
         /// <summary>
         /// Constructor to instanciate a temporary contract
         /// </summary>

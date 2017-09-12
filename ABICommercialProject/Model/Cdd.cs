@@ -10,6 +10,12 @@ namespace ABICommercialProject.Model
 {
     public class Cdd : ContratProvisoire
     {
+
+        public Cdd()
+        {
+
+        }
+
         /// <summary>
         /// Construtor to instanciate a CDD 
         /// </summary>
@@ -22,6 +28,8 @@ namespace ABICommercialProject.Model
         public Cdd(String motif, DateTime dateFinContrat, String qualification, DateTime dateDebutContrat, Statut statut, Decimal salaireBrut) : base(motif, dateFinContrat, qualification, dateDebutContrat, statut, salaireBrut)
         {
         }
+
+
 
         public override String ToString()
         {

@@ -69,7 +69,8 @@ namespace ABICommercialProject
             foreach(var collabo in collabos)
             {
                 collaborateurList.Add(collabo.Id, collabo);
-                Console.WriteLine(collabo);;
+                Console.WriteLine(collabo);
+                Console.WriteLine(collabo.Contrats);
             }
             return collaborateurList;
         }

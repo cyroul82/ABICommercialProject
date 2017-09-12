@@ -24,10 +24,13 @@ namespace ABICommercialProject.Migrations
 
             foreach(Collaborateur col in cc.Values)
             {
+                Contrat cdi = new Cdi("qualif", DateTime.UtcNow, Statut.Cadre, 25000);
+                col.Contrats.Add(cdi);
                 context.Collaborateurs.AddOrUpdate(col);
             }
+
             
-            
+
         }
     }
 }

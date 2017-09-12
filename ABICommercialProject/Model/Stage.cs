@@ -10,6 +10,10 @@ namespace ABICommercialProject.Model
 {
     public class Stage : ContratProvisoire
     {
+        public Stage()
+        {
+                
+        }
         /// <summary>
         /// Constructor to instanciate a stage
         /// </summary>

@@ -13,6 +13,10 @@ namespace ABICommercialProject.Model
     {
         private String agenceInterim;
 
+        public MissionInterim()
+        {
+
+        }
         /// <summary>
         /// Constructor to instanciate a MissionInterim
         /// </summary>
