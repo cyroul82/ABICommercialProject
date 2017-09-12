@@ -14,6 +14,8 @@ namespace ABICommercialProject
 
         private DateTime date;
         private decimal taux;
+        private Collaborateur collaborateur;
+        private Int32 id;
 
         /// <summary>
         /// Constructor to instanciate a new pay rise
@@ -68,6 +70,32 @@ namespace ABICommercialProject
                 if (taux <= 0) throw new Exception("Le taux ne peut être égal ou inférieur à 0");
                 if (this.taux != value)
                     this.taux = value;
+            }
+        }
+
+        public Collaborateur Collaborateur
+        {
+            get
+            {
+                return collaborateur;
+            }
+
+            set
+            {
+                collaborateur = value;
+            }
+        }
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
             }
         }
     }

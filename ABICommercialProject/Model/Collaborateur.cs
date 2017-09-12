@@ -206,6 +206,8 @@ namespace ABICommercialProject
         /// <summary>
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>
+        /// 
+        [REqui]
         public String Name
         {
             get
