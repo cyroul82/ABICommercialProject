@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace ABICommercialProject
 {
-    public class DAO
+    public class DAOToChange
     {
 
-        private static DAO dao;
+        private static DAOToChange dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
         private  static Int32 matricule = 0;
-        private DAO()
+        private DAOToChange()
         {
             collaborateurList = new SortedDictionary<int, Collaborateur>();
         }
 
-        public static DAO getInstance()
+        public static DAOToChange getInstance()
         {
             if (dao == null)
             {
-                dao = new DAO();
+                dao = new DAOToChange();
             }
             return dao;
         }

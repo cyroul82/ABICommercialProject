@@ -23,7 +23,7 @@ namespace ABICommercialProject.Controller
         {
             try
             {
-                collaborateurList = DAO.getInstance().getCollaborateurList();
+                collaborateurList = DAOToChange.getInstance().getCollaborateurList();
                 init();
             }
             catch (Exception e)

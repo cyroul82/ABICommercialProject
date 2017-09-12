@@ -43,7 +43,7 @@ namespace ABICommercialProject.Controller
         {
             try
             {
-                DAO.getInstance().NewCollaborateur(ref collaborateur, contrat);
+                DAOToChange.getInstance().NewCollaborateur(ref collaborateur, contrat);
                 //invoke savingCollaboData, The CtrlListColloborateur listening to it to update the list
                 SavingCollaboData?.Invoke(collaborateur);
                 //close the form

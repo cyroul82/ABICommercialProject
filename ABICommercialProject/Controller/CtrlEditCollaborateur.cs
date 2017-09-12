@@ -26,7 +26,7 @@ namespace ABICommercialProject.Controller
             try
             {
                 collaborateur = collaborateurForm.getCollaborateur();
-                DAO.getInstance().UpdateCollaborateur(collaborateur);
+                DAOToChange.getInstance().UpdateCollaborateur(collaborateur);
                 collaborateurForm.closeDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }
