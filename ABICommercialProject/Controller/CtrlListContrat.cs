@@ -75,8 +75,8 @@ namespace ABICommercialProject.Controller
             {
                 Random r = new Random();
                 Int32 i = r.Next(1001, 10000);
-                contrat.NumeroContrat = i;
-                collaborateur.getListContrat().Add(contrat.NumeroContrat, contrat);
+                contrat.Id = i;
+                collaborateur.getListContrat().Add(contrat.Id, contrat);
                 collaborateur.setContratActif(contrat);
                 refresh();
             }
@@ -87,7 +87,7 @@ namespace ABICommercialProject.Controller
             if(contrat == collaborateur.getContratActif())
             {
                 collaborateur.setContratActif(null);
-                collaborateur.getListContrat()[contrat.NumeroContrat] = contrat;
+                collaborateur.getListContrat()[contrat.Id] = contrat;
                 refresh();
             }
         }

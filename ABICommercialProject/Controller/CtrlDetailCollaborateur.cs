@@ -21,7 +21,7 @@ namespace ABICommercialProject.Controller
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
-            if (!openedForm.ContainsKey(collaborateur.Matricule))
+            if (!openedForm.ContainsKey(collaborateur.Id))
             {
                 collaborateurForm = new CollaborateurForm(collaborateur, false);
                 collaborateurForm.EditingCollabo += new CollaboHandler(this.onEditedCollabo);
@@ -32,11 +32,11 @@ namespace ABICommercialProject.Controller
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur, collaborateurForm);
                 clc.Refreshing += new EventHandler(this.onRefreshed);
-                openedForm.Add(collaborateur.Matricule, collaborateurForm);
+                openedForm.Add(collaborateur.Id, collaborateurForm);
             }
             else
             {
-                this.collaborateurForm = openedForm[collaborateur.Matricule];
+                this.collaborateurForm = openedForm[collaborateur.Id];
 
                 if (collaborateurForm.WindowState == FormWindowState.Minimized)
                 {
@@ -71,7 +71,7 @@ namespace ABICommercialProject.Controller
         {
             if (collaborateur != null)
             {
-                openedForm.Remove(collaborateur.Matricule);
+                openedForm.Remove(collaborateur.Id);
             }
         }
 

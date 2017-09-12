@@ -13,10 +13,11 @@ namespace ABICommercialProject
         private decimal salaireBrut;
         private String qualification;
         private DateTime dateDebutContrat;
-        private Int32 numeroContrat;
+        private Int32 id;
         private DateTime? dateFinEffectif;
         private String motifCloture;
         private Boolean cloture;
+        private Collaborateur collaborateur;
 
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
@@ -35,7 +36,7 @@ namespace ABICommercialProject
             DateDebutContrat = dateDebutContrat;
             StatutContrat = statut;
             DateFinEffectif = null;
-            NumeroContrat = 0;
+            Id = 0;
             Cloture = false;
         }
 
@@ -122,18 +123,18 @@ namespace ABICommercialProject
         /// Check that the numero isn't less than or equal to 0
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">Contrat number lesser or equal than</exception>
-        public int NumeroContrat
+        public int Id
         {
             get
             {
-                return numeroContrat;
+                return id;
             }
 
             set
             {
                 //if (value <= 0) throw new ArgumentOutOfRangeException("Le contract number can't be less or equal to 0");
                 //else
-                    numeroContrat = value;
+                    id = value;
             }
         }
 
@@ -173,6 +174,19 @@ namespace ABICommercialProject
             set
             {
                 cloture = value;
+            }
+        }
+
+        public Collaborateur Collaborateur
+        {
+            get
+            {
+                return collaborateur;
+            }
+
+            set
+            {
+                collaborateur = value;
             }
         }
 

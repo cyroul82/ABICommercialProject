@@ -69,7 +69,7 @@ namespace ABICommercialProject.View
             if (dt != null)
             {
                 DataRow dr = dt.NewRow();
-                dr["Numéro"] = contrat.NumeroContrat;
+                dr["Numéro"] = contrat.Id;
                 //dr["Début"] = contrat.DateDebutContrat.Date.ToShortDateString();
                 dr["Qualification"] = contrat.Qualification;
                 //dr["Statut"] = contrat.StatutContrat;

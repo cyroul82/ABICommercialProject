@@ -69,7 +69,11 @@
     <Compile Include="Controller\CtrlViewContrat.cs" />
     <Compile Include="DAOToChange.cs" />
     <Compile Include="DAO\ABIModel.cs" />
-    <Compile Include="ModelABI.cs" />
+    <Compile Include="Migrations\201709120846416_InitialModel.cs" />
+    <Compile Include="Migrations\201709120846416_InitialModel.Designer.cs">
+      <DependentUpon>201709120846416_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
     <Compile Include="Model\Cdd.cs" />
@@ -120,6 +124,9 @@
     <Compile Include="View\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Migrations\201709120846416_InitialModel.resx">
+      <DependentUpon>201709120846416_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>
     </EmbeddedResource>

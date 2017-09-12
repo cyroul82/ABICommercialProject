@@ -31,7 +31,7 @@ namespace ABICommercialProject.View
             init();
             this.contrat = contrat;
             this.setContract();
-            this.Text = "Contrat : " + contrat.NumeroContrat;
+            this.Text = "Contrat : " + contrat.Id;
             ControlEnabled(false);
             if (contrat.Cloture)
             {

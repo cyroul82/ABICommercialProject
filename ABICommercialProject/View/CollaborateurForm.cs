@@ -110,7 +110,7 @@ namespace ABICommercialProject.View
             txtVille.Text = collaborateur.Town;
             txtTel.Text = collaborateur.Tel;
             txtEmail.Text = collaborateur.Email;
-            lblTextMatricule.Text = collaborateur.Matricule.ToString();
+            lblTextMatricule.Text = collaborateur.Id.ToString();
 
         }
 

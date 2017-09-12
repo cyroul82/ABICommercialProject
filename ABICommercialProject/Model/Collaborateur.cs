@@ -14,7 +14,7 @@ namespace ABICommercialProject
     public class Collaborateur
     {
 
-        private int matricule;
+        private int id;
         private String name;
         private String firstname;
         private String picture;
@@ -40,7 +40,7 @@ namespace ABICommercialProject
 
         public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
         {
-            Matricule = 0;
+            Id = 0;
             Name = nom;
             Firstname = prenom;
             FonctionCollabo = fonctionCollabo;
@@ -55,7 +55,7 @@ namespace ABICommercialProject
         }
         public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif, Boolean statut)
         {
-            Matricule = matricule;
+            Id = matricule;
             Name = nom;
             Firstname = prenom;
             FonctionCollabo = fonctionCollabo;
@@ -78,7 +78,7 @@ namespace ABICommercialProject
         private void init()
         {
             
-            this.listContrat = new SortedDictionary<Int32, Contrat>();
+            this.ListContrat = new SortedDictionary<Int32, Contrat>();
             this.listAugmentationSalaire = new List<AugmentationSalaire>();
 
         }
@@ -118,14 +118,14 @@ namespace ABICommercialProject
         {
             if(contrat != null)
             {
-                listContrat.Add(contrat.NumeroContrat, contrat);
+                ListContrat.Add(contrat.Id, contrat);
             }
             
         }
 
         public SortedDictionary<Int32, Contrat> getListContrat()
         {
-            return listContrat;
+            return ListContrat;
         }
 
         /// <summary>
@@ -280,16 +280,16 @@ namespace ABICommercialProject
             }
         }
 
-        public int Matricule
+        public int Id
         {
             get
             {
-                return matricule;
+                return id;
             }
             set
             {
-                if (this.matricule != value)
-                    this.matricule = value;
+                if (this.id != value)
+                    this.id = value;
             }
         }
 
@@ -368,6 +368,19 @@ namespace ABICommercialProject
             set
             {
                 email = value;
+            }
+        }
+
+        public SortedDictionary<int, Contrat> ListContrat
+        {
+            get
+            {
+                return listContrat;
+            }
+
+            set
+            {
+                listContrat = value;
             }
         }
     }

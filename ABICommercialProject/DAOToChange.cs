@@ -30,10 +30,10 @@ namespace ABICommercialProject
         {
             try
             {
-                collaborateur.Matricule = matricule++;
+                collaborateur.Id = matricule++;
                 Random r = new Random();
                 Int32 i = r.Next(1001, 10000);
-                contrat.NumeroContrat = i;
+                contrat.Id = i;
                 collaborateur.setContratActif(contrat);
                 collaborateur.AddContrat(contrat);
 

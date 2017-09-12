@@ -73,14 +73,14 @@ namespace ABICommercialProject.Controller
 
         private void onUpdatedCollabo(Collaborateur collabo)
         {
-            if (collaborateurList.ContainsKey(collabo.Matricule))
+            if (collaborateurList.ContainsKey(collabo.Id))
             {
-                collaborateurList[collabo.Matricule] = collabo;
+                collaborateurList[collabo.Id] = collabo;
                 collaborateurListForm.setDataSource();
             }
             else
             {
-                Console.WriteLine("Can't find the collabo in Memory to update it + " + collabo + " mat : " + collabo.Matricule);
+                Console.WriteLine("Can't find the collabo in Memory to update it + " + collabo + " mat : " + collabo.Id);
             }
         }
 
@@ -95,7 +95,7 @@ namespace ABICommercialProject.Controller
 
         private void onSavedNewCollabo(Collaborateur collabo)
         {
-            collaborateurList.Add(collabo.Matricule, collabo);
+            collaborateurList.Add(collabo.Id, collabo);
             collaborateurListForm.setDataSource();
         }
 
