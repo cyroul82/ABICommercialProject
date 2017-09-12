@@ -13,7 +13,6 @@ namespace ABICommercialProject
 
         private static DAOToChange dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
-        private  static Int32 matricule = 0;
         ABIModel context;
 
         private DAOToChange()
@@ -35,12 +34,13 @@ namespace ABICommercialProject
         {
             try
             {
-                collaborateur.Id = matricule++;
                 Random r = new Random();
                 Int32 i = r.Next(1001, 10000);
                 contrat.Id = i;
                 collaborateur.setContratActif(contrat);
                 collaborateur.AddContrat(contrat);
+                context.Collaborateurs.Add(collaborateur);
+                context.SaveChanges();
 
             }
             catch(Exception e)
@@ -53,7 +53,11 @@ namespace ABICommercialProject
         {
             try
             {
-                
+                //var collabo = context.Collaborateurs.Find(collaborateur.Id);
+                var col = context.Collaborateurs.Single(c => c.Id == collaborateur.Id);
+                col = collaborateur;
+                context.SaveChanges();
+
             }
             catch (Exception e)
             {
@@ -69,8 +73,6 @@ namespace ABICommercialProject
             foreach(var collabo in collabos)
             {
                 collaborateurList.Add(collabo.Id, collabo);
-                Console.WriteLine(collabo);
-                Console.WriteLine(collabo.Contrats);
             }
             return collaborateurList;
         }
