@@ -11,7 +11,7 @@ namespace ABICommercialProject.Model
     public abstract class ContratProvisoire : Contrat
     {
         private String motif;
-        private DateTime dateFinContrat;
+        private DateTime? dateFinContrat;
 
         public ContratProvisoire()
         {
@@ -49,7 +49,7 @@ namespace ABICommercialProject.Model
         /// <summary>
         /// 
         /// </summary>
-        public DateTime DateFinContrat
+        public DateTime? DateFinContrat
         {
             get
             {

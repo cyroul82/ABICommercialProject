@@ -12,6 +12,12 @@ namespace ABICommercialProject.DAO.EntityConfiguration
     {
         public ContratConfiguration()
         {
+            Property(c => c.DateDebutContrat)
+                .HasColumnType("datetime2");
+
+            Property(c => c.DateFinEffectif)
+                .HasColumnType("datetime2");
+
             HasRequired(c => c.Collaborateur)
                 .WithMany(c => c.Contrats)
                 .HasForeignKey(c => c.CollaborateurID)
