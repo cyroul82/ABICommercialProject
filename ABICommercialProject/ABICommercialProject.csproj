@@ -115,6 +115,18 @@
     <Compile Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.Designer.cs">
       <DependentUpon>201709131245580_AddedRelationCollaborateurTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709131823083_AddedColumnTypeDateFinContrat.cs" />
+    <Compile Include="Migrations\201709131823083_AddedColumnTypeDateFinContrat.Designer.cs">
+      <DependentUpon>201709131823083_AddedColumnTypeDateFinContrat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.cs" />
+    <Compile Include="Migrations\201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.Designer.cs">
+      <DependentUpon>201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131903218_AddedColumnTypeDateClotureToContratTable.cs" />
+    <Compile Include="Migrations\201709131903218_AddedColumnTypeDateClotureToContratTable.Designer.cs">
+      <DependentUpon>201709131903218_AddedColumnTypeDateClotureToContratTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
@@ -198,6 +210,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.resx">
       <DependentUpon>201709131245580_AddedRelationCollaborateurTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131823083_AddedColumnTypeDateFinContrat.resx">
+      <DependentUpon>201709131823083_AddedColumnTypeDateFinContrat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.resx">
+      <DependentUpon>201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131903218_AddedColumnTypeDateClotureToContratTable.resx">
+      <DependentUpon>201709131903218_AddedColumnTypeDateClotureToContratTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>

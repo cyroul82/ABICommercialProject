@@ -61,6 +61,8 @@ namespace ABICommercialProject
             }
             catch(Exception e)
             {
+                context.Collaborateurs.Remove(collaborateur);
+                context.Contrats.Remove(contrat);
                 throw new Exception(e.Message);
             }
         }

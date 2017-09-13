@@ -55,6 +55,22 @@ namespace ABICommercialProject.Model
             ContratActif = null;
             init();
         }
+
+        public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif)
+        {
+            Id = 0;
+            Name = nom;
+            Firstname = prenom;
+            FonctionCollabo = fonctionCollabo;
+            Address = address;
+            ZipCode = zipCode;
+            Town = town;
+            Tel = tel;
+            Email = email;
+            statut = true;
+            ContratActif = contratActif;
+            init();
+        }
         public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif, Boolean statut)
         {
             Id = matricule;
