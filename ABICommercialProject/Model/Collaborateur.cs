@@ -174,6 +174,7 @@ namespace ABICommercialProject.Model
         /// <param name="contrat"></param>
         public void setContratActif(Contrat contrat)
         {
+            
             this.ContratActif = contrat != null ? contrat : null;
             //if(contratActif != null)
             //{

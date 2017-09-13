@@ -19,9 +19,11 @@ namespace ABICommercialProject
         {
             context = new ABIModel();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
-            //var query = from c in context.Collaborateurs
+
+            //var query = from c in context.Collaborateurs.Include("Contrats")
             //            select c;
-            var collabos = context.Collaborateurs;
+
+            var collabos = context.Collaborateurs.Include("Contrats");
             foreach (var collabo in collabos)
             {
                 collaborateurList.Add(collabo.Id, collabo);
@@ -41,14 +43,19 @@ namespace ABICommercialProject
         {
             try
             {
-               
-                
                 context.Collaborateurs.Add(collaborateur);
                 context.SaveChanges();
-                contrat.Collaborateur = collaborateur;
+
+                //Get the new collaborateur and load! it in the context
+                Collaborateur col = context.Collaborateurs.Find(collaborateur.Id);
+
+
+                contrat.Collaborateur = col;
+
+                col.setContratActif(contrat);
+                col.AddContrat(contrat);
+
                 context.Contrats.Add(contrat);
-                collaborateur.setContratActif(contrat);
-                collaborateur.AddContrat(contrat);
                 context.SaveChanges();
 
             }
@@ -76,8 +83,6 @@ namespace ABICommercialProject
 
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
-
-             
             return collaborateurList;
         }
 
