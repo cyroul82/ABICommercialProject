@@ -83,6 +83,31 @@ namespace ABICommercialProject
             }
         }
 
+        public void ClotureContrat(Collaborateur collabo, Contrat contrat)
+        {
+            Collaborateur col = context.Collaborateurs.Single(c => c.Id == collabo.Id);
+            col.setContratActif(null);
+
+            Contrat con = context.Contrats.Single(c => c.Id == contrat.Id);
+            con.MotifCloture = contrat.MotifCloture;
+            con.DateFinEffectif = contrat.DateFinEffectif;
+            con.Cloture = true;
+
+            context.SaveChanges();
+
+        }
+
+        public void AddContrat(Collaborateur collabo, Contrat contrat)
+        {
+            Collaborateur col = context.Collaborateurs.Single(c => c.Id == collabo.Id);
+            if (!col.hasContratActif())
+            {
+                contrat.Collaborateur = col;
+                context.Contrats.Add(contrat);
+
+            }
+
+        }
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
             return collaborateurList;

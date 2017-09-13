@@ -101,11 +101,21 @@ namespace ABICommercialProject.Controller
         {
             if(contrat == collaborateur.getContratActif())
             {
-                collaborateur.setContratActif(null);
-                Contrat oldContrat = getContrat(contrat.Id);
-                collaborateur.Contrats.Remove(oldContrat);
-                collaborateur.Contrats.Add(contrat);
-                refresh();
+                try
+                {
+                    DAOToChange.getInstance().ClotureContrat(collaborateur, contrat);
+                    collaborateur.setContratActif(null);
+                    Contrat oldContrat = getContrat(contrat.Id);
+                    collaborateur.Contrats.Remove(oldContrat);
+                    collaborateur.Contrats.Add(contrat);
+
+                    refresh();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+               
             }
         }
 
