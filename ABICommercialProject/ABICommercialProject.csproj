@@ -103,6 +103,18 @@
     <Compile Include="Migrations\201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.Designer.cs">
       <DependentUpon>201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709131037273_AddPropertyToCollaborateurTable.cs" />
+    <Compile Include="Migrations\201709131037273_AddPropertyToCollaborateurTable.Designer.cs">
+      <DependentUpon>201709131037273_AddPropertyToCollaborateurTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131231352_AddedRelationCollaborateurTable.cs" />
+    <Compile Include="Migrations\201709131231352_AddedRelationCollaborateurTable.Designer.cs">
+      <DependentUpon>201709131231352_AddedRelationCollaborateurTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.cs" />
+    <Compile Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.Designer.cs">
+      <DependentUpon>201709131245580_AddedRelationCollaborateurTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
@@ -177,6 +189,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.resx">
       <DependentUpon>201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131037273_AddPropertyToCollaborateurTable.resx">
+      <DependentUpon>201709131037273_AddPropertyToCollaborateurTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131231352_AddedRelationCollaborateurTable.resx">
+      <DependentUpon>201709131231352_AddedRelationCollaborateurTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.resx">
+      <DependentUpon>201709131245580_AddedRelationCollaborateurTable1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>

@@ -16,19 +16,21 @@ namespace ABICommercialProject.Controller
 
     public class CtrlListCollaborateur
     {
-        
+
         private CollaborateurListForm collaborateurListForm;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
         public CtrlListCollaborateur()
         {
             try
             {
-                collaborateurList = DAOToChange.getInstance().getCollaborateurList();
-                init();
+                
+                    collaborateurList = DAOToChange.getInstance().getCollaborateurList();
+                    init();
+                
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw new Exception(e.Message + " " + e.StackTrace);
             }
         }
 
@@ -102,6 +104,7 @@ namespace ABICommercialProject.Controller
 
         private void onClosedForm(object sender, FormClosingEventArgs e)
         {
+
             collaborateurListForm = null;
             CtrlMain.getInstance().closeCtrlListCollaborateur(); ;
         }

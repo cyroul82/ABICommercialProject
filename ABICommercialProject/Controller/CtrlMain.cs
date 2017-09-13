@@ -22,14 +22,10 @@ namespace ABICommercialProject.Controller
         {
             if (ctrlListCollaborateur == null)
             {
-                try
-                {
+              
                     ctrlListCollaborateur = new CtrlListCollaborateur();
-                }
-                catch (Exception ex)
-                {
-                    mainApp.displayErrorMessage(ex.Message, "Error DB");
-                }
+
+
 
             }
             else
@@ -40,6 +36,7 @@ namespace ABICommercialProject.Controller
 
         public void closeCtrlListCollaborateur()
         {
+
             ctrlListCollaborateur = null;
         }
 

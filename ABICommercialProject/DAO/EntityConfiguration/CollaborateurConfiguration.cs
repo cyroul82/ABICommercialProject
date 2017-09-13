@@ -23,7 +23,6 @@ namespace ABICommercialProject.DAO.EntityConfiguration
                                         new IndexAttribute("IX_NameFirstname", 1) { IsUnique = true })
                                                         );
             
-
             Property(t => t.Firstname)
             .IsRequired()
             .HasMaxLength(50)
@@ -31,6 +30,7 @@ namespace ABICommercialProject.DAO.EntityConfiguration
                                     new IndexAnnotation(
                                         new IndexAttribute("IX_NameFirstname", 2) { IsUnique = true })
                                                         );
+
 
         }
     }

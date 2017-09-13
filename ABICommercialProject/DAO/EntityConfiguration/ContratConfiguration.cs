@@ -22,6 +22,9 @@ namespace ABICommercialProject.DAO.EntityConfiguration
                 .WithMany(c => c.Contrats)
                 .HasForeignKey(c => c.CollaborateurID)
                 .WillCascadeOnDelete(false);
+
+            
+
         }
     }
 }

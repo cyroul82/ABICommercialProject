@@ -19,6 +19,13 @@ namespace ABICommercialProject
         {
             context = new ABIModel();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
+            //var query = from c in context.Collaborateurs
+            //            select c;
+            var collabos = context.Collaborateurs;
+            foreach (var collabo in collabos)
+            {
+                collaborateurList.Add(collabo.Id, collabo);
+            }
         }
 
         public static DAOToChange getInstance()
@@ -34,12 +41,14 @@ namespace ABICommercialProject
         {
             try
             {
-                Random r = new Random();
-                Int32 i = r.Next(1001, 10000);
-                contrat.Id = i;
+               
+                
+                context.Collaborateurs.Add(collaborateur);
+                context.SaveChanges();
+                contrat.Collaborateur = collaborateur;
+                context.Contrats.Add(contrat);
                 collaborateur.setContratActif(contrat);
                 collaborateur.AddContrat(contrat);
-                context.Collaborateurs.Add(collaborateur);
                 context.SaveChanges();
 
             }
@@ -67,13 +76,8 @@ namespace ABICommercialProject
 
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
-            //var query = from c in context.Collaborateurs
-            //            select c;
-            var collabos = context.Collaborateurs;
-            foreach(var collabo in collabos)
-            {
-                collaborateurList.Add(collabo.Id, collabo);
-            }
+
+             
             return collaborateurList;
         }
 
