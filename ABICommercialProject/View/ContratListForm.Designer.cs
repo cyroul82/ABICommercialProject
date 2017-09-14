@@ -30,6 +30,7 @@
         {
             this.grdListContrat = new System.Windows.Forms.DataGridView();
             this.btnNew = new System.Windows.Forms.Button();
+            this.btnDetail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdListContrat)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,11 +61,22 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // btnDetail
+            // 
+            this.btnDetail.Location = new System.Drawing.Point(93, 12);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(75, 23);
+            this.btnDetail.TabIndex = 2;
+            this.btnDetail.Text = "Détail";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
             // ContratListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 342);
+            this.Controls.Add(this.btnDetail);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.grdListContrat);
             this.Name = "ContratListForm";
@@ -79,5 +91,6 @@
 
         private System.Windows.Forms.DataGridView grdListContrat;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnDetail;
     }
 }

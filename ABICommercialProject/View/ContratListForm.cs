@@ -41,7 +41,7 @@ namespace ABICommercialProject.View
         {
             dt = new DataTable();
             dt.Columns.Add("Numéro");
-            //dt.Columns.Add("Début");
+            dt.Columns.Add("Début");
             dt.Columns.Add("Qualification");
             //dt.Columns.Add("Statut");
             //dt.Columns.Add("Salaire");
@@ -70,7 +70,7 @@ namespace ABICommercialProject.View
             {
                 DataRow dr = dt.NewRow();
                 dr["Numéro"] = contrat.Id;
-                //dr["Début"] = contrat.DateDebutContrat.Date.ToShortDateString();
+                dr["Début"] = contrat.DateDebutContrat.Date.ToShortDateString();
                 dr["Qualification"] = contrat.Qualification;
                 //dr["Statut"] = contrat.StatutContrat;
                 //dr["Salaire"] = contrat.SalaireBrut;
@@ -96,7 +96,18 @@ namespace ABICommercialProject.View
 
         private void grdListContrat_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            detailContrat();
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            detailContrat();
+        }
+
+        private void detailContrat()
+        {
             Int32 id = Convert.ToInt32(grdListContrat.CurrentRow.Cells[0].Value);
+
             SelectingContrat?.Invoke(id);
         }
     }

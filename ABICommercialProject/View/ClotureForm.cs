@@ -24,9 +24,17 @@ namespace ABICommercialProject.View
         {
             if(dtpFinEffecif.Text != "" && txtMotif.Text != "")
             {
-                contrat.clotureContrat(dtpFinEffecif.Value.Date, txtMotif.Text);
+                try
+                {
+                    contrat.clotureContrat(dtpFinEffecif.Value.Date, txtMotif.Text);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error Cloture", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.None;
+                }   
 
-                this.DialogResult = DialogResult.OK;
             }
             else
             {

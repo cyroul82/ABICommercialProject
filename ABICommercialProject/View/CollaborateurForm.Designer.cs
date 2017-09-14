@@ -37,8 +37,6 @@
             this.gbCollaborateur = new System.Windows.Forms.GroupBox();
             this.lblTextMatricule = new System.Windows.Forms.Label();
             this.lblMatricule = new System.Windows.Forms.Label();
-            this.btnContrat = new System.Windows.Forms.Button();
-            this.btnAvenant = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnAugmentation = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -69,7 +67,7 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(168, 456);
+            this.btnCancel.Location = new System.Drawing.Point(135, 456);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -80,7 +78,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSave.Location = new System.Drawing.Point(87, 456);
+            this.btnSave.Location = new System.Drawing.Point(54, 456);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 9;
@@ -112,10 +110,7 @@
             // 
             this.gbCollaborateur.Controls.Add(this.lblTextMatricule);
             this.gbCollaborateur.Controls.Add(this.lblMatricule);
-            this.gbCollaborateur.Controls.Add(this.btnContrat);
-            this.gbCollaborateur.Controls.Add(this.btnAvenant);
             this.gbCollaborateur.Controls.Add(this.txtEmail);
-            this.gbCollaborateur.Controls.Add(this.btnAugmentation);
             this.gbCollaborateur.Controls.Add(this.lblEmail);
             this.gbCollaborateur.Controls.Add(this.txtFonction);
             this.gbCollaborateur.Controls.Add(this.txtTel);
@@ -156,29 +151,6 @@
             this.lblMatricule.TabIndex = 17;
             this.lblMatricule.Text = "Matricule : ";
             // 
-            // btnContrat
-            // 
-            this.btnContrat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnContrat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnContrat.Location = new System.Drawing.Point(146, 22);
-            this.btnContrat.Name = "btnContrat";
-            this.btnContrat.Size = new System.Drawing.Size(89, 23);
-            this.btnContrat.TabIndex = 16;
-            this.btnContrat.Text = "Contrat";
-            this.btnContrat.UseVisualStyleBackColor = true;
-            this.btnContrat.Click += new System.EventHandler(this.btnContrat_Click);
-            // 
-            // btnAvenant
-            // 
-            this.btnAvenant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAvenant.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAvenant.Location = new System.Drawing.Point(146, 80);
-            this.btnAvenant.Name = "btnAvenant";
-            this.btnAvenant.Size = new System.Drawing.Size(89, 23);
-            this.btnAvenant.TabIndex = 15;
-            this.btnAvenant.Text = "Avenant";
-            this.btnAvenant.UseVisualStyleBackColor = true;
-            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(112, 345);
@@ -188,9 +160,9 @@
             // 
             // btnAugmentation
             // 
-            this.btnAugmentation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAugmentation.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAugmentation.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAugmentation.Location = new System.Drawing.Point(146, 51);
+            this.btnAugmentation.Location = new System.Drawing.Point(216, 456);
             this.btnAugmentation.Name = "btnAugmentation";
             this.btnAugmentation.Size = new System.Drawing.Size(89, 23);
             this.btnAugmentation.TabIndex = 13;
@@ -349,6 +321,7 @@
             this.Controls.Add(this.panelContrat);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnAugmentation);
             this.Controls.Add(this.btnSave);
             this.Name = "CollaborateurForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -370,8 +343,6 @@
         internal System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbCollaborateur;
-        private System.Windows.Forms.Button btnContrat;
-        private System.Windows.Forms.Button btnAvenant;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnAugmentation;
         private System.Windows.Forms.Label lblEmail;

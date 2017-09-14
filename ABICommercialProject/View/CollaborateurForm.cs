@@ -79,8 +79,6 @@ namespace ABICommercialProject.View
         private void setActionControlEnabled(Boolean enable)
         {
             btnAugmentation.Visible = enable;
-            btnAvenant.Visible = enable;
-            btnContrat.Visible = enable;
             lblMatricule.Visible = enable;
             lblTextMatricule.Visible = enable;
         }
