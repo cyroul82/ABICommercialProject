@@ -87,24 +87,33 @@ namespace ABICommercialProject.View
                 dr["Prénom"] = collaborateur.Firstname;
                 dr["Fonction"] = collaborateur.FonctionCollabo;
 
-                if (collaborateur.getContratActif() != null)
+                Contrat contratActif = null;
+                foreach(Contrat c in collaborateur.Contrats)
                 {
-                    dr["Qualification"] = collaborateur.getContratActif().Qualification;
+                    if(!c.Cloture)
+                    {
+                        contratActif = c;
+                    }
+                }
+
+                if (contratActif != null)
+                {
+                    dr["Qualification"] = contratActif.Qualification;
 
                     TypeContrat type = TypeContrat.CDI;
 
-                    if (collaborateur.getContratActif() is Cdi) type = TypeContrat.CDI;
-                    if (collaborateur.getContratActif() is Cdd) type = TypeContrat.CDD;
-                    if (collaborateur.getContratActif() is Stage) type = TypeContrat.Stage;
-                    if (collaborateur.getContratActif() is MissionInterim) type = TypeContrat.Interim;
+                    if (contratActif is Cdi) type = TypeContrat.CDI;
+                    if (contratActif is Cdd) type = TypeContrat.CDD;
+                    if (contratActif is Stage) type = TypeContrat.Stage;
+                    if (contratActif is MissionInterim) type = TypeContrat.Interim;
 
 
                     dr["Contrat"] = type.ToString();
-                    dr["Statut"] = collaborateur.getContratActif().StatutContrat;
-                    dr["SalaireBrut"] = collaborateur.getContratActif().SalaireBrut;
+                    dr["Statut"] = contratActif.StatutContrat;
+                    dr["SalaireBrut"] = contratActif.SalaireBrut;
                     
                 }
-                dr["Actif"] = collaborateur.hasContratActif() ? "Actif" : "Cloturé";
+                dr["Actif"] = contratActif == null ? "Inactif" : "Actif";
                 dt.Rows.Add(dr);
             }
         }

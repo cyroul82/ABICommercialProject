@@ -26,7 +26,6 @@ namespace ABICommercialProject.Model
         private String tel;
         private String email;
         private Boolean statut;
-        private Contrat contratActif;
 
         //private IDictionary<Int32, Contrat> contrats;
         private ICollection<Contrat> contrats;
@@ -52,7 +51,6 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             statut = true;
-            contratActif = null;
             init();
         }
 
@@ -68,7 +66,6 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             statut = true;
-            this.contratActif = contratActif;
             init();
         }
         public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif, Boolean statut)
@@ -83,7 +80,6 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             this.Statut = statut;
-            this.contratActif = contratActif;
             init();
         }
 
@@ -137,68 +133,36 @@ namespace ABICommercialProject.Model
         {
             if(contrat != null)
             {
-                Contrats.Add(contrat);
+               
+                if(!hasContratActif())
+                {
+                    Contrats.Add(contrat);
+                }
+                else
+                {
+                    throw new Exception("Un contrat est déja actif \n  Impossible d'ajouter un nouveau contrat.");
+                }
             }
             
         }
 
-        //public ICollection<Contrat> getListContrat()
-        //{
-        //    return Contrats;
-        //}
-
-        /// <summary>
-        /// Cloture le contrat actif, avec une date de date fin effective et un motif
-        /// </summary>
-        /// <param name="contrat"></param>
-        /// <exception cref="ArgumentNullException">contrat actif is null</exception>
-        public void clotureContratActif(DateTime dateFinEffectif, String motifCloture)
-        {
-            if (contratActif != null)
-            {
-                contratActif.clotureContrat(dateFinEffectif, motifCloture);
-                this.contratActif = null;
-                this.statut = false;
-            }
-            else
-            {
-                throw new NullReferenceException("Le collaborateur n'a aucun contrat actif à cloturer");
-            }
-        }
-
-        /// <summary>
-        /// Return True if the collaborateur has a Contrat Actif, false otherwise
-        /// </summary>
-        /// <returns></returns>
         public Boolean hasContratActif()
         {
-            return contratActif == null ? false : true;
-        }
-
-        /// <summary>
-        /// Return the contract actif of the collaborateur
-        /// </summary>
-        /// <returns></returns>
-        public Contrat getContratActif()
-        {
+            Boolean contratActif = false;
+            foreach (Contrat c in Contrats)
+            {
+                if (!c.Cloture)
+                {
+                    contratActif = true;
+                }
+            }
             return contratActif;
         }
 
-        /// <summary>
-        /// Set the contrat actif 
-        /// </summary>
-        /// <param name="contrat"></param>
-        public void setContratActif(Contrat contrat)
-        {
-            
-            this.contratActif = contrat != null ? contrat : null;
-            //if(contratActif != null)
-            //{
-            //    listContrat.Add(contrat.NumeroContrat, contrat);
-            //}
-        }
-
         
+
+       
+    
         /// <summary>
         /// Add a pay rise
         /// </summary>

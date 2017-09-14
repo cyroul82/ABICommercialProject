@@ -24,35 +24,30 @@ namespace ABICommercialProject.Controller
             collaborateur = collaborateurForm.getCollaborateur();
             if (collaborateur != null)
             {
-                CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
-                ctrlNewContrat.SavingContrat += new ContratHandler(this.onSavedContrat);
+                CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(ref collaborateur);
+                ctrlNewContrat.SavingContrat += new EventHandler(this.onSavedContrat);
                 ctrlNewContrat.init();
             }
         }
 
-        private void onSavedContrat(Contrat contrat)
+        private void onSavedContrat(object sender, EventArgs e)
         {
-            if (contrat != null)
+            try
             {
-                this.contrat = contrat;
-                this.savingNewCollaborateur();
+                DAOToChange.getInstance().NewCollaborateur(ref collaborateur);
+                SavingCollaboData?.Invoke(collaborateur);
+                //close the form
+                this.collaborateurForm.Close();
+            }
+            catch (Exception ex)
+            {
+                collaborateurForm.displayErrorMessage(ex.Message, "Error DB");
             }
         }
 
         private void savingNewCollaborateur()
         {
-            try
-            {
-                DAOToChange.getInstance().NewCollaborateur(ref collaborateur, contrat);
-                //invoke savingCollaboData, The CtrlListColloborateur listening to it to update the list
-                SavingCollaboData?.Invoke(collaborateur);
-                //close the form
-                this.collaborateurForm.Close();
-            }
-            catch (Exception e)
-            {
-                collaborateurForm.displayErrorMessage(e.Message, "Error DB");
-            }
+            
         }
 
         public void init()

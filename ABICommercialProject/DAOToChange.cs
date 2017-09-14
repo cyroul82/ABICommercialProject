@@ -2,6 +2,7 @@
 using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,30 +40,15 @@ namespace ABICommercialProject
             return dao;
         }
 
-        public void NewCollaborateur(ref Collaborateur collaborateur, Contrat contrat)
+        public void NewCollaborateur(ref Collaborateur collaborateur)
         {
             try
             {
                 context.Collaborateurs.Add(collaborateur);
                 context.SaveChanges();
-
-                //Get the new collaborateur and load! it in the context
-                Collaborateur col = context.Collaborateurs.Find(collaborateur.Id);
-
-
-                contrat.Collaborateur = col;
-
-                col.setContratActif(contrat);
-                col.AddContrat(contrat);
-
-                context.Contrats.Add(contrat);
-                context.SaveChanges();
-
             }
             catch(Exception e)
             {
-                context.Collaborateurs.Remove(collaborateur);
-                context.Contrats.Remove(contrat);
                 throw new Exception(e.Message);
             }
         }
@@ -75,18 +61,24 @@ namespace ABICommercialProject
                 var col = context.Collaborateurs.Single(c => c.Id == collaborateur.Id);
                 col = collaborateur;
                 context.SaveChanges();
-
             }
-            catch (Exception e)
+            catch (ArgumentNullException e)
             {
-                throw new Exception(e.Message);
+                throw new ArgumentNullException(e.Message);
+            }
+            catch (InvalidOperationException ie)
+            {
+                throw new InvalidOperationException(ie.Message);
+            }
+            catch(DbUpdateException dbe)
+            {
+                throw new DbUpdateException(dbe.InnerException.Message);
             }
         }
 
         public void ClotureContrat(Collaborateur collabo, Contrat contrat)
         {
             Collaborateur col = context.Collaborateurs.Single(c => c.Id == collabo.Id);
-            col.setContratActif(null);
 
             Contrat con = context.Contrats.Single(c => c.Id == contrat.Id);
             con.MotifCloture = contrat.MotifCloture;
@@ -97,17 +89,6 @@ namespace ABICommercialProject
 
         }
 
-        public void AddContrat(Collaborateur collabo, Contrat contrat)
-        {
-            Collaborateur col = context.Collaborateurs.Single(c => c.Id == collabo.Id);
-            if (!col.hasContratActif())
-            {
-                contrat.Collaborateur = col;
-                context.Contrats.Add(contrat);
-
-            }
-
-        }
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
             return collaborateurList;

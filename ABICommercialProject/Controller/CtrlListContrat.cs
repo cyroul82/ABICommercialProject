@@ -71,40 +71,22 @@ namespace ABICommercialProject.Controller
 
         private void onCreatedContrat(object sender, EventArgs e)
         {
-            if (!collaborateur.hasContratActif())
-            {
-                CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
-                ctrlNewContrat.SavingContrat += new ContratHandler(this.onSavedContrat);
-                ctrlNewContrat.init();
-            }
-            else
-            {
-                MessageBox.Show("Contrat actif déja existant, clôturer le contrat actif", "Erreur Contrat", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+            CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(ref collaborateur);
+            ctrlNewContrat.SavingContrat += new EventHandler(this.onSavedContrat);
+            ctrlNewContrat.init();
         }
 
-        private void onSavedContrat(Contrat contrat)
+        private void onSavedContrat(object sender, EventArgs e)
         {
-            if (contrat != null)
-            {
-                Random r = new Random();
-                Int32 i = r.Next(1001, 10000);
-                contrat.Id = i;
-                collaborateur.Contrats.Add(contrat);
-                collaborateur.setContratActif(contrat);
-                refresh();
-            }
+            refresh();
         }
 
         private void onCloturedContrat(Contrat contrat)
         {
-            if(contrat == collaborateur.getContratActif())
-            {
+            
                 try
                 {
                     DAOToChange.getInstance().ClotureContrat(collaborateur, contrat);
-                    collaborateur.setContratActif(null);
                     Contrat oldContrat = getContrat(contrat.Id);
                     collaborateur.Contrats.Remove(oldContrat);
                     collaborateur.Contrats.Add(contrat);
@@ -116,7 +98,7 @@ namespace ABICommercialProject.Controller
                     throw new Exception(ex.Message);
                 }
                
-            }
+            
         }
 
         private void refresh()

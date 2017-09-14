@@ -1,6 +1,7 @@
 ﻿using ABICommercialProject.Model;
 using ABICommercialProject.View;
-
+using System;
+using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
@@ -9,8 +10,8 @@ namespace ABICommercialProject.Controller
         private Collaborateur collaborateur;
         private ContratForm cf;
 
-        public ContratHandler SavingContrat;
-        public CtrlNewContrat(Collaborateur collaborateur)
+        public EventHandler SavingContrat;
+        public CtrlNewContrat(ref Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             cf = new ContratForm();
@@ -28,7 +29,15 @@ namespace ABICommercialProject.Controller
         {
             if (contrat != null)
             {
-                SavingContrat?.Invoke(contrat);
+                try
+                {
+                    collaborateur.AddContrat(contrat);
+                    SavingContrat?.Invoke(this, new EventArgs());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur saving", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
