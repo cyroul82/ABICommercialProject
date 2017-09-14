@@ -21,7 +21,7 @@ namespace ABICommercialProject.Controller
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
             collaborateurForm.UpdatingCollabo += new EventHandler(this.onUpdatedCollabo);
         }
-
+        
         private void onUpdatedCollabo(object sender, EventArgs e)
         {
             try

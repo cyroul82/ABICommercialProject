@@ -17,7 +17,7 @@ namespace ABICommercialProject.View
     {
         private DataTable dt;
         private Collaborateur collaborateur;
-        public ContratHandler CloturingContrat;
+        public EventHandler CloturingContrat;
         public SelectingHandler SelectingContrat;
         public EventHandler CreatingContrat;
         public ContratListForm(Collaborateur collaborateur)

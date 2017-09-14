@@ -42,6 +42,15 @@ namespace ABICommercialProject.Controller
             collaborateurListForm.Show();
         }
 
+        public void refreshList()
+        {
+            if(collaborateurListForm != null)
+            {
+                collaborateurListForm.refreshList(collaborateurList);
+            }
+        }
+
+
         private void onSelectedCollabo(Int32 id)
         {
             if (collaborateurList.ContainsKey(id))
@@ -84,8 +93,6 @@ namespace ABICommercialProject.Controller
             }
         }
 
-
-
         private void onCreatedCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
@@ -102,7 +109,6 @@ namespace ABICommercialProject.Controller
 
         private void onClosedForm(object sender, FormClosingEventArgs e)
         {
-
             collaborateurListForm = null;
             CtrlMain.getInstance().closeCtrlListCollaborateur(); ;
         }

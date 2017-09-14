@@ -16,7 +16,7 @@ namespace ABICommercialProject.Controller
         {
             this.collaborateur = collaborateur;
             contratListForm = new ContratListForm(collaborateur);
-            contratListForm.CloturingContrat += new ContratHandler(this.onCloturedContrat);
+            contratListForm.CloturingContrat += new EventHandler(this.onCloturedContrat);
             contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
             contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
             
@@ -30,7 +30,7 @@ namespace ABICommercialProject.Controller
             contratListForm.AutoScroll = true;
             clf.panelContrat.Controls.Add(contratListForm);
             contratListForm.Show();
-            contratListForm.CloturingContrat += new ContratHandler(this.onCloturedContrat);
+            contratListForm.CloturingContrat += new EventHandler(onCloturedContrat);
             contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
             contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
 
@@ -51,7 +51,7 @@ namespace ABICommercialProject.Controller
             if (contrat != null)
             {
                 CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(contrat);
-                ctrlViewContrat.CloturingContrat += new ContratHandler(this.onCloturedContrat);
+                ctrlViewContrat.CloturingContrat += new EventHandler(this.onCloturedContrat);
                 ctrlViewContrat.init();
             }
         }
@@ -78,18 +78,18 @@ namespace ABICommercialProject.Controller
 
         private void onSavedContrat(object sender, EventArgs e)
         { 
-            refresh();
+            refresh(sender, e);
         }
 
-        private void onCloturedContrat(Contrat contrat)
+        private void onCloturedContrat(object sender, EventArgs e)
         {
-            refresh();
+            refresh(sender, e);
         }
 
-        private void refresh()
+        private void refresh(object sender, EventArgs e)
         {
             contratListForm.setDataSource();
-            Refreshing?.Invoke(this, null);
+            Refreshing?.Invoke(sender, e);
         }
     }
 }

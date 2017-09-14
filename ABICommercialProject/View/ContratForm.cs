@@ -17,7 +17,7 @@ namespace ABICommercialProject.View
         private Contrat contrat;
 
         public ContratHandler SavingContrat;
-        public ContratHandler CloturingContrat;
+        public event EventHandler CloturingContrat;
         public ContratForm()
         {
             InitializeComponent();
@@ -291,7 +291,7 @@ namespace ABICommercialProject.View
         {
             if(contrat != null)
             {
-                CloturingContrat?.Invoke(contrat);
+                CloturingContrat?.Invoke(sender, e);
                 this.Close();
             }
         }

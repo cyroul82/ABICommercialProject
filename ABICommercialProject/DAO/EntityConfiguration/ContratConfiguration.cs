@@ -21,6 +21,9 @@ namespace ABICommercialProject.DAO.EntityConfiguration
             Property(c => c.Qualification)
                 .HasMaxLength(200);
 
+            Property(c => c.MotifCloture)
+                .HasMaxLength(2000);
+
             //HasRequired(c => c.Collaborateur)
             //    .WithMany(c => c.Contrats)
             //    .HasForeignKey(c => c.CollaborateurID)

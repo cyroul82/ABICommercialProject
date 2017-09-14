@@ -10,15 +10,16 @@ namespace ABICommercialProject.Controller
 {
     public class CtrlViewContrat
     {
-        ContratForm cf;
-        public ContratHandler CloturingContrat;
+        private ContratForm cf;
+        public event EventHandler CloturingContrat;
+
         private Contrat contrat;
 
         public CtrlViewContrat(Contrat contrat)
         {
             cf = new ContratForm(contrat);
             this.contrat = contrat;
-            cf.CloturingContrat += new ContratHandler(this.onCloturedContrat);
+            cf.CloturingContrat += new EventHandler(this.onCloturedContrat);
         }
 
 
@@ -27,13 +28,13 @@ namespace ABICommercialProject.Controller
             cf?.ShowDialog();
         }
 
-        private void onCloturedContrat(Contrat contrat)
+        private void onCloturedContrat(object sender, EventArgs e)
         {
             ClotureForm cf = new ClotureForm(ref contrat);
             if (cf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 DAOToChange.getInstance().Update();
-                CloturingContrat?.Invoke(contrat);
+                CloturingContrat?.Invoke(sender, e);
             }
         }
     }

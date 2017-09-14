@@ -37,6 +37,12 @@ namespace ABICommercialProject.View
             collaborateurDataGrid.Refresh();
         }
 
+        public void refreshList(SortedDictionary<Int32, Collaborateur> collaborateurList)
+        {
+            this.collaborateurList = collaborateurList;
+            setDataSource();
+        }
+
         private void initializeDataTable()
         {
             dt = new DataTable();
