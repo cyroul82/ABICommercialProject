@@ -45,7 +45,7 @@ namespace ABICommercialProject
             try
             {
                 context.Collaborateurs.Add(collaborateur);
-                context.SaveChanges();
+                Update();
             }
             catch(Exception e)
             {
@@ -53,46 +53,15 @@ namespace ABICommercialProject
             }
         }
 
-        public void UpdateCollaborateur(Collaborateur collaborateur)
-        {
-            try
-            {
-                //var collabo = context.Collaborateurs.Find(collaborateur.Id);
-                var col = context.Collaborateurs.Single(c => c.Id == collaborateur.Id);
-                col = collaborateur;
-                context.SaveChanges();
-            }
-            catch (ArgumentNullException e)
-            {
-                throw new ArgumentNullException(e.Message);
-            }
-            catch (InvalidOperationException ie)
-            {
-                throw new InvalidOperationException(ie.Message);
-            }
-            catch(DbUpdateException dbe)
-            {
-                throw new DbUpdateException(dbe.InnerException.Message);
-            }
-        }
-
-        public void ClotureContrat(Collaborateur collabo, Contrat contrat)
-        {
-            Collaborateur col = context.Collaborateurs.Single(c => c.Id == collabo.Id);
-
-            Contrat con = context.Contrats.Single(c => c.Id == contrat.Id);
-            con.MotifCloture = contrat.MotifCloture;
-            con.DateFinEffectif = contrat.DateFinEffectif;
-            con.Cloture = true;
-
-            context.SaveChanges();
-
-        }
-
+   
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
             return collaborateurList;
         }
 
+        internal void Update()
+        {
+            context.SaveChanges();
+        }
     }
 }

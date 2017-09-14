@@ -66,7 +66,7 @@ namespace ABICommercialProject.Controller
 
         private void onEditedCollabo(Collaborateur collaborateur)
         {
-            CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
+            CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(ref collaborateur);
             ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.onUpdatedCollabo);
             ctrlEditCollaborateur.init();
         }

@@ -72,6 +72,7 @@ namespace ABICommercialProject.Model
             {
                 this.DateFinEffectif = dateFinEffectif;
                 this.MotifCloture = motifCloture;
+                Cloture = true;
             }
         }
 

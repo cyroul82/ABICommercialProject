@@ -32,6 +32,8 @@ namespace ABICommercialProject.Controller
                 try
                 {
                     collaborateur.AddContrat(contrat);
+                    DAOToChange.getInstance().Update();
+
                     SavingContrat?.Invoke(this, new EventArgs());
                 }
                 catch (Exception ex)

@@ -24,9 +24,8 @@ namespace ABICommercialProject.View
         {
             if(dtpFinEffecif.Text != "" && txtMotif.Text != "")
             {
-                contrat.DateFinEffectif = dtpFinEffecif.Value.Date;
-                contrat.MotifCloture = txtMotif.Text;
-                contrat.Cloture = true;
+                contrat.clotureContrat(dtpFinEffecif.Value.Date, txtMotif.Text);
+
                 this.DialogResult = DialogResult.OK;
             }
             else

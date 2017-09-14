@@ -9,9 +9,10 @@ namespace ABICommercialProject.Model
     class Tools
     {
 
-        public static String create = "Créer";
-        public static String edit = "Editer";
-        public static String update = "Enregistrer";
+        public const String create = "Créer";
+        public const String edit = "Editer";
+        public const String update = "Enregistrer";
+        public const String close = "Fermer";
 
         /// <summary>
         /// Check if the name length > 1  and that the name isn't null or empty

@@ -15,7 +15,7 @@ namespace ABICommercialProject.Controller
         private CollaborateurForm collaborateurForm;
 
         public CollaboHandler UpdatingCollabo;
-		public CtrlEditCollaborateur(Collaborateur collaborateur)
+		public CtrlEditCollaborateur(ref Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
@@ -26,8 +26,7 @@ namespace ABICommercialProject.Controller
         {
             try
             {
-                collaborateur = collaborateurForm.getCollaborateur();
-                DAOToChange.getInstance().UpdateCollaborateur(collaborateur);
+                DAOToChange.getInstance().Update();
                 collaborateurForm.closeDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }
@@ -41,7 +40,7 @@ namespace ABICommercialProject.Controller
                 collaborateurForm.displayErrorMessage(ie.InnerException.Message, "InvalidOperationException Updating Collaborateur");
 
             }
-            catch(DbUpdateException dbe)
+            catch(DbUpdateException)
             {
                 collaborateurForm.displayErrorMessage("Nom et prénom déjà existant", "DbUpdateException Updating Collaborateur");
 

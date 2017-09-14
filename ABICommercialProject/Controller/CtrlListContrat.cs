@@ -77,28 +77,13 @@ namespace ABICommercialProject.Controller
         }
 
         private void onSavedContrat(object sender, EventArgs e)
-        {
+        { 
             refresh();
         }
 
         private void onCloturedContrat(Contrat contrat)
         {
-            
-                try
-                {
-                    DAOToChange.getInstance().ClotureContrat(collaborateur, contrat);
-                    Contrat oldContrat = getContrat(contrat.Id);
-                    collaborateur.Contrats.Remove(oldContrat);
-                    collaborateur.Contrats.Add(contrat);
-
-                    refresh();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
-               
-            
+            refresh();
         }
 
         private void refresh()

@@ -8,7 +8,6 @@ namespace ABICommercialProject.Controller
     public class CtrlNewCollaborateur
     {
         private Collaborateur collaborateur;
-        private Contrat contrat;
 
         public CollaboHandler SavingCollaboData;
 
@@ -17,6 +16,11 @@ namespace ABICommercialProject.Controller
         {
             this.collaborateurForm = new CollaborateurForm();
             collaborateurForm.SavingCollabo += new EventHandler(this.onSavedCollabo);
+        }
+
+        public void init()
+        {
+            collaborateurForm.displayDialog();
         }
 
         private void onSavedCollabo(object sender, EventArgs e)
@@ -44,16 +48,5 @@ namespace ABICommercialProject.Controller
                 collaborateurForm.displayErrorMessage(ex.Message, "Error DB");
             }
         }
-
-        private void savingNewCollaborateur()
-        {
-            
-        }
-
-        public void init()
-        {
-            collaborateurForm.displayDialog();
-        }
-        
     }
 }

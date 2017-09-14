@@ -63,6 +63,7 @@ namespace ABICommercialProject.View
             setActionControlEnabled(true);
             setCollaborateurControlEnabled(true);
             btnSave.Text = Tools.edit;
+            btnCancel.Text = Tools.close;
         }
 
         private void setFormToEditCollabo()

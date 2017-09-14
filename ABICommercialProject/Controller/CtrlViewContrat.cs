@@ -32,6 +32,7 @@ namespace ABICommercialProject.Controller
             ClotureForm cf = new ClotureForm(ref contrat);
             if (cf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                DAOToChange.getInstance().Update();
                 CloturingContrat?.Invoke(contrat);
             }
         }

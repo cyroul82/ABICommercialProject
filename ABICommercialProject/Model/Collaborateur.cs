@@ -140,7 +140,7 @@ namespace ABICommercialProject.Model
                 }
                 else
                 {
-                    throw new Exception("Un contrat est déja actif \n  Impossible d'ajouter un nouveau contrat.");
+                    throw new Exception("Un contrat est déja actif \n Impossible d'ajouter un nouveau contrat.");
                 }
             }
             
