@@ -71,69 +71,9 @@
     <Compile Include="DAO\ABIModel.cs" />
     <Compile Include="DAO\EntityConfiguration\CollaborateurConfiguration.cs" />
     <Compile Include="DAO\EntityConfiguration\ContratConfiguration.cs" />
-    <Compile Include="Migrations\201709120846416_InitialModel.cs" />
-    <Compile Include="Migrations\201709120846416_InitialModel.Designer.cs">
-      <DependentUpon>201709120846416_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709120910396_AddAugmentatonSalaireTable.cs" />
-    <Compile Include="Migrations\201709120910396_AddAugmentatonSalaireTable.Designer.cs">
-      <DependentUpon>201709120910396_AddAugmentatonSalaireTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.cs" />
-    <Compile Include="Migrations\201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.Designer.cs">
-      <DependentUpon>201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs" />
-    <Compile Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.Designer.cs">
-      <DependentUpon>201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709121421132_AddedDummyDataInSeeMethod.cs" />
-    <Compile Include="Migrations\201709121421132_AddedDummyDataInSeeMethod.Designer.cs">
-      <DependentUpon>201709121421132_AddedDummyDataInSeeMethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709121908174_ChangeDateTimeTypeToContratTable.cs" />
-    <Compile Include="Migrations\201709121908174_ChangeDateTimeTypeToContratTable.Designer.cs">
-      <DependentUpon>201709121908174_ChangeDateTimeTypeToContratTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709121936248_ChangeDateTimeToDateTime2ContratTable.cs" />
-    <Compile Include="Migrations\201709121936248_ChangeDateTimeToDateTime2ContratTable.Designer.cs">
-      <DependentUpon>201709121936248_ChangeDateTimeToDateTime2ContratTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.cs" />
-    <Compile Include="Migrations\201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.Designer.cs">
-      <DependentUpon>201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131037273_AddPropertyToCollaborateurTable.cs" />
-    <Compile Include="Migrations\201709131037273_AddPropertyToCollaborateurTable.Designer.cs">
-      <DependentUpon>201709131037273_AddPropertyToCollaborateurTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131231352_AddedRelationCollaborateurTable.cs" />
-    <Compile Include="Migrations\201709131231352_AddedRelationCollaborateurTable.Designer.cs">
-      <DependentUpon>201709131231352_AddedRelationCollaborateurTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.cs" />
-    <Compile Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.Designer.cs">
-      <DependentUpon>201709131245580_AddedRelationCollaborateurTable1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131823083_AddedColumnTypeDateFinContrat.cs" />
-    <Compile Include="Migrations\201709131823083_AddedColumnTypeDateFinContrat.Designer.cs">
-      <DependentUpon>201709131823083_AddedColumnTypeDateFinContrat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.cs" />
-    <Compile Include="Migrations\201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.Designer.cs">
-      <DependentUpon>201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131903218_AddedColumnTypeDateClotureToContratTable.cs" />
-    <Compile Include="Migrations\201709131903218_AddedColumnTypeDateClotureToContratTable.Designer.cs">
-      <DependentUpon>201709131903218_AddedColumnTypeDateClotureToContratTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709140340346_AddedLengthToPopertyQualifToContratTabel.cs" />
-    <Compile Include="Migrations\201709140340346_AddedLengthToPopertyQualifToContratTabel.Designer.cs">
-      <DependentUpon>201709140340346_AddedLengthToPopertyQualifToContratTabel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709140354315_AddedLengthToZipCodeTOCollaborateurTable.cs" />
-    <Compile Include="Migrations\201709140354315_AddedLengthToZipCodeTOCollaborateurTable.Designer.cs">
-      <DependentUpon>201709140354315_AddedLengthToZipCodeTOCollaborateurTable.cs</DependentUpon>
+    <Compile Include="Migrations\201709140733588_Initial.cs" />
+    <Compile Include="Migrations\201709140733588_Initial.Designer.cs">
+      <DependentUpon>201709140733588_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
@@ -186,53 +126,8 @@
     <Compile Include="View\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201709120846416_InitialModel.resx">
-      <DependentUpon>201709120846416_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709120910396_AddAugmentatonSalaireTable.resx">
-      <DependentUpon>201709120910396_AddAugmentatonSalaireTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.resx">
-      <DependentUpon>201709121206344_AddPropertyRequiredAndLengthToCollaborateurTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.resx">
-      <DependentUpon>201709121328137_AddRelationBetweenCollaborateurAndContratOneToMany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709121421132_AddedDummyDataInSeeMethod.resx">
-      <DependentUpon>201709121421132_AddedDummyDataInSeeMethod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709121908174_ChangeDateTimeTypeToContratTable.resx">
-      <DependentUpon>201709121908174_ChangeDateTimeTypeToContratTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709121936248_ChangeDateTimeToDateTime2ContratTable.resx">
-      <DependentUpon>201709121936248_ChangeDateTimeToDateTime2ContratTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.resx">
-      <DependentUpon>201709122020210_AddCompositeUniqueKeyofNameAndFirstnameToCollorateurTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131037273_AddPropertyToCollaborateurTable.resx">
-      <DependentUpon>201709131037273_AddPropertyToCollaborateurTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131231352_AddedRelationCollaborateurTable.resx">
-      <DependentUpon>201709131231352_AddedRelationCollaborateurTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131245580_AddedRelationCollaborateurTable1.resx">
-      <DependentUpon>201709131245580_AddedRelationCollaborateurTable1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131823083_AddedColumnTypeDateFinContrat.resx">
-      <DependentUpon>201709131823083_AddedColumnTypeDateFinContrat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.resx">
-      <DependentUpon>201709131828418_AddedColumnTypeDateToAugmentationSalaireTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131903218_AddedColumnTypeDateClotureToContratTable.resx">
-      <DependentUpon>201709131903218_AddedColumnTypeDateClotureToContratTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709140340346_AddedLengthToPopertyQualifToContratTabel.resx">
-      <DependentUpon>201709140340346_AddedLengthToPopertyQualifToContratTabel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709140354315_AddedLengthToZipCodeTOCollaborateurTable.resx">
-      <DependentUpon>201709140354315_AddedLengthToZipCodeTOCollaborateurTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709140733588_Initial.resx">
+      <DependentUpon>201709140733588_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>

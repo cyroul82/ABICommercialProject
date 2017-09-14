@@ -22,6 +22,7 @@ namespace ABICommercialProject.Migrations
             //        { 2,  new Collaborateur ( "Moiselet", "renaud", "fonctionDev", "turin", "06400", "Nice", "0625879652", "ayss@gmail.com" ) }
             //};
             //Contrat cdi = new Cdi("qualif", DateTime.Now.Date, Statut.Cadre, 25000);
+            //cc[1].ContratActif = cdi;
             //cc[1].Contrats.Add(cdi);
             //foreach (Collaborateur col in cc.Values)
             //{

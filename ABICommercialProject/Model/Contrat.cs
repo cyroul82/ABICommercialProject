@@ -23,7 +23,7 @@ namespace ABICommercialProject.Model
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
 
-        public int CollaborateurID { get; set; }
+        //public int CollaborateurID { get; set; }
 
 
         public Contrat()

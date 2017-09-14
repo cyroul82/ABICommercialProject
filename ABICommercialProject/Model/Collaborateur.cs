@@ -52,7 +52,7 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             statut = true;
-            ContratActif = null;
+            contratActif = null;
             init();
         }
 
@@ -68,7 +68,7 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             statut = true;
-            ContratActif = contratActif;
+            this.contratActif = contratActif;
             init();
         }
         public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif, Boolean statut)
@@ -83,7 +83,7 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             this.Statut = statut;
-            this.ContratActif = contratActif;
+            this.contratActif = contratActif;
             init();
         }
 
@@ -154,10 +154,10 @@ namespace ABICommercialProject.Model
         /// <exception cref="ArgumentNullException">contrat actif is null</exception>
         public void clotureContratActif(DateTime dateFinEffectif, String motifCloture)
         {
-            if (ContratActif != null)
+            if (contratActif != null)
             {
-                ContratActif.clotureContrat(dateFinEffectif, motifCloture);
-                this.ContratActif = null;
+                contratActif.clotureContrat(dateFinEffectif, motifCloture);
+                this.contratActif = null;
                 this.statut = false;
             }
             else
@@ -172,7 +172,7 @@ namespace ABICommercialProject.Model
         /// <returns></returns>
         public Boolean hasContratActif()
         {
-            return ContratActif == null ? false : true;
+            return contratActif == null ? false : true;
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace ABICommercialProject.Model
         /// <returns></returns>
         public Contrat getContratActif()
         {
-            return ContratActif;
+            return contratActif;
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace ABICommercialProject.Model
         public void setContratActif(Contrat contrat)
         {
             
-            this.ContratActif = contrat != null ? contrat : null;
+            this.contratActif = contrat != null ? contrat : null;
             //if(contratActif != null)
             //{
             //    listContrat.Add(contrat.NumeroContrat, contrat);
@@ -404,17 +404,6 @@ namespace ABICommercialProject.Model
             }
         }
 
-        public Contrat ContratActif
-        {
-            get
-            {
-                return contratActif;
-            }
-
-            set
-            {
-                contratActif = value;
-            }
-        }
+        
     }
 }

@@ -7,13 +7,13 @@ namespace ABICommercialProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialModel : IMigrationMetadata
+    public sealed partial class pending : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(pending));
         
         string IMigrationMetadata.Id
         {
-            get { return "201709120846416_InitialModel"; }
+            get { return "201709140644531_pending"; }
         }
         
         string IMigrationMetadata.Source

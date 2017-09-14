@@ -21,12 +21,16 @@ namespace ABICommercialProject.DAO.EntityConfiguration
             Property(c => c.Qualification)
                 .HasMaxLength(200);
 
-            HasRequired(c => c.Collaborateur)
-                .WithMany(c => c.Contrats)
-                .HasForeignKey(c => c.CollaborateurID)
-                .WillCascadeOnDelete(false);
+            //HasRequired(c => c.Collaborateur)
+            //    .WithMany(c => c.Contrats)
+            //    .HasForeignKey(c => c.CollaborateurID)
+            //    .WillCascadeOnDelete(false);
 
-            
+            //HasRequired(c => c.Collaborateur)
+            //    .WithMany(c => c.Contrats)
+            //    .WillCascadeOnDelete(false);
+
+
 
         }
     }
