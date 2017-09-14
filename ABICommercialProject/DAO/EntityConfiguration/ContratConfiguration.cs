@@ -18,6 +18,9 @@ namespace ABICommercialProject.DAO.EntityConfiguration
             Property(c => c.DateFinEffectif)
                 .HasColumnType("datetime2");
 
+            Property(c => c.Qualification)
+                .HasMaxLength(200);
+
             HasRequired(c => c.Collaborateur)
                 .WithMany(c => c.Contrats)
                 .HasForeignKey(c => c.CollaborateurID)
