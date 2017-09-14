@@ -27,6 +27,7 @@ namespace ABICommercialProject.View
             this.collaborateurList = collaborateurList;
             initializeDataTable();
             setDataSource();
+
         }
 
         public void setDataSource()
