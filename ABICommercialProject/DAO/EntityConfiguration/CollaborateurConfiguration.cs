@@ -31,6 +31,8 @@ namespace ABICommercialProject.DAO.EntityConfiguration
                                         new IndexAttribute("IX_NameFirstname", 2) { IsUnique = true })
                                                         );
 
+            Property(t => t.ZipCode)
+                .HasMaxLength(5);
 
         }
     }

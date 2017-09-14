@@ -131,6 +131,10 @@
     <Compile Include="Migrations\201709140340346_AddedLengthToPopertyQualifToContratTabel.Designer.cs">
       <DependentUpon>201709140340346_AddedLengthToPopertyQualifToContratTabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709140354315_AddedLengthToZipCodeTOCollaborateurTable.cs" />
+    <Compile Include="Migrations\201709140354315_AddedLengthToZipCodeTOCollaborateurTable.Designer.cs">
+      <DependentUpon>201709140354315_AddedLengthToZipCodeTOCollaborateurTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AugmentationSalaire.cs" />
     <Compile Include="Model\Avenant.cs" />
@@ -226,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709140340346_AddedLengthToPopertyQualifToContratTabel.resx">
       <DependentUpon>201709140340346_AddedLengthToPopertyQualifToContratTabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709140354315_AddedLengthToZipCodeTOCollaborateurTable.resx">
+      <DependentUpon>201709140354315_AddedLengthToZipCodeTOCollaborateurTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>
