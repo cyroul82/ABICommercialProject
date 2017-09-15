@@ -29,8 +29,6 @@ namespace ABICommercialProject.Migrations
             //    context.Collaborateurs.AddOrUpdate(col);
             //}
 
-
-
         }
     }
 }
