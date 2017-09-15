@@ -30,21 +30,21 @@ namespace ABICommercialProject.Controller
                 collaborateurForm.closeDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }
-            catch(ArgumentNullException ae)
-            {
-                collaborateurForm.displayErrorMessage(ae.Message, "ArgumentNullException Updating Collaborateur");
+            //catch(ArgumentNullException ae)
+            //{
+            //    collaborateurForm.displayErrorMessage(ae.Message, "ArgumentNullException Updating Collaborateur");
 
-            }
-            catch(InvalidOperationException ie)
-            {
-                collaborateurForm.displayErrorMessage(ie.InnerException.Message, "InvalidOperationException Updating Collaborateur");
+            //}
+            //catch(InvalidOperationException ie)
+            //{
+            //    collaborateurForm.displayErrorMessage(ie.InnerException.Message, "InvalidOperationException Updating Collaborateur");
 
-            }
-            catch(DbUpdateException)
-            {
-                collaborateurForm.displayErrorMessage("Nom et prénom déjà existant", "DbUpdateException Updating Collaborateur");
+            //}
+            //catch(DbUpdateException)
+            //{
+            //    collaborateurForm.displayErrorMessage("Nom et prénom déjà existant", "DbUpdateException Updating Collaborateur");
 
-            }
+            //}
             catch (Exception ex)
             {
                 collaborateurForm.displayErrorMessage(ex.Message, "Exception Updating Collaborateur");

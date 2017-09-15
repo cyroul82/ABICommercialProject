@@ -59,6 +59,11 @@ namespace ABICommercialProject
             return collaborateurList;
         }
 
+        public List<Collaborateur> Collaborateurs()
+        {
+            return context.Collaborateurs.ToList();
+        }
+
         internal void Update()
         {
             context.SaveChanges();

@@ -34,14 +34,6 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        public void refresh()
-        {
-            if(ctrlListCollaborateur != null)
-            {
-
-            }
-        }
-
         public void closeCtrlListCollaborateur()
         {
 

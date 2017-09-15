@@ -84,12 +84,7 @@ namespace ABICommercialProject.Controller
         {
             if (collaborateurList.ContainsKey(collabo.Id))
             {
-                collaborateurList[collabo.Id] = collabo;
                 collaborateurListForm.setDataSource();
-            }
-            else
-            {
-                Console.WriteLine("Can't find the collabo in Memory to update it + " + collabo + " mat : " + collabo.Id);
             }
         }
 
