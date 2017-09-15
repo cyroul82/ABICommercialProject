@@ -33,13 +33,6 @@ namespace ABICommercialProject.DAO.EntityConfiguration
 
             Property(t => t.ZipCode)
                 .HasMaxLength(5);
-
-            //HasRequired(c => c.Collaborateur)
-            //    .WithMany(c => c.Contrats)
-            //    .WillCascadeOnDelete(false);
-
-            //HasMany(c => c.Contrats)
-            //    .WithRequired(c => c.Collaborateur);
         }
     }
 }
