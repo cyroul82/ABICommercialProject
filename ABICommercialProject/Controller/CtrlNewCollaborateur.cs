@@ -20,12 +20,12 @@ namespace ABICommercialProject.Controller
 
         public void init()
         {
-            collaborateurForm.displayDialog();
+            collaborateurForm.DisplayDialog();
         }
 
         private void onSavedCollabo(object sender, EventArgs e)
         {
-            collaborateur = collaborateurForm.getCollaborateur();
+            collaborateur = collaborateurForm.GetCollaborateur();
             if (collaborateur != null)
             {
                 CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(ref collaborateur);
@@ -45,7 +45,7 @@ namespace ABICommercialProject.Controller
             }
             catch (Exception ex)
             {
-                collaborateurForm.displayErrorMessage(ex.Message, "Error DB");
+                collaborateurForm.DisplayErrorMessage(ex.Message, "Error DB");
             }
         }
     }

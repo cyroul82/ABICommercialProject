@@ -12,12 +12,14 @@ namespace ABICommercialProject.Controller
     public class CtrlEditCollaborateur
     {
         private Collaborateur collaborateur;
+        private Collaborateur oldOollaborateur;
         private CollaborateurForm collaborateurForm;
 
         public CollaboHandler UpdatingCollabo;
 		public CtrlEditCollaborateur(ref Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
+            this.oldOollaborateur = collaborateur;
             this.collaborateurForm = new CollaborateurForm(collaborateur, true);
             collaborateurForm.UpdatingCollabo += new EventHandler(this.onUpdatedCollabo);
         }
@@ -27,7 +29,7 @@ namespace ABICommercialProject.Controller
             try
             {
                 DAOToChange.getInstance().Update();
-                collaborateurForm.closeDialog();
+                collaborateurForm.CloseDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }
             //catch(ArgumentNullException ae)
@@ -47,14 +49,15 @@ namespace ABICommercialProject.Controller
             //}
             catch (Exception ex)
             {
-                collaborateurForm.displayErrorMessage(ex.Message, "Exception Updating Collaborateur");
+                collaborateurForm.SetCollaborateur(oldOollaborateur);
+                collaborateurForm.DisplayErrorMessage(ex.Message, "Exception Updating Collaborateur");
 
             }
         }
 
         public void init()
         {
-            collaborateurForm.displayDialog();
+            collaborateurForm.DisplayDialog();
         }
     }
 }

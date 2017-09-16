@@ -29,7 +29,7 @@ namespace ABICommercialProject.View
         public CollaborateurForm()
         {
             InitializeComponent();
-            setFormToNewCollabo();
+            SetFormToNewCollabo();
             
         }
 
@@ -38,45 +38,51 @@ namespace ABICommercialProject.View
             InitializeComponent();
             this.collaborateur = collaborateur;
             this.Text = collaborateur.Name + " " + collaborateur.Firstname;
-            setCollaborateur();
+            SetCollaborateur();
             if (edit)
             {
-                setFormToEditCollabo();
+                SetFormToEditCollabo();
             }
             else
             {
-                setFormToDetailCollabo();
+                SetFormToDetailCollabo();
             }
         }
 
+        public void SetCollaborateur (Collaborateur collaborateur)
+        {
+            this.collaborateur = collaborateur;
+            SetCollaborateur();
+        }
 
-        private void setFormToNewCollabo()
+
+        private void SetFormToNewCollabo()
         {
             collaborateur = null;
-            setActionControlEnabled(false);
-            setCollaborateurControlEnabled(false);
+            SetActionControlEnabled(false);
+            SetCollaborateurControlEnabled(false);
             btnSave.Text = Tools.create;
         }
 
-        private void setFormToDetailCollabo()
+        private void SetFormToDetailCollabo()
         {
-            setActionControlEnabled(true);
-            setCollaborateurControlEnabled(true);
+            SetActionControlEnabled(true);
+            SetCollaborateurControlEnabled(true);
             btnSave.Text = Tools.edit;
             btnCancel.Text = Tools.close;
         }
 
-        private void setFormToEditCollabo()
+        private void SetFormToEditCollabo()
         {
-            setActionControlEnabled(false);
-            setCollaborateurControlEnabled(false);
+            SetActionControlEnabled(false);
+            SetCollaborateurControlEnabled(false);
         }
         
         /// <summary>
         /// set buttons Augmentation, Avenant, Cloturer to param
         /// </summary>
         /// <param name="enable"></param>
-        private void setActionControlEnabled(Boolean enable)
+        private void SetActionControlEnabled(Boolean enable)
         {
             btnAugmentation.Visible = enable;
             lblMatricule.Visible = enable;
@@ -87,7 +93,7 @@ namespace ABICommercialProject.View
         /// Set All textboxes related to Collaborateur to param
         /// </summary>
         /// <param name="enable"></param>
-        private void setCollaborateurControlEnabled(Boolean enable)
+        private void SetCollaborateurControlEnabled(Boolean enable)
         {
             txtNom.ReadOnly = enable;
             txtPrenom.ReadOnly = enable;
@@ -99,7 +105,7 @@ namespace ABICommercialProject.View
             txtFonction.ReadOnly = enable;
         }
 
-        private void setCollaborateur()
+        private void SetCollaborateur()
         {
             txtNom.Text = collaborateur.Name;
             txtPrenom.Text = collaborateur.Firstname;
@@ -115,7 +121,7 @@ namespace ABICommercialProject.View
 
        
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             if (sender is DialogResult)
             {
@@ -127,12 +133,12 @@ namespace ABICommercialProject.View
             }
         }
 
-        public void closeDialog()
+        public void CloseDialog()
         {
             this.DialogResult = DialogResult.OK;
         }
 
-        public void displayDialog()
+        public void DisplayDialog()
         {
             this.ShowDialog();
         }
@@ -143,24 +149,24 @@ namespace ABICommercialProject.View
         /// Get the the data from the textbox, create a collaborateur and return it
         /// </summary>
         /// <returns></returns>
-        public Collaborateur getCollaborateur()
+        public Collaborateur GetCollaborateur()
         {
             return collaborateur;
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (savedCollabo())
+            if (SavedCollabo())
             {
                 if (btnSave.Text == Tools.create) SavingCollabo?.Invoke(sender, e);
-                if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(getCollaborateur());
+                if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(GetCollaborateur());
                 if (btnSave.Text == Tools.update) UpdatingCollabo?.Invoke(sender, e);
             }
         }
         
 
-        private Boolean savedCollabo()
+        private Boolean SavedCollabo()
         {
             try
             {
@@ -208,12 +214,12 @@ namespace ABICommercialProject.View
             }
         }
 
-        public void displayErrorMessage(String message, String title)
+        public void DisplayErrorMessage(String message, String title)
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private Boolean checkup()
+        private Boolean Checkup()
         {
             Boolean checkPassed = true;
             //Decimal salaire;
@@ -325,7 +331,7 @@ namespace ABICommercialProject.View
             return checkPassed;
         }
 
-        private void btnContrat_Click(object sender, EventArgs e)
+        private void BtnContrat_Click(object sender, EventArgs e)
         {
             ListContrat?.Invoke(sender, e);
         }
