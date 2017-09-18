@@ -24,7 +24,7 @@ namespace ABICommercialProject.Controller
             try
             {
                 collaborateurList = DAOToChange.getInstance().getCollaborateurList();
-                init();
+                Init();
             }
             catch (Exception e)
             {
@@ -32,17 +32,17 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void init()
+        private void Init()
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
-            collaborateurListForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
-            collaborateurListForm.CreatingCollabo += new EventHandler(this.onCreatedCollabo);
-            collaborateurListForm.SelectingCollabo += new SelectingHandler(this.onSelectedCollabo);
+            collaborateurListForm.FormClosing += new FormClosingEventHandler(this.OnClosedForm);
+            collaborateurListForm.CreatingCollabo += new EventHandler(this.OnCreatedCollabo);
+            collaborateurListForm.SelectingCollabo += new SelectingHandler(this.OnSelectedCollabo);
             collaborateurListForm.MdiParent = CtrlMain.getInstance().getMainApp();
             collaborateurListForm.Show();
         }
 
-        public void refreshList()
+        public void RefreshList()
         {
             if(collaborateurListForm != null)
             {
@@ -51,14 +51,14 @@ namespace ABICommercialProject.Controller
         }
 
 
-        private void onSelectedCollabo(Int32 id)
+        private void OnSelectedCollabo(Int32 id)
         {
             if (collaborateurList.ContainsKey(id))
             {
                 Collaborateur collabo = collaborateurList[id];
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
-                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.onEditedCollabo);
-                ctrlDetailCollabo.Refreshing += new EventHandler(this.onRefreshed);
+                ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.OnEditedCollabo);
+                ctrlDetailCollabo.Refreshing += new EventHandler(this.OnRefreshed);
                 ctrlDetailCollabo.init();
             }
             else
@@ -68,19 +68,19 @@ namespace ABICommercialProject.Controller
 
         }
 
-        private void onRefreshed(object sender, EventArgs e)
+        private void OnRefreshed(object sender, EventArgs e)
         {
             collaborateurListForm.setDataSource();
         }
 
-        private void onEditedCollabo(Collaborateur collaborateur)
+        private void OnEditedCollabo(Collaborateur collaborateur)
         {
-            CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(ref collaborateur);
-            ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.onUpdatedCollabo);
+            CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
+            ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.OnUpdatedCollabo);
             ctrlEditCollaborateur.init();
         }
 
-        private void onUpdatedCollabo(Collaborateur collabo)
+        private void OnUpdatedCollabo(Collaborateur collabo)
         {
             if (collaborateurList.ContainsKey(collabo.Id))
             {
@@ -88,27 +88,27 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onCreatedCollabo(object sender, EventArgs e)
+        private void OnCreatedCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.SavingCollaboData += new CollaboHandler(this.onSavedNewCollabo);
+            ctrlNewCollabo.SavingCollaboData += new CollaboHandler(this.OnSavedNewCollabo);
             ctrlNewCollabo.init();
         }
 
-        private void onSavedNewCollabo(Collaborateur collabo)
+        private void OnSavedNewCollabo(Collaborateur collabo)
         {
             collaborateurList.Add(collabo.Id, collabo);
             collaborateurListForm.setDataSource();
         }
 
 
-        private void onClosedForm(object sender, FormClosingEventArgs e)
+        private void OnClosedForm(object sender, FormClosingEventArgs e)
         {
             collaborateurListForm = null;
             CtrlMain.getInstance().closeCtrlListCollaborateur(); ;
         }
 
-        public void display()
+        public void Display()
         {
             collaborateurListForm.display();
         }

@@ -16,7 +16,7 @@ namespace ABICommercialProject.Controller
         private CollaborateurForm collaborateurForm;
 
         public CollaboHandler UpdatingCollabo;
-		public CtrlEditCollaborateur(ref Collaborateur collaborateur)
+		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             this.oldOollaborateur = collaborateur;

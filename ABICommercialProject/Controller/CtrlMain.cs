@@ -30,7 +30,7 @@ namespace ABICommercialProject.Controller
             }
             else
             {
-                ctrlListCollaborateur.display();
+                ctrlListCollaborateur.Display();
             }
         }
 
