@@ -20,7 +20,7 @@ namespace ABICommercialProject.View
             this.contrat = contrat;
         }
 
-        private void btnCloturer_Click(object sender, EventArgs e)
+        private void BtnCloturer_Click(object sender, EventArgs e)
         {
             if(dtpFinEffecif.Text != "" && txtMotif.Text != "")
             {

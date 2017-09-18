@@ -2,19 +2,16 @@
 using ABICommercialProject.Model;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ABICommercialProject
 {
     public class DAOToChange
     {
-
         private static DAOToChange dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
-        ABIModel context;
+        private ABIModel context;
 
         private DAOToChange()
         {

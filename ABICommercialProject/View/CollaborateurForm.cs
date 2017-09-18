@@ -1,14 +1,6 @@
 ﻿using ABICommercialProject.Controller;
 using ABICommercialProject.Model;
 using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ABICommercialProject.View
@@ -21,8 +13,8 @@ namespace ABICommercialProject.View
 
         public EventHandler SavingCollabo;
         public EventHandler UpdatingCollabo;
-        public System.EventHandler CloturingContrat;
-        public System.EventHandler ListContrat;
+        public EventHandler CloturingContrat;
+        public EventHandler ListContrat;
 
         public CollaboHandler EditingCollabo;
 
@@ -33,12 +25,9 @@ namespace ABICommercialProject.View
             
         }
 
-        public CollaborateurForm(Collaborateur collaborateur, Boolean edit)
+        public CollaborateurForm(Boolean edit)
         {
             InitializeComponent();
-            this.collaborateur = collaborateur;
-            this.Text = collaborateur.Name + " " + collaborateur.Firstname;
-            SetCollaborateur();
             if (edit)
             {
                 SetFormToEditCollabo();
@@ -49,9 +38,11 @@ namespace ABICommercialProject.View
             }
         }
 
-        public void SetCollaborateur (Collaborateur collaborateur)
+        public void SetCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
+            this.Text = collaborateur.Name + " " + collaborateur.Firstname;
+
             SetCollaborateur();
         }
 
@@ -118,8 +109,6 @@ namespace ABICommercialProject.View
             lblTextMatricule.Text = collaborateur.Id.ToString();
 
         }
-
-       
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
@@ -190,7 +179,7 @@ namespace ABICommercialProject.View
 
                     if (collaborateur == null)
                     {
-                        collaborateur =  new Collaborateur(nom, prenom, fonction, address, zipCode, town, tel, email);
+                        collaborateur = new Collaborateur(nom, prenom, fonction, address, zipCode, town, tel, email);
                         return true;
                     }
                     else

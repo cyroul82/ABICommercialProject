@@ -23,15 +23,16 @@ namespace ABICommercialProject.Controller
             this.collaborateur = collaborateur;
             if (!openedForm.ContainsKey(collaborateur.Id))
             {
-                collaborateurForm = new CollaborateurForm(collaborateur, false);
-                collaborateurForm.EditingCollabo += new CollaboHandler(this.onEditedCollabo);
-                collaborateurForm.FormClosing += new FormClosingEventHandler(this.onClosedForm);
-                collaborateurForm.ListContrat += new EventHandler(this.onListedContrat);
+                collaborateurForm = new CollaborateurForm(false);
+                collaborateurForm.SetCollaborateur(collaborateur);
+                collaborateurForm.EditingCollabo += new CollaboHandler(this.OnEditedCollabo);
+                collaborateurForm.FormClosing += new FormClosingEventHandler(this.OnClosedForm);
+                collaborateurForm.ListContrat += new EventHandler(this.OnListedContrat);
                 collaborateurForm.Size = new System.Drawing.Size(950, 530);
                 collaborateurForm.MdiParent = CtrlMain.getInstance().getMainApp();
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur, collaborateurForm);
-                clc.Refreshing += new EventHandler(this.onRefreshed);
+                clc.Refreshing += new EventHandler(this.OnRefreshed);
                 openedForm.Add(collaborateur.Id, collaborateurForm);
             }
             else
@@ -49,25 +50,25 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onListedContrat(object sender, EventArgs e)
+        private void OnListedContrat(object sender, EventArgs e)
         {
             
             CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur);
-            ctrlListContrat.Refreshing += new EventHandler(this.onRefreshed);
+            ctrlListContrat.Refreshing += new EventHandler(this.OnRefreshed);
             ctrlListContrat.init();
         }
 
-        private void onRefreshed(object sender, EventArgs e)
+        private void OnRefreshed(object sender, EventArgs e)
         {
             Refreshing?.Invoke(this, null);
         }
 
-        public void init()
+        public void Init()
         {
             collaborateurForm.Show();
         }
 
-        private void onClosedForm(object sender, FormClosingEventArgs e)
+        private void OnClosedForm(object sender, FormClosingEventArgs e)
         {
             if (collaborateur != null)
             {
@@ -75,7 +76,7 @@ namespace ABICommercialProject.Controller
             }
         }
 
-        private void onEditedCollabo(Collaborateur collabo)
+        private void OnEditedCollabo(Collaborateur collabo)
         {
             if (collabo != null)
             {

@@ -77,7 +77,7 @@
             this.btnCloturer.TabIndex = 4;
             this.btnCloturer.Text = "Clôturer";
             this.btnCloturer.UseVisualStyleBackColor = true;
-            this.btnCloturer.Click += new System.EventHandler(this.btnCloturer_Click);
+            this.btnCloturer.Click += new System.EventHandler(this.BtnCloturer_Click);
             // 
             // btnCancel
             // 

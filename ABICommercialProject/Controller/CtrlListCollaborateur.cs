@@ -59,7 +59,7 @@ namespace ABICommercialProject.Controller
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
                 ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.OnEditedCollabo);
                 ctrlDetailCollabo.Refreshing += new EventHandler(this.OnRefreshed);
-                ctrlDetailCollabo.init();
+                ctrlDetailCollabo.Init();
             }
             else
             {
@@ -77,7 +77,7 @@ namespace ABICommercialProject.Controller
         {
             CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
             ctrlEditCollaborateur.UpdatingCollabo += new CollaboHandler(this.OnUpdatedCollabo);
-            ctrlEditCollaborateur.init();
+            ctrlEditCollaborateur.Init();
         }
 
         private void OnUpdatedCollabo(Collaborateur collabo)

@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ABICommercialProject.Model
 {
-    public class Collaborateur
+    public class Collaborateur: ICloneable
     {
 
         private int id;
@@ -51,7 +51,7 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             statut = true;
-            init();
+            Init();
         }
 
         public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif)
@@ -66,9 +66,9 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             statut = true;
-            init();
+            Init();
         }
-        public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Contrat contratActif, Boolean statut)
+        public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email, Boolean statut)
         {
             Id = matricule;
             Name = nom;
@@ -80,7 +80,7 @@ namespace ABICommercialProject.Model
             Tel = tel;
             Email = email;
             this.Statut = statut;
-            init();
+            Init();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace ABICommercialProject.Model
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
-        private void init()
+        private void Init()
         {
 
             //this.Contrats = new SortedDictionary<Int32, Contrat>();
@@ -103,7 +103,7 @@ namespace ABICommercialProject.Model
         /// </summary>
         /// <param name="listAugmentation"></param>
         /// <returns></returns>
-        public Decimal calculerAugmentation()
+        public Decimal CalculerAugmentation()
         {
             Decimal tauxTotal = 0;
             foreach(AugmentationSalaire augmentation in augmentations)
@@ -134,7 +134,7 @@ namespace ABICommercialProject.Model
             if(contrat != null)
             {
                
-                if(!hasContratActif())
+                if(!HasContratActif())
                 {
                     Contrats.Add(contrat);
                 }
@@ -146,7 +146,7 @@ namespace ABICommercialProject.Model
             
         }
 
-        public Boolean hasContratActif()
+        public Boolean HasContratActif()
         {
             Boolean contratActif = false;
             foreach (Contrat c in Contrats)
@@ -187,6 +187,13 @@ namespace ABICommercialProject.Model
                 }
             }
         }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+
         /// <summary>
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>

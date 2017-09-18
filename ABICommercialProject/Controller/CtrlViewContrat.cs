@@ -19,16 +19,16 @@ namespace ABICommercialProject.Controller
         {
             cf = new ContratForm(contrat);
             this.contrat = contrat;
-            cf.CloturingContrat += new EventHandler(this.onCloturedContrat);
+            cf.CloturingContrat += new EventHandler(this.OnCloturedContrat);
         }
 
 
-        public void init()
+        public void Init()
         {
             cf?.ShowDialog();
         }
 
-        private void onCloturedContrat(object sender, EventArgs e)
+        private void OnCloturedContrat(object sender, EventArgs e)
         {
             ClotureForm cf = new ClotureForm(ref contrat);
             if (cf.ShowDialog() == System.Windows.Forms.DialogResult.OK)

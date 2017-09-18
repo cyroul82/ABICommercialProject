@@ -1,33 +1,32 @@
 ﻿using ABICommercialProject.Model;
 using ABICommercialProject.View;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ABICommercialProject.Controller
 {
     public class CtrlEditCollaborateur
     {
         private Collaborateur collaborateur;
-        private Collaborateur oldOollaborateur;
         private CollaborateurForm collaborateurForm;
+        private Collaborateur c;
 
         public CollaboHandler UpdatingCollabo;
+
 		public CtrlEditCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
-            this.oldOollaborateur = collaborateur;
-            this.collaborateurForm = new CollaborateurForm(collaborateur, true);
-            collaborateurForm.UpdatingCollabo += new EventHandler(this.onUpdatedCollabo);
+            c = (Collaborateur)collaborateur.Clone();
+            this.collaborateurForm = new CollaborateurForm(true);
+            this.collaborateurForm.SetCollaborateur(collaborateur);
+            collaborateurForm.UpdatingCollabo += new EventHandler(this.OnUpdatedCollabo);
         }
         
-        private void onUpdatedCollabo(object sender, EventArgs e)
+        private void OnUpdatedCollabo(object sender, EventArgs e)
         {
+            
             try
             {
+                
                 DAOToChange.getInstance().Update();
                 collaborateurForm.CloseDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
@@ -49,13 +48,22 @@ namespace ABICommercialProject.Controller
             //}
             catch (Exception ex)
             {
-                collaborateurForm.SetCollaborateur(oldOollaborateur);
+                collaborateur.Name = c.Name;
+                collaborateur.Firstname = c.Firstname;
+                collaborateur.Address = c.Address;
+                collaborateur.Email = c.Email;
+                collaborateur.Statut = c.Statut;
+                collaborateur.Tel = c.Tel;
+                collaborateur.Town = c.Town;
+                collaborateur.ZipCode = c.ZipCode;
+                collaborateur.FonctionCollabo = c.FonctionCollabo;
+                collaborateurForm.SetCollaborateur(c);
                 collaborateurForm.DisplayErrorMessage(ex.Message, "Exception Updating Collaborateur");
 
             }
         }
 
-        public void init()
+        public void Init()
         {
             collaborateurForm.DisplayDialog();
         }

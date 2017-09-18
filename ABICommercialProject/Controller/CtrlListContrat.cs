@@ -52,7 +52,7 @@ namespace ABICommercialProject.Controller
             {
                 CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(contrat);
                 ctrlViewContrat.CloturingContrat += new EventHandler(this.onCloturedContrat);
-                ctrlViewContrat.init();
+                ctrlViewContrat.Init();
             }
         }
 
