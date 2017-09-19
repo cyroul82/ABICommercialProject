@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABICommercialProject", "ABICommercialProject\ABICommercialProject.csproj", "{4ACB6295-FF71-4B05-B10D-C939F9FED7ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABIModel", "ABIModel1\ABIModel.csproj", "{F25999C9-E24C-4D73-A3E9-76ADF701C7C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{4ACB6295-FF71-4B05-B10D-C939F9FED7ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ACB6295-FF71-4B05-B10D-C939F9FED7ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ACB6295-FF71-4B05-B10D-C939F9FED7ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F25999C9-E24C-4D73-A3E9-76ADF701C7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25999C9-E24C-4D73-A3E9-76ADF701C7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25999C9-E24C-4D73-A3E9-76ADF701C7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25999C9-E24C-4D73-A3E9-76ADF701C7C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE528683-291B-4A91-8BE6-868BA3DFBE80}
 	EndGlobalSection
 EndGlobal

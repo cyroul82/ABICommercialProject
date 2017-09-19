@@ -1,5 +1,5 @@
 ﻿using ABICommercialProject.Controller;
-using ABICommercialProject.Model;
+using ABIModel;
 using System;
 using System.Windows.Forms;
 

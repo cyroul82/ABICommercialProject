@@ -4,10 +4,9 @@
  * Purpose: Definition of the Class MissionInterim
  ***********************************************************************/
 
-using ABICommercialProject.Model;
 using System;
 
-namespace ABICommercialProject.Model
+namespace ABIModel
 {
     public class MissionInterim : ContratProvisoire
     {

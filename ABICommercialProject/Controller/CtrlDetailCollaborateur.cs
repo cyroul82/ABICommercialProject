@@ -1,10 +1,7 @@
-﻿using ABICommercialProject.Model;
-using ABICommercialProject.View;
+﻿using ABICommercialProject.View;
+using ABIModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller

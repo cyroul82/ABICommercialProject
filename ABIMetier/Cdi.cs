@@ -6,7 +6,7 @@
 
 using System;
 
-namespace ABICommercialProject.Model
+namespace ABIModel
 {
     public class Cdi : Contrat
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ABICommercialProject.Model
+namespace ABIModel
 {
     /// <summary>
     /// Contract Type Enumeration

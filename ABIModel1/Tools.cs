@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ABICommercialProject.Model
+
+namespace ABIModel
 {
-    class Tools
+    public class Tools
     {
 
         public const String create = "Créer";

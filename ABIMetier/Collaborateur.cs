@@ -4,13 +4,10 @@
  * Purpose: Definition of the Class Collaborateur
  ***********************************************************************/
 
-using ABICommercialProject.Model;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace ABICommercialProject.Model
+namespace ABIModel
 {
     public class Collaborateur: ICloneable
     {

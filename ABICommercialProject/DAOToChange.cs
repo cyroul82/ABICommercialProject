@@ -1,5 +1,5 @@
 ﻿using ABICommercialProject.DAO;
-using ABICommercialProject.Model;
+using ABIModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +11,11 @@ namespace ABICommercialProject
     {
         private static DAOToChange dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
-        private ABIModel context;
+        private ABIContext context;
 
         private DAOToChange()
         {
-            context = new ABIModel();
+            context = new ABIContext();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
 
             //var query = from c in context.Collaborateurs.Include("Contrats")

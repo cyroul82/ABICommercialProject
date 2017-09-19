@@ -4,10 +4,9 @@
  * Purpose: Definition of the Class Contrat
  ***********************************************************************/
 
-using ABICommercialProject.Model;
 using System;
 
-namespace ABICommercialProject.Model
+namespace ABIModel
 {
     public abstract class Contrat
     {
