@@ -1,7 +1,6 @@
-﻿using ABICommercialProject.View;
-using ABIModel;
+﻿using ABIModel;
+using ABIView;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller

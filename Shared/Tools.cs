@@ -1,15 +1,11 @@
-﻿using ABIModel;
-using System;
+﻿using System;
 using System.Linq;
 
 
 namespace ABIModel
 {
 
-    public delegate void SelectingHandler(Int32 id);
-    public delegate void ContratHandler(Contrat contrat);
-    public delegate void CollaboHandler(Collaborateur collaborateur);
-
+    
     public class Tools
     {
 

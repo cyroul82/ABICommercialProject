@@ -1,5 +1,5 @@
-﻿using ABICommercialProject.View;
-using ABIModel;
+﻿using ABIModel;
+using ABIView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 namespace ABICommercialProject.Controller
 {
 
-    public delegate void SelectingHandler(Int32 id);
-    public delegate void ContratHandler(Contrat contrat);
-    public delegate void CollaboHandler(Collaborateur collaborateur);
+    
 
     public class CtrlMain
     {

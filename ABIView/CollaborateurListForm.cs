@@ -1,11 +1,10 @@
-﻿using ABICommercialProject.Controller;
-using ABIModel;
+﻿using ABIModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
-namespace ABICommercialProject.View
+namespace ABIView
 {
     
     public partial class CollaborateurListForm : Form

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABIModel", "ABIModel1\ABIMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABIDAO", "ABIDAO\ABIDAO.csproj", "{A597E9D3-2B2C-4F8B-BF69-06A5F0C5D841}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABIView", "ABIView\ABIView.csproj", "{BCA40FED-D459-48A5-AF99-491D6C347818}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A597E9D3-2B2C-4F8B-BF69-06A5F0C5D841}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A597E9D3-2B2C-4F8B-BF69-06A5F0C5D841}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A597E9D3-2B2C-4F8B-BF69-06A5F0C5D841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA40FED-D459-48A5-AF99-491D6C347818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA40FED-D459-48A5-AF99-491D6C347818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA40FED-D459-48A5-AF99-491D6C347818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA40FED-D459-48A5-AF99-491D6C347818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace ABICommercialProject.View
+﻿namespace ABIView
 {
     partial class CollaborateurListForm
     {

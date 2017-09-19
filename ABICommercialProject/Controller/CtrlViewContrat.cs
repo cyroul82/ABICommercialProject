@@ -1,6 +1,6 @@
-﻿using ABICommercialProject.View;
-using System;
+﻿using System;
 using ABIModel;
+using ABIView;
 
 namespace ABICommercialProject.Controller
 {

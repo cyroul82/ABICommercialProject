@@ -1,5 +1,5 @@
-﻿using ABICommercialProject.View;
-using ABIModel;
+﻿using ABIModel;
+using ABIView;
 using System;
 
 namespace ABICommercialProject.Controller

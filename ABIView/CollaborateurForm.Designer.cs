@@ -1,4 +1,4 @@
-﻿namespace ABICommercialProject.View
+﻿namespace ABIView
 {
     partial class CollaborateurForm
     {
@@ -38,7 +38,6 @@
             this.lblTextMatricule = new System.Windows.Forms.Label();
             this.lblMatricule = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.btnAugmentation = new System.Windows.Forms.Button();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtFonction = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
@@ -55,6 +54,7 @@
             this.lblPrenom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
+            this.btnAugmentation = new System.Windows.Forms.Button();
             this.panelContrat = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPrenom)).BeginInit();
@@ -157,17 +157,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(147, 20);
             this.txtEmail.TabIndex = 7;
-            // 
-            // btnAugmentation
-            // 
-            this.btnAugmentation.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAugmentation.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAugmentation.Location = new System.Drawing.Point(216, 456);
-            this.btnAugmentation.Name = "btnAugmentation";
-            this.btnAugmentation.Size = new System.Drawing.Size(89, 23);
-            this.btnAugmentation.TabIndex = 13;
-            this.btnAugmentation.Text = "Augmentation";
-            this.btnAugmentation.UseVisualStyleBackColor = true;
             // 
             // lblEmail
             // 
@@ -300,6 +289,17 @@
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nom : ";
             // 
+            // btnAugmentation
+            // 
+            this.btnAugmentation.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAugmentation.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAugmentation.Location = new System.Drawing.Point(216, 456);
+            this.btnAugmentation.Name = "btnAugmentation";
+            this.btnAugmentation.Size = new System.Drawing.Size(89, 23);
+            this.btnAugmentation.TabIndex = 13;
+            this.btnAugmentation.Text = "Augmentation";
+            this.btnAugmentation.UseVisualStyleBackColor = true;
+            // 
             // panelContrat
             // 
             this.panelContrat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -363,6 +363,6 @@
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.Label lblTextMatricule;
         private System.Windows.Forms.Label lblMatricule;
-        internal System.Windows.Forms.Panel panelContrat;
+        public System.Windows.Forms.Panel panelContrat;
     }
 }
