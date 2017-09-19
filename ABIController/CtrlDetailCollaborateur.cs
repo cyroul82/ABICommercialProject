@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ABICommercialProject.Controller
+namespace ABIController
 {
     public class CtrlDetailCollaborateur
     {

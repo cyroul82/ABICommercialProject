@@ -3,7 +3,7 @@ using ABIView;
 using System;
 using System.Windows.Forms;
 
-namespace ABICommercialProject.Controller
+namespace ABIController
 {
     public class CtrlListContrat
     {

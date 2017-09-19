@@ -1,8 +1,9 @@
-﻿using ABIModel;
+﻿using ABIDAO;
+using ABIModel;
 using ABIView;
 using System;
 
-namespace ABICommercialProject.Controller
+namespace ABIController
 {
     public class CtrlEditCollaborateur
     {

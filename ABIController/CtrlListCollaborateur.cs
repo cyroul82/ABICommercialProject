@@ -1,4 +1,4 @@
-﻿using ABICommercialProject.Controller;
+﻿using ABIDAO;
 using ABIModel;
 using ABIView;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ABICommercialProject.Controller
+namespace ABIController
 {
     
 

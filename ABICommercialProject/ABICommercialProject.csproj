@@ -61,14 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CtrlDetailCollaborateur.cs" />
-    <Compile Include="Controller\CtrlListCollaborateur.cs" />
-    <Compile Include="Controller\CtrlListContrat.cs" />
-    <Compile Include="Controller\CtrlMain.cs" />
-    <Compile Include="Controller\CtrlNewCollaborateur.cs" />
-    <Compile Include="Controller\CtrlNewContrat.cs" />
-    <Compile Include="Controller\CtrlViewContrat.cs" />
-    <Compile Include="DAOToChange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,22 +88,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CtrlEditCollaborateur.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ABIDAO\ABIDAO.csproj">
-      <Project>{a597e9d3-2b2c-4f8b-bf69-06a5f0c5d841}</Project>
-      <Name>ABIDAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ABIModel1\ABIModel.csproj">
-      <Project>{f25999c9-e24c-4d73-a3e9-76adf701c7c6}</Project>
-      <Name>ABIModel</Name>
+    <ProjectReference Include="..\ABIController\ABIController.csproj">
+      <Project>{7ede9f8e-9084-4df7-951c-e368069e2fcf}</Project>
+      <Name>ABIController</Name>
     </ProjectReference>
     <ProjectReference Include="..\ABIView\ABIView.csproj">
-      <Project>{bca40fed-d459-48a5-af99-491d6c347818}</Project>
+      <Project>{BCA40FED-D459-48A5-AF99-491D6C347818}</Project>
       <Name>ABIView</Name>
     </ProjectReference>
   </ItemGroup>

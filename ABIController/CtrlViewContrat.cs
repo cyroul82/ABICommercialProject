@@ -1,8 +1,9 @@
 ﻿using System;
 using ABIModel;
 using ABIView;
+using ABIDAO;
 
-namespace ABICommercialProject.Controller
+namespace ABIController
 {
     public class CtrlViewContrat
     {

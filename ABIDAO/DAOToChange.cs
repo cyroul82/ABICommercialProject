@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace ABICommercialProject
+namespace ABIDAO
 {
     public class DAOToChange
     {
@@ -62,7 +62,7 @@ namespace ABICommercialProject
             return context.Collaborateurs.ToList();
         }
 
-        internal void Update()
+        public void Update()
         {
             context.SaveChanges();
         }
