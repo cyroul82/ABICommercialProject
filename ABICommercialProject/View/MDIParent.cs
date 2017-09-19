@@ -32,13 +32,6 @@ namespace ABICommercialProject.View
         private void OpenFile(object sender, EventArgs e)
         {
             openCollabo(sender, e);
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            //openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            //if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    string FileName = openFileDialog.FileName;
-            //}
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,28 +49,7 @@ namespace ABICommercialProject.View
         {
             this.Close();
         }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
+      
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {

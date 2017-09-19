@@ -21,14 +21,14 @@ namespace ABICommercialProject.View
         public ContratForm()
         {
             InitializeComponent();
-            init();
+            Init();
             ControlEnabled(true);
 
         }
         public ContratForm(Contrat contrat)
         {
             InitializeComponent();
-            init();
+            Init();
             this.contrat = contrat;
             this.setContract();
             this.Text = "Contrat : " + contrat.Id;
@@ -39,7 +39,7 @@ namespace ABICommercialProject.View
             }
         }
 
-        private void init()
+        private void Init()
         {
             cbxStatut.DataSource = Enum.GetValues(typeof(Statut));
             cbxTypeContrat.DataSource = Enum.GetValues(typeof(TypeContrat));
@@ -107,7 +107,7 @@ namespace ABICommercialProject.View
                         cbxTypeContrat.SelectedItem = TypeContrat.CDD;
                         Cdd cddContrat = contrat as Cdd;
 
-                        displayFormCdd();
+                        DisplayFormCdd();
                     }
 
                     if (contratProvisoire is Stage)
@@ -140,7 +140,7 @@ namespace ABICommercialProject.View
         /// <summary>
         /// D
         /// </summary>
-        private void displayFormCdd()
+        private void DisplayFormCdd()
         {
             hideFields();
             txtMotif.Visible = true;
@@ -259,7 +259,7 @@ namespace ABICommercialProject.View
         {
             if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDD.ToString())
             {
-                displayFormCdd();
+                DisplayFormCdd();
             }
             else if (cbxTypeContrat.SelectedItem.ToString() == TypeContrat.CDI.ToString())
             {
