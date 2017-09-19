@@ -11,9 +11,7 @@ using System.Windows.Forms;
 
 namespace ABICommercialProject.Controller
 {
-    public delegate void SelectingHandler(Int32 id);
-    public delegate void ContratHandler(Contrat contrat);
-    public delegate void CollaboHandler(Collaborateur collaborateur);
+    
 
     public class CtrlListCollaborateur
     {

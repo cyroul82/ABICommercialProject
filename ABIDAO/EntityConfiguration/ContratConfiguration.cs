@@ -1,7 +1,7 @@
 ﻿using ABIModel;
 using System.Data.Entity.ModelConfiguration;
 
-namespace ABICommercialProject.DAO.EntityConfiguration
+namespace ABIDAO.EntityConfiguration
 {
     public class ContratConfiguration : EntityTypeConfiguration<Contrat>
     {

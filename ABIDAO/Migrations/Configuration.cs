@@ -1,16 +1,16 @@
-namespace ABICommercialProject.Migrations
+namespace ABIDAO.Migrations
 {
     
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ABICommercialProject.DAO.ABIContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ABIDAO.ABIContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ABICommercialProject.DAO.ABIContext context)
+        protected override void Seed(ABIDAO.ABIContext context)
         {
             //var cc = new Dictionary<Int32, Collaborateur>()
             //    {

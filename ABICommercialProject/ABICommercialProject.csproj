@@ -69,18 +69,6 @@
     <Compile Include="Controller\CtrlNewContrat.cs" />
     <Compile Include="Controller\CtrlViewContrat.cs" />
     <Compile Include="DAOToChange.cs" />
-    <Compile Include="DAO\ABIContext.cs" />
-    <Compile Include="DAO\EntityConfiguration\CollaborateurConfiguration.cs" />
-    <Compile Include="DAO\EntityConfiguration\ContratConfiguration.cs" />
-    <Compile Include="Migrations\201709140831407_initial.cs" />
-    <Compile Include="Migrations\201709140831407_initial.Designer.cs">
-      <DependentUpon>201709140831407_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709141432140_ChangedLengthMotifClotureToContratTable.cs" />
-    <Compile Include="Migrations\201709141432140_ChangedLengthMotifClotureToContratTable.Designer.cs">
-      <DependentUpon>201709141432140_ChangedLengthMotifClotureToContratTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="View\ClotureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +107,6 @@
     <Compile Include="View\MDIParent.Designer.cs">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201709140831407_initial.resx">
-      <DependentUpon>201709140831407_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709141432140_ChangedLengthMotifClotureToContratTable.resx">
-      <DependentUpon>201709141432140_ChangedLengthMotifClotureToContratTable.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\ClotureForm.resx">
       <DependentUpon>ClotureForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +159,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ABIDAO\ABIDAO.csproj">
+      <Project>{a597e9d3-2b2c-4f8b-bf69-06a5f0c5d841}</Project>
+      <Name>ABIDAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ABIModel1\ABIModel.csproj">
       <Project>{f25999c9-e24c-4d73-a3e9-76adf701c7c6}</Project>
       <Name>ABIModel</Name>

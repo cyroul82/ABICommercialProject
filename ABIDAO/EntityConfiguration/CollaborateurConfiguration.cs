@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 
-namespace ABICommercialProject.DAO.EntityConfiguration
+namespace ABIDAO.EntityConfiguration
 {
     public class CollaborateurConfiguration : EntityTypeConfiguration<Collaborateur>
     {

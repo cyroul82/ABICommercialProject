@@ -1,4 +1,4 @@
-namespace ABICommercialProject.Migrations
+namespace ABIDAO.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

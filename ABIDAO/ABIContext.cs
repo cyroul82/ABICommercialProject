@@ -1,4 +1,4 @@
-namespace ABICommercialProject.DAO
+namespace ABIDAO
 {
     using ABIModel;
     using EntityConfiguration;
