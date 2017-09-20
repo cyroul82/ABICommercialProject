@@ -2,27 +2,28 @@
 using ABIModel;
 using ABIView;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ABIController
 {
-    
-
     public class CtrlListCollaborateur
     {
 
         private CollaborateurListForm collaborateurListForm;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
+
+        /// <summary>
+        /// Constructor 
+        /// Try to get the collaborateur list from the DAO
+        /// and initialize the form collaborateurListForm
+        /// </summary>
+        /// <exception cref="Exception">Can't get the collaborateur collection</exception>
         public CtrlListCollaborateur()
         {
             try
             {
-                collaborateurList = DAOToChange.getInstance().getCollaborateurList();
+                collaborateurList = DAO.getInstance().getCollaborateurList();
                 Init();
             }
             catch (Exception e)
@@ -31,6 +32,11 @@ namespace ABIController
             }
         }
 
+        /// <summary>
+        /// Instancie le form CollaborateurListForm
+        /// S'abonne aux événements FormClosing, CreatingCollabo and SelectingCollabo
+        /// Affiche le form
+        /// </summary>
         private void Init()
         {
             collaborateurListForm = new CollaborateurListForm(collaborateurList);
@@ -41,15 +47,14 @@ namespace ABIController
             collaborateurListForm.Show();
         }
 
-        public void RefreshList()
-        {
-            if(collaborateurListForm != null)
-            {
-                collaborateurListForm.refreshList(collaborateurList);
-            }
-        }
-
-
+        /// <summary>
+        /// Method called whenever the event SelectingCollabo is fired
+        /// check that the id exists in the Collaborateur Collection
+        /// instanciate athe controller CtrlDetailCollaborateur
+        /// Listen to the event EditingCollaborateur
+        /// Listen to the event Refreshing
+        /// </summary>
+        /// <param name="id"></param>
         private void OnSelectedCollabo(Int32 id)
         {
             if (collaborateurList.ContainsKey(id))
@@ -67,11 +72,22 @@ namespace ABIController
 
         }
 
+        /// <summary>
+        /// Refresh the DataGridView
+        /// set the DataGridView's DataSource in the form collaborateurListForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRefreshed(object sender, EventArgs e)
         {
-            collaborateurListForm.setDataSource();
+            RefreshDataSource();
         }
 
+        /// <summary>
+        /// Call when the event EditingCollabo is fired
+        /// Instanciate the controller CtrlEditCollaborateur
+        /// </summary>
+        /// <param name="collaborateur"></param>
         private void OnEditedCollabo(Collaborateur collaborateur)
         {
             CtrlEditCollaborateur ctrlEditCollaborateur = new CtrlEditCollaborateur(collaborateur);
@@ -79,14 +95,35 @@ namespace ABIController
             ctrlEditCollaborateur.Init();
         }
 
+        /// <summary>
+        /// Method call when the event UpdatingCollabo is fired
+        /// Check that the collabo exists in the collabo
+        /// refresh the DataGridView of the form
+        /// </summary>
+        /// <param name="collabo"></param>
         private void OnUpdatedCollabo(Collaborateur collabo)
         {
             if (collaborateurList.ContainsKey(collabo.Id))
             {
-                collaborateurListForm.setDataSource();
+                RefreshDataSource();   
             }
         }
 
+        /// <summary>
+        /// Refresh the datagridview in the form
+        /// </summary>
+        private void RefreshDataSource()
+        {
+            collaborateurListForm.SetDataSource();
+        }
+
+        /// <summary>
+        /// Method called when the event CreatingCollabo is fired
+        /// Instanciate the controller CtrlNewCollaborateur
+        /// Listen to the event SavingCollaboData
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCreatedCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
@@ -94,22 +131,35 @@ namespace ABIController
             ctrlNewCollabo.init();
         }
 
+        /// <summary>
+        /// Method called when the event SavingCollaboData is fired
+        /// Add the collabo the the collection and set the DataGridView's DataSource in the form collaborateurListForm
+        /// </summary>
+        /// <param name="collabo"></param>
         private void OnSavedNewCollabo(Collaborateur collabo)
         {
             collaborateurList.Add(collabo.Id, collabo);
-            collaborateurListForm.setDataSource();
+            RefreshDataSource();
         }
 
-
+        /// <summary>
+        /// Method called when the event FormClosing is called
+        /// set the collaborateurListForm to null
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClosedForm(object sender, FormClosingEventArgs e)
         {
             collaborateurListForm = null;
             CtrlMain.getInstance().closeCtrlListCollaborateur(); ;
         }
 
+        /// <summary>
+        /// Call the method display of the form to display it
+        /// </summary>
         public void Display()
         {
-            collaborateurListForm.display();
+            collaborateurListForm.Display();
         }
 
 

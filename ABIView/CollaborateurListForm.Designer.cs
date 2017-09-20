@@ -53,9 +53,9 @@
             this.collaborateurDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.collaborateurDataGrid.Size = new System.Drawing.Size(639, 419);
             this.collaborateurDataGrid.TabIndex = 4;
-            this.collaborateurDataGrid.SelectionChanged += new System.EventHandler(this.collaborateurDataGrid_SelectionChanged);
-            this.collaborateurDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.collaborateurDataGrid_MouseClick);
-            this.collaborateurDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.collaborateurDataGrid_MouseDoubleClick);
+            this.collaborateurDataGrid.SelectionChanged += new System.EventHandler(this.CollaborateurDataGrid_SelectionChanged);
+            this.collaborateurDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CollaborateurDataGrid_MouseClick);
+            this.collaborateurDataGrid.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CollaborateurDataGrid_MouseDoubleClick);
             // 
             // flowLayoutPanel1
             // 
@@ -75,7 +75,7 @@
             this.btnNewCollabo.TabIndex = 5;
             this.btnNewCollabo.Text = "Nouveau";
             this.btnNewCollabo.UseVisualStyleBackColor = true;
-            this.btnNewCollabo.Click += new System.EventHandler(this.btnNewCollabo_Click);
+            this.btnNewCollabo.Click += new System.EventHandler(this.BtnNewCollabo_Click);
             // 
             // CollaborateurListForm
             // 

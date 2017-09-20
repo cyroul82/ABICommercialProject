@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABIContext.cs" />
-    <Compile Include="DAOToChange.cs" />
+    <Compile Include="DAO.cs" />
     <Compile Include="EntityConfiguration\CollaborateurConfiguration.cs" />
     <Compile Include="EntityConfiguration\ContratConfiguration.cs" />
     <Compile Include="Migrations\201709140831407_initial.cs" />

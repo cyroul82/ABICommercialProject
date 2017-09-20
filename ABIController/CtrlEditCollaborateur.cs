@@ -28,7 +28,7 @@ namespace ABIController
             try
             {
                 
-                DAOToChange.getInstance().Update();
+                DAO.getInstance().Update();
                 collaborateurForm.CloseDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }

@@ -12,32 +12,32 @@ namespace ABIView
         private DataTable dt;
         private SortedDictionary<Int32, Collaborateur> collaborateurList;
 
-        public EventHandler CreatingCollabo;
-        public SelectingHandler SelectingCollabo;
+        public event EventHandler CreatingCollabo;
+        public event SelectingHandler SelectingCollabo;
 
         public CollaborateurListForm(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
             InitializeComponent();
             this.collaborateurList = collaborateurList;
-            initializeDataTable();
-            setDataSource();
+            InitializeDataTable();
+            SetDataSource();
 
         }
 
-        public void setDataSource()
+        public void SetDataSource()
         {
             dt.Clear();
-            collaborateurDataGrid.DataSource = getCollaborateurs();
+            collaborateurDataGrid.DataSource = GetCollaborateurs();
             collaborateurDataGrid.Refresh();
         }
 
-        public void refreshList(SortedDictionary<Int32, Collaborateur> collaborateurList)
+        public void RefreshList(SortedDictionary<Int32, Collaborateur> collaborateurList)
         {
             this.collaborateurList = collaborateurList;
-            setDataSource();
+            SetDataSource();
         }
 
-        private void initializeDataTable()
+        private void InitializeDataTable()
         {
             dt = new DataTable();
             dt.Columns.Add("Matricule");
@@ -51,7 +51,7 @@ namespace ABIView
             dt.Columns.Add("Actif");
         }
 
-        public void display()
+        public void Display()
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
@@ -63,14 +63,14 @@ namespace ABIView
             }
         }
 
-        private DataTable getCollaborateurs()
+        private DataTable GetCollaborateurs()
         {
             if (dt != null)
             {
                 foreach (KeyValuePair<Int32, Collaborateur> c in collaborateurList)
                 {
                     
-                addCollaborateur(c.Value);
+                AddCollaborateur(c.Value);
 
                 }
                 return dt;
@@ -78,7 +78,7 @@ namespace ABIView
             else return null;
         }
 
-        private void addCollaborateur(Collaborateur collaborateur)
+        private void AddCollaborateur(Collaborateur collaborateur)
         {
             if (dt != null)
             {
@@ -119,14 +119,14 @@ namespace ABIView
             }
         }
 
-        private void btnNewCollabo_Click(object sender, EventArgs e)
+        private void BtnNewCollabo_Click(object sender, EventArgs e)
         {
             CreatingCollabo?.Invoke(sender, e);
         }
 
         
 
-        private void collaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)
+        private void CollaborateurDataGrid_MouseClick(object sender, MouseEventArgs e)
         {
             //if (collaborateurDataGrid.SelectedRows.Count > 0 &&
             //    collaborateurDataGrid.SelectedRows[0].Index != collaborateurDataGrid.Rows.Count - 1)
@@ -141,17 +141,17 @@ namespace ABIView
             //}
        }
 
-        private void collaborateurDataGrid_SelectionChanged(object sender, EventArgs e)
+        private void CollaborateurDataGrid_SelectionChanged(object sender, EventArgs e)
         {
            
         }
 
-        private void btnCloture_Click(object sender, EventArgs e)
+        private void BtnCloture_Click(object sender, EventArgs e)
         {
             //CollaborateurController.getCollaboInstance().clotureContratCollaborateur(selectedCollaborateur);
         }
 
-        private void collaborateurDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void CollaborateurDataGrid_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Int32 id = Convert.ToInt32(collaborateurDataGrid.CurrentRow.Cells[0].Value);
             SelectingCollabo?.Invoke(id);

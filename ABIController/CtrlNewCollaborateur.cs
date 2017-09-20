@@ -39,7 +39,7 @@ namespace ABIController
         {
             try
             {
-                DAOToChange.getInstance().NewCollaborateur(ref collaborateur);
+                DAO.getInstance().NewCollaborateur(ref collaborateur);
                 SavingCollaboData?.Invoke(collaborateur);
                 //close the form
                 this.collaborateurForm.Close();

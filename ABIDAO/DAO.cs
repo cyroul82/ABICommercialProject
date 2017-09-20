@@ -1,20 +1,19 @@
-﻿
-using ABIDAO;
-using ABIModel;
+﻿using ABIModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-
 
 namespace ABIDAO
 {
-    public class DAOToChange
+    public class DAO
     {
-        private static DAOToChange dao;
+        private static DAO dao;
         private static SortedDictionary<Int32, Collaborateur> collaborateurList;
         private ABIContext context;
 
-        private DAOToChange()
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        private DAO()
         {
             context = new ABIContext();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
@@ -29,11 +28,11 @@ namespace ABIDAO
             }
         }
 
-        public static DAOToChange getInstance()
+        public static DAO getInstance()
         {
             if (dao == null)
             {
-                dao = new DAOToChange();
+                dao = new DAO();
             }
             return dao;
         }
@@ -57,10 +56,6 @@ namespace ABIDAO
             return collaborateurList;
         }
 
-        public List<Collaborateur> Collaborateurs()
-        {
-            return context.Collaborateurs.ToList();
-        }
 
         public void Update()
         {

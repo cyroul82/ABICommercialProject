@@ -33,7 +33,7 @@ namespace ABIController
                 try
                 {
                     collaborateur.AddContrat(contrat);
-                    DAOToChange.getInstance().Update();
+                    DAO.getInstance().Update();
 
                     SavingContrat?.Invoke(this, new EventArgs());
                 }
