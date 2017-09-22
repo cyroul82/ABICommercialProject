@@ -15,9 +15,9 @@ namespace ABIController
         {
             this.collaborateur = collaborateur;
             contratListForm = new ContratListForm(collaborateur);
-            contratListForm.CloturingContrat += new EventHandler(this.onCloturedContrat);
-            contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
-            contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
+            contratListForm.CloturingContrat += new EventHandler(this.OnCloturedContrat);
+            contratListForm.CreatingContrat += new EventHandler(this.OnCreatedContrat);
+            contratListForm.SelectingContrat += new SelectingHandler(this.OnSelectedContrat);
             
         }
         public CtrlListContrat(Collaborateur collaborateur, CollaborateurForm clf)
@@ -29,14 +29,13 @@ namespace ABIController
             contratListForm.AutoScroll = true;
             clf.panelContrat.Controls.Add(contratListForm);
             contratListForm.Show();
-            contratListForm.CloturingContrat += new EventHandler(onCloturedContrat);
-            contratListForm.CreatingContrat += new EventHandler(this.onCreatedContrat);
-            contratListForm.SelectingContrat += new SelectingHandler(this.onSelectedContrat);
-
+            contratListForm.CloturingContrat += new EventHandler(OnCloturedContrat);
+            contratListForm.CreatingContrat += new EventHandler(this.OnCreatedContrat);
+            contratListForm.SelectingContrat += new SelectingHandler(this.OnSelectedContrat);
         }
                 
 
-        public void init()
+        public void Init()
         {
             if (contratListForm != null)
             {
@@ -44,18 +43,18 @@ namespace ABIController
             }
         }
 
-        private void onSelectedContrat(int id)
+        private void OnSelectedContrat(int id)
         {
-            Contrat contrat = getContrat(id);
+            Contrat contrat = GetContrat(id);
             if (contrat != null)
             {
                 CtrlViewContrat ctrlViewContrat = new CtrlViewContrat(contrat);
-                ctrlViewContrat.CloturingContrat += new EventHandler(this.onCloturedContrat);
+                ctrlViewContrat.CloturingContrat += new EventHandler(this.OnCloturedContrat);
                 ctrlViewContrat.Init();
             }
         }
 
-        private Contrat getContrat(Int32 id)
+        private Contrat GetContrat(Int32 id)
         {
             Contrat contrat = null;
             foreach(Contrat c in collaborateur.Contrats)
@@ -68,24 +67,24 @@ namespace ABIController
             return contrat;
         }
 
-        private void onCreatedContrat(object sender, EventArgs e)
+        private void OnCreatedContrat(object sender, EventArgs e)
         {
-            CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(ref collaborateur);
-            ctrlNewContrat.SavingContrat += new EventHandler(this.onSavedContrat);
-            ctrlNewContrat.init();
+            CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
+            ctrlNewContrat.SavingContrat += new EventHandler(this.OnSavedContrat);
+            ctrlNewContrat.Init();
         }
 
-        private void onSavedContrat(object sender, EventArgs e)
+        private void OnSavedContrat(object sender, EventArgs e)
         { 
-            refresh(sender, e);
+            Refresh(sender, e);
         }
 
-        private void onCloturedContrat(object sender, EventArgs e)
+        private void OnCloturedContrat(object sender, EventArgs e)
         {
-            refresh(sender, e);
+            Refresh(sender, e);
         }
 
-        private void refresh(object sender, EventArgs e)
+        private void Refresh(object sender, EventArgs e)
         {
             contratListForm.setDataSource();
             Refreshing?.Invoke(sender, e);

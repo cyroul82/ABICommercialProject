@@ -105,6 +105,7 @@ namespace ABIController
         {
             if (collaborateurList.ContainsKey(collabo.Id))
             {
+                DAO.getInstance().Update();
                 RefreshDataSource();   
             }
         }
@@ -127,8 +128,8 @@ namespace ABIController
         private void OnCreatedCollabo(object sender, EventArgs e)
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
-            ctrlNewCollabo.SavingCollaboData += new CollaboHandler(this.OnSavedNewCollabo);
-            ctrlNewCollabo.init();
+            ctrlNewCollabo.SavingCollabo += new CollaboHandler(this.OnSavedNewCollabo);
+            ctrlNewCollabo.Init();
         }
 
         /// <summary>
@@ -138,6 +139,7 @@ namespace ABIController
         /// <param name="collabo"></param>
         private void OnSavedNewCollabo(Collaborateur collabo)
         {
+            DAO.getInstance().NewCollaborateur(collabo);
             collaborateurList.Add(collabo.Id, collabo);
             RefreshDataSource();
         }

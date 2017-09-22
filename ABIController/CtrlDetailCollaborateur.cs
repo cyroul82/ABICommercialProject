@@ -49,10 +49,9 @@ namespace ABIController
 
         private void OnListedContrat(object sender, EventArgs e)
         {
-            
             CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur);
             ctrlListContrat.Refreshing += new EventHandler(this.OnRefreshed);
-            ctrlListContrat.init();
+            ctrlListContrat.Init();
         }
 
         private void OnRefreshed(object sender, EventArgs e)

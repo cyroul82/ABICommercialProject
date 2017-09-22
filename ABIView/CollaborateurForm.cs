@@ -10,7 +10,7 @@ namespace ABIView
 
         private Collaborateur collaborateur;
 
-        public EventHandler SavingCollabo;
+        public CollaboHandler SavingCollabo;
         public EventHandler UpdatingCollabo;
         public EventHandler CloturingContrat;
         public EventHandler ListContrat;
@@ -147,7 +147,7 @@ namespace ABIView
         {
             if (SavedCollabo())
             {
-                if (btnSave.Text == Tools.create) SavingCollabo?.Invoke(sender, e);
+                if (btnSave.Text == Tools.create) SavingCollabo?.Invoke(GetCollaborateur());
                 if (btnSave.Text == Tools.edit) EditingCollabo?.Invoke(GetCollaborateur());
                 if (btnSave.Text == Tools.update) UpdatingCollabo?.Invoke(sender, e);
             }

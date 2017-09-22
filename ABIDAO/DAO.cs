@@ -37,7 +37,7 @@ namespace ABIDAO
             return dao;
         }
 
-        public void NewCollaborateur(ref Collaborateur collaborateur)
+        public void NewCollaborateur(Collaborateur collaborateur)
         {
             try
             {

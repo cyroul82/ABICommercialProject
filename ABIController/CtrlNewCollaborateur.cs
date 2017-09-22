@@ -9,44 +9,43 @@ namespace ABIController
     public class CtrlNewCollaborateur
     {
         private Collaborateur collaborateur;
-
-        public CollaboHandler SavingCollaboData;
-
         private CollaborateurForm collaborateurForm;
+
+        public CollaboHandler SavingCollabo;
+
+        /// <summary>
+        /// Constructor, instanciate the Collaborateur Form
+        /// Listen to the SavingCollabo Event
+        /// </summary>
         public CtrlNewCollaborateur()
         {
             this.collaborateurForm = new CollaborateurForm();
-            collaborateurForm.SavingCollabo += new EventHandler(this.onSavedCollabo);
+            collaborateurForm.SavingCollabo += new CollaboHandler(this.OnSavedCollabo);
         }
 
-        public void init()
+        public void Init()
         {
             collaborateurForm.DisplayDialog();
         }
 
-        private void onSavedCollabo(object sender, EventArgs e)
+        private void OnSavedCollabo(Collaborateur collabo)
         {
-            collaborateur = collaborateurForm.GetCollaborateur();
-            if (collaborateur != null)
+            if (collabo!= null)
             {
-                CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(ref collaborateur);
-                ctrlNewContrat.SavingContrat += new EventHandler(this.onSavedContrat);
-                ctrlNewContrat.init();
+                this.collaborateur = collabo;
+                CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collabo);
+                ctrlNewContrat.SavingContrat += new EventHandler(this.OnSavedContrat);
+                ctrlNewContrat.Init();
             }
         }
 
-        private void onSavedContrat(object sender, EventArgs e)
+        private void OnSavedContrat(object sender, EventArgs e)
         {
-            try
+            if (collaborateur != null)
             {
-                DAO.getInstance().NewCollaborateur(ref collaborateur);
-                SavingCollaboData?.Invoke(collaborateur);
+                SavingCollabo?.Invoke(collaborateur);
                 //close the form
                 this.collaborateurForm.Close();
-            }
-            catch (Exception ex)
-            {
-                collaborateurForm.DisplayErrorMessage(ex.Message, "Error DB");
             }
         }
     }

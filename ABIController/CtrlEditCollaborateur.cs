@@ -24,29 +24,11 @@ namespace ABIController
         
         private void OnUpdatedCollabo(object sender, EventArgs e)
         {
-            
             try
             {
-                
-                DAO.getInstance().Update();
                 collaborateurForm.CloseDialog();
                 UpdatingCollabo?.Invoke(collaborateur);
             }
-            //catch(ArgumentNullException ae)
-            //{
-            //    collaborateurForm.displayErrorMessage(ae.Message, "ArgumentNullException Updating Collaborateur");
-
-            //}
-            //catch(InvalidOperationException ie)
-            //{
-            //    collaborateurForm.displayErrorMessage(ie.InnerException.Message, "InvalidOperationException Updating Collaborateur");
-
-            //}
-            //catch(DbUpdateException)
-            //{
-            //    collaborateurForm.displayErrorMessage("Nom et prénom déjà existant", "DbUpdateException Updating Collaborateur");
-
-            //}
             catch (Exception ex)
             {
                 collaborateur.Name = c.Name;
@@ -60,7 +42,6 @@ namespace ABIController
                 collaborateur.FonctionCollabo = c.FonctionCollabo;
                 collaborateurForm.SetCollaborateur(c);
                 collaborateurForm.DisplayErrorMessage(ex.Message, "Exception Updating Collaborateur");
-
             }
         }
 
