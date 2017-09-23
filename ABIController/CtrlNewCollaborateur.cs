@@ -28,6 +28,11 @@ namespace ABIController
             collaborateurForm.DisplayDialog();
         }
 
+        /// <summary>
+        /// Method called when the event SavingCollabo is fired
+        /// initialize a new instance of the class CtrlNewContrat
+        /// </summary>
+        /// <param name="collabo"></param>
         private void OnSavedCollabo(Collaborateur collabo)
         {
             if (collabo!= null)
@@ -39,6 +44,13 @@ namespace ABIController
             }
         }
 
+        /// <summary>
+        /// Method called when the event SavingContrat is fired
+        /// Raise the event SavingCollabo
+        /// Close the form CollaboraturForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSavedContrat(object sender, EventArgs e)
         {
             if (collaborateur != null)
