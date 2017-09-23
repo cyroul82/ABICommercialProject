@@ -15,8 +15,7 @@ namespace ABIController
 
         /// <summary>
         /// Constructor 
-        /// Try to get the collaborateur list from the DAO
-        /// and initialize the form collaborateurListForm
+        /// Get the collaborateur list from the DAO
         /// </summary>
         /// <exception cref="Exception">Can't get the collaborateur collection</exception>
         public CtrlListCollaborateur()

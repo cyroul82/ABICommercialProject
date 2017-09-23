@@ -15,31 +15,27 @@ namespace ABIController
         {
             this.collaborateur = collaborateur;
             contratListForm = new ContratListForm(collaborateur);
-            contratListForm.CloturingContrat += new EventHandler(this.OnCloturedContrat);
-            contratListForm.CreatingContrat += new EventHandler(this.OnCreatedContrat);
-            contratListForm.SelectingContrat += new SelectingHandler(this.OnSelectedContrat);
             
         }
-        public CtrlListContrat(Collaborateur collaborateur, CollaborateurForm clf)
+
+        public ContratListForm GetContratListForm()
         {
-            this.collaborateur = collaborateur;
-            contratListForm = new ContratListForm(collaborateur);
-            contratListForm.FormBorderStyle = FormBorderStyle.None;
-            contratListForm.TopLevel = false;
-            contratListForm.AutoScroll = true;
-            clf.panelContrat.Controls.Add(contratListForm);
-            contratListForm.Show();
-            contratListForm.CloturingContrat += new EventHandler(OnCloturedContrat);
-            contratListForm.CreatingContrat += new EventHandler(this.OnCreatedContrat);
-            contratListForm.SelectingContrat += new SelectingHandler(this.OnSelectedContrat);
+            if (contratListForm != null)
+            {
+                return this.contratListForm;
+            }
+            else return null;
         }
+
                 
 
         public void Init()
         {
             if (contratListForm != null)
             {
-                contratListForm.ShowDialog();
+                contratListForm.CloturingContrat += new EventHandler(OnCloturedContrat);
+                contratListForm.CreatingContrat += new EventHandler(this.OnCreatedContrat);
+                contratListForm.SelectingContrat += new SelectingHandler(this.OnSelectedContrat);
             }
         }
 
