@@ -11,6 +11,7 @@ namespace ABIController
         private Collaborateur collaborateur;
 
         public EventHandler Refreshing;
+        public CollaboHandler UpdatinCollabo;
 
         /// <summary>
         /// Constructor
@@ -96,7 +97,8 @@ namespace ABIController
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnSavedContrat(object sender, EventArgs e)
-        { 
+        {
+            UpdatinCollabo?.Invoke(collaborateur);
             Refresh(sender, e);
         }
 

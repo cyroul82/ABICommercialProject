@@ -24,7 +24,6 @@ namespace ABIController
             this.collaborateur = collaborateur;
             cf = new ContratForm();
             cf.SavingContrat += new ContratHandler(this.OnSavedContrat);
-            cf.ShowDialog();
         }
 
         public void Display()

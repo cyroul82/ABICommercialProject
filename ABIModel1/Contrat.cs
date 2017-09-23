@@ -22,9 +22,6 @@ namespace ABIModel
         private Statut statutContrat;
         private System.Collections.ArrayList avenant;
 
-        //public int CollaborateurID { get; set; }
-
-
         public Contrat()
         {
 

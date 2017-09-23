@@ -62,7 +62,8 @@ namespace ABIController
                 CtrlDetailCollaborateur ctrlDetailCollabo = new CtrlDetailCollaborateur(collabo);
                 ctrlDetailCollabo.EditingCollaborateur += new CollaboHandler(this.OnEditedCollabo);
                 ctrlDetailCollabo.Refreshing += new EventHandler(this.OnRefreshed);
-                ctrlDetailCollabo.Init();
+                ctrlDetailCollabo.UpdatinCollabo += new CollaboHandler(this.OnUpdatedCollabo);
+                ctrlDetailCollabo.Display();
             }
             else
             {

@@ -10,9 +10,10 @@ namespace ABIController
     {
         private Collaborateur collaborateur;
         private CollaborateurForm collaborateurForm;
-        private static SortedDictionary<Int32, CollaborateurForm> openedForm = new SortedDictionary<int, CollaborateurForm>();
+        private static SortedDictionary<Int32, CollaborateurForm> openedFormList = new SortedDictionary<int, CollaborateurForm>();
 
         public CollaboHandler EditingCollaborateur;
+        public CollaboHandler UpdatinCollabo;
         public EventHandler Refreshing;
         
         /// <summary>
@@ -26,7 +27,7 @@ namespace ABIController
         public CtrlDetailCollaborateur(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
-            if (!openedForm.ContainsKey(collaborateur.Id))
+            if (!openedFormList.ContainsKey(collaborateur.Id))
             {
                 collaborateurForm = new CollaborateurForm(false);
                 collaborateurForm.SetCollaborateur(collaborateur);
@@ -37,6 +38,7 @@ namespace ABIController
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur);
                 clc.Refreshing += new EventHandler(this.OnRefreshed);
+                clc.UpdatinCollabo += new CollaboHandler(this.OnUpdatedCollabo);
 
                 ContratListForm contratListForm = clc.GetContratListForm();
                 contratListForm.FormBorderStyle = FormBorderStyle.None;
@@ -46,11 +48,11 @@ namespace ABIController
                 
 
                 collaborateurForm.panelContrat.Controls.Add(contratListForm);
-                openedForm.Add(collaborateur.Id, collaborateurForm);
+                openedFormList.Add(collaborateur.Id, collaborateurForm);
             }
             else
             {
-                this.collaborateurForm = openedForm[collaborateur.Id];
+                this.collaborateurForm = openedFormList[collaborateur.Id];
 
                 if (collaborateurForm.WindowState == FormWindowState.Minimized)
                 {
@@ -63,25 +65,49 @@ namespace ABIController
             }
         }
 
+        private void OnUpdatedCollabo(Collaborateur collaborateur)
+        {
+            UpdatinCollabo?.Invoke(collaborateur);
+           // Refreshing?.Invoke(this, null);
+        }
 
+        /// <summary>
+        /// Raise the refreshing event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRefreshed(object sender, EventArgs e)
         {
             Refreshing?.Invoke(this, null);
         }
 
-        public void Init()
+        /// <summary>
+        /// Displazy the form
+        /// </summary>
+        public void Display()
         {
             collaborateurForm.Show();
         }
 
+        /// <summary>
+        /// Close the Form
+        /// Remove the instance of the Form from the openedFormList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClosedForm(object sender, FormClosingEventArgs e)
         {
             if (collaborateur != null)
             {
-                openedForm.Remove(collaborateur.Id);
+                openedFormList.Remove(collaborateur.Id);
             }
         }
 
+        /// <summary>
+        /// Close the collaborateurFrom 
+        /// Raise the EditingCollaborateur event
+        /// </summary>
+        /// <param name="collabo"></param>
         private void OnEditedCollabo(Collaborateur collabo)
         {
             if (collabo != null)
