@@ -18,8 +18,8 @@ namespace ABIController
         /// <summary>
         /// Constructor
         /// Takes a collaborateur as argument
-        /// instanciate CollaborateurForm
-        /// Listen to the event Editing Collabo, FormClosing and ListContrat of the collaborateurForm
+        /// initialize a new instanciate of the class CollaborateurForm
+        /// Listen to the event EditingCollabo and FormClosing  of the collaborateurForm
         /// instanciate the CtrlListContrat
         /// </summary>
         /// <param name="collaborateur"></param>
@@ -32,13 +32,11 @@ namespace ABIController
                 collaborateurForm.SetCollaborateur(collaborateur);
                 collaborateurForm.EditingCollabo += new CollaboHandler(this.OnEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.OnClosedForm);
-                collaborateurForm.ListContrat += new EventHandler(this.OnListedContrat);
                 collaborateurForm.Size = new System.Drawing.Size(950, 530);
                 collaborateurForm.MdiParent = CtrlMain.getInstance().getMainApp();
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur);
                 clc.Refreshing += new EventHandler(this.OnRefreshed);
-                clc.Init();
 
                 ContratListForm contratListForm = clc.GetContratListForm();
                 contratListForm.FormBorderStyle = FormBorderStyle.None;
@@ -65,12 +63,6 @@ namespace ABIController
             }
         }
 
-        private void OnListedContrat(object sender, EventArgs e)
-        {
-            CtrlListContrat ctrlListContrat = new CtrlListContrat(collaborateur);
-            ctrlListContrat.Refreshing += new EventHandler(this.OnRefreshed);
-            ctrlListContrat.Init();
-        }
 
         private void OnRefreshed(object sender, EventArgs e)
         {

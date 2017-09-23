@@ -119,7 +119,7 @@ namespace ABIController
 
         /// <summary>
         /// Method called when the event CreatingCollabo is fired
-        /// Instanciate the controller CtrlNewCollaborateur
+        /// initialize a new instanciate of the class CtrlNewCollaborateur
         /// Listen to the event SavingCollaboData
         /// </summary>
         /// <param name="sender"></param>
@@ -133,7 +133,7 @@ namespace ABIController
 
         /// <summary>
         /// Method called when the event SavingCollaboData is fired
-        /// Add the collabo the the collection and set the DataGridView's DataSource in the form collaborateurListForm
+        /// Add a new collaborateur the the collection and set the DataGridView's DataSource in the form collaborateurListForm
         /// </summary>
         /// <param name="collabo"></param>
         private void OnSavedNewCollabo(Collaborateur collabo)
