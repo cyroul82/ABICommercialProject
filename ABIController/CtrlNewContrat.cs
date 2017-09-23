@@ -12,15 +12,24 @@ namespace ABIController
         private ContratForm cf;
 
         public EventHandler SavingContrat;
+
+        /// <summary>
+        /// Constructor
+        /// Initialize a new instance of the class ContraForm
+        /// Listen to the event SavingContrat of the ContratForm
+        /// </summary>
+        /// <param name="collaborateur"></param>
         public CtrlNewContrat(Collaborateur collaborateur)
         {
             this.collaborateur = collaborateur;
             cf = new ContratForm();
             cf.SavingContrat += new ContratHandler(this.OnSavedContrat);
+            cf.ShowDialog();
         }
 
-        public void Init()
-        {   if (cf != null)
+        public void Display()
+        {
+            if (cf != null)
             {
                 cf.ShowDialog();
             }

@@ -8,21 +8,19 @@ using System.Threading.Tasks;
 
 namespace ABIController
 {
-
-    
-
     public class CtrlMain
     {
         private CtrlListCollaborateur ctrlListCollaborateur;
         private static CtrlMain ctrlMain;
         private MDIParent mainApp;
+
         private CtrlMain()
         {
             mainApp = new MDIParent();
-            mainApp.OpeningCollaborateur += new EventHandler(this.openingCollabo);
+            mainApp.OpeningCollaborateur += new EventHandler(this.OpeningCollabo);
         }
 
-        public static CtrlMain getInstance()
+        public static CtrlMain GetInstance()
         {
             if (ctrlMain == null)
             {
@@ -31,12 +29,12 @@ namespace ABIController
             return ctrlMain;
         }
 
-        public MDIParent getMainApp()
+        public MDIParent GetMainApp()
         {
             return mainApp;
         }
 
-        private void openingCollabo(object sender, EventArgs e)
+        private void OpeningCollabo(object sender, EventArgs e)
         {
             if (ctrlListCollaborateur == null)
             {
@@ -49,7 +47,7 @@ namespace ABIController
         }
 
         
-        public void closeCtrlListCollaborateur()
+        public void CloseCtrlListCollaborateur()
         {
             ctrlListCollaborateur = null;
         }

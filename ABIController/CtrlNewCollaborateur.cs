@@ -23,7 +23,7 @@ namespace ABIController
             collaborateurForm.SavingCollabo += new CollaboHandler(this.OnSavedCollabo);
         }
 
-        public void Init()
+        public void DisplayForm()
         {
             collaborateurForm.DisplayDialog();
         }
@@ -40,7 +40,7 @@ namespace ABIController
                 this.collaborateur = collabo;
                 CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collabo);
                 ctrlNewContrat.SavingContrat += new EventHandler(this.OnSavedContrat);
-                ctrlNewContrat.Init();
+                ctrlNewContrat.Display();
             }
         }
 

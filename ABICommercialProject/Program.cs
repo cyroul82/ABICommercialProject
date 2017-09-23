@@ -17,7 +17,7 @@ namespace ABICommercialProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(CtrlMain.getInstance().getMainApp());
+            Application.Run(CtrlMain.GetInstance().GetMainApp());
             
         }
     }

@@ -42,7 +42,7 @@ namespace ABIController
             collaborateurListForm.FormClosing += new FormClosingEventHandler(this.OnClosedForm);
             collaborateurListForm.CreatingCollabo += new EventHandler(this.OnCreatedCollabo);
             collaborateurListForm.SelectingCollabo += new SelectingHandler(this.OnSelectedCollabo);
-            collaborateurListForm.MdiParent = CtrlMain.getInstance().getMainApp();
+            collaborateurListForm.MdiParent = CtrlMain.GetInstance().GetMainApp();
             collaborateurListForm.Show();
         }
 
@@ -128,7 +128,7 @@ namespace ABIController
         {
             CtrlNewCollaborateur ctrlNewCollabo = new CtrlNewCollaborateur();
             ctrlNewCollabo.SavingCollabo += new CollaboHandler(this.OnSavedNewCollabo);
-            ctrlNewCollabo.Init();
+            ctrlNewCollabo.DisplayForm();
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace ABIController
         private void OnClosedForm(object sender, FormClosingEventArgs e)
         {
             collaborateurListForm = null;
-            CtrlMain.getInstance().closeCtrlListCollaborateur(); ;
+            CtrlMain.GetInstance().CloseCtrlListCollaborateur(); ;
         }
 
         /// <summary>

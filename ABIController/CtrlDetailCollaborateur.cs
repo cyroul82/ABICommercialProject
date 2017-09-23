@@ -33,7 +33,7 @@ namespace ABIController
                 collaborateurForm.EditingCollabo += new CollaboHandler(this.OnEditedCollabo);
                 collaborateurForm.FormClosing += new FormClosingEventHandler(this.OnClosedForm);
                 collaborateurForm.Size = new System.Drawing.Size(950, 530);
-                collaborateurForm.MdiParent = CtrlMain.getInstance().getMainApp();
+                collaborateurForm.MdiParent = CtrlMain.GetInstance().GetMainApp();
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur);
                 clc.Refreshing += new EventHandler(this.OnRefreshed);

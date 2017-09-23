@@ -11,6 +11,7 @@ namespace ABIController
         private Collaborateur collaborateur;
 
         public EventHandler Refreshing;
+
         /// <summary>
         /// Constructor
         /// Instanciate the ContratListForm
@@ -86,7 +87,7 @@ namespace ABIController
         {
             CtrlNewContrat ctrlNewContrat = new CtrlNewContrat(collaborateur);
             ctrlNewContrat.SavingContrat += new EventHandler(this.OnSavedContrat);
-            ctrlNewContrat.Init();
+            ctrlNewContrat.Display();
         }
 
         /// <summary>
