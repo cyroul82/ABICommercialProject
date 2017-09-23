@@ -37,7 +37,6 @@ namespace ABIController
                 collaborateurForm.MdiParent = CtrlMain.GetInstance().GetMainApp();
 
                 CtrlListContrat clc = new CtrlListContrat(collaborateur);
-                clc.Refreshing += new EventHandler(this.OnRefreshed);
                 clc.UpdatinCollabo += new CollaboHandler(this.OnUpdatedCollabo);
 
                 ContratListForm contratListForm = clc.GetContratListForm();
@@ -68,18 +67,9 @@ namespace ABIController
         private void OnUpdatedCollabo(Collaborateur collaborateur)
         {
             UpdatinCollabo?.Invoke(collaborateur);
-           // Refreshing?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raise the refreshing event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnRefreshed(object sender, EventArgs e)
-        {
             Refreshing?.Invoke(this, null);
         }
+
 
         /// <summary>
         /// Displazy the form

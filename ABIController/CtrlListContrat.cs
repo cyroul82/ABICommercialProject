@@ -10,7 +10,6 @@ namespace ABIController
         private ContratListForm contratListForm;
         private Collaborateur collaborateur;
 
-        public EventHandler Refreshing;
         public CollaboHandler UpdatinCollabo;
 
         /// <summary>
@@ -93,35 +92,33 @@ namespace ABIController
 
         /// <summary>
         /// Method called when the event SavingContrat is fired
+        /// Update the contrat list and the collaborateur
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnSavedContrat(object sender, EventArgs e)
         {
-            UpdatinCollabo?.Invoke(collaborateur);
-            Refresh(sender, e);
+            Update();
         }
 
         /// <summary>
         /// Method called when the event CloturingContrat is fired
+        /// Update the contrat list and the collaborateur
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void OnCloturedContrat(object sender, EventArgs e)
         {
-            Refresh(sender, e);
+            Update();
         }
 
         /// <summary>
-        /// Set the dataSource to the contratListForm when a changed occured
-        /// invoke the 
+        /// Update The collabo and the contrat list
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Refresh(object sender, EventArgs e)
+        private void Update()
         {
+            UpdatinCollabo?.Invoke(collaborateur);
             contratListForm.setDataSource();
-            Refreshing?.Invoke(sender, e);
         }
     }
 }
