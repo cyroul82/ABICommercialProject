@@ -51,11 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABIContext.cs" />
-    <Compile Include="CollaborateurService.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="EntityConfiguration\CollaborateurConfiguration.cs" />
     <Compile Include="EntityConfiguration\ContratConfiguration.cs" />
-    <Compile Include="ICollaborateurService.cs" />
     <Compile Include="Migrations\201709140831407_initial.cs" />
     <Compile Include="Migrations\201709140831407_initial.Designer.cs">
       <DependentUpon>201709140831407_initial.cs</DependentUpon>
