@@ -6,9 +6,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.ServiceModel;
 
 namespace ABIModel
 {
+    [DataContractFormat]
     public class Collaborateur: ICloneable
     {
 
@@ -36,6 +39,7 @@ namespace ABIModel
         /// <param name="prenom"></param>
         /// <param name="fonctionCollabo"></param>
         public Collaborateur() { }
+
         public Collaborateur(String nom, String prenom, String fonctionCollabo, String address, String zipCode, String town, String tel, String email)
         {
             Id = 0;
