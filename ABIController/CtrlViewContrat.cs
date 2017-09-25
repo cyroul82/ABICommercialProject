@@ -30,7 +30,7 @@ namespace ABIController
             ClotureForm cf = new ClotureForm(ref contrat);
             if (cf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                DAO.getInstance().Update();
+                DAO.getInstance().UpdateCollorateur();
                 CloturingContrat?.Invoke(sender, e);
             }
         }

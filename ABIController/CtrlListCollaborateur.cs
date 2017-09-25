@@ -105,7 +105,7 @@ namespace ABIController
         {
             if (collaborateurList.ContainsKey(collabo.Id))
             {
-                DAO.getInstance().Update();
+                DAO.getInstance().UpdateCollorateur();
                 RefreshDataSource();   
             }
         }

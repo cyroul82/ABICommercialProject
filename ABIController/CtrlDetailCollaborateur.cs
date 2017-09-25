@@ -72,7 +72,7 @@ namespace ABIController
 
 
         /// <summary>
-        /// Displazy the form
+        /// Display the form
         /// </summary>
         public void Display()
         {

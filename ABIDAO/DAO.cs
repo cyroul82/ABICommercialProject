@@ -27,7 +27,6 @@ namespace ABIDAO
                 collaborateurList.Add(collabo.Id, collabo);
             }
         }
-
         public static DAO getInstance()
         {
             if (dao == null)
@@ -36,28 +35,23 @@ namespace ABIDAO
             }
             return dao;
         }
-
         public void NewCollaborateur(Collaborateur collaborateur)
         {
             try
             {
                 context.Collaborateurs.Add(collaborateur);
-                Update();
+                UpdateCollorateur();
             }
             catch(Exception e)
             {
                 throw new Exception(e.Message);
             }
         }
-
-   
         public SortedDictionary<Int32, Collaborateur> getCollaborateurList()
         {
             return collaborateurList;
         }
-
-
-        public void Update()
+        public void UpdateCollorateur()
         {
             context.SaveChanges();
         }
