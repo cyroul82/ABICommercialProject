@@ -32,7 +32,7 @@ namespace ABIController
         }
 
         /// <summary>
-        /// Instancie le form CollaborateurListForm
+        /// Initialise une nouvelle Instance du form CollaborateurListForm
         /// S'abonne aux événements FormClosing, CreatingCollabo and SelectingCollabo
         /// Affiche le form
         /// </summary>
@@ -139,9 +139,17 @@ namespace ABIController
         /// <param name="collabo"></param>
         private void OnSavedNewCollabo(Collaborateur collabo)
         {
-            DAO.getInstance().NewCollaborateur(collabo);
-            collaborateurList.Add(collabo.Id, collabo);
-            RefreshDataSource();
+            try
+            {
+                DAO.getInstance().NewCollaborateur(collabo);
+                collaborateurList.Add(collabo.Id, collabo);
+                RefreshDataSource();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error New Collaborateur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         /// <summary>
