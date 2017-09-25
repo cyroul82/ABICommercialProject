@@ -15,6 +15,7 @@ namespace ABICommercialProject
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(CtrlMain.GetInstance().GetMainApp());

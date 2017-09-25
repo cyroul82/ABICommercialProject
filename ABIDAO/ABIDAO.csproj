@@ -11,6 +11,7 @@
     <AssemblyName>ABIDAO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,9 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABIContext.cs" />
+    <Compile Include="CollaborateurService.cs" />
     <Compile Include="DAO.cs" />
     <Compile Include="EntityConfiguration\CollaborateurConfiguration.cs" />
     <Compile Include="EntityConfiguration\ContratConfiguration.cs" />
+    <Compile Include="ICollaborateurService.cs" />
     <Compile Include="Migrations\201709140831407_initial.cs" />
     <Compile Include="Migrations\201709140831407_initial.Designer.cs">
       <DependentUpon>201709140831407_initial.cs</DependentUpon>
