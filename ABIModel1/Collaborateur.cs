@@ -11,7 +11,7 @@ using System.ServiceModel;
 
 namespace ABIModel
 {
-    [DataContractFormat]
+    [DataContract]
     public class Collaborateur: ICloneable
     {
 
@@ -198,6 +198,7 @@ namespace ABIModel
         /// <summary>
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>
+        [DataMember]
         public String Name
         {
             get
@@ -225,6 +226,7 @@ namespace ABIModel
         /// Propriété {get ; set} 
         /// </summary>
         /// <exception cref="Exception">prenom n'est pas valide</exception>
+        [DataMember]
         public String Firstname
         {
             get
@@ -246,6 +248,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public String Picture
         {
             get
@@ -259,6 +262,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public String FonctionCollabo
         {
             get
@@ -272,6 +276,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public int Id
         {
             get
@@ -285,6 +290,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public Boolean Statut
         {
             get
@@ -298,6 +304,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public string Address
         {
             get
@@ -311,6 +318,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public string ZipCode
         {
             get
@@ -324,6 +332,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public string Town
         {
             get
@@ -337,6 +346,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public string Tel
         {
             get
@@ -350,6 +360,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public string Email
         {
             get
