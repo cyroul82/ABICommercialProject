@@ -1,6 +1,7 @@
 ﻿using ABIModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ABIDAO
 {
@@ -18,9 +19,6 @@ namespace ABIDAO
             context = new ABIContext();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
 
-            //var query = from c in context.Collaborateurs.Include("Contrats")
-            //            select c;
-
             var collabos = context.Collaborateurs.Include("Contrats");
             foreach (var collabo in collabos)
             {
@@ -28,7 +26,7 @@ namespace ABIDAO
             }
         }
 
-        public List<Collaborateur> GetCollabos()
+        public IList<Collaborateur> GetCollabos()
         {
             List<Collaborateur> list = new List<Collaborateur>();
             var collabos = context.Collaborateurs.Include("Contrats");
@@ -70,8 +68,20 @@ namespace ABIDAO
 
         public Collaborateur GetCollaborateur(int idCollaborateur)
         {
-            Collaborateur col = (Collaborateur) context.Collaborateurs.Find(idCollaborateur);
-            return col;
+            //var col = context.Collaborateurs.Include("Contrat");
+
+            var d = from a in context.Collaborateurs.Include("Contrats")
+                    where a.Id == idCollaborateur
+                    select a;
+
+
+            Collaborateur collaborateur = null;
+            foreach(Collaborateur ccc in d)
+            {
+                collaborateur = ccc;
+            }
+
+            return collaborateur;
         }
     }
 }

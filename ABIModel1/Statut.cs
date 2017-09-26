@@ -5,12 +5,15 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
     /// <summary>
     /// Status Enumeration
     /// </summary>
+    [Serializable]
+    [DataContract]
     public enum Statut
     {
         NonCadre,

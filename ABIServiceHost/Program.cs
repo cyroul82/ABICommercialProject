@@ -14,7 +14,7 @@ namespace ABIServiceHost
             using (ServiceHost host = new ServiceHost(typeof(ABIServiceLibrary.ABIService)))
             {
                 host.Open();
-                Console.WriteLine("Service started");
+                Console.WriteLine("Renaud a postulé");
                 Console.ReadLine();
 
             }

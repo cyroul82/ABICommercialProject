@@ -13,88 +13,9 @@
       <xs:element minOccurs="0" name="Tel" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Town" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="contrats" nillable="true" type="tns:ArrayOfContrat" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Collaborateur" nillable="true" type="tns:Collaborateur" />
-  <xs:complexType name="ArrayOfContrat">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contrat" nillable="true" type="tns:Contrat" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfContrat" nillable="true" type="tns:ArrayOfContrat" />
-  <xs:complexType name="Contrat">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cloture" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Collaborateur" nillable="true" type="tns:Collaborateur" />
-      <xs:element minOccurs="0" name="DateDebutContrat" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="DateFinEffectif" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="MotifCloture" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SalaireBrut" type="xs:decimal" />
-      <xs:element minOccurs="0" name="StatutContrat" type="tns:Statut" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Contrat" nillable="true" type="tns:Contrat" />
-  <xs:simpleType name="Statut">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NonCadre" />
-      <xs:enumeration value="Cadre" />
-      <xs:enumeration value="Commercial" />
-      <xs:enumeration value="Technicien" />
-      <xs:enumeration value="TechnicoCommercial" />
-      <xs:enumeration value="Service" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="Statut" nillable="true" type="tns:Statut" />
-  <xs:complexType name="ContratProvisoire">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:Contrat">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="DateFinContrat" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Motif" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ContratProvisoire" nillable="true" type="tns:ContratProvisoire" />
-  <xs:complexType name="MissionInterim">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ContratProvisoire">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="AgenceInterim" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="MissionInterim" nillable="true" type="tns:MissionInterim" />
-  <xs:complexType name="Cdd">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ContratProvisoire">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Cdd" nillable="true" type="tns:Cdd" />
-  <xs:complexType name="Stage">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ContratProvisoire">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Ecole" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Mission" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Stage" nillable="true" type="tns:Stage" />
-  <xs:complexType name="Cdi">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:Contrat">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Cdi" nillable="true" type="tns:Cdi" />
   <xs:complexType name="ArrayOfCollaborateur">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Collaborateur" nillable="true" type="tns:Collaborateur" />

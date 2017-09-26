@@ -194,7 +194,6 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
         public Collaborateur Collaborateur
         {
             get

@@ -13,6 +13,7 @@ namespace ABIModel
 {
     [Serializable]
     [DataContract]
+    [KnownType(typeof(ICollection<Collaborateur>))]
     public class Collaborateur: ICloneable
     {
 
@@ -29,7 +30,6 @@ namespace ABIModel
         private Boolean statut;
 
         //private IDictionary<Int32, Contrat> contrats;
-        [DataMember]
         private ICollection<Contrat> contrats;
 
         private List<AugmentationSalaire> augmentations;
@@ -376,6 +376,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public virtual ICollection<Contrat> Contrats
         {
             get

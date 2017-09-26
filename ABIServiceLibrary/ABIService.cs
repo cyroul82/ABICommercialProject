@@ -24,7 +24,8 @@ namespace ABIServiceLibrary
 
         public IList<Collaborateur> GetCollaborateurList()
         {
-            return DAO.getInstance().GetCollabos();
+            IList<Collaborateur> c = DAO.getInstance().GetCollabos();
+            return c;
         }
 
         public void UpdateCollabo(Collaborateur collabo)
