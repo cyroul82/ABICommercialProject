@@ -32,6 +32,7 @@ namespace ABIModel
             return "CDI : " + base.ToString();
         }
 
+        [DataMember]
         public DateTime DateCloture
         {
             get

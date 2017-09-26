@@ -13,7 +13,6 @@ namespace ABIModel
 {
     [Serializable]
     [DataContract]
-    [KnownType(typeof(ICollection<Collaborateur>))]
     public class Collaborateur: ICloneable
     {
 

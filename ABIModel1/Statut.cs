@@ -12,15 +12,20 @@ namespace ABIModel
     /// <summary>
     /// Status Enumeration
     /// </summary>
-    [Serializable]
     [DataContract]
     public enum Statut
     {
+        [EnumMember]
         NonCadre,
+        [EnumMember]
         Cadre,
+        [EnumMember]
         Commercial,
+        [EnumMember]
         Technicien,
+        [EnumMember]
         TechnicoCommercial,
+        [EnumMember]
         Service
     }
 }

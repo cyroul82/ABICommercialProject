@@ -22,9 +22,9 @@ namespace ABIModel
         private DateTime? dateFinEffectif;
         private String motifCloture;
         private Boolean cloture;
-        private Collaborateur collaborateur;
-
         private Statut statutContrat;
+
+        private Collaborateur collaborateur;
         private System.Collections.ArrayList avenant = new System.Collections.ArrayList();
 
         public Contrat()
@@ -91,6 +91,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public String Qualification
         {
             get
@@ -119,18 +120,7 @@ namespace ABIModel
         }
 
         [DataMember]
-        public Statut StatutContrat
-        {
-            get
-            {
-                return statutContrat;
-            }
-
-            set
-            {
-                statutContrat = value;
-            }
-        }
+        public Statut StatutContrat;
 
         /// <summary>
         /// Check that the numero isn't less than or equal to 0

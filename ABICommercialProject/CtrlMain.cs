@@ -36,10 +36,6 @@ namespace ABICommercialProjet
 
         private void OpeningCollabo(object sender, EventArgs e)
         {
-            //ABICommercialProject.ABIService.ABIServiceClient client = new ABICommercialProject.ABIService.ABIServiceClient();
-            //var c = client.GetCollaborateur(1);
-            //Console.WriteLine("client name : " + c);
-            //client.Close();
             if (ctrlListCollaborateur == null)
             {
               ctrlListCollaborateur = new CtrlListCollaborateur();
