@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABIModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,9 +13,15 @@ namespace ABIServiceLibrary
     public interface IABIService
     {
         [OperationContract]
-        string getName();
+        Collaborateur GetCollaborateur(int idCollabo);
 
         [OperationContract]
-        string getFirstname();
+        IList<Collaborateur> GetCollaborateurList();
+
+        [OperationContract]
+        void UpdateCollabo(Collaborateur collabo);
+
+        [OperationContract]
+        string getName();
     }
 }

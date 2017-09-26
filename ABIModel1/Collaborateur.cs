@@ -11,6 +11,7 @@ using System.ServiceModel;
 
 namespace ABIModel
 {
+    [Serializable]
     [DataContract]
     public class Collaborateur: ICloneable
     {
@@ -28,6 +29,7 @@ namespace ABIModel
         private Boolean statut;
 
         //private IDictionary<Int32, Contrat> contrats;
+        [DataMember]
         private ICollection<Contrat> contrats;
 
         private List<AugmentationSalaire> augmentations;

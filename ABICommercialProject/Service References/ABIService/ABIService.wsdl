@@ -4,34 +4,55 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ABIModel" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IABIService_GetCollaborateur_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCollaborateur" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_GetCollaborateur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCollaborateurResponse" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_GetCollaborateurList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCollaborateurList" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_GetCollaborateurList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCollaborateurListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_UpdateCollabo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCollabo" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_UpdateCollabo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCollaboResponse" />
+  </wsdl:message>
   <wsdl:message name="IABIService_getName_InputMessage">
     <wsdl:part name="parameters" element="tns:getName" />
   </wsdl:message>
   <wsdl:message name="IABIService_getName_OutputMessage">
     <wsdl:part name="parameters" element="tns:getNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IABIService_getFirstname_InputMessage">
-    <wsdl:part name="parameters" element="tns:getFirstname" />
-  </wsdl:message>
-  <wsdl:message name="IABIService_getFirstname_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getFirstnameResponse" />
-  </wsdl:message>
   <wsdl:portType name="IABIService">
+    <wsdl:operation name="GetCollaborateur">
+      <wsdl:input wsaw:Action="http://tempuri.org/IABIService/GetCollaborateur" message="tns:IABIService_GetCollaborateur_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IABIService/GetCollaborateurResponse" message="tns:IABIService_GetCollaborateur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCollaborateurList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IABIService/GetCollaborateurList" message="tns:IABIService_GetCollaborateurList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IABIService/GetCollaborateurListResponse" message="tns:IABIService_GetCollaborateurList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCollabo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IABIService/UpdateCollabo" message="tns:IABIService_UpdateCollabo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IABIService/UpdateCollaboResponse" message="tns:IABIService_UpdateCollabo_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getName">
       <wsdl:input wsaw:Action="http://tempuri.org/IABIService/getName" message="tns:IABIService_getName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IABIService/getNameResponse" message="tns:IABIService_getName_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getFirstname">
-      <wsdl:input wsaw:Action="http://tempuri.org/IABIService/getFirstname" message="tns:IABIService_getFirstname_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IABIService/getFirstnameResponse" message="tns:IABIService_getFirstname_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IABIService" type="tns:IABIService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="getName">
-      <soap:operation soapAction="http://tempuri.org/IABIService/getName" style="document" />
+    <wsdl:operation name="GetCollaborateur">
+      <soap:operation soapAction="http://tempuri.org/IABIService/GetCollaborateur" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -39,8 +60,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getFirstname">
-      <soap:operation soapAction="http://tempuri.org/IABIService/getFirstname" style="document" />
+    <wsdl:operation name="GetCollaborateurList">
+      <soap:operation soapAction="http://tempuri.org/IABIService/GetCollaborateurList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCollabo">
+      <soap:operation soapAction="http://tempuri.org/IABIService/UpdateCollabo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getName">
+      <soap:operation soapAction="http://tempuri.org/IABIService/getName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

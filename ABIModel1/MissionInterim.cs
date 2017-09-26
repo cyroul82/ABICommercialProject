@@ -5,9 +5,12 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
     public class MissionInterim : ContratProvisoire
     {
         private String agenceInterim;
@@ -31,7 +34,7 @@ namespace ABIModel
             AgenceInterim = agenceInterim;
         }
 
-
+        [DataMember]
         public String AgenceInterim
         {
             get

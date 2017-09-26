@@ -5,9 +5,14 @@
  ***********************************************************************/
 
 using System;
-
+using System.Runtime.Serialization;
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
+    [KnownType(typeof(MissionInterim))]
+    [KnownType(typeof(Cdd))]
+    [KnownType(typeof(Stage))]
     public abstract class ContratProvisoire : Contrat
     {
         private String motif;
@@ -33,6 +38,7 @@ namespace ABIModel
             
         }
 
+        [DataMember]
         public String Motif
         {
             get
@@ -49,6 +55,7 @@ namespace ABIModel
         /// <summary>
         /// 
         /// </summary>
+        [DataMember]
         public DateTime? DateFinContrat
         {
             get

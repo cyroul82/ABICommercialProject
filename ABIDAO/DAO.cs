@@ -27,6 +27,17 @@ namespace ABIDAO
                 collaborateurList.Add(collabo.Id, collabo);
             }
         }
+
+        public List<Collaborateur> GetCollabos()
+        {
+            List<Collaborateur> list = new List<Collaborateur>();
+            var collabos = context.Collaborateurs;
+            foreach (Collaborateur collabo in collabos)
+            {
+                list.Add(collabo);
+            }
+            return list;
+        }
         public static DAO getInstance()
         {
             if (dao == null)
@@ -40,7 +51,7 @@ namespace ABIDAO
             try
             {
                 context.Collaborateurs.Add(collaborateur);
-                UpdateCollorateur();
+                UpdateCollorateur(collaborateur);
             }
             catch(Exception e)
             {
@@ -51,9 +62,16 @@ namespace ABIDAO
         {
             return collaborateurList;
         }
-        public void UpdateCollorateur()
+        public void UpdateCollorateur(Collaborateur collaborateur)
         {
+            context.Entry(collaborateur).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
+        }
+
+        public Collaborateur GetCollaborateur(int idCollaborateur)
+        {
+            Collaborateur col = (Collaborateur) context.Collaborateurs.Find(idCollaborateur);
+            return col;
         }
     }
 }

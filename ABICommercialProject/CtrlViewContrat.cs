@@ -1,7 +1,6 @@
 ﻿using System;
 using ABIModel;
 using ABIView;
-using ABIDAO;
 
 namespace ABICommercialProjet
 {
@@ -30,7 +29,8 @@ namespace ABICommercialProjet
             ClotureForm cf = new ClotureForm(ref contrat);
             if (cf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                DAO.getInstance().UpdateCollorateur();
+                //TODO
+                // DAO.getInstance().UpdateCollorateur();
                 CloturingContrat?.Invoke(sender, e);
             }
         }

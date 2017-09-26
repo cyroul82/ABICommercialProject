@@ -5,9 +5,11 @@
  ***********************************************************************/
 
 using System;
-
+using System.Runtime.Serialization;
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
     public class Stage : ContratProvisoire
     {
         public Stage()
@@ -42,6 +44,7 @@ namespace ABIModel
         private String ecole;
         private String mission;
 
+        [DataMember]
         public String Ecole
         {
             get
@@ -55,6 +58,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public String Mission
         {
             get

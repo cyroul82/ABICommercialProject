@@ -1,5 +1,4 @@
-﻿using ABIDAO;
-using ABIModel;
+﻿using ABIModel;
 using ABIView;
 using System;
 using System.Collections.Generic;
@@ -22,13 +21,25 @@ namespace ABICommercialProjet
         {
             try
             {
-                collaborateurList = DAO.getInstance().getCollaborateurList();
-                Init();
+                ABICommercialProject.ABIService.ABIServiceClient client = new ABICommercialProject.ABIService.ABIServiceClient("BasicHttpBinding_IABIService");
+                IList<Collaborateur> list = client.GetCollaborateurList();
+                client.Close();
+                collaborateurList = new SortedDictionary<int, Collaborateur>();
+                if (list != null)
+                {
+                    foreach (Collaborateur c in list)
+                    {
+                        collaborateurList.Add(c.Id, c);
+                    }
+                }
+                
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            Init();
         }
 
         /// <summary>
@@ -105,7 +116,8 @@ namespace ABICommercialProjet
         {
             if (collaborateurList.ContainsKey(collabo.Id))
             {
-                DAO.getInstance().UpdateCollorateur();
+                // TODO
+                //DAO.getInstance().UpdateCollorateur();
                 RefreshDataSource();   
             }
         }
@@ -141,7 +153,8 @@ namespace ABICommercialProjet
         {
             try
             {
-                DAO.getInstance().NewCollaborateur(collabo);
+                // TODO
+                //DAO.getInstance().NewCollaborateur(collabo);
                 collaborateurList.Add(collabo.Id, collabo);
                 RefreshDataSource();
             }

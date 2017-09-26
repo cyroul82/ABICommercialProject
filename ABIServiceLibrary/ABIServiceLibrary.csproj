@@ -47,5 +47,15 @@
     <Compile Include="IABIService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ABIDAO\ABIDAO.csproj">
+      <Project>{a597e9d3-2b2c-4f8b-bf69-06a5f0c5d841}</Project>
+      <Name>ABIDAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ABIModel1\ABIModel.csproj">
+      <Project>{f25999c9-e24c-4d73-a3e9-76adf701c7c6}</Project>
+      <Name>ABIModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

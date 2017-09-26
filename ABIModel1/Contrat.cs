@@ -5,9 +5,14 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
+    [KnownType(typeof(ContratProvisoire))]
+    [KnownType(typeof(Cdi))]
     public abstract class Contrat
     {
         private decimal salaireBrut;
@@ -72,6 +77,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public decimal SalaireBrut
         {
             get
@@ -98,6 +104,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public DateTime DateDebutContrat
         {
             get
@@ -111,6 +118,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public Statut StatutContrat
         {
             get
@@ -123,11 +131,12 @@ namespace ABIModel
                 statutContrat = value;
             }
         }
-        
+
         /// <summary>
         /// Check that the numero isn't less than or equal to 0
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">Contrat number lesser or equal than</exception>
+        [DataMember]
         public int Id
         {
             get
@@ -143,6 +152,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public DateTime? DateFinEffectif
         {
             get
@@ -156,6 +166,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public string MotifCloture
         {
             get
@@ -169,6 +180,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public bool Cloture
         {
             get
@@ -182,6 +194,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public Collaborateur Collaborateur
         {
             get
