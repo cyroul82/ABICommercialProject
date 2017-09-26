@@ -19,7 +19,7 @@ namespace ABIView
             {
                 try
                 {
-                    contrat.clotureContrat(dtpFinEffecif.Value.Date, txtMotif.Text);
+                    contrat.ClotureContrat(dtpFinEffecif.Value.Date, txtMotif.Text);
                     this.DialogResult = DialogResult.OK;
                 }
                 catch(Exception ex)

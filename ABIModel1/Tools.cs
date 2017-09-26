@@ -43,7 +43,7 @@ namespace ABIModel
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static String nameToUpperAndTrim(String name)
+        public static String NameToUpperAndTrim(String name)
         {
             return name.ToUpper().Trim();
         }
@@ -53,7 +53,7 @@ namespace ABIModel
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static String firstLetterUppercase(String s)
+        public static String FirstLetterUppercase(String s)
         {
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
@@ -66,7 +66,7 @@ namespace ABIModel
         /// <param name="statut"></param>
         /// <returns></returns>
         /// <exception cref="Exception">Cannot Convert the string into a Statut Enum</exception>
-        public static Statut getStatut(String statut)
+        public static Statut GetStatut(String statut)
         {
             Statut theStatut;
             if(Enum.TryParse(statut, out theStatut))

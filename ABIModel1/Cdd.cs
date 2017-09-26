@@ -5,12 +5,16 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
     public class Cdd : ContratProvisoire
     {
 
+        
         public Cdd()
         {
 

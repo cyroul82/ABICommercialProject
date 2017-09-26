@@ -168,7 +168,7 @@ namespace ABIView
                 else
                 {
                     String nom = txtNom.Text.Trim().ToUpper();
-                    String prenom = Tools.firstLetterUppercase(txtPrenom.Text.Trim());
+                    String prenom = Tools.FirstLetterUppercase(txtPrenom.Text.Trim());
                     String fonction = txtFonction.Text.Trim();
                     String address = txtAdresse.Text.Trim();
                     String zipCode = txtCodePostal.Text.Trim();

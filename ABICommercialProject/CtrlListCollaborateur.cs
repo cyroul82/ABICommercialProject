@@ -32,14 +32,15 @@ namespace ABICommercialProjet
                         collaborateurList.Add(c.Id, c);
                     }
                 }
-                
+                Init();
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            Init();
+            
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace ABIModel
         private Collaborateur collaborateur;
 
         private Statut statutContrat;
-        private System.Collections.ArrayList avenant;
+        private System.Collections.ArrayList avenant = new System.Collections.ArrayList();
 
         public Contrat()
         {
@@ -53,7 +53,7 @@ namespace ABIModel
         /// Add an Avenant to the contract
         /// </summary>
         /// <param name="newAvenant"></param>
-        public void addAvenant(Avenant newAvenant)
+        public void AddAvenant(Avenant newAvenant)
         {
             if (newAvenant == null)
                 return;
@@ -66,7 +66,7 @@ namespace ABIModel
         /// </summary>
         /// <param name="dateFinEffectif"></param>
         /// <param name="motifCloture"></param>
-        public void clotureContrat(DateTime dateFinEffectif, String motifCloture)
+        public void ClotureContrat(DateTime dateFinEffectif, String motifCloture)
         {
             if (dateFinEffectif < dateDebutContrat) throw new Exception("Date de fin ne peut pas etre inferieure à la date de début");
             else

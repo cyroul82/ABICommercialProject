@@ -5,9 +5,12 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
     public class Avenant
     {
         private DateTime dateAvenant;
@@ -28,6 +31,7 @@ namespace ABIModel
             return "Avenant : " + DateAvenant;
         }
 
+        [DataMember]
         public DateTime DateAvenant
         {
             get
@@ -41,6 +45,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public String Libelle
         {
             get
@@ -54,6 +59,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public int NumeroAvenant
         {
             get

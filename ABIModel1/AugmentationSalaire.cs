@@ -5,9 +5,12 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
     public class AugmentationSalaire
     {
 
@@ -40,6 +43,7 @@ namespace ABIModel
         /// Propriété Date{get; set}
         /// </summary>
         /// <exception cref="Exception">Date inférieur à la date du jour</exception>
+        [DataMember]
         public DateTime Date
         {
             get
@@ -58,6 +62,7 @@ namespace ABIModel
         /// Propriété Taux{get; set}
         /// </summary>
         /// <exception cref="Exception">Taux inférieur ou égal à 0</exception>
+        [DataMember]
         public Decimal Taux
         {
             get
@@ -72,6 +77,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public Collaborateur Collaborateur
         {
             get
@@ -85,6 +91,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public int Id
         {
             get

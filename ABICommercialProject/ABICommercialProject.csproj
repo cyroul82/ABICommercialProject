@@ -121,7 +121,7 @@
       <Name>ABIModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\ABIView\ABIView.csproj">
-      <Project>{BCA40FED-D459-48A5-AF99-491D6C347818}</Project>
+      <Project>{bca40fed-d459-48a5-af99-491d6c347818}</Project>
       <Name>ABIView</Name>
     </ProjectReference>
   </ItemGroup>
@@ -141,6 +141,7 @@
     <None Include="Service References\ABIService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

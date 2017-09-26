@@ -196,7 +196,7 @@ namespace ABIView
                 try
                 {
                     String typeContrat = cbxTypeContrat.SelectedItem.ToString();
-                    Statut statut = Tools.getStatut(cbxStatut.SelectedItem.ToString());
+                    Statut statut = Tools.GetStatut(cbxStatut.SelectedItem.ToString());
                     DateTime debutContrat = Tools.getDate(dtpDebutContrat.Text);
                     Decimal salaire = Tools.getSalaireBrut(txtSalaire.Text);
                     String qualification = txtQualification.Text;

@@ -5,9 +5,12 @@
  ***********************************************************************/
 
 using System;
+using System.Runtime.Serialization;
 
 namespace ABIModel
 {
+    [Serializable]
+    [DataContract]
     public class Cdi : Contrat
     {
         private DateTime dateCloture;
