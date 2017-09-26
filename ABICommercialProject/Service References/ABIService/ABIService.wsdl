@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ABIService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IABIService_getName_InputMessage">
+    <wsdl:part name="parameters" element="tns:getName" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_getName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_getFirstname_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFirstname" />
+  </wsdl:message>
+  <wsdl:message name="IABIService_getFirstname_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFirstnameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IABIService">
+    <wsdl:operation name="getName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IABIService/getName" message="tns:IABIService_getName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IABIService/getNameResponse" message="tns:IABIService_getName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getFirstname">
+      <wsdl:input wsaw:Action="http://tempuri.org/IABIService/getFirstname" message="tns:IABIService_getFirstname_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IABIService/getFirstnameResponse" message="tns:IABIService_getFirstname_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IABIService" type="tns:IABIService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getName">
+      <soap:operation soapAction="http://tempuri.org/IABIService/getName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFirstname">
+      <soap:operation soapAction="http://tempuri.org/IABIService/getFirstname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ABIService">
+    <wsdl:port name="BasicHttpBinding_IABIService" binding="tns:BasicHttpBinding_IABIService">
+      <soap:address location="http://localhost:8733/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

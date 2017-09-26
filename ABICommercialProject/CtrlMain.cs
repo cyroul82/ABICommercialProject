@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ABIController
+namespace ABICommercialProjet
 {
     public class CtrlMain
     {
@@ -36,7 +36,7 @@ namespace ABIController
 
         private void OpeningCollabo(object sender, EventArgs e)
         {
-            ABIService.ABIServiceClient client = new ABIService.ABIServiceClient("BasicHttpBinding_IABIService");
+            ABICommercialProject.ABIService.ABIServiceClient client = new ABICommercialProject.ABIService.ABIServiceClient("BasicHttpBinding_IABIService");
             Console.WriteLine("nom client : " + client.getName());
             Console.WriteLine("\nprenom : " + client.getFirstname());
 
