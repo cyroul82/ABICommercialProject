@@ -21,7 +21,10 @@ namespace ABIServiceLibrary
         string EchoWithPost(string s);
 
         [OperationContract]
-        [WebGet]
+        [WebInvoke(Method = "GET",
+                   ResponseFormat = WebMessageFormat.Xml, 
+                   BodyStyle = WebMessageBodyStyle.Wrapped,
+                   UriTemplate = "collabo/{idCollabo}")]
         Collaborateur GetCollaborateur(string idCollabo);
     }
 }

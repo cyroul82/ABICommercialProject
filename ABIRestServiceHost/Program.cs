@@ -18,6 +18,7 @@ namespace ABIRestServiceHost
             using (WebServiceHost host = new WebServiceHost(typeof(RestABIService), new Uri("http://localhost:8000/")))
             {
                 ServiceEndpoint ep = host.AddServiceEndpoint(typeof(IRestABIService), new WebHttpBinding(), "");
+                
 
                 host.Open();
                 Console.WriteLine("Service REST is running");

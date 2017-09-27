@@ -22,7 +22,6 @@ namespace ABIServiceLibrary
 
         public Collaborateur GetCollaborateur(string idCollabo)
         {
-
             return DAO.getInstance().GetCollaborateur(Convert.ToInt32(idCollabo));
         }
     }
