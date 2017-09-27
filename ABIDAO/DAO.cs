@@ -19,11 +19,11 @@ namespace ABIDAO
             context = new ABIContext();
             collaborateurList = new SortedDictionary<int, Collaborateur>();
 
-            var collabos = context.Collaborateurs.Include("Contrats");
-            foreach (var collabo in collabos)
-            {
-                collaborateurList.Add(collabo.Id, collabo);
-            }
+            //var collabos = context.Collaborateurs.Include("Contrats");
+            //foreach (var collabo in collabos)
+            //{
+            //    collaborateurList.Add(collabo.Id, collabo);
+            //}
         }
 
         public IList<Collaborateur> GetCollabos()
