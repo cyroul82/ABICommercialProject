@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABIRestServiceHost", "ABIRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABIServiceRestIIS", "ABIServiceRestIIS\ABIServiceRestIIS.csproj", "{EC6D5F8D-0D1D-4499-BA65-9EA28F2A5B72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABISite", "ABISite\ABISite.csproj", "{1955BE81-5D62-4B99-B6DA-28AAF134F10C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{EC6D5F8D-0D1D-4499-BA65-9EA28F2A5B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC6D5F8D-0D1D-4499-BA65-9EA28F2A5B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC6D5F8D-0D1D-4499-BA65-9EA28F2A5B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1955BE81-5D62-4B99-B6DA-28AAF134F10C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1955BE81-5D62-4B99-B6DA-28AAF134F10C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1955BE81-5D62-4B99-B6DA-28AAF134F10C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1955BE81-5D62-4B99-B6DA-28AAF134F10C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
