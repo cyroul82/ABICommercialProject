@@ -12,6 +12,7 @@ namespace ABIDAO
             : base("name=ABIModel")
         {
             this.Configuration.ProxyCreationEnabled = false;
+
         }
 
         public virtual DbSet<Collaborateur> Collaborateurs { get; set; }

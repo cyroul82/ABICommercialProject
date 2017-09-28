@@ -15,17 +15,17 @@ namespace ABIModel
     [DataContract]
     public enum Statut
     {
-        [EnumMember]
-        NonCadre,
-        [EnumMember]
-        Cadre,
-        [EnumMember]
-        Commercial,
-        [EnumMember]
-        Technicien,
-        [EnumMember]
-        TechnicoCommercial,
-        [EnumMember]
-        Service
+        [EnumMember(Value = "NonCadre")]
+        NonCadre=0,
+        [EnumMember(Value = "Cadre")]
+        Cadre=1,
+        [EnumMember(Value = "Commercial")]
+        Commercial=2,
+        [EnumMember(Value = "Technicien")]
+        Technicien=3,
+        [EnumMember(Value = "TechnicoCommercial")]
+        TechnicoCommercial=4,
+        [EnumMember(Value = "Service")]
+        Service=5
     }
 }
