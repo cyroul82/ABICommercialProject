@@ -31,7 +31,7 @@ namespace ABIServiceRestIIS
             }
             catch(Exception e)
             {
-                return new Collaborateur("nom", "prenom", "fonction", "address", "zip", "town", "tel", "email");
+                return new Collaborateur("nomcyril", "prenom", "fonction", e.Message.ToString(), "zip", "town", "tel", "email");
             }
         }
     }
