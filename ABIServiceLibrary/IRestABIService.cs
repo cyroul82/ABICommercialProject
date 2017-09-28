@@ -22,8 +22,8 @@ namespace ABIServiceLibrary
 
         [OperationContract]
         [WebInvoke(Method = "GET",
-                   ResponseFormat = WebMessageFormat.Xml, 
-                   BodyStyle = WebMessageBodyStyle.Wrapped,
+                   ResponseFormat = WebMessageFormat.Json, 
+                   BodyStyle = WebMessageBodyStyle.Bare,
                    UriTemplate = "collabo/{idCollabo}")]
         Collaborateur GetCollaborateur(string idCollabo);
     }
