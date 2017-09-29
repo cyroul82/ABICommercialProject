@@ -11,6 +11,7 @@ namespace ABISite.Controllers
         // GET: Collaborateur
         public ActionResult Index(string idCollabo)
         {
+            //griffin.Service1 g = new griffin.Service1();
             return View();
         }
 
