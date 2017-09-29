@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,7 +13,17 @@ namespace ABISite.Controllers
         // GET: Collaborateur
         public ActionResult Index(string idCollabo)
         {
-            //griffin.Service1 g = new griffin.Service1();
+            var url = "http://bip14:10000/Service1.svc/rest/collabo/" + idCollabo;
+            var webRequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
+            using (var response = webRequest.GetResponse())
+            {
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = reader.ReadToEnd();
+                    Console.WriteLine(result);
+
+                }
+            }
             return View();
         }
 

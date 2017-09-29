@@ -24,6 +24,9 @@ namespace ABIServiceRestIIS
         [WebGet(UriTemplate = "collabo/{idCollabo}")]
         Collaborateur GetCollaborateur(string idCollabo);
 
+        [OperationContract]
+        [WebGet(UriTemplate = "collabos")]
+        IList<Collaborateur> GetCollaborateurs();
     }
 
 

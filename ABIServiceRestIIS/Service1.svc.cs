@@ -24,15 +24,17 @@ namespace ABIServiceRestIIS
         {
             try
             {
-                Collaborateur c = DAO.getInstance().GetCollaborateur(Convert.ToInt32(idCollabo));
-                Collaborateur test = new Collaborateur(c.Name, c.Firstname, c.FonctionCollabo, c.Address, c.ZipCode, c.Town, c.Tel, c.Email);
-                return c;
-
+                return DAO.getInstance().GetCollaborateur(Convert.ToInt32(idCollabo));
             }
             catch(Exception e)
             {
                 return new Collaborateur("nomcyril", "prenom", "fonction", e.Message.ToString(), "zip", "town", "tel", "email");
             }
+        }
+
+        public IList<Collaborateur> GetCollaborateurs()
+        {
+            return DAO.getInstance().GetCollabos();
         }
     }
 }
