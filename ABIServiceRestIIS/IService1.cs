@@ -25,6 +25,10 @@ namespace ABIServiceRestIIS
         [OperationContract]
         [WebGet(UriTemplate = "collabos")]
         IList<Collaborateur> GetCollaborateurs();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "update")]
+        void UpdateCollabo(Collaborateur collaborateur);
     }
 
 

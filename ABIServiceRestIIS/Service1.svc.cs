@@ -36,5 +36,10 @@ namespace ABIServiceRestIIS
         {
             return DAO.getInstance().GetCollabos();
         }
+
+        public void UpdateCollabo(Collaborateur collaborateur)
+        {
+            DAO.getInstance().UpdateCollorateur(collaborateur);
+        }
     }
 }
