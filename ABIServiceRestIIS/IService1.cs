@@ -18,8 +18,6 @@ namespace ABIServiceRestIIS
         [WebGet(UriTemplate = "bouboul/{value}")]
         string GetData(string value);
 
-
-
         [OperationContract]
         [WebGet(UriTemplate = "collabo/{idCollabo}")]
         Collaborateur GetCollaborateur(string idCollabo);

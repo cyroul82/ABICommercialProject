@@ -70,7 +70,11 @@ namespace ABIDAO
         {
             //var col = context.Collaborateurs.Include("Contrat");
 
-            var d = from a in context.Collaborateurs.Include("Contrats")
+            //var d = from a in context.Collaborateurs.Include("Contrats")
+            //        where a.Id == idCollaborateur
+            //        select a;
+
+            var d = from a in context.Collaborateurs
                     where a.Id == idCollaborateur
                     select a;
 

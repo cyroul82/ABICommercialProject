@@ -1,10 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using ABIModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,44 +16,110 @@ namespace ABISite.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        string Baseurl = "http://griffin:10000/";
+        public async Task<ActionResult> Index()
         {
-            //var url = "http://bip14:10000/Service1.svc/rest/collabo/1";
-            //var webRequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
-            //using (var response = webRequest.GetResponse())
-            //{
-            //    using (var reader = new StreamReader(response.GetResponseStream()))
-            //    {
-            //        var result = reader.ReadToEnd();
-            //        var d = JsonConvert.DeserializeObject(result);
+            List<Collaborateur> EmpInfo = new List<Collaborateur>();
 
-            //        Console.WriteLine("Result : " + d);
-
-            //    }
-            //}
-
-
-            //Get method
-
-            WebRequest req = WebRequest.Create(@"http://bip14:10000/Service1.svc/rest/collabo/1");
-
-            req.Method = "GET";
-
-            HttpWebResponse resp = req.GetResponse() as HttpWebResponse;
-            if (resp.StatusCode == HttpStatusCode.OK)
+            using (var client = new HttpClient())
             {
-                using (Stream respStream = resp.GetResponseStream())
+                //Passing service base url  
+                client.BaseAddress = new Uri(Baseurl);
+
+                client.DefaultRequestHeaders.Clear();
+                //Define request data format  
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+                HttpResponseMessage Res = await client.GetAsync("/Service1.svc/rest/collabos");
+
+                Console.WriteLine(Res);
+                //Checking the response is successful or not which is sent using HttpClient  
+                if (Res.IsSuccessStatusCode)
                 {
-                    StreamReader reader = new StreamReader(respStream, Encoding.UTF8);
-                    Console.WriteLine(reader.ReadToEnd());
-                }
-            }
-            else
-            {
-                Console.WriteLine(string.Format("Status Code: {0}, Status Description: {1}", resp.StatusCode, resp.StatusDescription));
-            }
+                    //Storing the response details recieved from web api   
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    Console.WriteLine(EmpResponse);
 
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    EmpInfo = JsonConvert.DeserializeObject<List<Collaborateur>>(EmpResponse);
+
+                }
+                //returning the employee list to view  
+                return View(EmpInfo);
+            }
+        }
+
+        // GET: Collaborateur/Details/5
+        public ActionResult Details(int id)
+        {
             return View();
+        }
+
+        // GET: Collaborateur/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Collaborateur/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Collaborateur/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Collaborateur/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Collaborateur/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Collaborateur/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         public ActionResult About()
