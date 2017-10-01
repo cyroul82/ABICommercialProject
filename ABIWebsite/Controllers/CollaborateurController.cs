@@ -93,13 +93,11 @@ namespace ABIWebsite.Controllers
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
                 string s = "/Service1.svc/rest/collabo/" + id;
                 HttpResponseMessage Res = await client.GetAsync(s);
-                Console.WriteLine("Res : " + Res);
                 //Checking the response is successful or not which is sent using HttpClient  
                 if (Res.IsSuccessStatusCode)
                 {
                     //Storing the response details recieved from web api   
                     var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-                    Console.WriteLine("EmpResponse : " + EmpResponse);
                     //Deserializing the response recieved from web api and storing into the Employee list  
                     collaborateur = JsonConvert.DeserializeObject<Collaborateur>(EmpResponse);
 
@@ -110,11 +108,16 @@ namespace ABIWebsite.Controllers
         }
 
         [HttpPost]
-        public void UpdateCollaborateur(Collaborateur collaborateur)
+        public ActionResult UpdateCollaborateur(int id, FormCollection collection)
         {
-            string req = JsonConvert.SerializeObject(collaborateur);
-
-            Console.WriteLine("Update Collabo : " + collaborateur);
+            try
+            {
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
     }
