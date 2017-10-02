@@ -384,7 +384,6 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
         public virtual ICollection<Contrat> Contrats
         {
             get

@@ -29,7 +29,9 @@ namespace ABIDAO
         public IList<Collaborateur> GetCollabos()
         {
             List<Collaborateur> list = new List<Collaborateur>();
-            list = context.Collaborateurs.Include("Contrats").ToList();
+            //Eager Loading
+            //list = context.Collaborateurs.Include("Contrats").ToList();
+            list = context.Collaborateurs.ToList();
             //var collabos = context.Collaborateurs;
             //foreach (Collaborateur collabo in collabos)
             //{

@@ -9,88 +9,149 @@
 <div>
     <h4>Collaborateur</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="row">
+        <div class="col-md-3">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Firstname)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Firstname)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Firstname)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Picture)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Picture)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FonctionCollabo)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FonctionCollabo)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FonctionCollabo)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.FonctionCollabo)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Statut)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Statut)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Statut)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Statut)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ZipCode)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Town)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Town)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tel)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tel)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Tel)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-    </dl>
+            </dl>
+        </div>
+        <div class="col-md-9">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Salaire")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Qualification")
+                    </th>
+                    <th>
+                        @Html.DisplayName("DateDebutContrat")
+                    </th>
+                    <th>
+                        @Html.DisplayName("DateFinEffectif")
+                    </th>
+                    <th>
+                        @Html.DisplayName("MotifCloture")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Cloture")
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.Contrats)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SalaireBrut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Qualification)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDebutContrat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateFinEffectif)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MotifCloture)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cloture)
+                        </td>
+                        <td>
+                            @if (!item.Cloture)
+                            {
+                                @Html.ActionLink("Cloturer", "Cloturer", new { id = item.Id })
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+    
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

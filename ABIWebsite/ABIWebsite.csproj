@@ -215,6 +215,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RootObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -279,6 +280,7 @@
     <Content Include="Views\Collaborateur\Detail.cshtml" />
     <Content Include="Views\Collaborateur\Edit.cshtml" />
     <Content Include="Views\Collaborateur\Create.cshtml" />
+    <Content Include="Views\Collaborateur\ContratList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

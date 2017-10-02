@@ -2,6 +2,7 @@
 using ABIModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -44,6 +45,11 @@ namespace ABIServiceRestIIS
         public void UpdateCollabo(Collaborateur collaborateur)
         {
             DAO.getInstance().UpdateCollorateur(collaborateur);
+        }
+
+        public IList<Contrat> GetContratCollaborateur(string idCollabo)
+        {
+            return DAO.getInstance().GetCollaborateur(Convert.ToInt32(idCollabo)).Contrats.ToList();
         }
     }
 }

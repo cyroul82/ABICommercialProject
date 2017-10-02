@@ -1,4 +1,5 @@
 ﻿using ABIModel;
+using ABIWebsite.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace ABIWebsite.Controllers
     public class CollaborateurController : Controller
     {
         // GET: List of Collaborateur
-        string Baseurl = "http://BIP14:10000/";
+        string Baseurl = "http://griffin:10000/";
 
         public async Task<ActionResult> Index()
         {
@@ -50,6 +51,7 @@ namespace ABIWebsite.Controllers
         public async Task<ActionResult> Detail(int? id)
         {
             Collaborateur collaborateur = null;
+            List<Contrat> contrats = new List<Contrat>();
             using (var client = new HttpClient())
             {
                 //Passing service base url  
@@ -62,16 +64,50 @@ namespace ABIWebsite.Controllers
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
                 string s = "/Service1.svc/rest/collabo/" + id;
                 HttpResponseMessage Res = await client.GetAsync(s);
-                Console.WriteLine("Res : " + Res);
                 //Checking the response is successful or not which is sent using HttpClient  
                 if (Res.IsSuccessStatusCode)
                 {
                     //Storing the response details recieved from web api   
                     var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-                    Console.WriteLine("EmpResponse : " + EmpResponse);
                     //Deserializing the response recieved from web api and storing into the Employee list  
                     collaborateur = JsonConvert.DeserializeObject<Collaborateur>(EmpResponse);
 
+                }
+
+                string ss = "/Service1.svc/rest/collabo/contrats/" + id;
+                HttpResponseMessage Response = await client.GetAsync(ss);
+
+                if (Response.IsSuccessStatusCode)
+                {
+                    //Storing the response details recieved from web api   
+                    var ContResponse = Response.Content.ReadAsStringAsync().Result;
+                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    List<RootObject> r = JsonConvert.DeserializeObject<List<RootObject>>(ContResponse);
+                    foreach(RootObject ro in r){
+                        if(ro.__type == "Cdi:#ABIModel")
+                        {
+                            Contrat c = new Cdi
+                            {
+                                Cloture = ro.Cloture,
+                                DateDebutContrat = ro.DateDebutContrat,
+                                DateFinEffectif = ro.DateFinEffectif,
+                                Id = ro.Id,
+                                MotifCloture = ro.MotifCloture,
+                                Qualification = ro.Qualification,
+                                SalaireBrut = Convert.ToDecimal(ro.SalaireBrut),
+                                StatutContrat = Statut.Cadre
+                            };
+                            contrats.Add(c);
+                        }
+                    }
+                    
+
+                }
+
+                collaborateur.Contrats = new HashSet<Contrat>();
+                foreach(Contrat c in contrats)
+                {
+                    collaborateur.Contrats.Add(c);
                 }
                 //returning the employee list to view  
                 return View(collaborateur);
@@ -102,6 +138,8 @@ namespace ABIWebsite.Controllers
                     collaborateur = JsonConvert.DeserializeObject<Collaborateur>(EmpResponse);
 
                 }
+
+
                 //returning the employee list to view  
                 return View(collaborateur);
             }
