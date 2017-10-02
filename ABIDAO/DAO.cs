@@ -29,11 +29,12 @@ namespace ABIDAO
         public IList<Collaborateur> GetCollabos()
         {
             List<Collaborateur> list = new List<Collaborateur>();
-            var collabos = context.Collaborateurs.Include("Contrats");
-            foreach (Collaborateur collabo in collabos)
-            {
-                list.Add(collabo);
-            }
+            list = context.Collaborateurs.Include("Contrats").ToList();
+            //var collabos = context.Collaborateurs;
+            //foreach (Collaborateur collabo in collabos)
+            //{
+            //    list.Add(collabo);
+            //}
             return list;
         }
         public static DAO getInstance()
@@ -68,22 +69,25 @@ namespace ABIDAO
 
         public Collaborateur GetCollaborateur(int idCollaborateur)
         {
-            //var col = context.Collaborateurs.Include("Contrat");
+            var col = context.Collaborateurs.Where(c => c.Id == idCollaborateur).FirstOrDefault();
+            var con = context.Contrats.Where(c => c.Collaborateur.Id == idCollaborateur);
+            Collaborateur collaborateur = col as Collaborateur;
+            foreach (Contrat contrat in con)
+            {
+                collaborateur.Contrats.Add(contrat);
+            }
 
             //var d = from a in context.Collaborateurs.Include("Contrats")
             //        where a.Id == idCollaborateur
             //        select a;
 
-            var d = from a in context.Collaborateurs
-                    where a.Id == idCollaborateur
-                    select a;
+            //var d = from a in context.Collaborateurs
+            //        where a.Id == idCollaborateur
+            //        select a;
 
 
-            Collaborateur collaborateur = null;
-            foreach(Collaborateur ccc in d)
-            {
-                collaborateur = ccc;
-            }
+            
+ 
 
             return collaborateur;
         }

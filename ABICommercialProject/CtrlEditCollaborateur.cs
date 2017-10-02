@@ -2,7 +2,7 @@
 using ABIView;
 using System;
 
-namespace ABICommercialProjet
+namespace ABICommercialProject
 {
     public class CtrlEditCollaborateur
     {

@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
@@ -31,7 +32,7 @@ namespace ABIModel
         //private IDictionary<Int32, Contrat> contrats;
         private ICollection<Contrat> contrats;
 
-        private List<AugmentationSalaire> augmentations;
+        //private List<AugmentationSalaire> augmentations;
 
         /// <summary>
         /// Constructor to instanciate a collaborateur 
@@ -95,8 +96,8 @@ namespace ABIModel
         {
 
             //this.Contrats = new SortedDictionary<Int32, Contrat>();
-            this.Contrats = new HashSet<Contrat>();
-            this.augmentations = new List<AugmentationSalaire>();
+            this.Contrats = new List<Contrat>();
+           // this.augmentations = new List<AugmentationSalaire>();
 
         }
 
@@ -108,10 +109,10 @@ namespace ABIModel
         public Decimal CalculerAugmentation()
         {
             Decimal tauxTotal = 0;
-            foreach(AugmentationSalaire augmentation in augmentations)
-            {
-                tauxTotal += augmentation.Taux;
-            }
+            //foreach(AugmentationSalaire augmentation in augmentations)
+            //{
+            //    tauxTotal += augmentation.Taux;
+            //}
 
             return 0;
         }
@@ -178,16 +179,16 @@ namespace ABIModel
                 throw new NullReferenceException("Augmentation is null");
             }
 
-            else {
-                if (!this.augmentations.Contains(augmentation))
-                { 
-                    this.augmentations.Add(augmentation);
-                }
-                else
-                {
-                    throw new Exception("Augmentation already Exist");
-                }
-            }
+            //else {
+            //    if (!this.augmentations.Contains(augmentation))
+            //    { 
+            //        this.augmentations.Add(augmentation);
+            //    }
+            //    else
+            //    {
+            //        throw new Exception("Augmentation already Exist");
+            //    }
+            //}
         }
 
         public object Clone()
@@ -199,6 +200,7 @@ namespace ABIModel
         /// <summary>
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>
+        [DisplayName("Nom")]
         [DataMember]
         public String Name
         {
@@ -228,6 +230,7 @@ namespace ABIModel
         /// </summary>
         /// <exception cref="Exception">prenom n'est pas valide</exception>
         [DataMember]
+        [DisplayName("Prénom")]
         public String Firstname
         {
             get
@@ -264,6 +267,7 @@ namespace ABIModel
         }
 
         [DataMember]
+        [DisplayName("Fonction")]
         public String FonctionCollabo
         {
             get
@@ -306,6 +310,7 @@ namespace ABIModel
         }
 
         [DataMember]
+        [DisplayName("Adresse")]
         public string Address
         {
             get
@@ -320,6 +325,7 @@ namespace ABIModel
         }
 
         [DataMember]
+        [DisplayName("Code Postal")]
         public string ZipCode
         {
             get
@@ -334,6 +340,7 @@ namespace ABIModel
         }
 
         [DataMember]
+        [DisplayName("Ville")]
         public string Town
         {
             get
@@ -348,6 +355,7 @@ namespace ABIModel
         }
 
         [DataMember]
+        [DisplayName("Téléphone")]
         public string Tel
         {
             get
@@ -362,6 +370,7 @@ namespace ABIModel
         }
 
         [DataMember]
+        [DisplayName("Email")]
         public string Email
         {
             get
@@ -375,6 +384,7 @@ namespace ABIModel
             }
         }
 
+        [DataMember]
         public virtual ICollection<Contrat> Contrats
         {
             get

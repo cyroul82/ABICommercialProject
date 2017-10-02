@@ -25,7 +25,7 @@ namespace ABIModel
         private Statut statutContrat;
 
         private Collaborateur collaborateur;
-        private System.Collections.ArrayList avenant = new System.Collections.ArrayList();
+        //private System.Collections.ArrayList avenant = new System.Collections.ArrayList();
 
         public Contrat()
         {
@@ -43,7 +43,7 @@ namespace ABIModel
             Qualification = qualification;
             SalaireBrut = salaireBrut;
             DateDebutContrat = dateDebutContrat;
-            StatutContrat = statut;
+            //StatutContrat = statut;
             DateFinEffectif = null;
             Id = 0;
             Cloture = false;
@@ -55,10 +55,10 @@ namespace ABIModel
         /// <param name="newAvenant"></param>
         public void AddAvenant(Avenant newAvenant)
         {
-            if (newAvenant == null)
-                return;
-            if (!this.avenant.Contains(newAvenant))
-                this.avenant.Add(newAvenant);
+            //if (newAvenant == null)
+            //    return;
+            //if (!this.avenant.Contains(newAvenant))
+            //    this.avenant.Add(newAvenant);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public DateTime DateDebutContrat
         {
             get
@@ -119,8 +119,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
-        public Statut StatutContrat;
+        
 
         /// <summary>
         /// Check that the numero isn't less than or equal to 0
@@ -196,6 +195,9 @@ namespace ABIModel
                 collaborateur = value;
             }
         }
+
+        [DataMember]
+        public Statut StatutContrat { get => statutContrat; set => statutContrat = value; }
 
         /// <summary>
         /// Return contrat + qualif + date debut + statut + salaire

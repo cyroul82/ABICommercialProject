@@ -32,7 +32,7 @@ namespace ABIModel
             return "CDI : " + base.ToString();
         }
 
-        [DataMember]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public DateTime DateCloture
         {
             get

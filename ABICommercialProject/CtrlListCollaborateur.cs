@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ABICommercialProjet
+namespace ABICommercialProject
 {
     public class CtrlListCollaborateur
     {
@@ -21,9 +21,7 @@ namespace ABICommercialProjet
         {
             try
             {
-                ABICommercialProject.ABIService.ABIServiceClient client = new ABICommercialProject.ABIService.ABIServiceClient("BasicHttpBinding_IABIService");
-                IList<Collaborateur> list = client.GetCollaborateurList();
-                client.Close();
+                IList<Collaborateur> list = DAO.GetCollaborateurs();
                 collaborateurList = new SortedDictionary<int, Collaborateur>();
                 if (list != null)
                 {
@@ -37,7 +35,7 @@ namespace ABICommercialProjet
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erreurrrrr : " + e.Message, "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             

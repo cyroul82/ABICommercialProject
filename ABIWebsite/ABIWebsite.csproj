@@ -278,6 +278,7 @@
     <Content Include="Views\Collaborateur\Index.cshtml" />
     <Content Include="Views\Collaborateur\Detail.cshtml" />
     <Content Include="Views\Collaborateur\Edit.cshtml" />
+    <Content Include="Views\Collaborateur\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

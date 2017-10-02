@@ -14,7 +14,7 @@ namespace ABIWebsite.Controllers
     public class CollaborateurController : Controller
     {
         // GET: List of Collaborateur
-        string Baseurl = "http://griffin:10000/";
+        string Baseurl = "http://BIP14:10000/";
 
         public async Task<ActionResult> Index()
         {
@@ -120,5 +120,9 @@ namespace ABIWebsite.Controllers
             }
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

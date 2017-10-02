@@ -2,7 +2,7 @@
 using ABIModel;
 using ABIView;
 
-namespace ABICommercialProjet
+namespace ABICommercialProject
 {
     public class CtrlViewContrat
     {
