@@ -201,7 +201,7 @@ namespace ABIModel
         /// Propriété {get; set}, convertit en majuscule
         /// </summary>
         [DisplayName("Nom")]
-        [DataMember]
+        [DataMember(Order = 1)]
         public String Name
         {
             get
@@ -229,7 +229,7 @@ namespace ABIModel
         /// Propriété {get ; set} 
         /// </summary>
         /// <exception cref="Exception">prenom n'est pas valide</exception>
-        [DataMember]
+        [DataMember(Order = 2)]
         [DisplayName("Prénom")]
         public String Firstname
         {
@@ -252,7 +252,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 9)]
         public String Picture
         {
             get
@@ -266,7 +266,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 3)]
         [DisplayName("Fonction")]
         public String FonctionCollabo
         {
@@ -281,7 +281,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 0)]
         public int Id
         {
             get
@@ -295,7 +295,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 4)]
         public Boolean Statut
         {
             get
@@ -309,7 +309,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 5)]
         [DisplayName("Adresse")]
         public string Address
         {
@@ -324,7 +324,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 6)]
         [DisplayName("Code Postal")]
         public string ZipCode
         {
@@ -339,7 +339,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 7)]
         [DisplayName("Ville")]
         public string Town
         {
@@ -354,7 +354,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 8)]
         [DisplayName("Téléphone")]
         public string Tel
         {
@@ -369,7 +369,7 @@ namespace ABIModel
             }
         }
 
-        [DataMember]
+        [DataMember(Order = 9)]
         [DisplayName("Email")]
         public string Email
         {
