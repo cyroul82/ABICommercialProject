@@ -167,14 +167,14 @@ namespace ABIWebsite.Controllers
                 byte[] res1 =
                 WC.UploadData("http://griffin:10000/Service1.svc/rest/update/", "POST", MS.ToArray());
 
-                MS = new MemoryStream(res1);
-                JSrz = new DataContractJsonSerializer(typeof(int));
-                int result = (int)JSrz.ReadObject(MS);
+                //MS = new MemoryStream(res1);
+                //JSrz = new DataContractJsonSerializer(typeof(int));
+                //int result = (int)JSrz.ReadObject(MS);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
