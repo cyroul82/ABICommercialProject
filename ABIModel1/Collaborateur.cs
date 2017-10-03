@@ -282,6 +282,7 @@ namespace ABIModel
         }
 
         [DataMember(Order = 0)]
+        [DisplayName("Matricule")]
         public int Id
         {
             get
