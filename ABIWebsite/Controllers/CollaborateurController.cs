@@ -3,9 +3,13 @@ using ABIWebsite.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -146,10 +150,26 @@ namespace ABIWebsite.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateCollaborateur(int id, FormCollection collection)
+        public ActionResult UpdateCollaborateur(Collaborateur collaborateur)
         {
             try
             {
+                WebClient WC = new WebClient();
+                WC.Headers.Add("Content-Type", "application/json");
+                WC.Encoding = Encoding.UTF8;
+
+                MemoryStream MS = new MemoryStream();
+                DataContractJsonSerializer JSrz = new
+                DataContractJsonSerializer(typeof(Collaborateur));
+                JSrz.WriteObject(MS, collaborateur);
+                string data = Encoding.UTF8.GetString(MS.ToArray(), 0, (int)MS.Length);
+
+                byte[] res1 =
+                WC.UploadData("http://griffin:10000/Service1.svc/rest/update/", "POST", MS.ToArray());
+
+                MS = new MemoryStream(res1);
+                JSrz = new DataContractJsonSerializer(typeof(int));
+                int result = (int)JSrz.ReadObject(MS);
                 return RedirectToAction("Index");
             }
             catch

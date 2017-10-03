@@ -27,12 +27,12 @@ namespace ABIServiceRestIIS
         IList<Collaborateur> GetCollaborateurs();
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "update")]
-        void UpdateCollabo(Collaborateur collaborateur);
-
-        [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "collabo/contrats/{idCollabo}")]
         IList<Contrat> GetContratCollaborateur(string idCollabo);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "update", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        int UpdateCollabo(Collaborateur collaborateur);
     }
 
 
