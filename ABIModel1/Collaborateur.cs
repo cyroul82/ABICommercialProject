@@ -85,7 +85,20 @@ namespace ABIModel
             this.Statut = statut;
             Init();
         }
-
+        public Collaborateur(Int32 matricule, String nom, String prenom, String fonctionCollabo, Boolean statut, String address, String zipCode, String town, String tel, String email, String picture)
+        {
+            Id = matricule;
+            Name = nom;
+            Firstname = prenom;
+            FonctionCollabo = fonctionCollabo;
+            Address = address;
+            ZipCode = zipCode;
+            Town = town;
+            Tel = tel;
+            Email = email;
+            this.Statut = statut;
+            Init();
+        }
         /// <summary>
         /// Initialize properties
         /// </summary>

@@ -19,7 +19,7 @@ namespace ABIWebsite.Controllers
     public class CollaborateurController : Controller
     {
         // GET: List of Collaborateur
-        string Baseurl = "http://griffin:10000/";
+        string Baseurl = "http://bip14:10000/";
 
         public async Task<ActionResult> Index()
         {
@@ -150,31 +150,30 @@ namespace ABIWebsite.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateCollaborateur(Collaborateur collaborateur)
+        public async Task<ActionResult> UpdateCollaborateur(Collaborateur collaborateur)
         {
-            try
+            var myContent = JsonConvert.SerializeObject(collaborateur);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            using (HttpClient client = new HttpClient())
             {
-                WebClient WC = new WebClient();
-                WC.Headers.Add("Content-Type", "application/json");
-                WC.Encoding = Encoding.UTF8;
+                var response = await client.PostAsync("http://bip14:10000/Service1.svc/rest/update/", byteContent);
+                Console.WriteLine(response);
 
-                MemoryStream MS = new MemoryStream();
-                DataContractJsonSerializer JSrz = new
-                DataContractJsonSerializer(typeof(Collaborateur));
-                JSrz.WriteObject(MS, collaborateur);
-                string data = Encoding.UTF8.GetString(MS.ToArray(), 0, (int)MS.Length);
-
-                byte[] res1 =
-                WC.UploadData("http://griffin:10000/Service1.svc/rest/update/", "POST", MS.ToArray());
-
-                //MS = new MemoryStream(res1);
-                //JSrz = new DataContractJsonSerializer(typeof(int));
-                //int result = (int)JSrz.ReadObject(MS);
-                return RedirectToAction("Index");
             }
-            catch
+            return RedirectToAction("Index");
+
+
+        }
+
+        async void PostRequest(string url, HttpContent content)
+        {
+            using (HttpClient client = new HttpClient())
             {
-                return RedirectToAction("Index");
+                var response = await client.PostAsync(url, content);
+                Console.WriteLine(response);
+                
             }
         }
 
